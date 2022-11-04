@@ -1,0 +1,408 @@
+/* ===========================
+    General Styles
+============================ */
+
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}
+
+.html {
+  position: relative;
+}
+
+.body {
+  padding: 0;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1000px;
+  background: #f3f3f3;
+}
+
+/* ===========================
+      Choose Form
+  ============================ */
+
+.form-container {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 380px;
+  height: 585px;
+  overflow: hidden;
+  box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2), 0px 0px 50px rgba(0, 0, 0, 0.2);
+  border-radius: 30px;
+  background: #f3f3f3;
+}
+
+.form-container__arrow {
+  position: absolute;
+  margin: auto;
+  top: 20px;
+  right: initial;
+  bottom: initial;
+  left: -120px;
+  width: 10px;
+  height: 10px;
+  color: #8dabfb;
+  z-index: 10;
+  opacity: 1;
+  -webkit-transition: left 2s;
+  -moz-transition: left 2s;
+  -o-transition: left 2s;
+  transition: left 2s;
+  cursor: pointer;
+}
+
+.overlay {
+  position: absolute;
+  margin: initial;
+  top: initial;
+  right: initial;
+  bottom: initial;
+  left: initial;
+  width: inherit;
+  height: inherit;
+  -webkit-animation: 1.5s fadeInTitle ease;
+  -moz-animation: 1.5s fadeInTitle ease;
+  -o-animation: 1.5s fadeInTitle ease;
+  animation: 1.5s fadeInTitle ease;
+  -webkit-transition: opacity 2s;
+  -moz-transition: opacity 2s;
+  -o-transition: opacity 2s;
+  transition: opacity 2s;
+  background: #84b7ec url(https://i.ibb.co/dkW0tm9/img-1.png) center no-repeat;
+  background-size: contain;
+}
+
+@keyframes fadeInTitle {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.choose-form {
+  position: absolute;
+  margin: initial;
+  top: initial;
+  right: initial;
+  bottom: initial;
+  left: initial;
+  width: inherit;
+  height: inherit;
+  z-index: 5;
+}
+
+.title {
+  position: absolute;
+  margin: auto;
+  top: -62px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: inherit;
+  height: 100px;
+  text-align: center;
+  color: #fff;
+  text-shadow: 0 0.3rem 0.5rem #555;
+  -webkit-animation: 1.5s fadeInTitle ease;
+  -moz-animation: 1.5s fadeInTitle ease;
+  -o-animation: 1.5s fadeInTitle ease;
+  animation: 1.5s fadeInTitle ease;
+  -webkit-transition: opacity 2s;
+  -moz-transition: opacity 2s;
+  -o-transition: opacity 2s;
+  transition: opacity 2s;
+}
+
+.title__h1 {
+  font-weight: 700;
+  letter-spacing: 0.05rem;
+  font-size: 2rem;
+}
+
+.buttons {
+  text-align: center;
+  position: absolute;
+  margin: auto;
+  top: 296px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: inherit;
+  height: 110px;
+  -webkit-animation: 1.5s fadeInTitle ease;
+  -moz-animation: 1.5s fadeInTitle ease;
+  -o-animation: 1.5s fadeInTitle ease;
+  animation: 1.5s fadeInTitle ease;
+  -webkit-transition: opacity 2s;
+  -moz-transition: opacity 2s;
+  -o-transition: opacity 2s;
+  transition: opacity 2s;
+}
+
+.buttons__signup {
+  position: absolute;
+  margin: auto;
+  top: -40px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 7px 0;
+  border: none;
+  border-radius: 10px;
+  width: 200px;
+  height: 30px;
+  display: block;
+  outline: none;
+  text-align: inherit;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  font-size: 12px;
+  font-weight: 500;
+  color: #fff;
+  background: #4f73d9;
+  box-shadow: 0 15px 30px rgba(79, 115, 217, 0.36);
+  -webkit-transition: bottom 2s;
+  -moz-transition: bottom 2s;
+  -o-transition: bottom 2s;
+  transition: bottom 2s;
+  cursor: pointer;
+}
+
+.buttons__signup:hover {
+  -webkit-transition: 0.3s linear;
+  -moz-transition: 0.3s linear;
+  -o-transition: 0.3s linear;
+  transition: 0.3s linear;
+  box-shadow: 0 0 0 rgba(233, 30, 99, 0);
+}
+
+.buttons__signup--login {
+  top: 40px;
+  -webkit-transition: bottom 1s;
+  -moz-transition: bottom 1s;
+  -o-transition: bottom 1s;
+  transition: bottom 1s;
+}
+
+/* ===========================
+      Login Form
+  ============================ */
+
+.login-form {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: inherit;
+  height: 400px;
+  text-align: center;
+  opacity: 0;
+  -webkit-transition: opacity 2s;
+  -moz-transition: opacity 2s;
+  -o-transition: opacity 2s;
+  transition: opacity 2s;
+}
+
+.form-wrapper {
+  margin: 0 auto;
+  width: 250px;
+  height: 250px;
+  display: block;
+}
+
+.form-wrapper__label {
+  display: block;
+  text-align: left;
+  text-transform: uppercase;
+  text-decoration: initial;
+  letter-spacing: 0.1em;
+  font-size: 12px;
+  font-weight: 600;
+  color: #8dabfb;
+}
+
+.form-wrapper__input {
+  margin: 5px 0 10px 0;
+  width: 250px;
+  height: 30px;
+  outline: none;
+  border: none;
+  background: none;
+  font-size: 12px;
+  border-bottom: 1px solid #8dabfb;
+  opacity: 0.8;
+}
+
+.form-wrapper__input::placeholder {
+  color: #8dabfb;
+  opacity: 0.8;
+}
+
+.login-form__forgot-password {
+  display: block;
+  text-align: right;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  font-size: 12px;
+  font-weight: 500;
+  color: #8dabfb;
+}
+
+.login-form__forgot-password:hover {
+  opacity: 0.5;
+  -webkit-transition: 0.3s linear;
+  -moz-transition: 0.3s linear;
+  -o-transition: 0.3s linear;
+  transition: 0.3s linear;
+}
+
+.buttons__signup--login-form {
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+  top: -66px;
+}
+
+.social-media {
+  position: absolute;
+  margin: auto;
+  top: initial;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: inherit;
+  height: 150px;
+}
+
+.title__h2 {
+  margin: 25.63px;
+  margin-bottom: 1rem;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #8dabfb;
+}
+
+.title__h2::before {
+  content: "";
+  position: absolute;
+  margin: auto;
+  top: 30px;
+  right: initial;
+  bottom: 0;
+  left: 0;
+  width: 65px;
+  height: initial;
+  border-top: 1px solid #8dabfb;
+  opacity: 0.8;
+}
+
+.title__h2::after {
+  content: "";
+  position: absolute;
+  margin: auto;
+  top: 30px;
+  right: 0;
+  bottom: 0;
+  left: initial;
+  width: 65px;
+  height: initial;
+  border-top: 1px solid #8dabfb;
+  opacity: 0.8;
+}
+
+.buttons__signup--social {
+  position: relative;
+  margin: 10px auto;
+  top: 5px;
+  text-align: center;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+  background: #3ba4fa;
+  box-shadow: 0 15px 30px rgba(59, 164, 250, 0.36);
+}
+
+/* ===========================
+      Register Form
+  ============================ */
+
+.buttons__signup--sign-up-form {
+  top: 5px;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+}
+
+/* ===========================
+      Responsive
+  ============================ */
+
+@media (max-height: 599px) {
+  .form-container {
+    margin: 1rem auto;
+    position: relative;
+    width: 300px;
+    height: 460px;
+  }
+
+  .form-wrapper {
+    margin-top: 24px;
+  }
+
+  .buttons__signup--login-form {
+    top: -17px;
+  }
+
+  .buttons__signup--sign-up-form {
+    top: 54px;
+  }
+}
+
+@media (max-width: 400px) {
+  .form-container {
+    width: 320px;
+  }
+}
+
+@media (max-width: 320px) {
+  .form-container {
+    width: 300px;
+    height: 460px;
+  }
+
+  .form-wrapper {
+    margin-top: 24px;
+  }
+
+  .buttons__signup--login-form {
+    top: -17px;
+  }
+
+  .buttons__signup--sign-up-form {
+    top: 54px;
+  }
+}
