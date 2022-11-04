@@ -1,0 +1,90 @@
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3DAYMarket</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="font.css"/>
+    <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+    <div class="top-container">
+        <div class="home-box">
+            <div><img src="logo.png" alt="">로고</div>
+            
+            <div>3DAYMarket</div>
+        </div>
+        <div class="category-box">
+            <div id="item-trade">중고거래</div>
+            <div id="alba">알바</div>
+            <div id="apart-trade">부동산 직거래</div>
+        </div>
+        <div id="searchBox">
+        <input text="text" id="search" placeholder="물품이나 동네를 검색해보세요">
+        </div>
+        <div class="user-box">
+             <div id="loginDisplay"></div>
+             <button id ="sign-in">로그인</button>
+            <button id ="sign-up">회원가입</button>
+            <button id ="sign-out">로그아웃</button>
+        </div>
+    </div>
+    
+
+    <div class="home-container">
+        <div class="home-first">
+            <div>
+            <div>당신 근처의<br/> 3DAYMarket</div>
+            <div>중고 거래부터 동내 정보까지, 주민들과 함께해<br/>가깝고 따뜻한 당신의 근처를 만들어요.</div>
+            </div>
+            <div>
+                <img src="./imgs/img0.png" alt="">
+            </div>   
+        </div>
+        <div class="home-second">
+            <div class="div-img">
+                <img src="./imgs/img1.jpg" alt="">
+            </div>   
+            <div>
+            <div>우리 동네<br/> 중고 직거래 마켓</div>
+            <div>동네 주민들과 가깝고 따뜻한 거래를 지금 경험해보세요.</div>
+            <div class="btnbox">
+                <button id="popular-item">인기매물 보기</button>
+                <button id="believe-trade">믿을 수 있는 중고거래</button>
+            </div>
+            </div>
+            
+        </div>
+        <div class="home-first">
+            <div>
+            <div>당신 근처의<br/> 3DAYMarket</div>
+            <div>중고 거래부터 동내 정보까지, 주민들과 함께해<br/>가깝고 따뜻한 당신의 근처를 만들어요.</div>
+            </div>
+            <div class="div-img">
+                <img src="./imgs/img2.jpg" alt="">
+            </div>   
+        </div>
+        <div class="home-second">
+            <div class="div-img">
+                <img src="./imgs/img3.jpg" alt="">
+            </div>   
+            <div>
+            <div>내 근처에서 찾는<br/> 동네가게</div>
+            <div>우리 동네 가게를 찾고 있나요?</div>
+            <div>동네 주민이 남긴 진짜 후기를 함께 확인해보세요!</div>
+            <div class="btnbox">
+                <button id="find-store">3DAYMarket 동네가게 찾기</button>
+            </div>
+            </div>
+        </div>
+    </div>
+   
+    <!-- <input type="text" id="user-name" placeholder="이름">  -->
+    <!-- <input type="text" id="user-name" placeholder="지역">  -->
+    <input type="text" id="user-id" placeholder="아이디"> 
+    <input type="password" id="user-pw" placeholder="비번"> 
+    <input type="text" id="user-name" placeholder="이름"> 
+    <script src="index.js"></script>
+</body>
+</html>
