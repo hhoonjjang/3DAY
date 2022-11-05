@@ -1,0 +1,66 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="font/font.css" />
+    <link rel="stylesheet" href="index.css" />
+    <title>chatting</title>
+  </head>
+  <body>
+    <div id="menu">
+      <div id="menu-item">
+        <div><img src="./img/logo_daangn.svg" alt="" /></div>
+        <div id="user-info">
+          <div><img src="./img/user1.jpg" alt="" class="user-img" /></div>
+          <div>초롱둥이</div>
+          <div><img src="./img/arrowDown.svg" alt="" /></div>
+        </div>
+      </div>
+    </div>
+    <div id="main-box">
+      <div id="main">
+        <div id="userlist">
+          <a href="" class="pointer">
+            <img src="./img/user1.jpg" alt="" class="user-img-list" />
+            <div class="user-select"></div>
+          </a>
+        </div>
+        <div id="chat-list">
+          <div id="user-name">초롱둥이</div>
+          <div id="msg-check">
+            <div class="vs-data">안 읽은 메시지만 보기</div>
+            <div><img src="./img/check.svg" alt="" /></div>
+          </div>
+          <ul id="chat-vs">
+            <div class="one-chat">
+              <div><img src="./img/default.png" alt="" class="vs-img" /></div>
+              <div class="vs-info">
+                <div>
+                  <span class="vs-name">nickname</span>
+                  <span class="vs-data">local</span>
+                  <span class="vs-data">.</span>
+                  <span class="vs-data">log-day</span>
+                </div>
+                <div class="vs-chatlog">마지막 채팅로그</div>
+              </div>
+              <div class="vs-log-img">사진로그</div>
+            </div>
+          </ul>
+          <div id="what">
+            <div>자주묻는 질문</div>
+            <div><img src="./img/what.svg" alt="" /></div>
+          </div>
+        </div>
+        <div id="chatting" data-include-path="chatting.html">
+          <img src="./img/chatting.svg" alt="" />
+          <span>채팅할 상대를 선택해주세요</span>
+        </div>
+      </div>
+    </div>
+    <div id="temp">
+      PC알림을 허용하고, 알림창에서 새 메시지를 빠르게 확인해보세용
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
