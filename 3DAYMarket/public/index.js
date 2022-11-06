@@ -1,4 +1,10 @@
-document.getElementById("sign-up").onclick= async function(){
+
+const signInBtn = document.getElementById("sign-in");
+const signOutBtn = document.getElementById("sign-out");
+const signUpBtn =document.getElementById("sign-up");
+const chattingBtn =document.getElementById("chatting");
+
+signUpBtn.onclick= async function(){
     try{
         console.log(document.getElementById("user-id").value)
 
@@ -12,7 +18,7 @@ document.getElementById("sign-up").onclick= async function(){
         console.error(error.response.data.message)
     } 
 }
-document.getElementById("sign-in").onclick = async function (){
+signInBtn.onclick = async function (){
     try{
         const result = await axios.post('/api/user/login',{
             id: document.getElementById("user-id").value,
@@ -20,13 +26,18 @@ document.getElementById("sign-in").onclick = async function (){
         })
         console.log(result);
         console.log(result.data);
-        
+        signOutBtn.classList.add("on");
+        chattingBtn.classList.add("on");
+
         const login = document.createElement("div");
         login.innerText = `${result.data.name}님 어서오세요!`;
         document.getElementById("loginDisplay").append(login)
+        signInBtn.classList.add("off");
+        signUpBtn.classList.add("off");
         
     }catch(error){
         console.error(err)
+        alert("아이디나 비밀번호가 올바르지않습니다");
     }
 }
 
@@ -36,11 +47,14 @@ if(document.cookie){
         const result = await axios.post('/api/user/cookie',{
             cookie:document.cookie,
         })
-        
+        signOutBtn.classList.add("on");
+        chattingBtn.classList.add("on");
         console.log(result.data.name);
         const login = document.createElement("div");
         login.innerText = `${result.data.name}님 어서오세요!`;
         document.getElementById("loginDisplay").append(login)
+        signInBtn.classList.add("off");
+        signUpBtn.classList.add("off");
     }catch(error){
         console.error(err)
     }
@@ -48,11 +62,19 @@ if(document.cookie){
 login();
 const loginDisplay =document.getElementById("loginDisplay");
 
-document.getElementById("sign-out").onclick =async function(){
+signOutBtn.onclick =async function(){
     try{
         const result = await axios.post("/api/user/logout")
+
         loginDisplay.removeChild(loginDisplay.firstChild);
-    }catch(err){
+        signOutBtn.classList.remove("on");
+        chattingBtn.classList.remove("on");
+        signInBtn.classList.remove("off");
+        signUpBtn.classList.remove("off");
+        
+}
+
+    catch(err){
         console.error(err);
     }
 }
