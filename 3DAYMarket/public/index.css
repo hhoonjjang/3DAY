@@ -15,19 +15,31 @@ html{
     align-items: center;
     margin: 0 auto;
     height: 100px;
-    background-color: lightblue;
+    background-color: white
+
    
 }
 
 .top-container div{
     display: flex;
     font-family: "maple-bold";
-
 }
 
 .home-box{
+    height: 100%;
     margin-left: 100;
+    display: flex;
+    align-items: center;
    cursor: pointer;
+   
+}
+.home-box div{
+    height: 100%;
+    align-items: center;
+}
+
+.home-box div img{
+height: 100%;
 }
 
 .category-box{
@@ -60,6 +72,31 @@ html{
     margin: 0 10;
 }
 
+#sign-in.off,#sign-up.off{
+    display: none;
+}
+
+
+#sign-out{
+    display: none;
+}
+
+#sign-out.on {
+    display: block;
+} 
+
+#chatting{
+    display: none;
+}
+
+#chatting.on{
+    display: block;
+}
+
+#loginDisplay{
+    align-items: center;
+}
+
 #search{
     
     background-color: lightgray;
@@ -69,7 +106,7 @@ html{
     border-radius: 10px;
 }
 .home-container{
-    background-color: lightyellow;
+ /* background-color: lightyellow; */
 }
 
 
@@ -119,7 +156,7 @@ html{
 .home-first {
     width: 1024px;
     height: 724px;
-    background-color: greenyellow;
+    /* background-color: greenyellow; */
     margin: 0 auto;
     display: flex;
     justify-content: center;
