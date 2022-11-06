@@ -3,7 +3,11 @@ const signInBtn = document.getElementById("sign-in");
 const signOutBtn = document.getElementById("sign-out");
 const signUpBtn =document.getElementById("sign-up");
 const chattingBtn =document.getElementById("chatting");
+const reverseBtn = document.getElementById("reverse");
+const reverseImg = [...document.getElementsByClassName("reverse")];
+const reverseBgc = [...document.getElementsByClassName("bgc")];
 
+console.log(reverseImg);
 signUpBtn.onclick= async function(){
     try{
         console.log(document.getElementById("user-id").value)
@@ -77,4 +81,18 @@ signOutBtn.onclick =async function(){
     catch(err){
         console.error(err);
     }
+}
+
+reverseBtn.ondblclick = function(){
+    document.body.classList.toggle("start");
+    for(let i =0;i<reverseImg.length;i++){
+        // console.log("reverseImg[i]")
+        reverseImg[i].classList.toggle("start");
+    }
+    for(let i =0;i<reverseImg.length;i++){
+        // console.log("reverseImg[i]")
+        reverseBgc[i].classList.toggle("start");
+    }
+
+    // document.getElementsByClassName("reverse").classList.add("start");
 }
