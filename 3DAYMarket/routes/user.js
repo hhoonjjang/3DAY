@@ -42,7 +42,7 @@ router.post("/regist", async (req, res) => {
                 name:tempUser.name},
             process.env.JWT_KEY,{
                 algorithm:"HS256",
-                expiresIn:"30m",
+                // expiresIn:"30m",ss
                 issuer:"jjh",
             }
             )

@@ -3,10 +3,12 @@ const signInBtn = document.getElementById("sign-in");
 const signOutBtn = document.getElementById("sign-out");
 const signUpBtn =document.getElementById("sign-up");
 const chattingBtn =document.getElementById("chatting");
+const itemUpload = document.getElementById("item-upload");
+const userInfo = document.getElementById("user-info");
 const reverseBtn = document.getElementById("reverse");
 const reverseImg = [...document.getElementsByClassName("reverse")];
 const reverseBgc = [...document.getElementsByClassName("bgc")];
-
+const loginDisplay =document.getElementById("loginDisplay");
 console.log(reverseImg);
 signUpBtn.onclick= async function(){
     try{
@@ -32,10 +34,13 @@ signInBtn.onclick = async function (){
         console.log(result.data);
         signOutBtn.classList.add("on");
         chattingBtn.classList.add("on");
-
+        itemUpload.classList.add("on");
+        userInfo.classList.add("on");
         const login = document.createElement("div");
         login.innerText = `${result.data.name}님 어서오세요!`;
         document.getElementById("loginDisplay").append(login)
+        loginDisplay.style.display="block";
+
         signInBtn.classList.add("off");
         signUpBtn.classList.add("off");
         
@@ -53,9 +58,12 @@ if(document.cookie){
         })
         signOutBtn.classList.add("on");
         chattingBtn.classList.add("on");
+        itemUpload.classList.add("on");
+        userInfo.classList.add("on");
         console.log(result.data.name);
         const login = document.createElement("div");
         login.innerText = `${result.data.name}님 어서오세요!`;
+        loginDisplay.style.display="block";
         document.getElementById("loginDisplay").append(login)
         signInBtn.classList.add("off");
         signUpBtn.classList.add("off");
@@ -64,7 +72,7 @@ if(document.cookie){
     }
 }}
 login();
-const loginDisplay =document.getElementById("loginDisplay");
+
 
 signOutBtn.onclick =async function(){
     try{
@@ -73,6 +81,10 @@ signOutBtn.onclick =async function(){
         loginDisplay.removeChild(loginDisplay.firstChild);
         signOutBtn.classList.remove("on");
         chattingBtn.classList.remove("on");
+        itemUpload.classList.remove("on");
+        userInfo.classList.remove("on");
+        loginDisplay.style.display="none";
+
         signInBtn.classList.remove("off");
         signUpBtn.classList.remove("off");
         
