@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div>
+      <div>
+        <form class="main-colum" id="">
+          <div class="img-div main-colum-items">
+            <div class="main-colum-left">상품이미지</div>
+            <div>
+              <label id="img-uploader-label" for="img-uploader"
+                >이미지 등록</label
+              >
+              <input id="img-uploader" type="file" accept="image/*" />
+            </div>
+          </div>
+          <div class="title-div main-colum-items">
+            <div class="main-colum-left">제목</div>
+            <div>
+              <input
+                type="text"
+                id="title-input"
+                placeholder="상품 제목을 입력해주세요."
+                autocomplete="off"
+              />
+            </div>
+          </div>
+          <div class="categories-div main-colum-items">
+            <div class="main-colum-left">카테고리</div>
+            <div class="main-colum-right">
+              <div class="main-colum-right-inner">
+                <label for="">의류, 패션</label
+                ><input type="radio" name="categories" id="" />
+                <label for="">전자기기</label
+                ><input type="radio" name="categories" id="" />
+                <label for="">차량</label
+                ><input type="radio" name="categories" id="" />
+                <label for="">가구</label
+                ><input type="radio" name="categories" id="" />
+                <label for="">생활</label
+                ><input type="radio" name="categories" id="" />
+              </div>
+              <div class="main-colum-right-inner">
+                <label for="">음반, 악기</label
+                ><input type="radio" name="categories" id="" />
+                <label for="">스포츠</label
+                ><input type="radio" name="categories" id="" />
+                <label for="">화장품</label
+                ><input type="radio" name="categories" id="" />
+                <label for="">도서</label
+                ><input type="radio" name="categories" id="" />
+                <label for="">기타</label
+                ><input type="radio" name="categories" id="" />
+              </div>
+            </div>
+          </div>
+          <div class="condition-div main-colum-items">
+            <div class="main-colum-left">상태</div>
+            <div class="main-colum-right">
+              <label for="">
+                중고상품<input type="radio" name="condition" id="" />
+              </label>
+              <label for="">
+                새상품<input type="radio" name="condition" id="" />
+              </label>
+            </div>
+          </div>
+          <div class="tuning-div main-colum-items">
+            <div class="main-colum-left">가격절충</div>
+            <div class="main-colum-right">
+              <label for="">
+                불가능<input type="radio" name="tuning" id="" />
+              </label>
+              <label for="">
+                가능<input type="radio" name="tuning" id="" />
+              </label>
+            </div>
+          </div>
+          <div class="dealing-div main-colum-items">
+            <div class="main-colum-left">거래방법</div>
+            <div class="main-colum-right">
+              <label for="">
+                직거래<input type="radio" name="dealing" id="" />
+              </label>
+              <label for="">
+                택배거래<input type="radio" name="dealing" id="" />
+              </label>
+              <label for="">
+                택배거래(안전결제)<input type="radio" name="dealing" id="" />
+              </label>
+              <label for="">
+                무관<input type="radio" name="dealing" id="" />
+              </label>
+            </div>
+          </div>
+          <div class="price-div main-colum-items">
+            <div class="main-colum-left">가격</div>
+            <div class="main-colum-right">
+              <input
+                type="number"
+                id="price-input"
+                autocomplete="off"
+                placeholder="숫자만 입력해주세요."
+              /><span>원</span>
+            </div>
+          </div>
+          <div class="subtitle-div main-colum-items">
+            <div class="main-colum-left">설명</div>
+            <div class="main-colum-right">
+              <textarea name="" id="" cols="30" rows="10"> </textarea>
+              <div class="textarea-placeholder">
+                <div>
+                  여러 장의 상품 사진과 구입 연도, 브랜드, 사용감, 하자 유무 등
+                  구매자에게 필요한 정보를 꼭 포함해 주세요.(10자 이상)
+                </div>
+                <div>
+                  안전하고 건전한 거래 환경을 위해 과학기술정보통신부,
+                  한국인터넷진흥원과 3DAY-Market이 함께합니다.
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="confirm-div">
+        <button class="confirm-btn">등 록 하 기</button>
+      </div>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
+
+<!-- 
+    가격 , 붙이는거
+    라디오버튼 호버 배경
+    상품명을 2자 이상 입력해주세요
+    카테고리 설정을 해주세요 (빈 내용 예외처리)
+    textarea 폰트 수정
+    등록하기 >>>> 서버전송
+    텍트스에리어 클릭시 플레이스홀더 display none 추가
+
+    [이미지 등록시 페이지에 보이기, 최소한에 표시라도]
+
+ -->

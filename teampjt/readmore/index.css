@@ -1,0 +1,174 @@
+@font-face {
+  font-family: "maple-bold";
+  src: url("./font/Maplestory\ Bold.ttf");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "maple-light";
+  src: url("./font/Maplestory\ Light.ttf");
+  font-weight: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 18px;
+  font-family: "maple-light";
+}
+
+.main-colum {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 1100px;
+  padding: 20px;
+}
+
+.info-div {
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  display: flex;
+  justify-content: space-between;
+  padding: 30px;
+  padding-left: 10px;
+}
+
+.info-div-img {
+  width: 430px;
+  height: 430px;
+  background-color: coral;
+}
+
+.info-div-info {
+  flex-grow: 1;
+  flex: 2 3 2;
+}
+
+.info-div-info {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  padding-left: 30px;
+}
+
+.info-div-info-head {
+  flex: 2;
+  letter-spacing: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.info-div-info-body {
+  flex: 4;
+  border-top: 1px solid rgb(220, 219, 228);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  color: gray;
+}
+.info-div-info-foot {
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+}
+
+h1 span {
+  font-size: 26px;
+  font-weight: normal;
+  margin-left: 10px;
+}
+
+button {
+  width: 200px;
+  height: 70px;
+  padding: 5px;
+  border: none;
+  font-size: 30px;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  background-color: rgb(238, 111, 45);
+}
+
+button:hover {
+  background-color: rgb(215, 88, 22);
+}
+
+.wish-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.wish-btn img {
+  width: 24px;
+}
+
+.chat-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.chat-btn img {
+  width: 26px;
+}
+
+.info-div-info-body * img {
+  width: 16px;
+  margin-left: 25px;
+}
+
+.info-div-info-body * img:first-child {
+  width: 16px;
+  height: 17px;
+  margin-left: 0;
+  border: none;
+}
+
+.info-div-info-body * img:nth-child(3) {
+  width: 21px;
+  height: 13px;
+}
+
+.info-div-info-body-inner {
+  display: inline-block;
+  width: 100px;
+}
+
+.info-div-info-body-categories {
+  display: inline-block;
+  font-size: 28px;
+  padding-right: 20px;
+}
+
+#seller-id {
+  border-left: 1px solid rgb(220, 219, 228);
+  padding-left: 20px;
+  font-size: 28px;
+}
+
+.read-more-div {
+  padding: 30px;
+  padding-left: 10px;
+  border-bottom: 2px solid black;
+}
+
+.read-more-div-inner {
+  border-top: 1px solid rgb(220, 219, 228);
+  border-bottom: 1px solid rgb(220, 219, 228);
+  padding: 30px;
+  padding-left: 10px;
+  margin-top: 30px;
+}
+
+.read-more-div-inner-text {
+  height: 300px;
+}
