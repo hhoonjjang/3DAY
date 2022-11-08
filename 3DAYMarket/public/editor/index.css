@@ -16,6 +16,10 @@
   box-sizing: border-box;
 }
 
+.display-none {
+  display: none;
+}
+
 body {
   font-size: 18px;
   font-family: "maple-light";
@@ -23,6 +27,16 @@ body {
 
 textarea {
   resize: none;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+input {
+  font-family: inherit;
+}
+
+input[type="text"] {
+  font-size: 24px;
 }
 
 .main-colum {
@@ -81,7 +95,7 @@ textarea:focus,
   outline: 2px solid rgba(238, 111, 45, 0.5);
 }
 
-span {
+.price-div span {
   margin-left: 10px;
   font-weight: bold;
 }
@@ -124,7 +138,7 @@ span {
   position: relative;
 }
 
-.textarea-placeholder {
+#textarea-placeholder {
   color: rgb(155, 153, 169);
   position: absolute;
   top: 0;
@@ -132,7 +146,7 @@ span {
   pointer-events: none;
 }
 
-.textarea-placeholder div {
+#textarea-placeholder div {
   font-size: 14px;
   margin-bottom: 10px;
 }

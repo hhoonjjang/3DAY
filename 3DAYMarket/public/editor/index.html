@@ -28,6 +28,7 @@
                 id="title-input"
                 placeholder="상품 제목을 입력해주세요."
                 autocomplete="off"
+                spellcheck="false"
               />
             </div>
           </div>
@@ -65,6 +66,8 @@
             <div class="main-colum-right">
               <label for="">
                 중고상품<input type="radio" name="condition" id="" />
+                <span></span>
+                <span></span>
               </label>
               <label for="">
                 새상품<input type="radio" name="condition" id="" />
@@ -103,7 +106,7 @@
             <div class="main-colum-left">가격</div>
             <div class="main-colum-right">
               <input
-                type="number"
+                type="text"
                 id="price-input"
                 autocomplete="off"
                 placeholder="숫자만 입력해주세요."
@@ -113,8 +116,15 @@
           <div class="subtitle-div main-colum-items">
             <div class="main-colum-left">설명</div>
             <div class="main-colum-right">
-              <textarea name="" id="" cols="30" rows="10"> </textarea>
-              <div class="textarea-placeholder">
+              <textarea
+                name=""
+                id="subtitle-textarea"
+                cols="30"
+                rows="10"
+                spellcheck="false"
+              >
+              </textarea>
+              <div id="textarea-placeholder">
                 <div>
                   여러 장의 상품 사진과 구입 연도, 브랜드, 사용감, 하자 유무 등
                   구매자에게 필요한 정보를 꼭 포함해 주세요.(10자 이상)
@@ -137,12 +147,8 @@
 </html>
 
 <!-- 
-    가격 , 붙이는거
-    라디오버튼 호버 배경
-    상품명을 2자 이상 입력해주세요
+    라디오버튼 <<< 젤리
     카테고리 설정을 해주세요 (빈 내용 예외처리)
-    textarea 폰트 수정
-    텍트스에리어 클릭시 플레이스홀더 display none 추가
     
     등록하기 >>>> 서버전송
     [이미지 등록시 페이지에 보이기, 최소한에 표시라도]
