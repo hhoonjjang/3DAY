@@ -13,30 +13,30 @@
 // [이미지 등록시 페이지에 보이기, 최소한에 표시라도]
 
 //
-let isTitleTrue = false;
-let isPriceTrue = false;
-let isSubtitleTrue = false;
+let isTitleTrue;
+let isPriceTrue;
+let isSubtitleTrue;
 //
 //
 const titleInput = document.getElementById("title-input");
 const titleGuide = document.getElementById("title-guide");
-function titleChange(e) {
-  if (e.value.length < 1) {
+titleInput.oninput = function () {
+  isTitleTrue = false;
+  if (titleInput.value.length < 1) {
     titleGuide.classList.add("display-none");
     titleInput.classList.remove("red-border");
-    isTitleTrue = false;
-  } else if (e.value.length < 5) {
+    titleInput.classList.remove("green-border");
+  } else if (titleInput.value.length < 5) {
     titleGuide.classList.remove("display-none");
     titleInput.classList.add("red-border");
     titleInput.classList.remove("green-border");
-    isTitleTrue = false;
   } else {
     titleGuide.classList.add("display-none");
     titleInput.classList.remove("red-border");
     titleInput.classList.add("green-border");
     isTitleTrue = true;
   }
-}
+};
 //
 //
 const priceInput = document.getElementById("price-input");
@@ -47,29 +47,30 @@ priceInput.onfocus = () => {
   if (priceInput.value == 0) priceInput.value = "";
   priceInput.value = priceInput.value.replace(/,/g, "");
 };
-function priceChange(e) {
-  if (e.value.length < 1) {
+
+priceInput.oninput = () => {
+  isPriceTrue = false;
+  if (priceInput.value.length < 1) {
     priceGuide.classList.add("display-none");
     priceInput.classList.remove("red-border");
     priceInput.classList.remove("green-border");
-    isPriceTrue = false;
-  } else if (e.value % 1) {
-    priceGuideFalse();
+  } else if (priceInput.value % 1) {
+    priceGuide.classList.remove("display-none");
+    priceInput.classList.add("red-border");
+    priceInput.classList.remove("green-border");
     priceMsg.innerText = "소수점은 입력할 수 없습니다";
-    isPriceTrue = false;
-  } else if (isNaN(e.value)) {
+  } else if (isNaN(priceInput.value)) {
     priceGuide.classList.remove("display-none");
     priceInput.classList.add("red-border");
     priceInput.classList.remove("green-border");
     priceMsg.innerText = "숫자만 입력해주세요";
-    isPriceTrue = false;
   } else {
     priceGuide.classList.add("display-none");
     priceInput.classList.remove("red-border");
     priceInput.classList.add("green-border");
     isPriceTrue = true;
   }
-}
+};
 priceInput.onblur = () => {
   if (priceInput.value == "") return;
   if (priceInput.value % 1 || isNaN(priceInput.value)) {
@@ -89,23 +90,22 @@ subtitleTextarea.value = "";
 subtitleTextarea.onfocus = () => {
   subtitleHolder.classList.add("display-none");
 };
-function subtitleChange() {
+subtitleTextarea.oninput = () => {
+  isSubtitleTrue = false;
   if (subtitleTextarea.value == "") {
     subtitleGuide.classList.add("display-none");
     subtitleTextarea.classList.remove("red-border");
-    isSubtitleTrue = false;
   } else if (subtitleTextarea.value.length < 11) {
     subtitleGuide.classList.remove("display-none");
     subtitleTextarea.classList.add("red-border");
     subtitleTextarea.classList.remove("green-border");
-    isSubtitleTrue = false;
   } else {
     subtitleGuide.classList.add("display-none");
     subtitleTextarea.classList.remove("red-border");
     subtitleTextarea.classList.add("green-border");
     isSubtitleTrue = true;
   }
-}
+};
 subtitleTextarea.onblur = () => {
   if (!subtitleTextarea.value) {
     subtitleHolder.classList.remove("display-none");
