@@ -1,0 +1,166 @@
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section class="form-container">
+      <span id="arrowClick" class="form-container__arrow"
+        ><i class="fa fa-arrow-circle-left" aria-hidden="true"></i
+      ></span>
+      <div class="overlay"></div>
+      <div class="choose-form">
+        <div class="title">
+          <h1 class="title__h1">3DAYMarket</h1>
+        </div>
+        <div class="buttons">
+          <a id="signUp" class="buttons__signup" href="#">Sign up</a>
+          <a id="login" class="buttons__signup buttons__signup--login" href="#"
+            >Login</a
+          >
+        </div>
+      </div>
+
+      <!-- Login Form -->
+
+      <div class="login-form">
+        <div class="form-wrapper">
+          <form method="post">
+            <label class="form-wrapper__label" for="login-userID">ID</label>
+            <input
+              id="login-userID"
+              class="form-wrapper__input"
+              type="text"
+              placeholder="Username"
+              name="username"
+              required
+            />
+            <label class="form-wrapper__label" for="login-password"
+              >Password</label
+            >
+            <input
+              id="login-password"
+              class="form-wrapper__input"
+              type="password"
+              placeholder="Password"
+              name="password"
+              pattern=".{3,}"
+              title="Password must contain at least 3 characters"
+              required
+            />
+            <a class="login-form__forgot-password" href="">Forgot password?</a>
+            <a
+              class="buttons__signup buttons__signup--login-form"
+              type="submit"
+              href="/"
+            >
+              Login
+            </a>
+          </form>
+
+          <!-- Social-Media -->
+
+          <div class="social-media">
+            <h6 class="title__h2">Or connect with</h6>
+            <a class="buttons__signup buttons__signup--social" href=""
+              ><i class="fab fa-facebook-f" aria-hidden="true"></i
+              >&nbsp;facebook</a
+            >
+            <a class="buttons__signup buttons__signup--social" href=""
+              ><i class="fab fa-google" aria-hidden="true"></i>&nbsp;google</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Register Form -->
+
+      <div class="login-form login-form--register">
+        <div class="form-wrapper">
+          <form method="post">
+            <label class="form-wrapper__label" for="login--id">Id</label>
+            <input
+              type="text"
+              class="form-wrapper__input"
+              id="login--id"
+              placeholder="ID"
+              name="login-ID"
+              required
+            />
+            <label class="form-wrapper__label" for="signup-username"
+              >Username</label
+            >
+            <input
+              id="signup-username"
+              class="form-wrapper__input"
+              type="text"
+              placeholder="Username"
+              name="username"
+              required
+            />
+
+            <label class="form-wrapper__label" for="signup-username"
+              >Password</label
+            >
+            <input
+              id="signup-username"
+              class="form-wrapper__input"
+              type="text"
+              placeholder="Username"
+              name="username"
+              required
+            />
+            <label class="form-wrapper__label" for="signup-password"
+              >CheckPassword</label
+            >
+            <input
+              id="signup-password"
+              class="form-wrapper__input"
+              type="password"
+              placeholder="Password"
+              name="password"
+              pattern=".{3,}"
+              title="Password must contain at least 3 characters"
+              required
+            />
+            <label class="form-wrapper__label" for="signup-username"
+              >Local</label
+            >
+            <input
+              id="signup-local"
+              class="form-wrapper__input"
+              type="text"
+              placeholder="UserLocal"
+              name="userlocal"
+              required
+            />
+            <a
+              class="buttons__signup buttons__signup--sign-up-form"
+              type="submit"
+              href="/"
+            >
+              Sign up
+            </a>
+          </form>
+
+          <!-- Social-Media -->
+
+          <div class="social-media">
+            <h2 class="title__h2">Or connect with</h2>
+            <a class="buttons__signup buttons__signup--social" href=""
+              ><i class="fab fa-facebook-f" aria-hidden="true"></i
+              >&nbsp;facebook</a
+            >
+            <a class="buttons__signup buttons__signup--social" href=""
+              ><i class="fab fa-google" aria-hidden="true"></i>&nbsp;google</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="index.js"></script>
+  </body>
+</html>
