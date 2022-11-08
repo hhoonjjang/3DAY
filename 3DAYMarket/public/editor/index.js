@@ -12,110 +12,98 @@
 // 등록하기 >>>> 서버전송
 // [이미지 등록시 페이지에 보이기, 최소한에 표시라도]
 
+//
+let isTitleTrue = false;
+let isPriceTrue = false;
+let isSubtitleTrue = false;
+//
+//
 const titleInput = document.getElementById("title-input");
 const titleGuide = document.getElementById("title-guide");
-function titleGuideNone() {
-  titleGuide.classList.add("display-none");
-  titleInput.classList.remove("red-border");
-}
-function titleGuideFalse() {
-  titleGuide.classList.remove("display-none");
-  titleInput.classList.add("red-border");
-  titleInput.classList.remove("green-border");
-}
-function titleGuideTrue() {
-  titleGuide.classList.add("display-none");
-  titleInput.classList.remove("red-border");
-  titleInput.classList.add("green-border");
-}
 function titleChange(e) {
   if (e.value.length < 1) {
-    titleGuideNone();
+    titleGuide.classList.add("display-none");
+    titleInput.classList.remove("red-border");
+    isTitleTrue = false;
   } else if (e.value.length < 5) {
-    titleGuideFalse();
+    titleGuide.classList.remove("display-none");
+    titleInput.classList.add("red-border");
+    titleInput.classList.remove("green-border");
+    isTitleTrue = false;
   } else {
-    titleGuideTrue();
+    titleGuide.classList.add("display-none");
+    titleInput.classList.remove("red-border");
+    titleInput.classList.add("green-border");
+    isTitleTrue = true;
   }
 }
-
+//
+//
 const priceInput = document.getElementById("price-input");
 const priceGuide = document.getElementById("price-guide");
 const priceMsg = document.getElementById("price-msg");
 priceInput.value = "";
-function priceGuideNone() {
-  priceGuide.classList.add("display-none");
-  priceInput.classList.remove("red-border");
-  priceInput.classList.remove("green-border");
-}
-function priceGuideFalse() {
-  priceGuide.classList.remove("display-none");
-  priceInput.classList.add("red-border");
-  priceInput.classList.remove("green-border");
-}
-function priceGuideTrue() {
-  priceGuide.classList.add("display-none");
-  priceInput.classList.remove("red-border");
-  priceInput.classList.add("green-border");
-}
-function priceGuideReturn() {
-  priceInput.value = "";
-  priceGuide.classList.add("display-none");
-  priceInput.classList.remove("red-border");
-}
 priceInput.onfocus = () => {
   if (priceInput.value == 0) priceInput.value = "";
   priceInput.value = priceInput.value.replace(/,/g, "");
 };
 function priceChange(e) {
   if (e.value.length < 1) {
-    priceGuideNone();
+    priceGuide.classList.add("display-none");
+    priceInput.classList.remove("red-border");
+    priceInput.classList.remove("green-border");
+    isPriceTrue = false;
   } else if (e.value % 1) {
     priceGuideFalse();
     priceMsg.innerText = "소수점은 입력할 수 없습니다";
+    isPriceTrue = false;
   } else if (isNaN(e.value)) {
-    priceGuideFalse();
+    priceGuide.classList.remove("display-none");
+    priceInput.classList.add("red-border");
+    priceInput.classList.remove("green-border");
     priceMsg.innerText = "숫자만 입력해주세요";
+    isPriceTrue = false;
   } else {
-    priceGuideTrue();
+    priceGuide.classList.add("display-none");
+    priceInput.classList.remove("red-border");
+    priceInput.classList.add("green-border");
+    isPriceTrue = true;
   }
 }
 priceInput.onblur = () => {
   if (priceInput.value == "") return;
   if (priceInput.value % 1 || isNaN(priceInput.value)) {
-    priceGuideReturn();
+    priceInput.value = "";
+    priceGuide.classList.add("display-none");
+    priceInput.classList.remove("red-border");
   }
   if (priceInput.value != "")
     priceInput.value = Number(priceInput.value).toLocaleString();
 };
-
+//
+//
 const subtitleTextarea = document.getElementById("subtitle-textarea");
 const subtitleGuide = document.getElementById("subtitle-guide");
 const subtitleHolder = document.getElementById("textarea-placeholder");
 subtitleTextarea.value = "";
-function subtitleNone() {
-  subtitleGuide.classList.add("display-none");
-  subtitleTextarea.classList.remove("red-border");
-}
-function subtitleFalse() {
-  subtitleGuide.classList.remove("display-none");
-  subtitleTextarea.classList.add("red-border");
-  subtitleTextarea.classList.remove("green-border");
-}
-function subtitleTrue() {
-  subtitleGuide.classList.add("display-none");
-  subtitleTextarea.classList.remove("red-border");
-  subtitleTextarea.classList.add("green-border");
-}
 subtitleTextarea.onfocus = () => {
   subtitleHolder.classList.add("display-none");
 };
 function subtitleChange() {
   if (subtitleTextarea.value == "") {
-    subtitleNone();
+    subtitleGuide.classList.add("display-none");
+    subtitleTextarea.classList.remove("red-border");
+    isSubtitleTrue = false;
   } else if (subtitleTextarea.value.length < 11) {
-    subtitleFalse();
+    subtitleGuide.classList.remove("display-none");
+    subtitleTextarea.classList.add("red-border");
+    subtitleTextarea.classList.remove("green-border");
+    isSubtitleTrue = false;
   } else {
-    subtitleTrue();
+    subtitleGuide.classList.add("display-none");
+    subtitleTextarea.classList.remove("red-border");
+    subtitleTextarea.classList.add("green-border");
+    isSubtitleTrue = true;
   }
 }
 subtitleTextarea.onblur = () => {
@@ -123,8 +111,68 @@ subtitleTextarea.onblur = () => {
     subtitleHolder.classList.remove("display-none");
   }
 };
-
+//
+//
+let itemCategories;
+let itemCondition;
+let itemTuning;
+let itemDealing;
+function getValue() {
+  const categoriesList = document.getElementsByName("categories");
+  categoriesList.forEach((elem) => {
+    if (elem.checked) {
+      itemCategories = elem.id;
+    }
+  });
+  const conditionList = document.getElementsByName("condition");
+  conditionList.forEach((elem) => {
+    if (elem.checked) {
+      itemCondition = elem.id;
+    }
+  });
+  const tuningList = document.getElementsByName("tuning");
+  tuningList.forEach((elem) => {
+    if (elem.checked) {
+      itemTuning = elem.id;
+    }
+  });
+  const dealingList = document.getElementsByName("dealing");
+  dealingList.forEach((elem) => {
+    if (elem.checked) {
+      itemDealing = elem.id;
+    }
+  });
+}
+//
 document.getElementById("submit-form").onsubmit = (e) => {
   e.preventDefault();
-  console.log(123);
+  //
+  getValue();
+  if (
+    !itemCategories ||
+    !itemCondition ||
+    !itemTuning ||
+    !itemDealing ||
+    !isTitleTrue ||
+    !isPriceTrue ||
+    !isSubtitleTrue
+  ) {
+    alert("모든 입력을 완료해주세요");
+    return;
+  }
+  //
+  const itemTitle = titleInput.value;
+  const itemPrice = Number(priceInput.value.replace(/,/g, ""));
+  const itemSubtitle = subtitleTextarea.value;
+  //
+  const result = {
+    itemTitle,
+    itemPrice,
+    itemSubtitle,
+    itemCategories,
+    itemCondition,
+    itemTuning,
+    itemDealing,
+  };
+  console.log(result);
 };
