@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="index.css" />
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
   </head>
   <body>
     <section class="form-container">
@@ -86,7 +85,7 @@
 
       <div class="login-form login-form--register">
         <div class="form-wrapper">
-          <form method="post">
+          <form method="post" onsubmit="return registecheck()">
             <label class="form-wrapper__label" for="login--id">Id</label>
             <input
               type="text"
@@ -107,6 +106,9 @@
               name="username"
               required
             />
+            <script>
+              console.log(form - wrapper__input.value);
+            </script>
 
             <label class="form-wrapper__label" for="signup-password"
               >Password</label
@@ -141,7 +143,10 @@
               name="userlocal"
               required
             />
-            <button class="buttons__signup buttons__signup--sign-up-form" id="sign-up">
+            <button
+              class="buttons__signup buttons__signup--sign-up-form"
+              id="sign-up"
+            >
               Sign up
             </button>
           </form>
