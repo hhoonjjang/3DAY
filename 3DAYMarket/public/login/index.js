@@ -7,6 +7,9 @@ const signUp = document.getElementById("sign-up");
 const signIn = document.getElementById("sign-in");
 // const  
 function start() {
+  let goPage = "http://localhost:8080";
+    console.log(location.href);
+    // console.log(state);
   /* ===========================
     Elements Selectors
 ============================ */
@@ -64,7 +67,8 @@ function start() {
     Events
 ============================ */
 
-  document.getElementById("signUp").onclick = async function () {
+elm.signUpButton.onclick = async function () {
+  goPage = "http://localhost:8080/login/";
     const properties = [
       props.left,
       props.opacity0,
@@ -89,7 +93,8 @@ function start() {
   };
   
 
-  document.getElementById("login").onclick = function () {
+  elm.loginButton.onclick = function () {
+    goPage = "http://localhost:8080/login/";
     const properties = [
       props.left,
       props.opacity0,
@@ -116,8 +121,16 @@ function start() {
 
     transition(elms, properties);
   };
+  console.log(elm.registerForm.getElementsByTagName("form")[0]);
+  elm.registerForm.getElementsByTagName("form")[0].onsubmit = (e) => {
+    e.preventDefault();
+    console.log(e.target["login--id"]);
+    console.log(e.target["signup-username"]);
+  };
+  document.getElementById("backBtn1").onclick = function () {
+    location.href = goPage;
 }
-
+};
 
 signUp.onclick =async function(){
   try{
