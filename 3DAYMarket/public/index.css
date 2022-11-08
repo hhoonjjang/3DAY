@@ -7,7 +7,13 @@ html {
   font-family: "maple-bold";
 }
 body.start div{
-    font-family:"satan";
+    font-family: "JSArirang-Regular";
+    font-size: 120%;
+
+}
+body.start .satan{
+  font-family:"satan";
+
 }
 
 .top-container {
@@ -41,15 +47,21 @@ body.start div{
     margin-left: 100;
     display: flex;
     align-items: center;
-   cursor: pointer;
+   /* cursor: pointer; */
    
 }
 
 body.start .home-box{
   margin-left: 0;
 }
+
+/* body.start .home-box #invert{
+  display: none;
+} */
+
 body.start .home-box div{
     font-size: 100px;
+    color: white;
 }
 .home-box div{
     height: 100%;
@@ -59,7 +71,7 @@ body.start .home-box div{
 .category-box {
   /* width: 45%; */
   /* margin-left: 20; */
-  margin-right: 20px;
+  margin:0 20px;
   /* flex:3 */
 }
 .home-box div img:first-child{
@@ -81,17 +93,17 @@ body.start .home-box div{
 
 
 
-.category-box div {
+.category-box a {
   cursor: pointer;
   /* margin-left: 100; */
   width: 100px;
 }
 
-.category-box div:first-child:hover {
-  color: black;
+body.start .category-box a {
+  color: white;
 }
 
-.category-box div:hover {
+.category-box a:hover {
   color: gray;
 }
 
@@ -108,14 +120,43 @@ body.start .home-box div{
   border-radius: 10px;
   border: none;
   background-color: #ffead8;
+  font-family: "maple-bold";
+  font-size: 14px;
+  
 }
 
 body.start .user-box button {
   background-color: black;
   color: white;
+  font-family: "JSArirang-Regular";
+  font-size: 120%;
 }
 
 .user-box button:hover{
+  background-color: #ffd4d1;
+}
+
+.user-box a {
+  cursor: pointer;
+  padding: 10;
+  margin: 0 10;
+  width: 100px;
+  border-radius: 10px;
+  border: none;
+  background-color: #ffead8;
+  font-size: 14px;
+  font-family: "maple-bold";
+text-align: center;
+}
+
+body.start .user-box a {
+  background-color: black;
+  color: white;
+  font-family: "JSArirang-Regular";
+  font-size: 120%;
+}
+
+.user-box a:hover{
   background-color: #ffd4d1;
 }
 
@@ -129,6 +170,7 @@ body.start .user-box button {
 
 #sign-out.on,#item-upload.on,#user-info.on {
     display: block;
+    
 } 
 
 #chatting{
@@ -145,6 +187,9 @@ body.start .user-box button {
     align-items: center;
     display: none;
 }
+#loginDisplay div:first-child{
+  margin-left: 20px;
+}
 
 #search {
   background-color: lightgray;
@@ -152,11 +197,12 @@ body.start .user-box button {
   width: 250px;
   border: none;
   border-radius: 10px;
-  margin-left: 300px;
+  /* margin-left: 300px; */
 }
-.home-container {
-  /* background-color: lightyellow; */
-}
+
+/* .home-container {
+  background-color: lightyellow;
+} */
 
 .home-second {
   width: 100%;
@@ -173,9 +219,11 @@ body.start .user-box button {
   font-size: 2.5rem;
   /* margin-bottom: 10px; */
 }
-.home-second div:last-child {
-  /* background-color: red; */
-}
+
+/* .home-second div:last-child {
+  background-color: red;
+} */
+
 .div-img {
   width: fit-content;
   /* height: 100%; */
@@ -250,6 +298,13 @@ body.start .user-box button {
 
 .home-first div div:first-child {
   font-size: 2.5rem;
+  /* margin-bottom: 10px; */
+}
+
+body.start .home-first div div:first-child {
+  font-size: 250%;
+  line-height: 50px;
+  margin-bottom: 30px;
   /* margin-bottom: 10px; */
 }
 
@@ -349,4 +404,43 @@ a {
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
 }
+
+
+.footer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  margin-top: 100px;
+  margin-bottom: 150px;
+}
+
+.footer-container img{
+  width: 150px;
+}
+
+#spantext{
+  border-top: 1px var black;
+  text-align: center;
+}
+
+body.start .footer-container{
+  font-size: 200px;
+}
+
+body.start .footer-container #invert{
+  width: 500px;
+  display: none;
+  
+}
+
+section{
+  padding: 20;
+  text-align: center;
+}
+
+section a{
+  margin: 0 10;
+}
+
 
