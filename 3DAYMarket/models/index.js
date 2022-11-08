@@ -1,5 +1,4 @@
 "use strict";
-
 const Sequelize = require("sequelize");
 
 const User = require("./user.js");
@@ -18,6 +17,7 @@ let sequelize = new Sequelize(
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+
    
 User.init(sequelize);
 
