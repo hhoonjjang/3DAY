@@ -1,0 +1,19 @@
+/* * {
+  box-sizing: border-box;
+} */
+#info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 55px;
+}
+
+#vs-info {
+  display: flex;
+  align-items: center;
+}
+
+#chat-menu > img {
+  width: 30px;
+}
