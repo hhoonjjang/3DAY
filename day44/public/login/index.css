@@ -239,7 +239,7 @@ html {
   font-weight: 500;
   color: #fa6;
 }
-.login-form-forgot-local {
+.login-form--forgot-local {
   display: block;
   text-align: right;
   text-transform: uppercase;
@@ -274,7 +274,7 @@ html {
   height: 150px;
 }
 .title__h2 {
-  margin: 25.63px;
+  margin: 113px auto;
   margin-bottom: 1rem;
   font-size: 11px;
   font-weight: 700;
@@ -285,7 +285,7 @@ html {
   content: "";
   position: absolute;
   margin: auto;
-  top: 30px;
+  top: 120px;
   right: initial;
   bottom: 0;
   left: 0;
@@ -298,7 +298,7 @@ html {
   content: "";
   position: absolute;
   margin: auto;
-  top: 30px;
+  top: 120px;
   right: 0;
   bottom: 0;
   left: initial;
@@ -321,11 +321,13 @@ html {
   color: #ffead8;
 }
 .buttons__signup--sign-up-form {
+  margin-top: 315px;
   top: 5px;
   -webkit-transition: none;
   -moz-transition: none;
   -o-transition: none;
   transition: none;
+  z-index: 2;
 }
 @media (max-height: 599px) {
   .form-container {

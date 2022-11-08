@@ -52,13 +52,13 @@
               required
             />
             <a class="login-form__forgot-password" href="">Forgot password?</a>
-            <button
+            <a
               class="buttons__signup buttons__signup--login-form"
               type="submit"
-              href="123"
+              href="/"
             >
               Login
-            </button>
+            </a>
           </form>
 
           <!-- Social-Media -->
@@ -84,24 +84,12 @@
             <label class="form-wrapper__label" for="login--id">Id</label>
             <input
               type="text"
-              class="form-wrapper-input"
+              class="form-wrapper__input"
               id="login--id"
               placeholder="ID"
               name="login-ID"
               required
             />
-            <label class="form-wrapper-label" for="signup-username"
-              >Username</label
-            >
-            <input
-              id="signup-username"
-              class="form-wrapper-input"
-              type="text"
-              placeholder="Username"
-              name="username"
-              required
-            />
-
             <label class="form-wrapper__label" for="signup-username"
               >Username</label
             >
@@ -113,8 +101,20 @@
               name="username"
               required
             />
-            <label class="form-wrapper__label" for="signup-password"
+
+            <label class="form-wrapper__label" for="signup-username"
               >Password</label
+            >
+            <input
+              id="signup-username"
+              class="form-wrapper__input"
+              type="text"
+              placeholder="Username"
+              name="username"
+              required
+            />
+            <label class="form-wrapper__label" for="signup-password"
+              >CheckPassword</label
             >
             <input
               id="signup-password"
@@ -126,12 +126,12 @@
               title="Password must contain at least 3 characters"
               required
             />
-            <label class="form-wrapper-label" for="signup-username"
+            <label class="form-wrapper__label" for="signup-username"
               >Local</label
             >
             <input
               id="signup-local"
-              class="form-wrapper-input"
+              class="form-wrapper__input"
               type="text"
               placeholder="UserLocal"
               name="userlocal"
