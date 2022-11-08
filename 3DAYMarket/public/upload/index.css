@@ -1,0 +1,298 @@
+@font-face {
+  font-family: "maple-bold";
+  src: url("./font/Maplestory\ Bold.ttf");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "maple-light";
+  src: url("./font/Maplestory\ Light.ttf");
+  font-weight: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.display-none {
+  display: none;
+}
+
+.red-border {
+  border: 2px solid rgba(255, 9, 9, 0.5) !important;
+  outline: 2px solid rgba(255, 9, 9, 0.5) !important;
+}
+
+.green-border {
+  border: 2px solid rgba(45, 238, 103, 0.5) !important;
+  outline: 2px solid rgba(45, 238, 103, 0.5) !important;
+}
+
+body {
+  font-size: 18px;
+  font-family: "maple-light";
+}
+
+textarea {
+  resize: none;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+input {
+  font-family: inherit;
+}
+
+input[type="text"] {
+  font-size: 24px;
+}
+
+.main-colum {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 1100px;
+  padding: 20px;
+}
+
+#img-uploader {
+  display: none;
+}
+
+#img-uploader-label {
+  cursor: pointer;
+  background-color: rgb(238, 111, 45);
+  color: white;
+  border-radius: 5px;
+  padding: 2px 5px;
+}
+
+.main-colum-items {
+  display: flex;
+  padding: 30px;
+  padding-left: 10px;
+  border-bottom: 1px solid rgb(220, 219, 228);
+  flex-wrap: wrap;
+}
+
+.main-colum-left {
+  width: 150px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-colum-right {
+  flex-grow: 1;
+}
+
+#price-input {
+  font-family: initial;
+}
+
+textarea,
+#price-input,
+#title-input {
+  width: 800px;
+  padding: 5px;
+  padding-left: 10px;
+  border: 2px solid rgb(220, 219, 228);
+  outline: 2px solid rgba(0, 0, 0, 0);
+}
+
+textarea:focus,
+#price-input:focus,
+#title-input:focus {
+  border: 2px solid rgba(238, 111, 45, 0.5);
+  outline: 2px solid rgba(238, 111, 45, 0.5);
+}
+
+.price-div span {
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+.main-colum-items:first-child {
+  border-top: 2px solid black;
+  height: 300px;
+}
+.main-colum-items:last-child {
+  border-bottom: 2px solid black;
+}
+
+.categories-div label,
+.condition-div label,
+.tuning-div label,
+.dealing-div label {
+  margin-left: 100px;
+}
+
+.categories-div label:first-child,
+.condition-div label:first-child,
+.tuning-div label:first-child,
+.dealing-div label:first-child {
+  margin-left: 5px;
+}
+
+[type="radio"] {
+  margin-left: 5px;
+  width: 16px;
+  height: 16px;
+  accent-color: rgb(238, 111, 45);
+  cursor: pointer;
+}
+
+.main-colum-right-inner:first-child {
+  margin-bottom: 15px;
+}
+
+.main-colum-items .main-colum-right {
+  position: relative;
+}
+
+#textarea-placeholder {
+  color: rgb(155, 153, 169);
+  position: absolute;
+  top: 0;
+  padding: 10px;
+  pointer-events: none;
+}
+
+#textarea-placeholder div {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.confirm-div {
+  position: sticky;
+  bottom: 0;
+  border: 1px solid rgb(220, 219, 228);
+  padding: 20px;
+  width: 100%;
+  /* background-color: white; */
+  background-color: rgb(255, 240, 229);
+  text-align: right;
+}
+
+.confirm-btn {
+  background-color: rgb(238, 111, 45);
+  border: none;
+  padding: 5px;
+  width: 200px;
+  height: 70px;
+  font-size: 30px;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-right: 200px;
+}
+
+.confirm-btn:hover {
+  background-color: rgb(215, 88, 22);
+}
+
+#price-input::-webkit-outer-spin-button,
+#price-input::-webkit-inner-spin-button {
+  appearance: none;
+}
+
+#jelly-label {
+  background-color: rgba(238, 111, 45, 0.2);
+  border-radius: 7px;
+  cursor: pointer;
+  display: inline-block;
+  padding: 5px 10px 5px;
+}
+
+#jelly-label input {
+  display: none;
+}
+
+#jelly-label span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#jelly-label .icon {
+  position: relative;
+  width: 17px;
+  height: 17px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  transition: background 0.1s ease;
+  margin-left: 5px;
+}
+
+#jelly-label .icon::after {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 5px;
+  width: 5px;
+  height: 11px;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: rotate(45deg) scale(0);
+  transition: all 0.3s ease;
+  transition-delay: 0.15s;
+  opacity: 0;
+}
+
+#jelly-label input:checked ~ .icon {
+  border-color: transparent;
+  background: #ff1616;
+  animation: jelly 0.6s ease;
+}
+
+#jelly-label input:checked ~ .icon::after {
+  opacity: 1;
+  transform: rotate(45deg) scale(1);
+}
+
+@keyframes jelly {
+  from {
+    transform: scale(1, 1);
+  }
+  30% {
+    transform: scale(1.25, 0.75);
+  }
+  40% {
+    transform: scale(0.75, 1.25);
+  }
+  50% {
+    transform: scale(1.15, 0.85);
+  }
+  65% {
+    transform: scale(0.95, 1.05);
+  }
+  75% {
+    transform: scale(1.05, 0.95);
+  }
+  to {
+    transform: scale(1, 1);
+  }
+}
+
+.guide {
+  width: 100%;
+  margin-left: 160px;
+  margin-top: 10px;
+  padding: 5px;
+}
+
+.guide img {
+  vertical-align: middle;
+  width: 19px;
+}
+
+.guide span {
+  vertical-align: middle;
+  margin-left: 8px;
+  color: rgb(155, 153, 169);
+}

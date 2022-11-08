@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div>
+      <div class="main-colum">
+        <div class="info-div">
+          <div class="info-div-img"></div>
+          <div class="info-div-info">
+            <div class="info-div-info-head">
+              <h2 id="title-text"></h2>
+              <div>
+                <h1 id="price-num"></h1>
+                <span>원</span>
+              </div>
+            </div>
+            <div class="info-div-info-body">
+              <div>
+                <img src="../image/area.png" />
+                <span id="area-value"></span>
+                <img src="../image/heart.png" />
+                <span id="heart-value"></span>
+                <img src="../image/eye.png" />
+                <span id="hits-value"></span>
+                <img src="../image/clock.png" />
+                <span id="past-value"></span>
+                <span>시간 전</span>
+              </div>
+              <div>
+                <div id="seller-categories"></div>
+                <span id="seller-id"></span>
+              </div>
+              <div>
+                <div class="info-div-info-body-inner">상품상태</div>
+                <span id="condition"></span>
+              </div>
+              <div>
+                <div class="info-div-info-body-inner">가격절충</div>
+                <span id="tuning"></span>
+              </div>
+              <div>
+                <div class="info-div-info-body-inner">거래방법</div>
+                <span id="dealing"></span>
+              </div>
+            </div>
+            <div class="info-div-info-foot">
+              <button class="wish-btn">
+                <img src="../image/heartgray.svg" />
+                찜하기
+              </button>
+              <button class="chat-btn">
+                <img src="../image/3dtalk.png" />
+                채팅연결
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="read-more-div">
+          <span>상세정보</span>
+          <div class="read-more-div-inner">
+            <div class="read-more-div-inner-text">내용</div>
+          </div>
+          <div class="read-more-div-banner">
+            <input type="radio" name="slide" id="slide01" checked />
+            <input type="radio" name="slide" id="slide02" />
+            <input type="radio" name="slide" id="slide03" />
+            <input type="radio" name="slide" id="slide04" />
+
+            <div class="slidewrap">
+              <ul class="slidelist">
+                <li>
+                  <a
+                    href="https://www.discoverglo.co.kr/events/proslim_oct.php?utm_source=Joonggonara&utm_medium=App_details&utm_campaign=FPP_2nd&utm_content=Community_Blackfriday&utm_term=Conversion"
+                    target="_blank"
+                  >
+                    <img src="../image/banner1.jpg" />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://web.joongna.com/event/detail/745"
+                    target="_blank"
+                  >
+                    <img src="../image/banner2.png" />
+                  </a>
+                </li>
+                <li>
+                  <a href="https://m.joongna.com/store/79528" target="_blank">
+                    <img src="../image/banner3.png" />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://goodrichmall.com/insur_analysis?inType=A_jnaA511"
+                    target="_blank"
+                  >
+                    <img src="../image/banner4.png" />
+                  </a>
+                </li>
+                <div class="slide-control">
+                  <div class="control1">
+                    <label for="slide04" class="left"></label>
+                    <label for="slide02" class="right"></label>
+                  </div>
+                  <div class="control2">
+                    <label for="slide01" class="left"></label>
+                    <label for="slide03" class="right"></label>
+                  </div>
+                  <div class="control3">
+                    <label for="slide02" class="left"></label>
+                    <label for="slide04" class="right"></label>
+                  </div>
+                  <div class="control4">
+                    <label for="slide03" class="left"></label>
+                    <label for="slide01" class="right"></label>
+                  </div>
+                </div>
+              </ul>
+            </div>
+          </div>
+          <div class="read-more-div-warn">
+            <div>
+              <img src="../image/notallow.svg" />
+              거래 전 주의사항 안내
+            </div>
+            <div>
+              판매자가 별도의 메신저로 결제링크를 보내거나 직접송금을<br />
+              유도하는 경우 사기일 가능성이 높으니 거래를 자제해 주시고<br />
+            </div>
+            <ins>3DAYMarket 고객센터로 신고해주시기 바랍니다.</ins>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
+
+<!-- 
+  라우터이름items
+  버튼 이벤트 추가
+  찜누르면 빨간하트로 변경
+  조회수
+  업로드시간
+  지역
+  이미지 슬라이드
+ -->
