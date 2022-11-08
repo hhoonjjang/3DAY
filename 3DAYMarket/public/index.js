@@ -192,3 +192,5 @@ const reverse = function(){
 }
 
 reverse();
+
+deleteCookie("reverse");
