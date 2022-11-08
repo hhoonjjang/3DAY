@@ -1,0 +1,99 @@
+* {
+  margin: 0;
+  padding: 0;
+  background-color: #ced2bb;
+}
+html {
+  font-family: "maple-bold";
+}
+
+#bgp {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  margin-top: 20%;
+  margin-left: 27%;
+  width: 700px;
+  height: 1000px;
+}
+#leftimg {
+  width: 200px;
+  height: 100vh;
+  margin-top: 100px;
+}
+#bottomimg {
+  margin-top: 95%;
+  width: 100px;
+  height: 100px;
+}
+#topimg {
+  width: 100px;
+  height: 100px;
+}
+#rightimg {
+  width: 100px;
+  height: 100px;
+}
+#menu {
+  display: flex;
+  box-sizing: content-box;
+  position: relative;
+  border: 1px solid black;
+  width: 100%;
+  height: 100px;
+  opacity: 0.6;
+}
+#imgName {
+  display: flex;
+  box-sizing: content-box;
+  position: relative;
+  border: 1px solid black;
+  width: 100%;
+  height: 100px;
+  opacity: 0.6;
+}
+#pay {
+  display: flex;
+  box-sizing: content-box;
+  position: relative;
+  border: 1px solid black;
+  width: 100%;
+  height: 100px;
+  opacity: 0.6;
+}
+#list {
+  display: flex;
+  box-sizing: content-box;
+  position: relative;
+  border: 1px solid black;
+  width: 100%;
+  height: 100px;
+  opacity: 0.6;
+}
+#myActivity {
+  display: flex;
+  box-sizing: content-box;
+  position: relative;
+  border: 1px solid black;
+  width: 100%;
+  height: 100px;
+  opacity: 0.6;
+}
+#myPlace {
+  display: flex;
+  box-sizing: content-box;
+  position: relative;
+  border: 1px solid black;
+  width: 100%;
+  height: 100px;
+  opacity: 0.6;
+}
+#master {
+  display: flex;
+  box-sizing: content-box;
+  position: relative;
+  border: 1px solid black;
+  width: 100%;
+  height: 100px;
+  opacity: 0.6;
+}
