@@ -58,6 +58,7 @@ router.post("/regist", async (req, res) => {
             res.status(500);
             res.send({message:"wrongpassword"});
         }catch(error){
+          console.log("hi")
             res.status(500);
             res.send(error);
         }

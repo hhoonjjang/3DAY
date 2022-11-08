@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="index.css" />
     <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
   </head>
   <body>
     <section class="form-container">
@@ -56,6 +58,7 @@
               class="buttons__signup buttons__signup--login-form"
               type="submit"
               href="/"
+              id="sign-in"
             >
               Login
             </a>
@@ -102,22 +105,22 @@
               required
             />
 
-            <label class="form-wrapper__label" for="signup-username"
+            <label class="form-wrapper__label" for="signup-password"
               >Password</label
             >
             <input
-              id="signup-username"
+              id="signup-password"
               class="form-wrapper__input"
               type="text"
               placeholder="Username"
               name="username"
               required
             />
-            <label class="form-wrapper__label" for="signup-password"
+            <label class="form-wrapper__label" for="signup-checkpassword"
               >CheckPassword</label
             >
             <input
-              id="signup-password"
+              id="signup-checkpassword"
               class="form-wrapper__input"
               type="password"
               placeholder="Password"
@@ -126,7 +129,7 @@
               title="Password must contain at least 3 characters"
               required
             />
-            <label class="form-wrapper__label" for="signup-username"
+            <label class="form-wrapper__label" for="signup-local"
               >Local</label
             >
             <input
@@ -140,7 +143,8 @@
             <a
               class="buttons__signup buttons__signup--sign-up-form"
               type="submit"
-              href="/"
+              href="/login/"
+              id = "sign-up"
             >
               Sign up
             </a>

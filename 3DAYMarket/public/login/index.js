@@ -1,5 +1,11 @@
 window.addEventListener("load", start);
-
+const userId = document.getElementById("login--id");
+const userName = document.getElementById("signup-username") ;
+const userPassword = document.getElementById("signup-password")
+const userCheckpassword = document.getElementById("signup-checkpassword")
+const signUp = document.getElementById("sign-up");
+const signIn = document.getElementById("sign-in");
+// const  
 function start() {
   /* ===========================
     Elements Selectors
@@ -79,9 +85,9 @@ function start() {
     // }
 
     // console.log(userId, "asdasdasd");
-
     transition(elms, properties);
   };
+  
 
   document.getElementById("login").onclick = function () {
     const properties = [
@@ -111,4 +117,34 @@ function start() {
     transition(elms, properties);
   };
 }
+
+
+signUp.onclick =async function(){
+  try{
+    const user = await axios.post("/api/user/regist",{
+      id:userId.value,
+      pw:userPassword.value,
+      name:userName.value,
+    })
+    console.log("데이터보낸다잉");
+    window.location.reload()
+
+  }catch(err){
+    console.error(err);
+  }
+  // console.log(document.getElementById("login--id").value);
+}
+
+signIn.onclick = async function(){
+  try{
+    const result = await axios.post("/api/user/login",{
+      id:document.getElementById("login-userID").value,
+      pw:document.getElementById("login-password").value,
+    })
+
+  }catch(err){
+    console.error(err);
+  }
+}
+
 // --------------------------------------------------------------------- 서버동기화
