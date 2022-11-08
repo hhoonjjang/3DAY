@@ -1,9 +1,15 @@
 window.addEventListener("load", start);
-
+const userId = document.getElementById("login--id");
+const userName = document.getElementById("signup-username") ;
+const userPassword = document.getElementById("signup-password")
+const userCheckpassword = document.getElementById("signup-checkpassword")
+const signUp = document.getElementById("sign-up");
+const signIn = document.getElementById("sign-in");
+// const  
 function start() {
   let goPage = "http://localhost:8080";
-  console.log(location.href);
-  // console.log(state);
+    console.log(location.href);
+    // console.log(state);
   /* ===========================
     Elements Selectors
 ============================ */
@@ -61,8 +67,8 @@ function start() {
     Events
 ============================ */
 
-  elm.signUpButton.onclick = async function () {
-    goPage = "http://localhost:8080/login/";
+elm.signUpButton.onclick = async function () {
+  goPage = "http://localhost:8080/login/";
     const properties = [
       props.left,
       props.opacity0,
@@ -83,9 +89,9 @@ function start() {
     // }
 
     // console.log(userId, "asdasdasd");
-
     transition(elms, properties);
   };
+  
 
   elm.loginButton.onclick = function () {
     goPage = "http://localhost:8080/login/";
@@ -115,47 +121,43 @@ function start() {
 
     transition(elms, properties);
   };
-
   console.log(elm.registerForm.getElementsByTagName("form")[0]);
   elm.registerForm.getElementsByTagName("form")[0].onsubmit = (e) => {
     e.preventDefault();
     console.log(e.target["login--id"]);
     console.log(e.target["signup-username"]);
   };
-
   document.getElementById("backBtn1").onclick = function () {
     location.href = goPage;
-    // if (state == ) {
-    //   location.href = "http://localhost:8080";
-    // }
-    // if ( == 2) {
-    //  location.href = "http://localhost:8080/login/";
-    // } else {
-    //   count == 0;
-    // }
-    // if (true) {
-    //   location.href=""
-    //   history.back();
-    // } else {
-    //   window.location.reload();
-    // }
-    //  (let i = 0; i < count; i++) {
-    // count++;
-    // history.back(-count);
-    // for (let i = 0; i < count; i++) {
-    //   if (count == 1) {
-    //     histroy.back(-i);
-    //     count++;
-    //     break;
-    //   } else if (count == 2) {
-    //     history.go(-i);
-    //     count++;
-    //     break;
-    //   } else {
-    //     count == 0;
-    //     break;
-    //   }
-    // }
-    // location.href = "";
-  };
 }
+};
+
+signUp.onclick =async function(){
+  try{
+    const user = await axios.post("/api/user/regist",{
+      id:userId.value,
+      pw:userPassword.value,
+      name:userName.value,
+    })
+    console.log("데이터보낸다잉");
+    window.location.reload()
+
+  }catch(err){
+    console.error(err);
+  }
+  // console.log(document.getElementById("login--id").value);
+}
+
+signIn.onclick = async function(){
+  try{
+    const result = await axios.post("/api/user/login",{
+      id:document.getElementById("login-userID").value,
+      pw:document.getElementById("login-password").value,
+    })
+
+  }catch(err){
+    console.error(err);
+  }
+}
+
+// --------------------------------------------------------------------- 서버동기화

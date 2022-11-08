@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="index.css" />
     <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
   </head>
   <body>
     <section class="form-container">
@@ -59,6 +61,7 @@
               class="buttons__signup buttons__signup--login-form"
               type="submit"
               href="/"
+              id="sign-in"
             >
               Login
             </a>
@@ -138,14 +141,7 @@
               name="userlocal"
               required
             />
-            <!-- <a
-              class="buttons__signup buttons__signup--sign-up-form"
-              type="submit"
-              href="/"
-            >
-              Sign up
-            </a> -->
-            <button class="buttons__signup buttons__signup--sign-up-form">
+            <button class="buttons__signup buttons__signup--sign-up-form" id="sign-up">
               Sign up
             </button>
           </form>
