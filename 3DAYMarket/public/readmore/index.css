@@ -242,6 +242,7 @@ button:hover {
 .read-more-div-banner input[id*="slide"]:checked {
   width: 40px;
   height: 10px;
+  border-radius: 5px;
 }
 
 .slidewrap {

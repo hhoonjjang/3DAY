@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <div>
+    <form id="submit-form">
       <div>
-        <form class="main-colum" id="">
+        <div class="main-colum" id="">
           <div class="img-div main-colum-items">
             <div class="main-colum-left">상품이미지</div>
             <div>
@@ -20,7 +20,7 @@
               <input id="img-uploader" type="file" accept="image/*" />
             </div>
           </div>
-          <div class="title-div main-colum-items">
+          <div class="main-colum-items">
             <div class="main-colum-left">제목</div>
             <div>
               <input
@@ -29,76 +29,151 @@
                 placeholder="상품 제목을 입력해주세요."
                 autocomplete="off"
                 spellcheck="false"
+                oninput="titleChange(this)"
               />
+            </div>
+            <div id="title-guide" class="guide display-none">
+              <img src="./imgs/notallow.svg" /><span id="guide-msg"
+                >5글자 이상 입력해주세요</span
+              >
             </div>
           </div>
           <div class="categories-div main-colum-items">
             <div class="main-colum-left">카테고리</div>
             <div class="main-colum-right">
               <div class="main-colum-right-inner">
-                <label for="">의류, 패션</label
-                ><input type="radio" name="categories" id="" />
-                <label for="">전자기기</label
-                ><input type="radio" name="categories" id="" />
-                <label for="">차량</label
-                ><input type="radio" name="categories" id="" />
-                <label for="">가구</label
-                ><input type="radio" name="categories" id="" />
-                <label for="">생활</label
-                ><input type="radio" name="categories" id="" />
+                <label id="jelly-label" for="item-fassion"
+                  ><span class="text">의류, 패션</span
+                  ><input
+                    type="radio"
+                    name="categories"
+                    id="item-fassion" /><span class="icon"></span
+                ></label>
+
+                <label id="jelly-label" for="item-electric"
+                  ><span class="text">전자기기</span
+                  ><input
+                    type="radio"
+                    name="categories"
+                    id="item-electric" /><span class="icon"></span
+                ></label>
+
+                <label id="jelly-label" for="item-vehicle"
+                  ><span class="text">차량</span
+                  ><input
+                    type="radio"
+                    name="categories"
+                    id="item-vehicle" /><span class="icon"></span
+                ></label>
+
+                <label id="jelly-label" for="item-furniture"
+                  ><span class="text">가구</span
+                  ><input
+                    type="radio"
+                    name="categories"
+                    id="item-furniture" /><span class="icon"></span
+                ></label>
+
+                <label id="jelly-label" for="item-living"
+                  ><span class="text">생활</span
+                  ><input
+                    type="radio"
+                    name="categories"
+                    id="item-living" /><span class="icon"></span
+                ></label>
               </div>
               <div class="main-colum-right-inner">
-                <label for="">음반, 악기</label
-                ><input type="radio" name="categories" id="" />
-                <label for="">스포츠</label
-                ><input type="radio" name="categories" id="" />
-                <label for="">화장품</label
-                ><input type="radio" name="categories" id="" />
-                <label for="">도서</label
-                ><input type="radio" name="categories" id="" />
-                <label for="">기타</label
-                ><input type="radio" name="categories" id="" />
+                <label id="jelly-label" for="item-music"
+                  ><span class="text">음반, 악기</span
+                  ><input type="radio" name="categories" id="item-music" /><span
+                    class="icon"
+                  ></span
+                ></label>
+
+                <label id="jelly-label" for="item-sports"
+                  ><span class="text">스포츠</span
+                  ><input
+                    type="radio"
+                    name="categories"
+                    id="item-sports" /><span class="icon"></span
+                ></label>
+
+                <label id="jelly-label" for="item-beauty"
+                  ><span class="text">화장품</span
+                  ><input
+                    type="radio"
+                    name="categories"
+                    id="item-beauty" /><span class="icon"></span
+                ></label>
+
+                <label id="jelly-label" for="item-book"
+                  ><span class="text">도서</span
+                  ><input type="radio" name="categories" id="item-book" /><span
+                    class="icon"
+                  ></span
+                ></label>
+
+                <label id="jelly-label" for="item-etc"
+                  ><span class="text">기타</span
+                  ><input type="radio" name="categories" id="item-etc" /><span
+                    class="icon"
+                  ></span
+                ></label>
               </div>
             </div>
           </div>
           <div class="condition-div main-colum-items">
             <div class="main-colum-left">상태</div>
             <div class="main-colum-right">
-              <label for="">
-                중고상품<input type="radio" name="condition" id="" />
-                <span></span>
-                <span></span>
+              <label id="jelly-label" for="used-item">
+                <span class="text">중고상품</span>
+                <input type="radio" name="condition" id="used-item" />
+                <span class="icon"></span>
               </label>
-              <label for="">
-                새상품<input type="radio" name="condition" id="" />
+              <label id="jelly-label" for="new-item">
+                <span class="text">새상품</span>
+                <input type="radio" name="condition" id="new-item" />
+                <span class="icon"></span>
               </label>
             </div>
           </div>
           <div class="tuning-div main-colum-items">
             <div class="main-colum-left">가격절충</div>
             <div class="main-colum-right">
-              <label for="">
-                불가능<input type="radio" name="tuning" id="" />
+              <label id="jelly-label" for="negative">
+                <span class="text">불가능</span>
+                <input type="radio" name="tuning" id="negative" />
+                <span class="icon"></span>
               </label>
-              <label for="">
-                가능<input type="radio" name="tuning" id="" />
+              <label id="jelly-label" for="positive">
+                <span class="text">가능</span>
+                <input type="radio" name="tuning" id="positive" />
+                <span class="icon"></span>
               </label>
             </div>
           </div>
           <div class="dealing-div main-colum-items">
             <div class="main-colum-left">거래방법</div>
             <div class="main-colum-right">
-              <label for="">
-                직거래<input type="radio" name="dealing" id="" />
+              <label id="jelly-label" for="meet">
+                <span class="text">직거래</span>
+                <input type="radio" name="dealing" id="meet" />
+                <span class="icon"></span>
               </label>
-              <label for="">
-                택배거래<input type="radio" name="dealing" id="" />
+              <label id="jelly-label" for="delivery">
+                <span class="text">택배거래</span>
+                <input type="radio" name="dealing" id="delivery" />
+                <span class="icon"></span>
               </label>
-              <label for="">
-                택배거래(안전결제)<input type="radio" name="dealing" id="" />
+              <label id="jelly-label" for="delivery-safe">
+                <span class="text">택배거래(안전결제)</span>
+                <input type="radio" name="dealing" id="delivery-safe" />
+                <span class="icon"></span>
               </label>
-              <label for="">
-                무관<input type="radio" name="dealing" id="" />
+              <label id="jelly-label" for="nothing ">
+                <span class="text">무관</span>
+                <input type="radio" name="dealing" id="nothing " />
+                <span class="icon"></span>
               </label>
             </div>
           </div>
@@ -110,7 +185,11 @@
                 id="price-input"
                 autocomplete="off"
                 placeholder="숫자만 입력해주세요."
+                oninput="priceChange(this)"
               /><span>원</span>
+            </div>
+            <div id="price-guide" class="guide display-none">
+              <img src="./imgs/notallow.svg" /><span id="price-msg"></span>
             </div>
           </div>
           <div class="subtitle-div main-colum-items">
@@ -122,6 +201,7 @@
                 cols="30"
                 rows="10"
                 spellcheck="false"
+                oninput="subtitleChange(this)"
               >
               </textarea>
               <div id="textarea-placeholder">
@@ -131,25 +211,22 @@
                 </div>
                 <div>
                   안전하고 건전한 거래 환경을 위해 과학기술정보통신부,
-                  한국인터넷진흥원과 3DAY-Market이 함께합니다.
+                  한국인터넷진흥원과 3DAYMarket이 함께합니다.
                 </div>
               </div>
             </div>
+            <div id="subtitle-guide" class="guide display-none">
+              <img src="./imgs/notallow.svg" /><span id="subtitle-msg"
+                >10자 이상 설명을 적어주세요</span
+              >
+            </div>
           </div>
-        </form>
+        </div>
       </div>
       <div class="confirm-div">
         <button class="confirm-btn">등 록 하 기</button>
       </div>
-    </div>
+    </form>
     <script src="index.js"></script>
   </body>
 </html>
-
-<!-- 
-    라디오버튼 <<< 젤리
-    카테고리 설정을 해주세요 (빈 내용 예외처리)
-    
-    등록하기 >>>> 서버전송
-    [이미지 등록시 페이지에 보이기, 최소한에 표시라도]
- -->

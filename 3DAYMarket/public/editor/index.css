@@ -20,6 +20,16 @@
   display: none;
 }
 
+.red-border {
+  border: 2px solid rgba(255, 9, 9, 0.5) !important;
+  outline: 2px solid rgba(255, 9, 9, 0.5) !important;
+}
+
+.green-border {
+  border: 2px solid rgba(45, 238, 103, 0.5) !important;
+  outline: 2px solid rgba(45, 238, 103, 0.5) !important;
+}
+
 body {
   font-size: 18px;
   font-family: "maple-light";
@@ -64,6 +74,7 @@ input[type="text"] {
   padding: 30px;
   padding-left: 10px;
   border-bottom: 1px solid rgb(220, 219, 228);
+  flex-wrap: wrap;
 }
 
 .main-colum-left {
@@ -79,11 +90,16 @@ input[type="text"] {
   flex-grow: 1;
 }
 
+#price-input {
+  font-family: initial;
+}
+
 textarea,
 #price-input,
 #title-input {
   width: 800px;
   padding: 5px;
+  padding-left: 10px;
   border: 2px solid rgb(220, 219, 228);
   outline: 2px solid rgba(0, 0, 0, 0);
 }
@@ -184,4 +200,99 @@ textarea:focus,
 #price-input::-webkit-outer-spin-button,
 #price-input::-webkit-inner-spin-button {
   appearance: none;
+}
+
+#jelly-label {
+  background-color: rgba(238, 111, 45, 0.2);
+  border-radius: 7px;
+  cursor: pointer;
+  display: inline-block;
+  padding: 5px 10px 5px;
+}
+
+#jelly-label input {
+  display: none;
+}
+
+#jelly-label span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#jelly-label .icon {
+  position: relative;
+  width: 17px;
+  height: 17px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  transition: background 0.1s ease;
+  margin-left: 5px;
+}
+
+#jelly-label .icon::after {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 5px;
+  width: 5px;
+  height: 11px;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: rotate(45deg) scale(0);
+  transition: all 0.3s ease;
+  transition-delay: 0.15s;
+  opacity: 0;
+}
+
+#jelly-label input:checked ~ .icon {
+  border-color: transparent;
+  background: #ff1616;
+  animation: jelly 0.6s ease;
+}
+
+#jelly-label input:checked ~ .icon::after {
+  opacity: 1;
+  transform: rotate(45deg) scale(1);
+}
+
+@keyframes jelly {
+  from {
+    transform: scale(1, 1);
+  }
+  30% {
+    transform: scale(1.25, 0.75);
+  }
+  40% {
+    transform: scale(0.75, 1.25);
+  }
+  50% {
+    transform: scale(1.15, 0.85);
+  }
+  65% {
+    transform: scale(0.95, 1.05);
+  }
+  75% {
+    transform: scale(1.05, 0.95);
+  }
+  to {
+    transform: scale(1, 1);
+  }
+}
+
+.guide {
+  width: 100%;
+  margin-left: 160px;
+  margin-top: 10px;
+  padding: 5px;
+}
+
+.guide img {
+  vertical-align: middle;
+  width: 19px;
+}
+
+.guide span {
+  vertical-align: middle;
+  margin-left: 8px;
+  color: rgb(155, 153, 169);
 }
