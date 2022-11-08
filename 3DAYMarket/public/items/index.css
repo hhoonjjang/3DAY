@@ -286,11 +286,11 @@ button:hover {
 
 .slide-control [class*="control"] .left {
   left: -30px;
-  background: url("./imgs/left.png") center center / 100% no-repeat;
+  background: url("../image/left.png") center center / 100% no-repeat;
 }
 .slide-control [class*="control"] .right {
   right: -30px;
-  background: url("./imgs/right.png") center center / 100% no-repeat;
+  background: url("../image/right.png") center center / 100% no-repeat;
 }
 
 #slide01:checked ~ .slidewrap .control1,
