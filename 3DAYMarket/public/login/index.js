@@ -1,6 +1,9 @@
 window.addEventListener("load", start);
 
 function start() {
+  let goPage = "http://localhost:8080";
+  console.log(location.href);
+  // console.log(state);
   /* ===========================
     Elements Selectors
 ============================ */
@@ -58,7 +61,8 @@ function start() {
     Events
 ============================ */
 
-  document.getElementById("signUp").onclick = async function () {
+  elm.signUpButton.onclick = async function () {
+    goPage = "http://localhost:8080/login/";
     const properties = [
       props.left,
       props.opacity0,
@@ -83,7 +87,8 @@ function start() {
     transition(elms, properties);
   };
 
-  document.getElementById("login").onclick = function () {
+  elm.loginButton.onclick = function () {
+    goPage = "http://localhost:8080/login/";
     const properties = [
       props.left,
       props.opacity0,
@@ -110,5 +115,47 @@ function start() {
 
     transition(elms, properties);
   };
+
+  console.log(elm.registerForm.getElementsByTagName("form")[0]);
+  elm.registerForm.getElementsByTagName("form")[0].onsubmit = (e) => {
+    e.preventDefault();
+    console.log(e.target["login--id"]);
+    console.log(e.target["signup-username"]);
+  };
+
+  document.getElementById("backBtn1").onclick = function () {
+    location.href = goPage;
+    // if (state == ) {
+    //   location.href = "http://localhost:8080";
+    // }
+    // if ( == 2) {
+    //  location.href = "http://localhost:8080/login/";
+    // } else {
+    //   count == 0;
+    // }
+    // if (true) {
+    //   location.href=""
+    //   history.back();
+    // } else {
+    //   window.location.reload();
+    // }
+    //  (let i = 0; i < count; i++) {
+    // count++;
+    // history.back(-count);
+    // for (let i = 0; i < count; i++) {
+    //   if (count == 1) {
+    //     histroy.back(-i);
+    //     count++;
+    //     break;
+    //   } else if (count == 2) {
+    //     history.go(-i);
+    //     count++;
+    //     break;
+    //   } else {
+    //     count == 0;
+    //     break;
+    //   }
+    // }
+    // location.href = "";
+  };
 }
-// --------------------------------------------------------------------- 서버동기화

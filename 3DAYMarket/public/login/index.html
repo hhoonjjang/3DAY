@@ -13,6 +13,9 @@
       ></span>
       <div class="overlay"></div>
       <div class="choose-form">
+        <button id="backBtn">
+          <img src="../img/arrow11.png" id="backBtn1" />
+        </button>
         <div class="title">
           <h1 class="title__h1">3DAYMarket</h1>
         </div>
@@ -102,33 +105,31 @@
               required
             />
 
-            <label class="form-wrapper__label" for="signup-username"
-              >Password</label
-            >
-            <input
-              id="signup-username"
-              class="form-wrapper__input"
-              type="text"
-              placeholder="Username"
-              name="username"
-              required
-            />
             <label class="form-wrapper__label" for="signup-password"
-              >CheckPassword</label
+              >Password</label
             >
             <input
               id="signup-password"
               class="form-wrapper__input"
-              type="password"
+              type="text"
               placeholder="Password"
-              name="password"
+              name="Password"
+              required
+            />
+            <label class="form-wrapper__label" for="signup-checkpassword"
+              >CheckPassword</label
+            >
+            <input
+              id="signup-checkpassword"
+              class="form-wrapper__input"
+              type="password"
+              placeholder="checkpassword"
+              name="checkpassword"
               pattern=".{3,}"
               title="Password must contain at least 3 characters"
               required
             />
-            <label class="form-wrapper__label" for="signup-username"
-              >Local</label
-            >
+            <label class="form-wrapper__label" for="signup-local">Local</label>
             <input
               id="signup-local"
               class="form-wrapper__input"
@@ -137,13 +138,16 @@
               name="userlocal"
               required
             />
-            <a
+            <!-- <a
               class="buttons__signup buttons__signup--sign-up-form"
               type="submit"
               href="/"
             >
               Sign up
-            </a>
+            </a> -->
+            <button class="buttons__signup buttons__signup--sign-up-form">
+              Sign up
+            </button>
           </form>
 
           <!-- Social-Media -->
