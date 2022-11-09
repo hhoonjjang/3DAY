@@ -144,7 +144,16 @@ signOutBtn.onclick =async function(){
     }
 }
 
-
+let addItem = async function (){
+    try{
+    const item = await axios.post("/api/item/add")
+    console.log(item);
+    }
+    catch(err){
+        console.error(err);
+    }
+}
+addItem();
 // reverseBtn.ondblclick = function(){
 //    if(cookieR){
 //     deleteCookie("reverse");
