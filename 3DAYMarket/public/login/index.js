@@ -1,7 +1,9 @@
 window.addEventListener("load", start);
 
 const userId = document.getElementById("login--id");
+
 const loginId = document.getElementById("login-userID");
+
 const userName = document.getElementById("signup-username");
 const userPassword = document.getElementById("signup-password");
 const loginpassword = document.getElementById("login-password");
@@ -10,9 +12,6 @@ const userLocal = document.getElementById("signup-local");
 const signUp = document.getElementById("sign-up");
 const signIn = document.getElementById("sign-in");
 
-/* ===========================
-    check registe
-============================ */
 
 //  이름 : 2~5 길이의 한글
 const checkusername = /^[가-힣]{2,5}$/;
@@ -94,14 +93,13 @@ function registecheck() {
     return false;
   }
 }
+
 // const
 function start() {
   let goPage = "http://localhost:8080";
   console.log(location.href);
   // console.log(state);
-  /* ===========================
-    Elements Selectors
-============================ */
+
 
   const elm = {
     arrow: document.querySelector(".form-container__arrow"),
@@ -113,9 +111,7 @@ function start() {
     registerForm: document.querySelector(".login-form--register"),
   };
 
-  /* ===========================
-    Properties Object
-============================ */
+
 
   const props = {
     left: "left: 20px;",
@@ -132,9 +128,7 @@ function start() {
     leftM120: "left: -120px;",
   };
 
-  /* ===========================
-    Elements Array
-============================ */
+
 
   const elms = [
     elm.arrow,
@@ -152,9 +146,7 @@ function start() {
     }
   }
 
-  /* ===========================
-    Events
-============================ */
+
 
   elm.signUpButton.onclick = async function () {
     goPage = "http://localhost:8080/login/";
@@ -219,8 +211,8 @@ function start() {
     location.href = goPage;
   };
 
-  signUp.onclick = async function () {
-    const checkUserName = checkusername.test(userName.value);
+signUp.onclick = async function () {
+const checkUserName = checkusername.test(userName.value);
     const checkUserID = checkuserId.test(userId.value);
     const checkPassWord = checkpassword.test(userPassword.value);
     const checkCheckPassWord = function () {
@@ -237,8 +229,8 @@ function start() {
         return false;
       }
     };
-    try {
-      if (
+  try {
+  if (
         (checkUserName &&
           checkUserID &&
           checkPassWord &&
@@ -251,45 +243,34 @@ function start() {
         console.log(checkCheckPassWord());
         alert = "회원가입에 성공하셨습니다.";
 
-        const user = await axios.post("/api/user/regist", {
-          id: userId.value,
-          pw: userPassword.value,
-          name: userName.value,
-          local: userLocal.value,
-        });
-      } else {
-        console.log(checkUserName);
-        console.log(checkUserID);
-        console.log(checkPassWord);
-        console.log(checkCheckPassWord());
-        console.log(checkchecklocal());
-        if (!(checkUserName.value == true)) {
-          alert = "회원 이름을 다시입력해 주세요";
-        } else if (!(checkUserID == true)) {
-          alert = "회원 아이디를 다시입력해 주세요";
-        } else if (!(checkCheckPassWord() == true)) {
-          alert = "설정한 비밀번호를 확인해 주세요";
-        }
-      }
-      window.location.reload();
-    } catch (err) {
-      console.error(err);
-    }
-    // console.log(document.getElementById("login--id").value);
-  };
+    const user = await axios.post("/api/user/regist", {
+      id: userId.value,
+      pw: userPassword.value,
+      name: userName.value,
+      local: userLocal.value,
+    });
+   }
+    console.log("데이터보낸다잉");
+    window.location.reload();
+  } catch (err) {
+    alert(err.response.data.message);
+    console.error(err.response.data.message);
+  }
+  // console.log(document.getElementById("login--id").value);
+};
 
-  signIn.onclick = async function (e) {
-    e.preventDefault();
-    try {
-      const result = await axios.post("/api/user/login", {
-        id: document.getElementById("login-userID").value,
-        pw: document.getElementById("login-password").value,
-      });
+signIn.onclick = async function (e) {
+  e.preventDefault();
+  try {
+    const result = await axios.post("/api/user/login", {
+      id: document.getElementById("login-userID").value,
+      pw: document.getElementById("login-password").value,
+    });
+    console.log("하이");
+    location.href = "http://localhost:8080/";
+    console.log("하이");
+  } catch (err) {
+    alert(err.response.data.message);
+  }
+};
 
-      location.href = "http://localhost:8080";
-    } catch (err) {
-      // alert(err.response.data.message);
-      // console.error(err.response.data);
-    }
-  };
-}
