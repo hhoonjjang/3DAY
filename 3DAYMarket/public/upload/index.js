@@ -1,5 +1,7 @@
 // 코드 리펙토링 해야함, 한번에 하려면 꼬일수 있으니 미리 해놓자
+
 // 빈 입력값 예외처리 -> 알럿 말고 온포커스로 변경
+
 
 // oninput 컨트롤 + 백스페이스 지울때, 컨트롤 + C 로 입력할때 등 예외처리 구현 필요
 // 가이드 버티컬 얼라인 미들(처럼 보이게) 구현 필요
@@ -120,6 +122,12 @@ let itemTuning;
 let itemDealing;
 let itemImage;
 const imgArr = [];
+ let getValue1 = async function () {
+
+ }
+
+
+
 function getValue() {
   const categoriesList = document.getElementsByName("categories");
   categoriesList.forEach((elem) => {
@@ -147,7 +155,12 @@ function getValue() {
   });
 }
 //
-document.getElementById("submit-form").onsubmit = (e) => {
+
+
+
+
+
+document.getElementById("submit-form").onsubmit = async function(e) {
   e.preventDefault();
   //
   getValue();
@@ -164,22 +177,31 @@ document.getElementById("submit-form").onsubmit = (e) => {
     alert("모든 입력을 완료해주세요");
     return;
   }
-  //
-  const itemTitle = titleInput.value;
-  const itemPrice = Number(priceInput.value.replace(/,/g, ""));
-  const itemSubtitle = subtitleTextarea.value;
-  //
-  const result = {
-    itemTitle,
-    itemPrice,
-    itemSubtitle,
-    itemCategories,
-    itemCondition,
-    itemTuning,
-    itemDealing,
-    itemImage,
-  };
-  console.log(result);
+
+
+  
+  try{
+    const itemTitle = titleInput.value;
+    const itemPrice = Number(priceInput.value.replace(/,/g, ""));
+    const itemSubtitle = subtitleTextarea.value;
+
+const uploadImgS = document.getElementById("img-uploader-label");
+//
+    const result = await axios.post("/api/item/add",{
+      itemTitle:itemTitle,
+      itemPrice:itemPrice,
+      itemSubtitle:itemSubtitle,
+      itemCategories:itemCategories,
+      itemCondition:itemCondition,
+      itemTuning:itemTuning,
+      itemDealing:itemDealing,
+    });
+    console.log(result);
+  }catch(err){
+    console.error(err);
+  }
+  
+
 };
 //
 //

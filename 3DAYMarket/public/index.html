@@ -1,0 +1,330 @@
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3DAYMarket</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="shortcut icon" href="./imgs/logo-front.png" type="image/x-icon" />
+    <link rel="stylesheet" href="./font/font.css"/>
+    <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+    <div class="top-container bgc">
+        <a class="home-box" href="/">
+            <div class="reverse"><img src="./imgs/logo-front.png" alt="">
+            <img src="./imgs/logo-back.png" alt="" id="invert"></div>
+            <div class="satan">3DAYMarket</div>
+            </a>
+        <div class="category-box">
+            <a id="new-trade" href="./newtrade">신품거래</a>
+            <a id="user-trade" href="./usedtrade">중고거래</a>
+          
+        </div>
+
+        
+        <div class="user-box">
+            <div id="searchBox">
+                <input text="text" id="search" placeholder="물품이나 동네를 검색해보세요">
+                </div>
+             <div id="loginDisplay"></div>
+             <!-- <button id ="sign-in">로그인</button> -->
+            <a id ="sign-in" href="./login">로그인</a>
+            <!-- <button id ="sign-up">회원가입</button> -->
+            <button id ="sign-out">로그아웃</button>
+            <a id ="chatting" href="./chatting">채팅하기</a>
+            <a id ="item-upload" href="./upload">물품등록</a>
+            <a id ="user-info" href="./mypage">마이페이지</a>
+        </div>
+        <div class="reverse" id="reverse"><img src="./imgs/logo-front1.png" alt="">
+            <img src="./imgs/logo-back1.png" alt=""></div>
+        </div>
+    </div>
+    
+
+    <div class="home-container">
+        <div class="home-first bgc">
+            <div>
+            <div>당신 근처의<br/> <div class="satan">3DAYMarket</div></div>
+            <div>중고 거래부터 동내 정보까지, 주민들과 함께해<br/>가깝고 따뜻한 당신의 근처를 만들어요.</div>
+            </div>
+            <div class="reverse">
+                <img src="./imgs/img-front0.png" alt="">
+                <img src="./imgs/img-back0.png" alt="">
+            </div>   
+        </div>
+        <div class="home-second bgc">
+            <div class="div-img  reverse">
+                <img src="./imgs/img-front1.gif" alt="">
+                <img src="./imgs/img-back1.jpg" alt="">
+            </div>   
+            <div>
+            <div>우리 동네<br/> 중고 직거래 마켓</div>
+            <div>동네 주민들과 가깝고 따뜻한 거래를 지금 경험해보세요.</div>
+            <div class="btnbox">
+                <button id="popular-item">인기매물 보기</button>
+                <button id="believe-trade">믿을 수 있는 중고거래</button>
+            </div>
+            </div>
+            
+        </div>
+        <div class="home-first bgc">
+            <div>
+            <div >당신 근처의<br/> <div class="satan">3DAYMarket</div></div>
+            <div>중고 거래부터 동내 정보까지, 주민들과 함께해<br/>가깝고 따뜻한 당신의 근처를 만들어요.</div>
+            </div>
+            <div class="div-img reverse">
+                <img src="./imgs/img-front2.gif" alt="">
+                <img src="./imgs/img-back4.jpg" alt="">
+            </div>   
+        </div>
+        <div class="home-second bgc">
+            <div class="div-img reverse">
+                <img src="./imgs/img-front3.gif" alt="">
+                <img src="./imgs/img-back5.jpg" alt="">
+            </div>   
+            <div>
+            <div>내 근처에서 찾는<br/> 동네가게</div>
+            <div>우리 동네 가게를 찾고 있나요?</div>
+            <div>동네 주민이 남긴 진짜 후기를 함께 확인해보세요!</div>
+            <div class="btnbox">
+                <button id="find-store">3DAYMarket 동네가게 찾기</button>
+            </div>
+            </div>
+        </div>
+    </div>
+   
+    <!-- <input type="text" id="user-name" placeholder="이름">  -->
+    <!-- <input type="text" id="user-name" placeholder="지역">  -->
+    <div class="item-board bgc">
+        <div id="item-board-title">중고거래 인기매물</div>
+        <div class="item-category-box">
+            <div class="item-category-kind">
+                <select id="select-kind">
+                    <option>카테고리를 선택하세요</option>
+                    <option value="">의류, 패션</option>
+                    <option value="">전자기기</option>
+                    <option value="">차량</option>
+                    <option value="">가구</option>
+                    <option value="">음반, 악기</option>
+                    <option value="">생활</option>
+                    <option value="">스포츠</option>
+                    <option value="">화장품</option>
+                    <option value="">도서</option>
+                </select>
+            </div>
+            <div class="item-category-local">
+                <select id="select-local" name="area">
+                    <option>지역을 선택하세요</option>
+                    <option value="seoul">서울특별시</option>
+                    <option value="busan">부산광역시</option>
+                    <option value="daegu">대구광역시</option>
+                    <option value="incheon">인천광역시</option>
+                    <option value="gwangju">광주광역시</option>
+                    <option value="daejeon">대전광역시</option>
+                    <option value="ulsan">울산광역시</option>
+                    <option value="sejong">세종특별자치시</option>
+                    <option value="gyeonggi">경기도</option>
+                    <option value="gangwon">강원도</option>
+                    <option value="ccbukdo">충청북도</option>
+                    <option value="ccnamdo">충청남도</option>
+                    <option value="jlbukdo">전라북도</option>
+                    <option value="jlnamdo">전라남도</option>
+                    <option value="gsbukdo">경상북도</option>
+                    <option value="gsnamdo">경상남도</option>
+                    <option value="jeju">제주특별자치도</option>
+                </select>
+            </div>
+            <div class="item-category-local">
+                <select id="select-local" name="area">
+                    <option>거래 방법</option>
+                    <option value="direct-trade">직거래</option>
+                    <option value="indirect-trade">택배거래</option>
+                    <option value="indirect-trade-safety">택배거래(안전결제)</option>
+                    <option value="default-trade">무관</option>
+                </select>
+            </div>
+        </div>
+        <div class="item-board-display">
+        <article class="item">
+        <a class=item-link href="./items/1">
+            <div class="item-top">
+                <div class="item-img"><img src="./imgs/item-img2.jpeg" alt=""></div>
+            </div>
+            <div class="item-middle">
+                <div class="item-title">아이폰12미니 128기가 s급 급dasdasdasdasd</div>
+                <div class="item-price">120,000원</div>
+                <div class="item-local">경기도 평택시 세교동</div>
+            </div>
+            <div class="item-bottom">
+                <div class="item-focus">관심 32</div>
+                <div class="border-dot">&middot</div>
+                <div class="item-countingview">채팅 78</div>
+            </div>
+        </a>
+         </article>
+         <article class="item">
+            <a class=item-link href="./items/1">
+                <div class="item-top">
+                    <div class="item-img"><img src="./imgs/item-img1.jpeg" alt=""></div>
+                </div>
+                <div class="item-middle">
+                    <div class="item-title">아이폰12미니 128기가 s급 급</div>
+                    <div class="item-price">120,000원</div>
+                    <div class="item-local">경기도 평택시 세교동</div>
+                </div>
+                <div class="item-bottom">
+                    <div class="item-focus">관심 32</div>
+                    <div class="border-dot">&middot</div>
+                    <div class="item-countingview">채팅 78</div>
+                </div>
+            </a>
+             </article>
+             <article class="item">
+                <a class=item-link href="./items/1">
+                    <div class="item-top">
+                        <div class="item-img"><img src="./imgs/item-img1.jpeg" alt=""></div>
+                    </div>
+                    <div class="item-middle">
+                        <div class="item-title">아이폰12미니 128기가 s급 급</div>
+                        <div class="item-price">120,000원</div>
+                        <div class="item-local">경기도 평택시 세교동</div>
+                    </div>
+                    <div class="item-bottom">
+                        <div class="item-focus">관심 32</div>
+                        <div class="border-dot">&middot</div>
+                        <div class="item-countingview">채팅 78</div>
+                    </div>
+                </a>
+                 </article>
+                 <article class="item">
+                    <a class=item-link href="./items/1">
+                        <div class="item-top">
+                            <div class="item-img"><img src="./imgs/item-img1.jpeg" alt=""></div>
+                        </div>
+                        <div class="item-middle">
+                            <div class="item-title">아이폰12미니 128기가 s급 급</div>
+                            <div class="item-price">120,000원</div>
+                            <div class="item-local">경기도 평택시 세교동</div>
+                        </div>
+                        <div class="item-bottom">
+                            <div class="item-focus">관심 32</div>
+                            <div class="border-dot">&middot</div>
+                            <div class="item-countingview">채팅 78</div>
+                        </div>
+                    </a>
+                     </article>
+                     <article class="item">
+                        <a class=item-link href="./items/1">
+                            <div class="item-top">
+                                <div class="item-img"><img src="./imgs/item-img1.jpeg" alt=""></div>
+                            </div>
+                            <div class="item-middle">
+                                <div class="item-title">아이폰12미니 128기가 s급 급</div>
+                                <div class="item-price">120,000원</div>
+                                <div class="item-local">경기도 평택시 세교동</div>
+                            </div>
+                            <div class="item-bottom">
+                                <div class="item-focus">관심 32</div>
+                                <div class="border-dot">&middot</div>
+                                <div class="item-countingview">채팅 78</div>
+                            </div>
+                        </a>
+                         </article>
+                         <article class="item">
+                            <a class=item-link href="./items/1">
+                                <div class="item-top">
+                                    <div class="item-img"><img src="./imgs/item-img1.jpeg" alt=""></div>
+                                </div>
+                                <div class="item-middle">
+                                    <div class="item-title">아이폰12미니 128기가 s급 급</div>
+                                    <div class="item-price">120,000원</div>
+                                    <div class="item-local">경기도 평택시 세교동</div>
+                                </div>
+                                <div class="item-bottom">
+                                    <div class="item-focus">관심 32</div>
+                                    <div class="border-dot">&middot</div>
+                                    <div class="item-countingview">채팅 78</div>
+                                </div>
+                            </a>
+                             </article>
+                             <article class="item">
+                                <a class=item-link href="./items/1">
+                                    <div class="item-top">
+                                        <div class="item-img"><img src="./imgs/item-img1.jpeg" alt=""></div>
+                                    </div>
+                                    <div class="item-middle">
+                                        <div class="item-title">아이폰12미니 128기가 s급 급</div>
+                                        <div class="item-price">120,000원</div>
+                                        <div class="item-local">경기도 평택시 세교동</div>
+                                    </div>
+                                    <div class="item-bottom">
+                                        <div class="item-focus">관심 32</div>
+                                        <div class="border-dot">&middot</div>
+                                        <div class="item-countingview">채팅 78</div>
+                                    </div>
+                                </a>
+                                 </article>
+                                 <article class="item">
+                                    <a class=item-link href="./items/1">
+                                        <div class="item-top">
+                                            <div class="item-img"><img src="./imgs/item-img1.jpeg" alt=""></div>
+                                        </div>
+                                        <div class="item-middle">
+                                            <div class="item-title">아이폰12미니 128기가 s급 급</div>
+                                            <div class="item-price">120,000원</div>
+                                            <div class="item-local">경기도 평택시 세교동</div>
+                                        </div>
+                                        <div class="item-bottom">
+                                            <div class="item-focus">관심 32</div>
+                                            <div class="border-dot">&middot</div>
+                                            <div class="item-countingview">채팅 78</div>
+                                        </div>
+                                    </a>
+                                     </article>
+                                     
+                                    
+        </div>
+        <div class="footer-container">
+            <div class="reverse"><img src="./imgs/logo-front.png" alt="">
+                <img src="./imgs/logo-back.png" alt="" id="invert">
+            </div>
+                <div class="satan">3DAYMarket</div>
+            
+        </div>
+        <div id="spantext">
+        <span >대표 정재훈 ㅣ 사업자번호 022-11-16</span>
+    </div>
+    <div id="spantext">
+        <span >주소 서울특별시 강동구 651 올림픽로 4층</span>
+    </div>
+    <div id="spantext">
+        <span >전화 02-479-4050 ㅣ 고객문의 hhoonjjang@google.com</span>
+    </div>
+
+    <section>
+        <a href="">제휴 문의</a>
+        <a href="">광고 문의</a>
+        <a href="">PR 문의</a>
+        <a href="">IR 문의</a>
+    </section>
+    <section>
+        <a href="">이용약관</a>
+        <a href="">개인정보처리방침</a>
+        <a href="">위치기반서비스 이용약관</a>
+        <a href="">이용자보호 비전과 계획</a>
+    </section>
+    </div>
+    
+
+
+
+
+    <input type="text" id="user-id" placeholder="아이디"> 
+    <input type="password" id="user-pw" placeholder="비번"> 
+    <input type="text" id="user-name" placeholder="이름"> 
+    <script src="index.js"></script>
+</body>
+</html>
+
