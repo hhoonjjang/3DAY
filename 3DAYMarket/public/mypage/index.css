@@ -8,6 +8,9 @@ html {
 }
 
 #mainback {
+  width: 100%;
+  display: flex;
+  opacity: 0.5;
 }
 #backimg {
   position: relative;
