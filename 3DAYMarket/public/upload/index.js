@@ -117,6 +117,12 @@ let itemCategories;
 let itemCondition;
 let itemTuning;
 let itemDealing;
+ let getValue1 = async function () {
+
+ }
+
+
+
 function getValue() {
   const categoriesList = document.getElementsByName("categories");
   categoriesList.forEach((elem) => {
@@ -144,7 +150,10 @@ function getValue() {
   });
 }
 //
-document.getElementById("submit-form").onsubmit = (e) => {
+
+
+
+document.getElementById("submit-form").onsubmit = async function(e) {
   e.preventDefault();
   //
   getValue();
@@ -160,19 +169,25 @@ document.getElementById("submit-form").onsubmit = (e) => {
     alert("모든 입력을 완료해주세요");
     return;
   }
-  //
-  const itemTitle = titleInput.value;
-  const itemPrice = Number(priceInput.value.replace(/,/g, ""));
-  const itemSubtitle = subtitleTextarea.value;
-  //
-  const result = {
-    itemTitle,
-    itemPrice,
-    itemSubtitle,
-    itemCategories,
-    itemCondition,
-    itemTuning,
-    itemDealing,
-  };
-  console.log(result);
+
+
+  try{
+    const itemTitle = titleInput.value;
+    const itemPrice = Number(priceInput.value.replace(/,/g, ""));
+    const itemSubtitle = subtitleTextarea.value;
+    //
+    const result = await axios.post("/api/item/add",{
+      itemTitle:itemTitle,
+      itemPrice:itemPrice,
+      itemSubtitle:itemSubtitle,
+      itemCategories:itemCategories,
+      itemCondition:itemCondition,
+      itemTuning:itemTuning,
+      itemDealing:itemDealing,
+    });
+    console.log(result);
+  }catch(error){
+    console.error(err);
+  }
+  
 };
