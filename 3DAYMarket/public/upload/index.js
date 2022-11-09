@@ -1,5 +1,4 @@
 // 코드 리펙토링 해야함, 한번에 하려면 꼬일수 있으니 미리 해놓자
-
 // oninput 컨트롤 + 백스페이스 지울때, 컨트롤 + C 로 입력할때 등 예외처리 구현 필요
 // 가이드 버티컬 얼라인 미들(처럼 보이게) 구현 필요
 // 가격 한글병행표시기능 추가
@@ -153,6 +152,8 @@ function getValue() {
 
 
 
+
+
 document.getElementById("submit-form").onsubmit = async function(e) {
   e.preventDefault();
   //
@@ -170,12 +171,14 @@ document.getElementById("submit-form").onsubmit = async function(e) {
     return;
   }
 
-
+  
   try{
     const itemTitle = titleInput.value;
     const itemPrice = Number(priceInput.value.replace(/,/g, ""));
     const itemSubtitle = subtitleTextarea.value;
-    //
+
+const uploadImgS = document.getElementById("img-uploader-label");
+//
     const result = await axios.post("/api/item/add",{
       itemTitle:itemTitle,
       itemPrice:itemPrice,
@@ -186,7 +189,7 @@ document.getElementById("submit-form").onsubmit = async function(e) {
       itemDealing:itemDealing,
     });
     console.log(result);
-  }catch(error){
+  }catch(err){
     console.error(err);
   }
   

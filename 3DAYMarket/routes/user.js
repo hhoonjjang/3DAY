@@ -11,7 +11,7 @@ router.post("/regist", async (req, res) => {
       const tempUser = await User.findOne({ where: { userId: req.body.id } });
       if (tempUser) {
         res.status(500);
-        res.send({ message: "exist ID" });
+        res.send({ message: "아이디가 존재합니다" });
         return;
       }
   
@@ -35,7 +35,7 @@ router.post("/regist", async (req, res) => {
         const tempUser = await User.findOne({where:{userId:req.body.id}});
         if(!tempUser){
             res.status(500);
-            res.send({message:"no ID"});
+            res.send({message:"아이디가 존재하지 않습니다.!"});
             return;
         }
         if (tempUser.userPw == Cryptojs.SHA256(req.body.pw).toString()){
@@ -57,7 +57,7 @@ router.post("/regist", async (req, res) => {
                 
             }
             res.status(500);
-            res.send({message:"wrongpassword"});
+            res.send({message:"비밀번호가 틀렸습니다."});
         }catch(error){
           console.log("hi")
             res.status(500);

@@ -146,20 +146,24 @@ signUp.onclick =async function(){
     window.location.reload()
 
   }catch(err){
-    console.error(err);
+    alert(err.response.data.message);
+    console.error(err.response.data.message);
   }
   // console.log(document.getElementById("login--id").value);
 }
 
 signIn.onclick = async function(){
+  // preventDefault();
   try{
     const result = await axios.post("/api/user/login",{
       id:document.getElementById("login-userID").value,
       pw:document.getElementById("login-password").value,
     })
-
+    console.log("하이")
+    location.href="http://localhost:8080/";
+    console.log("하이")
   }catch(err){
-    console.error(err);
+    alert(err.response.data.message);
   }
 }
 
