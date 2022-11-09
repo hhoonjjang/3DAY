@@ -5,7 +5,8 @@ const userId = document.getElementById("login--id");
 const userName = document.getElementById("signup-username");
 const userPassword = document.getElementById("signup-password");
 const userCheckpassword = document.getElementById("signup-checkpassword");
-const signUp = document.getElementById("sign-up");
+const signup = document.getElementById("sign-up");
+const signUp = document.getElementById("sign-Up");
 const signIn = document.getElementById("sign-in");
 
 // const
@@ -118,8 +119,9 @@ function start() {
 
   elm.registerForm.getElementsByTagName("form")[0].onsubmit = (e) => {
     e.preventDefault();
-    console.log(e.target["login--id"]);
-    console.log(e.target["signup-username"]);
+    console.log(e.target["login--id"].value);
+    console.log(e.target["signup-username"].value);
+    console.log(e.target["signup-password"].value);
   };
 
   document.getElementById("backBtn1").onclick = function () {
@@ -138,6 +140,7 @@ function start() {
     //  지역 : 서울특별시 , 부산광역시 , 대구광역시, 인천광역시, 광주광역시 , 대전광역시
     // 울산광역시 , 세종특별자치시 , 경기도 , 강원도 ,충청북도 ,충청남도 ,전라북도
     // 전라남도  경상북도 경상남도 제주특별자치도
+
     const checklocal = [
       "서울특별시",
       "부산광역시",
@@ -222,35 +225,41 @@ function start() {
   // signUp;
   // signIn;
   // }
-  registecheck();
+
+  // ----------------------------------------------------------------------------------start() // 회원가입 로그인
+
+  signup.onclick = async function () {
+    try {
+      // if (registecheck() == [registerForm].value) {
+      //   console.log("오류뜸");
+      //   return;
+      // }
+      // else {
+      const user = await axios.post("/api/user/regist", {
+        id: userId.value,
+        pw: userPassword.value,
+        name: userName.value,
+      });
+      console.log("데이터보낸다잉");
+      window.location.reload();
+      // }
+    } catch (err) {
+      console.log("오류가 떴다리");
+    }
+    // console.log(document.getElementById("login--id").value);
+  };
+
+  signIn.onclick = async function () {
+    try {
+      const result = await axios.post("/api/user/login", {
+        id: document.getElementById("login-userID").value,
+        pw: document.getElementById("login-password").value,
+        name: document.getElementById("signup-username").value,
+        // local: document.getElementById("signup-local").value,
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  };
 }
-
-// ----------------------------------------------------------------------------------start() // 회원가입 로그인
-
-signUp.onclick = async function () {
-  try {
-    const user = await axios.post("/api/user/regist", {
-      id: userId.value,
-      pw: userPassword.value,
-      name: userName.value,
-    });
-    console.log("데이터보낸다잉");
-    window.location.reload();
-  } catch (err) {
-    console.error(err);
-  }
-  // console.log(document.getElementById("login--id").value);
-};
-
-signIn.onclick = async function () {
-  try {
-    const result = await axios.post("/api/user/login", {
-      id: document.getElementById("login-userID").value,
-      pw: document.getElementById("login-password").value,
-    });
-  } catch (err) {
-    console.error(err);
-  }
-};
-
 // --------------------------------------------------------------------- 서버동기화
