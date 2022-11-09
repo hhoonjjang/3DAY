@@ -56,14 +56,13 @@
               required
             />
             <a class="login-form__forgot-password" href="">Forgot password?</a>
-            <a
+            <button
               class="buttons__signup buttons__signup--login-form"
               type="submit"
-              href="/"
               id="sign-in"
             >
               Login
-            </a>
+            </button>
           </form>
 
           <!-- Social-Media -->
@@ -85,7 +84,7 @@
 
       <div class="login-form login-form--register">
         <div class="form-wrapper">
-          <form method="post" onsubmit="return registecheck()">
+          <form method="post">
             <label class="form-wrapper__label" for="login--id">Id</label>
             <input
               type="text"
@@ -113,7 +112,7 @@
             <input
               id="signup-password"
               class="form-wrapper__input"
-              type="text"
+              type="password"
               placeholder="Password"
               name="Password"
               required
