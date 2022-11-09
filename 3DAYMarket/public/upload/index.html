@@ -9,9 +9,12 @@
 
     <link rel="stylesheet" href="index.css" />
   </head>
-  <body>
+  <body
+    oncontextmenu="return false"
+    onselectstart="return false"
+    ondragstart="return false"
+  >
     <form id="submit-form" enctype="multipart/form-data">
-
       <div>
         <div class="main-colum" id="">
           <div class="img-div main-colum-items">
@@ -27,7 +30,6 @@
                 name="img"
                 multiple
               />
-
             </div>
           </div>
           <div class="main-colum-items">
