@@ -145,50 +145,49 @@ signOutBtn.onclick =async function(){
 }
 
 
-reverseBtn.ondblclick = function(){
-   if(cookieR){
-    deleteCookie("reverse");
-   }
-   else{
-    setCookie("reverse",123,1);
-   }
-    console.log(document.cookieReverse)
+// reverseBtn.ondblclick = function(){
+//    if(cookieR){
+//     deleteCookie("reverse");
+//    }
+//    else{
+//     setCookie("reverse",123,1);
+//    }
+//     console.log(document.cookieReverse)
 
-    document.body.classList.toggle("start");
-    for(let i =0;i<reverseImg.length;i++){
-        // console.log("reverseImg[i]")
-        reverseImg[i].classList.toggle("start");
-    }
-    for(let i =0;i<reverseBgc.length;i++){
-        // console.log("reverseImg[i]")
-        reverseBgc[i].classList.toggle("start");
-    }
+//     document.body.classList.toggle("start");
+//     for(let i =0;i<reverseImg.length;i++){
+//         reverseImg[i].classList.toggle("start");
+//     }
+//     for(let i =0;i<reverseBgc.length;i++){
+//         reverseBgc[i].classList.toggle("start");
+//     }
 
-    // document.getElementsByClassName("reverse").classList.add("start");
-}
-const reverse = function(){
-    if(cookieR){
-        document.body.classList.add("start");
-    for(let i =0;i<reverseImg.length;i++){
-        // console.log("reverseImg[i]")
-        reverseImg[i].classList.add("start");
-    }
-    for(let i =0;i<reverseBgc.length;i++){
-        // console.log("reverseImg[i]")
-        reverseBgc[i].classList.add("start");
-    }
-    }
-    else{
-        document.body.classList.remove("start");
-        for(let i =0;i<reverseImg.length;i++){
-            // console.log("reverseImg[i]")
-            reverseImg[i].classList.remove("start");
-        }
-        for(let i =0;i<reverseBgc.length;i++){
-            // console.log("reverseImg[i]")
-            reverseBgc[i].classList.remove("start");
-        }
-    }
-}
+// }
+// const reverse = function(){
+//     if(cookieR){
+//         document.body.classList.add("start");
+//     for(let i =0;i<reverseImg.length;i++){
+//         // console.log("reverseImg[i]")
+//         reverseImg[i].classList.add("start");
+//     }
+//     for(let i =0;i<reverseBgc.length;i++){
+//         // console.log("reverseImg[i]")
+//         reverseBgc[i].classList.add("start");
+//     }
+//     }
+//     else{
+//         document.body.classList.remove("start");
+//         for(let i =0;i<reverseImg.length;i++){
+//             // console.log("reverseImg[i]")
+//             reverseImg[i].classList.remove("start");
+//         }
+//         for(let i =0;i<reverseBgc.length;i++){
+//             // console.log("reverseImg[i]")
+//             reverseBgc[i].classList.remove("start");
+//         }
+//     }
+// }
 
-reverse();
+// reverse();
+
+// deleteCookie("reverse");

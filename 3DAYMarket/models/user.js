@@ -16,6 +16,10 @@ module.exports = class User extends Sequelize.Model{
             name:{
                 type:Sequelize.STRING(20),
                 allowNull:false
+            },
+            userLocal:{
+                type:Sequelize.STRING(256),
+                allowNull:false
             }
         },{
             sequelize,

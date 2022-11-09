@@ -1,10 +1,12 @@
 window.addEventListener("load", start);
 const userId = document.getElementById("login--id");
 const userName = document.getElementById("signup-username") ;
-const userPassword = document.getElementById("signup-password")
-const userCheckpassword = document.getElementById("signup-checkpassword")
+const userPassword = document.getElementById("signup-password");
+const userCheckpassword = document.getElementById("signup-checkpassword");
+const userLocal = document.getElementById("signup-local");
 const signUp = document.getElementById("sign-up");
 const signIn = document.getElementById("sign-in");
+
 // const  
 function start() {
   let goPage = "http://localhost:8080";
@@ -138,6 +140,7 @@ signUp.onclick =async function(){
       id:userId.value,
       pw:userPassword.value,
       name:userName.value,
+      local:userLocal.value,
     })
     console.log("데이터보낸다잉");
     window.location.reload()
