@@ -8,16 +8,22 @@
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <form id="submit-form">
+    <form id="submit-form" enctype="multipart/form-data">
       <div>
         <div class="main-colum" id="">
           <div class="img-div main-colum-items">
             <div class="main-colum-left">상품이미지</div>
-            <div>
+            <div id="img-box">
               <label id="img-uploader-label" for="img-uploader"
                 >이미지 등록</label
               >
-              <input id="img-uploader" type="file" accept="image/*" />
+              <input
+                id="img-uploader"
+                type="file"
+                accept="image/*"
+                name="img"
+                multiple
+              />
             </div>
           </div>
           <div class="main-colum-items">
