@@ -15,11 +15,12 @@ router.post("/regist", async (req, res) => {
         return;
       }
   
-      const { id, pw, name} = req.body;
+      const { id, pw, name,local} = req.body;
       await User.create({
         userId: id,
         userPw: Cryptojs.SHA256(pw).toString(),
-        name,
+        name:name,
+        userLocal:local,
         
       });
       res.end();

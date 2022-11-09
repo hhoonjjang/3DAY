@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <form id="submit-form">
+      <div>
+        <div class="main-colum" id="">
+          <div class="img-div main-colum-items">
+            <div class="main-colum-left">상품이미지</div>
+            <div>
+              <label id="img-uploader-label" for="img-uploader"
+                >이미지 등록</label
+              >
+              <input id="img-uploader" type="file" accept="image/*" />
+            </div>
+          </div>
+          <div class="main-colum-items">
+            <div class="main-colum-left">제목</div>
+            <div>
+              <input
+                type="text"
+                id="title-input"
+                placeholder="상품 제목을 입력해주세요."
+                autocomplete="off"
+                spellcheck="false"
+              />
+            </div>
+            <div id="title-guide" class="guide display-none">
+              <img src="../image/notallow.svg" /><span id="guide-msg"
+                >5글자 이상 입력해주세요</span
+              >
+            </div>
+          </div>
+          <div class="categories-div main-colum-items">
+            <div class="main-colum-left">카테고리</div>
+            <div class="main-colum-right">
+              <div class="main-colum-right-inner">
+                <label id="jelly-label" for="fassion"
+                  ><span class="text">의류, 패션</span
+                  ><input type="radio" name="categories" id="fassion" /><span
+                    class="icon"
+                  ></span
+                ></label>
+
+                <label id="jelly-label" for="electric"
+                  ><span class="text">전자기기</span
+                  ><input type="radio" name="categories" id="electric" /><span
+                    class="icon"
+                  ></span
+                ></label>
+
+                <label id="jelly-label" for="vehicle"
+                  ><span class="text">차량</span
+                  ><input type="radio" name="categories" id="vehicle" /><span
+                    class="icon"
+                  ></span
+                ></label>
+
+                <label id="jelly-label" for="furniture"
+                  ><span class="text">가구</span
+                  ><input type="radio" name="categories" id="furniture" /><span
+                    class="icon"
+                  ></span
+                ></label>
+
+                <label id="jelly-label" for="living"
+                  ><span class="text">생활</span
+                  ><input type="radio" name="categories" id="living" /><span
+                    class="icon"
+                  ></span
+                ></label>
+              </div>
+              <div class="main-colum-right-inner">
+                <label id="jelly-label" for="music"
+                  ><span class="text">음반, 악기</span
+                  ><input type="radio" name="categories" id="music" /><span
+                    class="icon"
+                  ></span
+                ></label>
+
+                <label id="jelly-label" for="sports"
+                  ><span class="text">스포츠</span
+                  ><input type="radio" name="categories" id="sports" /><span
+                    class="icon"
+                  ></span
+                ></label>
+
+                <label id="jelly-label" for="beauty"
+                  ><span class="text">화장품</span
+                  ><input type="radio" name="categories" id="beauty" /><span
+                    class="icon"
+                  ></span
+                ></label>
+
+                <label id="jelly-label" for="book"
+                  ><span class="text">도서</span
+                  ><input type="radio" name="categories" id="book" /><span
+                    class="icon"
+                  ></span
+                ></label>
+
+                <label id="jelly-label" for="etc"
+                  ><span class="text">기타</span
+                  ><input type="radio" name="categories" id="etc" /><span
+                    class="icon"
+                  ></span
+                ></label>
+              </div>
+            </div>
+          </div>
+          <div class="condition-div main-colum-items">
+            <div class="main-colum-left">상태</div>
+            <div class="main-colum-right">
+              <label id="jelly-label" for="used-item">
+                <span class="text">중고상품</span>
+                <input type="radio" name="condition" id="used-item" />
+                <span class="icon"></span>
+              </label>
+              <label id="jelly-label" for="new-item">
+                <span class="text">새상품</span>
+                <input type="radio" name="condition" id="new-item" />
+                <span class="icon"></span>
+              </label>
+            </div>
+          </div>
+          <div class="tuning-div main-colum-items">
+            <div class="main-colum-left">가격절충</div>
+            <div class="main-colum-right">
+              <label id="jelly-label" for="non-tuning">
+                <span class="text">불가능</span>
+                <input type="radio" name="tuning" id="non-tuning" />
+                <span class="icon"></span>
+              </label>
+              <label id="jelly-label" for="tuning">
+                <span class="text">가능</span>
+                <input type="radio" name="tuning" id="tuning" />
+                <span class="icon"></span>
+              </label>
+            </div>
+          </div>
+          <div class="dealing-div main-colum-items">
+            <div class="main-colum-left">거래방법</div>
+            <div class="main-colum-right">
+              <label id="jelly-label" for="meet">
+                <span class="text">직거래</span>
+                <input type="radio" name="dealing" id="meet" />
+                <span class="icon"></span>
+              </label>
+              <label id="jelly-label" for="delivery">
+                <span class="text">택배거래</span>
+                <input type="radio" name="dealing" id="delivery" />
+                <span class="icon"></span>
+              </label>
+              <label id="jelly-label" for="delivery-safe">
+                <span class="text">택배거래(안전결제)</span>
+                <input type="radio" name="dealing" id="delivery-safe" />
+                <span class="icon"></span>
+              </label>
+              <label id="jelly-label" for="anything">
+                <span class="text">무관</span>
+                <input type="radio" name="dealing" id="anything" />
+                <span class="icon"></span>
+              </label>
+            </div>
+          </div>
+          <div class="price-div main-colum-items">
+            <div class="main-colum-left">가격</div>
+            <div class="main-colum-right">
+              <input
+                type="text"
+                id="price-input"
+                autocomplete="off"
+                placeholder="숫자만 입력해주세요."
+              /><span>원</span>
+            </div>
+            <div id="price-guide" class="guide display-none">
+              <img src="../image/notallow.svg" /><span id="price-msg"></span>
+            </div>
+          </div>
+          <div class="subtitle-div main-colum-items">
+            <div class="main-colum-left">설명</div>
+            <div class="main-colum-right">
+              <textarea
+                name=""
+                id="subtitle-textarea"
+                cols="30"
+                rows="10"
+                spellcheck="false"
+              >
+              </textarea>
+              <div id="textarea-placeholder">
+                <div>
+                  여러 장의 상품 사진과 구입 연도, 브랜드, 사용감, 하자 유무 등
+                  구매자에게 필요한 정보를 꼭 포함해 주세요.(10자 이상)
+                </div>
+                <div>
+                  안전하고 건전한 거래 환경을 위해 과학기술정보통신부,
+                  한국인터넷진흥원과 3DAYMarket이 함께합니다.
+                </div>
+              </div>
+            </div>
+            <div id="subtitle-guide" class="guide display-none">
+              <img src="../image/notallow.svg" /><span id="subtitle-msg"
+                >10자 이상 설명을 적어주세요</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="confirm-div">
+        <button class="confirm-btn">등 록 하 기</button>
+      </div>
+    </form>
+    <script src="index.js"></script>
+  </body>
+</html>

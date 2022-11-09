@@ -2,14 +2,14 @@ window.addEventListener("load", start);
 
 const userlocal = document.getElementById("signup-local");
 const userId = document.getElementById("login--id");
-const userName = document.getElementById("signup-username");
+const userName = document.getElementById("signup-username") ;
 const userPassword = document.getElementById("signup-password");
 const userCheckpassword = document.getElementById("signup-checkpassword");
-const signup = document.getElementById("sign-up");
-const signUp = document.getElementById("sign-Up");
+const userLocal = document.getElementById("signup-local");
+const signUp = document.getElementById("sign-up");
 const signIn = document.getElementById("sign-in");
 
-// const
+// const  
 function start() {
   let goPage = "http://localhost:8080";
   console.log(location.href);
@@ -128,9 +128,16 @@ function start() {
     location.href = goPage;
   };
 
-  function registecheck() {
-    //  이름 : 2~5 길이의 한글
-    const checkusername = /^[가-힣]{2,5}$/;
+signUp.onclick =async function(){
+  try{
+    const user = await axios.post("/api/user/regist",{
+      id:userId.value,
+      pw:userPassword.value,
+      name:userName.value,
+      local:userLocal.value,
+    })
+    console.log("데이터보낸다잉");
+    window.location.reload()
 
     //  아이디 : 영문자로 시작하고, 5~10 길이의 영문자와 숫자의 조합 |  g는 모든 문자를 검색하는 플래그다.
     const checkuserId = /^(?=.*[0-9]+)[a-zA-Z][a-zA-Z0-9]{5,10}$/g;
