@@ -2,7 +2,6 @@
 
 // 빈 입력값 예외처리 -> 알럿 말고 온포커스로 변경
 
-
 // oninput 컨트롤 + 백스페이스 지울때, 컨트롤 + C 로 입력할때 등 예외처리 구현 필요
 // 가이드 버티컬 얼라인 미들(처럼 보이게) 구현 필요
 // 가격 한글병행표시기능 추가
@@ -122,11 +121,7 @@ let itemTuning;
 let itemDealing;
 let itemImage;
 const imgArr = [];
- let getValue1 = async function () {
-
- }
-
-
+let getValue1 = async function () {};
 
 function getValue() {
   const categoriesList = document.getElementsByName("categories");
@@ -156,11 +151,7 @@ function getValue() {
 }
 //
 
-
-
-
-
-document.getElementById("submit-form").onsubmit = async function(e) {
+document.getElementById("submit-form").onsubmit = async function (e) {
   e.preventDefault();
   //
   getValue();
@@ -178,30 +169,26 @@ document.getElementById("submit-form").onsubmit = async function(e) {
     return;
   }
 
-
-  
-  try{
+  try {
     const itemTitle = titleInput.value;
     const itemPrice = Number(priceInput.value.replace(/,/g, ""));
     const itemSubtitle = subtitleTextarea.value;
 
-const uploadImgS = document.getElementById("img-uploader-label");
-//
-    const result = await axios.post("/api/item/add",{
-      itemTitle:itemTitle,
-      itemPrice:itemPrice,
-      itemSubtitle:itemSubtitle,
-      itemCategories:itemCategories,
-      itemCondition:itemCondition,
-      itemTuning:itemTuning,
-      itemDealing:itemDealing,
+    const uploadImgS = document.getElementById("img-uploader-label");
+    //
+    const result = await axios.post("/api/item/add", {
+      itemTitle: itemTitle,
+      itemPrice: itemPrice,
+      itemSubtitle: itemSubtitle,
+      itemCategories: itemCategories,
+      itemCondition: itemCondition,
+      itemTuning: itemTuning,
+      itemDealing: itemDealing,
     });
     console.log(result);
-  }catch(err){
+  } catch (err) {
     console.error(err);
   }
-  
-
 };
 //
 //

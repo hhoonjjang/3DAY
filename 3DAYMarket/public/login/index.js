@@ -12,7 +12,6 @@ const userLocal = document.getElementById("signup-local");
 const signUp = document.getElementById("sign-up");
 const signIn = document.getElementById("sign-in");
 
-
 //  이름 : 2~5 길이의 한글
 const checkusername = /^[가-힣]{2,5}$/;
 const checkUserName = checkusername.test(userName.value);
@@ -100,7 +99,6 @@ function start() {
   console.log(location.href);
   // console.log(state);
 
-
   const elm = {
     arrow: document.querySelector(".form-container__arrow"),
     overlay: document.querySelector(".overlay"),
@@ -110,8 +108,6 @@ function start() {
     loginForm: document.querySelector(".login-form"),
     registerForm: document.querySelector(".login-form--register"),
   };
-
-
 
   const props = {
     left: "left: 20px;",
@@ -128,8 +124,6 @@ function start() {
     leftM120: "left: -120px;",
   };
 
-
-
   const elms = [
     elm.arrow,
     elm.overlay,
@@ -145,8 +139,6 @@ function start() {
       elements[i].setAttribute("style", `${props[i]}`);
     }
   }
-
-
 
   elm.signUpButton.onclick = async function () {
     goPage = "http://localhost:8080/login/";
@@ -211,8 +203,8 @@ function start() {
     location.href = goPage;
   };
 
-signUp.onclick = async function () {
-const checkUserName = checkusername.test(userName.value);
+  signUp.onclick = async function () {
+    const checkUserName = checkusername.test(userName.value);
     const checkUserID = checkuserId.test(userId.value);
     const checkPassWord = checkpassword.test(userPassword.value);
     const checkCheckPassWord = function () {
@@ -229,8 +221,8 @@ const checkUserName = checkusername.test(userName.value);
         return false;
       }
     };
-  try {
-  if (
+    try {
+      if (
         (checkUserName &&
           checkUserID &&
           checkPassWord &&
@@ -243,34 +235,34 @@ const checkUserName = checkusername.test(userName.value);
         console.log(checkCheckPassWord());
         alert = "회원가입에 성공하셨습니다.";
 
-    const user = await axios.post("/api/user/regist", {
-      id: userId.value,
-      pw: userPassword.value,
-      name: userName.value,
-      local: userLocal.value,
-    });
-   }
-    console.log("데이터보낸다잉");
-    window.location.reload();
-  } catch (err) {
-    alert(err.response.data.message);
-    console.error(err.response.data.message);
-  }
-  // console.log(document.getElementById("login--id").value);
-};
+        const user = await axios.post("/api/user/regist", {
+          id: userId.value,
+          pw: userPassword.value,
+          name: userName.value,
+          local: userLocal.value,
+        });
+      }
+      console.log("데이터보낸다잉");
+      window.location.reload();
+    } catch (err) {
+      alert(err.response.data.message);
+      console.error(err.response.data.message);
+    }
+    // console.log(document.getElementById("login--id").value);
+  };
 
-signIn.onclick = async function (e) {
-  e.preventDefault();
-  try {
-    const result = await axios.post("/api/user/login", {
-      id: document.getElementById("login-userID").value,
-      pw: document.getElementById("login-password").value,
-    });
-    console.log("하이");
-    location.href = "http://localhost:8080/";
-    console.log("하이");
-  } catch (err) {
-    alert(err.response.data.message);
-  }
-};
-
+  signIn.onclick = async function (e) {
+    e.preventDefault();
+    try {
+      const result = await axios.post("/api/user/login", {
+        id: document.getElementById("login-userID").value,
+        pw: document.getElementById("login-password").value,
+      });
+      console.log("하이");
+      location.href = "http://localhost:8080/";
+      console.log("하이");
+    } catch (err) {
+      alert(err.response.data.message);
+    }
+  };
+}

@@ -20,5 +20,5 @@ module.exports = (server) => {
     });
   });
 
-  io.of("c")
+  io.of("c");
 };

@@ -119,4 +119,4 @@ function socketFunc() {
     });
   });
 }
-socketFunc();
+// socketFunc();
