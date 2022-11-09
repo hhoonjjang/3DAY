@@ -1,4 +1,4 @@
-햣/* * {
+/* * {
   box-sizing: border-box;
 } */
 #info {
@@ -73,8 +73,10 @@ span {
 
 #vs-chat-zone {
   list-style: none;
-  padding-left: 10px;
+  padding-left: 35px;
   overflow: hidden auto;
+  height: 400px;
+  padding-right: 20px;
 }
 
 .my-chat {
@@ -216,6 +218,7 @@ button {
 #msg-submit {
   width: 64px;
   height: 32px;
+  cursor: pointer;
 }
 
 textarea {
@@ -230,4 +233,28 @@ textarea {
 
 .msgBox {
   background-color: rgb(238, 254, 255);
+}
+::-webkit-scrollbar {
+  opacity: 1;
+  width: 7px;
+  height: 7px;
+  appearance: auto;
+  margin-left: 5px;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-track-piece {
+  background-color: transparent;
 }
