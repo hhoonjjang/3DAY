@@ -8,6 +8,7 @@ const morgan = require("morgan");
 
 const { sequelize } = require("./models/index.js");
 const routes = require("./routes/index.js");
+const socket = require("./socket.js");
 
 dotenv.config();
 
@@ -47,6 +48,8 @@ sequelize
     console.error(err);
   });
 
-app.listen(app.get("port"), () => {
-  console.log("서버가열려따리열려따");
+const server = app.listen(app.get("port"), () => {
+  console.log("server start");
 });
+
+socket(server);
