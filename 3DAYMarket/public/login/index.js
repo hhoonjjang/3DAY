@@ -1,17 +1,17 @@
 window.addEventListener("load", start);
 const userId = document.getElementById("login--id");
-const userName = document.getElementById("signup-username") ;
+const userName = document.getElementById("signup-username");
 const userPassword = document.getElementById("signup-password");
 const userCheckpassword = document.getElementById("signup-checkpassword");
 const userLocal = document.getElementById("signup-local");
 const signUp = document.getElementById("sign-up");
 const signIn = document.getElementById("sign-in");
 
-// const  
+// const
 function start() {
   let goPage = "http://localhost:8080";
-    console.log(location.href);
-    // console.log(state);
+  console.log(location.href);
+  // console.log(state);
   /* ===========================
     Elements Selectors
 ============================ */
@@ -69,8 +69,8 @@ function start() {
     Events
 ============================ */
 
-elm.signUpButton.onclick = async function () {
-  goPage = "http://localhost:8080/login/";
+  elm.signUpButton.onclick = async function () {
+    goPage = "http://localhost:8080/login/";
     const properties = [
       props.left,
       props.opacity0,
@@ -93,7 +93,6 @@ elm.signUpButton.onclick = async function () {
     // console.log(userId, "asdasdasd");
     transition(elms, properties);
   };
-  
 
   elm.loginButton.onclick = function () {
     goPage = "http://localhost:8080/login/";
@@ -131,40 +130,39 @@ elm.signUpButton.onclick = async function () {
   };
   document.getElementById("backBtn1").onclick = function () {
     location.href = goPage;
+  };
 }
-};
 
-signUp.onclick =async function(){
-  try{
-    const user = await axios.post("/api/user/regist",{
-      id:userId.value,
-      pw:userPassword.value,
-      name:userName.value,
-      local:userLocal.value,
-    })
+signUp.onclick = async function () {
+  try {
+    const user = await axios.post("/api/user/regist", {
+      id: userId.value,
+      pw: userPassword.value,
+      name: userName.value,
+      local: userLocal.value,
+    });
     console.log("데이터보낸다잉");
-    window.location.reload()
-
-  }catch(err){
+    window.location.reload();
+  } catch (err) {
     alert(err.response.data.message);
     console.error(err.response.data.message);
   }
   // console.log(document.getElementById("login--id").value);
-}
+};
 
-signIn.onclick = async function(){
-  // preventDefault();
-  try{
-    const result = await axios.post("/api/user/login",{
-      id:document.getElementById("login-userID").value,
-      pw:document.getElementById("login-password").value,
-    })
-    console.log("하이")
-    location.href="http://localhost:8080/";
-    console.log("하이")
-  }catch(err){
+signIn.onclick = async function (e) {
+  e.preventDefault();
+  try {
+    const result = await axios.post("/api/user/login", {
+      id: document.getElementById("login-userID").value,
+      pw: document.getElementById("login-password").value,
+    });
+    console.log("하이");
+    location.href = "http://localhost:8080/";
+    console.log("하이");
+  } catch (err) {
     alert(err.response.data.message);
   }
-}
+};
 
 // --------------------------------------------------------------------- 서버동기화
