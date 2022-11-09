@@ -1,38 +1,58 @@
 * {
   margin: 0;
   padding: 0;
-  background-color: #ced2bb;
 }
 html {
   font-family: "maple-bold";
+  background: #f0e8d5;
 }
 
+#mainback {
+}
+#backimg {
+  position: relative;
+  float: right;
+  margin: 200px;
+  width: 350px;
+  height: 400px;
+  background-color: #f0e8d5;
+  background-image: #f0e8d5 url(./img/back1122.jpg);
+  background-repeat: no-repeat;
+}
 #bgp {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   border: 1px solid black;
-  margin-top: 20%;
   margin-left: 27%;
   width: 700px;
   height: 1000px;
 }
 #leftimg {
-  width: 200px;
-  height: 100vh;
+  position: fixed;
+  width: 100px;
+  height: 50vh;
   margin-top: 100px;
 }
 #bottomimg {
-  margin-top: 95%;
-  width: 100px;
+  position: fixed;
+  margin-left: 20px;
+  margin-top: 50vh;
+  width: 50vh;
   height: 100px;
 }
 #topimg {
-  width: 100px;
+  position: fixed;
+  margin-left: 10px;
+  width: 50vh;
   height: 100px;
 }
 #rightimg {
+  position: fixed;
+  margin-left: 90%;
   width: 100px;
-  height: 100px;
+  height: 50vh;
 }
 #menu {
   display: flex;
