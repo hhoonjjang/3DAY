@@ -1,4 +1,8 @@
 // 코드 리펙토링 해야함, 한번에 하려면 꼬일수 있으니 미리 해놓자
+
+// 빈 입력값 예외처리 -> 알럿 말고 온포커스로 변경
+
+
 // oninput 컨트롤 + 백스페이스 지울때, 컨트롤 + C 로 입력할때 등 예외처리 구현 필요
 // 가이드 버티컬 얼라인 미들(처럼 보이게) 구현 필요
 // 가격 한글병행표시기능 추가
@@ -116,6 +120,8 @@ let itemCategories;
 let itemCondition;
 let itemTuning;
 let itemDealing;
+let itemImage;
+const imgArr = [];
  let getValue1 = async function () {
 
  }
@@ -165,11 +171,13 @@ document.getElementById("submit-form").onsubmit = async function(e) {
     !itemDealing ||
     !isTitleTrue ||
     !isPriceTrue ||
-    !isSubtitleTrue
+    !isSubtitleTrue ||
+    !itemImage
   ) {
     alert("모든 입력을 완료해주세요");
     return;
   }
+
 
   
   try{
@@ -193,4 +201,44 @@ const uploadImgS = document.getElementById("img-uploader-label");
     console.error(err);
   }
   
+
 };
+//
+//
+// function createElement(e, file) {
+//   const div = document.createElement("div");
+//   const img = document.createElement("img");
+//   div.classList.add("img-block");
+//   img.setAttribute("src", e.target.result);
+//   img.setAttribute("data-file", file.name);
+//   div.appendChild(img);
+
+//   return div;
+// }
+
+function getImageFiles(e) {
+  itemImage = e.currentTarget.files;
+  console.log(itemImage);
+  // if ([...itemImage].length > 4 || [...itemImage].length == 0) {
+  //   alert("이미지를 1개부터 4개까지 업로드 해주세요");
+  //   return;
+  // }
+
+  // [...itemImage].forEach((file) => {
+  //   if (!file.type.match("image/.*")) {
+  //     alert("이미지 파일만 업로드 가능합니다");
+  //     return;
+  //   }
+  //   imgArr.push(file);
+  //   const reader = new FileReader();
+  //   reader.onload = (e) => {
+  //     const preview = createElement(e, file);
+  //     document.getElementById("img-box").appendChild(preview);
+  //   };
+  //   reader.readAsDataURL(file);
+  // });
+}
+
+document
+  .getElementById("img-uploader")
+  .addEventListener("change", getImageFiles);
