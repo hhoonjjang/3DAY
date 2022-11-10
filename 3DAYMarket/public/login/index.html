@@ -6,15 +6,21 @@
     <link rel="stylesheet" href="index.css" />
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
   </head>
-  <body>
+  <body
+    oncontextmenu="return false"
+    onselectstart="return false"
+    ondragstart="return false"
+  >
     <section class="form-container">
       <span id="arrowClick" class="form-container__arrow"
         ><i class="fa fa-arrow-circle-left" aria-hidden="true"></i
       ></span>
       <div class="overlay"></div>
       <div class="choose-form">
+        <button id="backBtn">
+          <img src="../img/arrow11.png" id="backBtn1" />
+        </button>
         <div class="title">
           <h1 class="title__h1">3DAYMarket</h1>
         </div>
@@ -54,14 +60,13 @@
               required
             />
             <a class="login-form__forgot-password" href="">Forgot password?</a>
-            <a
+            <button
               class="buttons__signup buttons__signup--login-form"
               type="submit"
-              href="/"
               id="sign-in"
             >
               Login
-            </a>
+            </button>
           </form>
 
           <!-- Social-Media -->
@@ -111,9 +116,9 @@
             <input
               id="signup-password"
               class="form-wrapper__input"
-              type="text"
-              placeholder="Username"
-              name="username"
+              type="password"
+              placeholder="Password"
+              name="Password"
               required
             />
             <label class="form-wrapper__label" for="signup-checkpassword"
@@ -123,15 +128,13 @@
               id="signup-checkpassword"
               class="form-wrapper__input"
               type="password"
-              placeholder="Password"
-              name="password"
+              placeholder="checkpassword"
+              name="checkpassword"
               pattern=".{3,}"
               title="Password must contain at least 3 characters"
               required
             />
-            <label class="form-wrapper__label" for="signup-local"
-              >Local</label
-            >
+            <label class="form-wrapper__label" for="signup-local">Local</label>
             <input
               id="signup-local"
               class="form-wrapper__input"
@@ -140,14 +143,12 @@
               name="userlocal"
               required
             />
-            <a
+            <button
               class="buttons__signup buttons__signup--sign-up-form"
-              type="submit"
-              href="/login/"
-              id = "sign-up"
+              id="sign-up"
             >
               Sign up
-            </a>
+            </button>
           </form>
 
           <!-- Social-Media -->
