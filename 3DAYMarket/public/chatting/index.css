@@ -150,14 +150,20 @@ body.on {
 
 .vs-name {
   font-weight: bold;
+  /* margin-right: 15px; */
 }
-
+.fbox-between {
+  display: flex;
+  justify-content: space-between;
+}
 .vs-data {
   font-size: 0.9rem;
   color: gray;
   letter-spacing: -1px;
 }
-
+.vs-chatlog {
+  padding-left: 15px;
+}
 #user-name {
   font-size: 1.1rem;
   font-weight: bold;
@@ -169,15 +175,20 @@ body.on {
   border: 2px solid lightgray;
   width: 40px;
 }
+.vs-info {
+  width: 158px;
+  /* text-align: center; */
+}
 
 .one-chat {
   display: flex;
   /* justify-content: center; */
   /* margin-left: 10px; */
-  justify-content: space-evenly;
-  padding: 10px;
+  justify-content: space-between;
+  padding: 10px 25px 10px 25px;
   align-items: center;
   transition-duration: 1s;
+  width: 100%;
 }
 
 .one-chat:hover {

@@ -10,6 +10,8 @@ const { sequelize } = require("./models/index.js");
 const routes = require("./routes/index.js");
 const socket = require("./socket.js");
 
+const db = require("./models/index.js");
+
 dotenv.config();
 
 const app = express();
