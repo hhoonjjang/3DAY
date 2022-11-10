@@ -39,6 +39,12 @@ app.use(
   })
 );
 
+app.get("/serverImg", async (req, res) => {
+  const tempItem = await Item.findAll({
+    order: [["id", "DESC"]],
+    include: { model: User },
+  });
+});
 app.use("/api", routes);
 
 sequelize

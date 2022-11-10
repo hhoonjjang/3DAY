@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const router = require("express").Router();
 
 const multer = require("multer");
-
+const fs = require("fs");
 const { User, Item } = require("../models/index.js");
 
 let storage = multer.diskStorage({
@@ -22,7 +22,7 @@ router.use("/", (req, res, next) => {
   try {
     const tempUserInfo = jwt.verify(req.cookies.carrot, process.env.JWT_KEY);
     global.userName = tempUserInfo.name;
-    console.log("hi" + global.userName);
+    // console.log("hi" + global.userName);
     next();
   } catch (err) {
     console.error(err);
@@ -48,10 +48,10 @@ router.post("/add", async (req, res) => {
     //     itemSubtitle :itemSubtitle
     //   })
     //   console.log("hi"+req.body);
-    console.log("에드" + req.files);
+    // console.log("에드" + req.files);
     res.end();
   } catch (err) {
-    console.log(err);
+    // console.log(err);
   }
 });
 //
@@ -86,19 +86,19 @@ router.post(
   "/uploadFiles",
   uploadWithOriginalFilename.array("img"),
   async function (req, res) {
-    console.log("멀터");
-    console.log("멀터바디", req.body);
+    // console.log("멀터");
+    // console.log("멀터바디", req.body);
     // const {itemTitle,itemCategories,itemCondition,itemTuning,itemDealing,itemPrice,itemSubtitle} =req.body;
-    console.log(req.files);
-    console.log(req.files[0].filename);
+    // console.log(req.files);
+    // console.log(req.files[0].filename);
     const imgArr = [];
 
     req.files.forEach((item) => {
       imgArr.push(item.filename);
     });
-    console.log(global.userName);
+    // console.log(global.userName);
 
-    console.log(imgArr.join("-*,"));
+    // console.log(imgArr.join("-*,"));
     const {
       itemTitle,
       itemCategories,
@@ -113,7 +113,7 @@ router.post(
         name: global.userName,
       },
     });
-    console.log(tempUser);
+    // console.log(tempUser);
     const tempItem = await Item.create({
       imgArr: imgArr.join("-*,"),
       itemTitle: itemTitle,
@@ -141,9 +141,23 @@ router.get("/", async (req, res) => {
     order: [["id", "DESC"]],
     include: { model: User },
   });
-  console.log("get");
-  console.log(tempItem);
-  console.log("get");
+  tempItem.forEach((item) => {
+    console.log(item.dataValues.imgArr.split("-*,")[0].split(".")[1]);
+    const filename = `./uploadedItems/${
+      item.dataValues.imgArr.split("-*,")[0]
+    }`;
+    fs.readFile(filename, (err, data) => {
+      res.writeHead(200, {
+        "Context-Type": `image/${
+          item.dataValues.imgArr.split("-*,")[0].split(".")[1]
+        };charset=UTF-8`,
+      });
+      res.write(data);
+      res.end;
+    });
+  });
+
+  // console.log(tempItem.imgArr.split("-*,")[0]);
   res.send(tempItem);
 });
 
