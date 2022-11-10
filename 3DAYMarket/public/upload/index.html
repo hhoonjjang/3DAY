@@ -14,9 +14,42 @@
     onselectstart="return false"
     ondragstart="return false"
   >
+    <div class="top-container bgc">
+      <a class="home-box" href="/">
+        <div class="reverse">
+          <img src="../image/logo-front.png" alt="" />
+          <img src="../image/logo-back.png" alt="" id="invert" />
+        </div>
+        <div class="satan">3DAYMarket</div>
+      </a>
+      <div class="category-box">
+        <a id="new-trade" href="./newtrade">신품거래</a>
+        <a id="user-trade" href="./usedtrade">중고거래</a>
+      </div>
 
-    <form action="uploadFiles" method="post" id="submit-form" enctype="multipart/form-data">
-
+      <div class="user-box">
+        <div id="searchBox">
+          <input
+            text="text"
+            id="search"
+            placeholder="물품이나 동네를 검색해보세요"
+          />
+        </div>
+        <div id="loginDisplay"></div>
+        <!-- <button id ="sign-in">로그인</button> -->
+        <a id="sign-in" href="./login">로그인</a>
+        <!-- <button id ="sign-up">회원가입</button> -->
+        <button id="sign-out">로그아웃</button>
+        <a id="chatting" href="./chatting">채팅하기</a>
+        <a id="item-upload" href="./upload">물품등록</a>
+        <a id="user-info" href="./mypage">마이페이지</a>
+      </div>
+      <div class="reverse" id="reverse">
+        <img src="../image/logo-front1.png" alt="" />
+        <img src="../image/logo-back1.png" alt="" />
+      </div>
+    </div>
+    <form id="submit-form" enctype="multipart/form-data">
       <div>
         <div class="main-colum" id="">
           <div class="img-div main-colum-items">
@@ -25,14 +58,7 @@
               <label id="img-uploader-label" for="img-uploader"
                 >이미지 등록</label
               >
-
-              <input
-                id="img-uploader"
-                type="file"
-                accept="image/*"
-                name="img"
-              />
-
+              <input id="img-uploader" type="file" accept="image/*" />
             </div>
           </div>
           <div class="main-colum-items">
@@ -44,7 +70,6 @@
                 placeholder="상품 제목을 입력해주세요."
                 autocomplete="off"
                 spellcheck="false"
-                name="title-input"
               />
             </div>
             <div id="title-guide" class="guide display-none">
@@ -191,7 +216,6 @@
               <input
                 type="text"
                 id="price-input"
-                name="price-input"
                 autocomplete="off"
                 placeholder="숫자만 입력해주세요."
               /><span>원</span>
@@ -204,7 +228,7 @@
             <div class="main-colum-left">설명</div>
             <div class="main-colum-right">
               <textarea
-                name="subtitle-textarea"
+                name=""
                 id="subtitle-textarea"
                 cols="30"
                 rows="10"
@@ -234,6 +258,35 @@
         <button class="confirm-btn">등 록 하 기</button>
       </div>
     </form>
+    <div class="footer-container">
+      <div class="reverse">
+        <img src="../image/logo-front.png" alt="" />
+        <img src="../image/logo-back.png" alt="" id="invert" />
+      </div>
+      <div class="satan">3DAYMarket</div>
+    </div>
+    <div id="spantext">
+      <span>대표 정재훈 ㅣ 사업자번호 022-11-16</span>
+    </div>
+    <div id="spantext">
+      <span>주소 서울특별시 강동구 651 올림픽로 4층</span>
+    </div>
+    <div id="spantext">
+      <span>전화 02-479-4050 ㅣ 고객문의 hhoonjjang@google.com</span>
+    </div>
+
+    <section>
+      <a href="">제휴 문의</a>
+      <a href="">광고 문의</a>
+      <a href="">PR 문의</a>
+      <a href="">IR 문의</a>
+    </section>
+    <section>
+      <a href="">이용약관</a>
+      <a href="">개인정보처리방침</a>
+      <a href="">위치기반서비스 이용약관</a>
+      <a href="">이용자보호 비전과 계획</a>
+    </section>
     <script src="index.js"></script>
   </body>
 </html>

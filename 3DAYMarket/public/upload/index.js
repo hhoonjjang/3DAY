@@ -121,6 +121,7 @@ let itemTuning;
 let itemDealing;
 let itemImage;
 
+
 const imageArr = [];
 let getValue1 = async function () {};
 
@@ -195,6 +196,7 @@ document.getElementById("submit-form").onsubmit = async function (e) {
     //   itemDealing: itemDealing,
     // });
     const img = await axios.post("/api/item/uploadFiles", formData);
+
   } catch (err) {
     console.error(err);
   }
@@ -209,6 +211,22 @@ function getImageFiles(e) {
     console.log(value);
     console.log(formData.get(value));
   }
+
+
+  // if (!itemImage.type.match("image/")) {
+  //   alert("이미지 파일만 업로드 가능합니다");
+  //   return;
+  // }
+  // const reader = new FileReader();
+  // reader.onload = (e) => {
+  //   const preview = createElement(e, itemImage);
+  //   document.getElementById("img-box").appendChild(preview);
+  // };
+  // reader.readAsDataURL(itemImage);
+  // imageArr.push(itemImage.name);
+  console.log(itemImage);
+  console.log(imageArr);
+
 }
 
 document
