@@ -1,0 +1,81 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="font/font.css" />
+    <link rel="stylesheet" href="chatting.css" />
+
+    <link rel="stylesheet" href="index.css" />
+    <script src="/socket.io/socket.io.js"></script>
+    <title>chatting</title>
+  </head>
+  <body
+    oncontextmenu="return false"
+    onselectstart="return false"
+    ondragstart="return false"
+  >
+    <div id="menu">
+      <div id="menu-item">
+        <div><img src="./chatimg/logo_daangn.svg" alt="" /></div>
+        <div id="user-info">
+          <div>
+            <a href="./search.html"
+              ><img src="./chatimg/user1.jpg" alt="" class="user-img"
+            /></a>
+          </div>
+          <div>초롱둥이</div>
+          <div><img src="./chatimg/arrowDown.svg" alt="" /></div>
+        </div>
+      </div>
+    </div>
+    <div id="main-box" class="box-shadow-yellow bs">
+      <div id="main">
+        <div id="userlist" class="box-shadow-yellow bs">
+          <a href="" class="pointer">
+            <img src="./chatimg/user1.jpg" alt="" class="user-img-list" />
+            <div class="user-select"></div>
+          </a>
+        </div>
+        <div id="chat-list" class="box-shadow-yellow bs">
+          <div id="user-name">초롱둥이</div>
+          <div id="msg-check">
+            <div class="vs-data">안 읽은 메시지만 보기</div>
+            <div><img src="./chatimg/check.svg" alt="" /></div>
+          </div>
+          <ul id="chat-vs">
+            <div class="one-chat">
+              <div>
+                <img src="./chatimg/default.png" alt="" class="vs-img" />
+              </div>
+              <div class="vs-info">
+                <div>
+                  <span class="vs-name">nickname</span>
+                  <span class="vs-data">local</span>
+                  <span class="vs-data">.</span>
+                  <span class="vs-data">log-day</span>
+                </div>
+                <div class="vs-chatlog">마지막 채팅로그</div>
+              </div>
+              <div class="vs-log-img">사진로그</div>
+            </div>
+          </ul>
+          <div id="what">
+            <div>자주묻는 질문</div>
+            <div><img src="./chatimg/what.svg" alt="" /></div>
+          </div>
+
+          <div><button id="invert-btn">뒷세계</button></div>
+        </div>
+        <div id="chatting" data-include-path="chatting.html">
+          <img src="./chatimg/chatting.svg" alt="" id="none-vs" />
+          <span>채팅할 상대를 선택해주세요</span>
+        </div>
+      </div>
+    </div>
+    <div id="temp">
+      PC알림을 허용하고, 알림창에서 새 메시지를 빠르게 확인해보세용
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
