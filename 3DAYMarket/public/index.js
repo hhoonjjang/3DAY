@@ -131,52 +131,55 @@ signOutBtn.onclick = async function () {
 
 let addItem = async function () {
   try {
-    const item = await axios.post("/api/item/add");
+    const item = await axios.get("/api/item/add", {});
     console.log(item);
   } catch (err) {
     console.error(err);
   }
 };
 addItem();
-// reverseBtn.ondblclick = function () {
-//   if (cookieR) {
+// reverseBtn.ondblclick = function(){
+//    if(cookieR){
 //     deleteCookie("reverse");
-//   } else {
-//     setCookie("reverse", 123, 1);
-//   }
-//   console.log(document.cookieReverse);
+//    }
+//    else{
+//     setCookie("reverse",123,1);
+//    }
+//     console.log(document.cookieReverse)
 
-//   document.body.classList.toggle("start");
-//   for (let i = 0; i < reverseImg.length; i++) {
-//     reverseImg[i].classList.toggle("start");
-//   }
-//   for (let i = 0; i < reverseBgc.length; i++) {
-//     reverseBgc[i].classList.toggle("start");
-//   }
-// };
-// const reverse = function () {
-//   if (cookieR) {
-//     document.body.classList.add("start");
-//     for (let i = 0; i < reverseImg.length; i++) {
-//       // console.log("reverseImg[i]")
-//       reverseImg[i].classList.add("start");
+//     document.body.classList.toggle("start");
+//     for(let i =0;i<reverseImg.length;i++){
+//         reverseImg[i].classList.toggle("start");
 //     }
-//     for (let i = 0; i < reverseBgc.length; i++) {
-//       // console.log("reverseImg[i]")
-//       reverseBgc[i].classList.add("start");
+//     for(let i =0;i<reverseBgc.length;i++){
+//         reverseBgc[i].classList.toggle("start");
 //     }
-//   } else {
-//     document.body.classList.remove("start");
-//     for (let i = 0; i < reverseImg.length; i++) {
-//       // console.log("reverseImg[i]")
-//       reverseImg[i].classList.remove("start");
+
+// }
+// const reverse = function(){
+//     if(cookieR){
+//         document.body.classList.add("start");
+//     for(let i =0;i<reverseImg.length;i++){
+//         // console.log("reverseImg[i]")
+//         reverseImg[i].classList.add("start");
 //     }
-//     for (let i = 0; i < reverseBgc.length; i++) {
-//       // console.log("reverseImg[i]")
-//       reverseBgc[i].classList.remove("start");
+//     for(let i =0;i<reverseBgc.length;i++){
+//         // console.log("reverseImg[i]")
+//         reverseBgc[i].classList.add("start");
 //     }
-//   }
-// };
+//     }
+//     else{
+//         document.body.classList.remove("start");
+//         for(let i =0;i<reverseImg.length;i++){
+//             // console.log("reverseImg[i]")
+//             reverseImg[i].classList.remove("start");
+//         }
+//         for(let i =0;i<reverseBgc.length;i++){
+//             // console.log("reverseImg[i]")
+//             reverseBgc[i].classList.remove("start");
+//         }
+//     }
+// }
 
 // reverse();
 

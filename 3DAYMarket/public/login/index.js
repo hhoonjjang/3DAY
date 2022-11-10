@@ -203,7 +203,8 @@ function start() {
     location.href = goPage;
   };
 
-  signUp.onclick = async function () {
+  signUp.onclick = async function (e) {
+    e.preventDefault();
     const checkUserName = checkusername.test(userName.value);
     const checkUserID = checkuserId.test(userId.value);
     const checkPassWord = checkpassword.test(userPassword.value);

@@ -120,7 +120,8 @@ let itemCondition;
 let itemTuning;
 let itemDealing;
 let itemImage;
-const imgArr = [];
+
+const imageArr = [];
 let getValue1 = async function () {};
 
 function getValue() {
@@ -151,6 +152,7 @@ function getValue() {
 }
 //
 
+let formData = new FormData();
 document.getElementById("submit-form").onsubmit = async function (e) {
   e.preventDefault();
   //
@@ -173,57 +175,40 @@ document.getElementById("submit-form").onsubmit = async function (e) {
     const itemTitle = titleInput.value;
     const itemPrice = Number(priceInput.value.replace(/,/g, ""));
     const itemSubtitle = subtitleTextarea.value;
-
     const uploadImgS = document.getElementById("img-uploader-label");
-    //
-    const result = await axios.post("/api/item/add", {
-      itemTitle: itemTitle,
-      itemPrice: itemPrice,
-      itemSubtitle: itemSubtitle,
-      itemCategories: itemCategories,
-      itemCondition: itemCondition,
-      itemTuning: itemTuning,
-      itemDealing: itemDealing,
-    });
-    console.log(result);
+    formData.append("itemTitle", itemTitle);
+    formData.append("itemPrice", itemPrice);
+    formData.append("itemSubtitle", itemSubtitle);
+    formData.append("itemCategories", itemCategories);
+    formData.append("itemCondition", itemCondition);
+    formData.append("itemTuning", itemTuning);
+    formData.append("itemDealing", itemDealing);
+
+    // const result = await axios.post("/api/item/add", {
+    //   itemImage: itemImage,
+    //   itemTitle: itemTitle,
+    //   itemPrice: itemPrice,
+    //   itemSubtitle: itemSubtitle,
+    //   itemCategories: itemCategories,
+    //   itemCondition: itemCondition,
+    //   itemTuning: itemTuning,
+    //   itemDealing: itemDealing,
+    // });
+    const img = await axios.post("/api/item/uploadFiles", formData);
   } catch (err) {
     console.error(err);
   }
 };
 //
 //
-// function createElement(e, file) {
-//   const div = document.createElement("div");
-//   const img = document.createElement("img");
-//   div.classList.add("img-block");
-//   img.setAttribute("src", e.target.result);
-//   img.setAttribute("data-file", file.name);
-//   div.appendChild(img);
-
-//   return div;
-// }
 
 function getImageFiles(e) {
-  itemImage = e.currentTarget.files;
-  console.log(itemImage);
-  // if ([...itemImage].length > 4 || [...itemImage].length == 0) {
-  //   alert("이미지를 1개부터 4개까지 업로드 해주세요");
-  //   return;
-  // }
-
-  // [...itemImage].forEach((file) => {
-  //   if (!file.type.match("image/.*")) {
-  //     alert("이미지 파일만 업로드 가능합니다");
-  //     return;
-  //   }
-  //   imgArr.push(file);
-  //   const reader = new FileReader();
-  //   reader.onload = (e) => {
-  //     const preview = createElement(e, file);
-  //     document.getElementById("img-box").appendChild(preview);
-  //   };
-  //   reader.readAsDataURL(file);
-  // });
+  itemImage = e.currentTarget.files[0];
+  formData.append("img", itemImage);
+  for (let value of formData.values()) {
+    console.log(value);
+    console.log(formData.get(value));
+  }
 }
 
 document

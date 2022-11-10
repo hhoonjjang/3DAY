@@ -79,6 +79,19 @@ input[type="text"] {
   margin-right: 10px;
   display: inline-flex;
   position: relative;
+  border: 1px dashed rgb(220, 219, 228);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50%;
+}
+.img-block:hover {
+  background-image: url(../image/xmark.svg);
+  opacity: 0.6;
+}
+
+.img-block:hover img {
+  opacity: 0.75;
+  cursor: pointer;
 }
 
 .img-block img {
