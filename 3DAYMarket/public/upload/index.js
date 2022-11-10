@@ -120,10 +120,7 @@ let itemCondition;
 let itemTuning;
 let itemDealing;
 let itemImage;
-
-const imgArr = [];
-let getValue1 = async function () {};
-
+const imageArr = [];
 
 function getValue() {
   const categoriesList = document.getElementsByName("categories");
@@ -154,7 +151,6 @@ function getValue() {
 //
 
 let formData = new FormData();
-
 document.getElementById("submit-form").onsubmit = async function (e) {
   e.preventDefault();
   //
@@ -172,45 +168,34 @@ document.getElementById("submit-form").onsubmit = async function (e) {
     alert("모든 입력을 완료해주세요");
     return;
   }
-
+  const itemTitle = titleInput.value;
+  const itemPrice = Number(priceInput.value.replace(/,/g, ""));
+  const itemSubtitle = subtitleTextarea.value;
+  formData.append("itemTitle", itemTitle);
+  formData.append("itemPrice", itemPrice);
+  formData.append("itemSubtitle", itemSubtitle);
+  formData.append("itemCategories", itemCategories);
+  formData.append("itemCondition", itemCondition);
+  formData.append("itemTuning", itemTuning);
+  formData.append("itemDealing", itemDealing);
 
   try {
-    const itemTitle = titleInput.value;
-    const itemPrice = Number(priceInput.value.replace(/,/g, ""));
-    const itemSubtitle = subtitleTextarea.value;
-    formData.append("itemTitle", itemTitle);
-    formData.append("itemPrice", itemPrice);
-    formData.append("itemSubtitle", itemSubtitle);
-    formData.append("itemCategories", itemCategories);
-    formData.append("itemCondition", itemCondition);
-    formData.append("itemTuning", itemTuning);
-    formData.append("itemDealing", itemDealing);
-    
-    
-
-    
-
     const result = await axios.post("/api/item/add", {
-      itemImage: itemImage,
-      itemTitle: itemTitle,
-      itemPrice: itemPrice,
-      itemSubtitle: itemSubtitle,
-      itemCategories: itemCategories,
-      itemCondition: itemCondition,
-      itemTuning: itemTuning,
-      itemDealing: itemDealing,
+      // itemTitle: itemTitle,
+      // itemPrice: itemPrice,
+      // itemSubtitle: itemSubtitle,
+      // itemCategories: itemCategories,
+      // itemCondition: itemCondition,
+      // itemTuning: itemTuning,
+      // itemDealing: itemDealing,
+      // itemImage: ,
     });
-    const img = await axios.post("/api/item/uploadFiles",formData);
-
-    console.log(result);
-
   } catch (err) {
     console.error(err);
   }
 };
 //
 //
-
 
 function getImageFiles(e) {
   itemImage = e.currentTarget.files[0];
@@ -219,7 +204,17 @@ function getImageFiles(e) {
     console.log(value);
   }
 
- 
+  // if (!itemImage.type.match("image/")) {
+  //   alert("이미지 파일만 업로드 가능합니다");
+  //   return;
+  // }
+  // const reader = new FileReader();
+  // reader.onload = (e) => {
+  //   const preview = createElement(e, itemImage);
+  //   document.getElementById("img-box").appendChild(preview);
+  // };
+  // reader.readAsDataURL(itemImage);
+  // imageArr.push(itemImage.name);
   console.log(itemImage);
   console.log(imageArr);
 }

@@ -326,3 +326,401 @@ textarea:focus,
   margin-left: 8px;
   color: rgb(155, 153, 169);
 }
+
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+
+body.start div {
+  font-family: "JSArirang-Regular";
+  font-size: 120%;
+}
+body.start .satan {
+  font-family: "satan";
+}
+
+.top-container {
+  width: 100%;
+  /* position: fixed; */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+  height: 100px;
+  background-color: rgb(245, 242, 250);
+  font-size: 16px;
+  opacity: 0.97;
+  z-index: 999;
+}
+
+.top-container,
+.footer-container,
+.footer-container ~ * {
+  font-weight: bold;
+}
+
+.top-container.start {
+  background-color: black;
+}
+
+.top-container div {
+  display: flex;
+}
+
+.home-box {
+  height: 100%;
+  margin-left: 100px;
+  display: flex;
+  align-items: center;
+}
+
+body.start .home-box {
+  margin-left: 0;
+}
+
+body.start .home-box div {
+  font-size: 100px;
+  color: white;
+}
+.home-box div {
+  height: 100%;
+  align-items: center;
+}
+
+.category-box {
+  margin: 0 20px;
+}
+.home-box div img:first-child {
+  height: 130%;
+}
+
+.home-box div img:last-child {
+  height: 90%;
+}
+
+.category-box a {
+  cursor: pointer;
+  width: 100px;
+}
+
+body.start .category-box a {
+  color: white;
+}
+
+.category-box a:hover {
+  color: gray;
+}
+
+.user-box {
+  margin: 0 20px;
+  align-items: center;
+}
+
+.user-box button {
+  cursor: pointer;
+  padding: 10;
+  margin: 0 10;
+  width: 100px;
+  border-radius: 10px;
+  border: none;
+  background-color: #ffead8;
+  font-family: "maple-bold";
+  font-size: 14px;
+}
+
+body.start .user-box button {
+  background-color: black;
+  color: white;
+  font-family: "JSArirang-Regular";
+  font-size: 120%;
+}
+
+.user-box button:hover {
+  background-color: #ffd4d1;
+}
+
+.user-box a {
+  cursor: pointer;
+  padding: 10px;
+  margin: 0 10px;
+  width: 100px;
+  border-radius: 10px;
+  border: none;
+  background-color: #ffead8;
+  font-size: 14px;
+  font-family: "maple-bold";
+  text-align: center;
+}
+
+body.start .user-box a {
+  background-color: black;
+  color: white;
+  font-family: "JSArirang-Regular";
+  font-size: 120%;
+}
+
+.user-box a:hover {
+  background-color: #ffd4d1;
+}
+
+#sign-in.off,
+#sign-up.off {
+  display: none;
+}
+
+#sign-out,
+#item-upload,
+#user-info {
+  display: none;
+}
+
+#sign-out.on,
+#item-upload.on,
+#user-info.on {
+  display: block;
+}
+
+#chatting {
+  display: none;
+}
+
+#chatting.on {
+  display: block;
+}
+
+#loginDisplay {
+  width: 150px;
+  align-items: center;
+  display: none;
+}
+#loginDisplay div:first-child {
+  margin-left: 20px;
+}
+
+#search {
+  background-color: lightgray;
+  padding: 10px;
+  width: 250px;
+  border: none;
+  border-radius: 10px;
+  font-family: arial;
+}
+
+.home-second {
+  width: 100%;
+  height: 724px;
+  padding-top: 100px;
+  background-color: rgb(238, 254, 255);
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-second div div:first-child {
+  font-size: 2.5rem;
+}
+
+.div-img {
+  width: fit-content;
+  border-radius: 15px;
+  margin-right: 10rem;
+}
+
+.reverse img:first-child {
+  display: block;
+}
+
+.reverse.start img:first-child {
+  display: none;
+}
+
+.reverse img:last-child {
+  display: none;
+}
+
+.reverse.start img:last-child {
+  display: block;
+}
+
+.home-second div img {
+  width: 400px;
+  height: 500px;
+  border-radius: 15px;
+  filter: drop-shadow(5px 5px 10px #8abbff);
+}
+
+.home-first div img {
+  width: 400px;
+  height: 500px;
+  border-radius: 15px;
+  filter: drop-shadow(5px 5px 10px #f98f68);
+}
+
+.btnbox {
+  padding-top: 30px;
+}
+
+.btnbox button {
+  border: none;
+  background-color: lightgray;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+.btnbox button:hover {
+  background-color: gray;
+}
+.home-first {
+  width: 100%;
+
+  height: 724px;
+  background-color: rgb(254, 240, 214);
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 100px;
+}
+
+.home-first div:first-child {
+  margin-right: 150px;
+}
+
+.home-first div div:first-child {
+  font-size: 2.5rem;
+}
+
+body.start .home-first div div:first-child {
+  font-size: 250%;
+  line-height: 50px;
+  margin-bottom: 30px;
+}
+
+.bgc.start {
+  background-color: black;
+  color: white;
+}
+
+#invert {
+  filter: invert(100%);
+}
+
+#reverse img {
+  width: 120px;
+}
+
+#reverse.start img {
+  width: 80px;
+  margin-right: 30px;
+}
+
+#item-board-title {
+  font-size: 100px;
+  text-align: center;
+  padding: 100px;
+}
+
+.item-category-box {
+  display: flex;
+  padding: 50px;
+  justify-content: flex-end;
+}
+
+select {
+  margin: 10px;
+  width: 250px;
+  height: 50px;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.item-board-display {
+  width: 1400px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  margin: auto;
+}
+
+.item {
+  margin-bottom: 50px;
+  width: calc(25% - 40px);
+}
+
+.item-board.bgc.start a {
+  color: white;
+}
+
+.item-link {
+  width: 100%;
+}
+
+.item-top {
+  width: 300px;
+  height: 300px;
+}
+
+.item-top .item-img img {
+  width: 80%;
+  height: 100%;
+}
+
+.item-bottom {
+  display: flex;
+}
+
+.item-title {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  margin-top: 100px;
+  margin-bottom: 150px;
+}
+
+.footer-container img {
+  width: 150px;
+}
+
+#spantext {
+  border-top: 1px var black;
+  text-align: center;
+}
+
+body.start .footer-container {
+  font-size: 200px;
+}
+
+body.start .footer-container #invert {
+  width: 500px;
+  display: none;
+}
+
+section {
+  padding: 20px;
+  text-align: center;
+}
+
+section a {
+  margin: 0 10px;
+}
