@@ -173,10 +173,14 @@ document.getElementById("submit-form").onsubmit = async function (e) {
     const itemTitle = titleInput.value;
     const itemPrice = Number(priceInput.value.replace(/,/g, ""));
     const itemSubtitle = subtitleTextarea.value;
-
     const uploadImgS = document.getElementById("img-uploader-label");
-    //
+    
+    
+
+    
+
     const result = await axios.post("/api/item/add", {
+      itemImage: itemImage,
       itemTitle: itemTitle,
       itemPrice: itemPrice,
       itemSubtitle: itemSubtitle,
@@ -185,6 +189,8 @@ document.getElementById("submit-form").onsubmit = async function (e) {
       itemTuning: itemTuning,
       itemDealing: itemDealing,
     });
+    const img = await axios.post("/api/item/uploadFiles",formData);
+
     console.log(result);
   } catch (err) {
     console.error(err);
@@ -202,11 +208,21 @@ document.getElementById("submit-form").onsubmit = async function (e) {
 
 //   return div;
 // }
+let formData = new FormData();
 
 function getImageFiles(e) {
-  itemImage = e.currentTarget.files;
+
+  itemImage = e.currentTarget.files[0];
   console.log(itemImage);
+  formData.append("img",itemImage);
+  for(let value of formData.values()){
+    console.log(value);
+    console.log(formData.get(value));
+    
+  }
+
   // if ([...itemImage].length > 4 || [...itemImage].length == 0) {
+
   //   alert("이미지를 1개부터 4개까지 업로드 해주세요");
   //   return;
   // }
