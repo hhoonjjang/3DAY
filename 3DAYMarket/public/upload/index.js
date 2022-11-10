@@ -121,9 +121,8 @@ let itemTuning;
 let itemDealing;
 let itemImage;
 
-const imgArr = [];
+const imageArr = [];
 let getValue1 = async function () {};
-
 
 function getValue() {
   const categoriesList = document.getElementsByName("categories");
@@ -154,7 +153,6 @@ function getValue() {
 //
 
 let formData = new FormData();
-
 document.getElementById("submit-form").onsubmit = async function (e) {
   e.preventDefault();
   //
@@ -173,11 +171,11 @@ document.getElementById("submit-form").onsubmit = async function (e) {
     return;
   }
 
-
   try {
     const itemTitle = titleInput.value;
     const itemPrice = Number(priceInput.value.replace(/,/g, ""));
     const itemSubtitle = subtitleTextarea.value;
+    const uploadImgS = document.getElementById("img-uploader-label");
     formData.append("itemTitle", itemTitle);
     formData.append("itemPrice", itemPrice);
     formData.append("itemSubtitle", itemSubtitle);
@@ -185,25 +183,18 @@ document.getElementById("submit-form").onsubmit = async function (e) {
     formData.append("itemCondition", itemCondition);
     formData.append("itemTuning", itemTuning);
     formData.append("itemDealing", itemDealing);
-    
-    
 
-    
-
-    const result = await axios.post("/api/item/add", {
-      itemImage: itemImage,
-      itemTitle: itemTitle,
-      itemPrice: itemPrice,
-      itemSubtitle: itemSubtitle,
-      itemCategories: itemCategories,
-      itemCondition: itemCondition,
-      itemTuning: itemTuning,
-      itemDealing: itemDealing,
-    });
-    const img = await axios.post("/api/item/uploadFiles",formData);
-
-    console.log(result);
-
+    // const result = await axios.post("/api/item/add", {
+    //   itemImage: itemImage,
+    //   itemTitle: itemTitle,
+    //   itemPrice: itemPrice,
+    //   itemSubtitle: itemSubtitle,
+    //   itemCategories: itemCategories,
+    //   itemCondition: itemCondition,
+    //   itemTuning: itemTuning,
+    //   itemDealing: itemDealing,
+    // });
+    const img = await axios.post("/api/item/uploadFiles", formData);
   } catch (err) {
     console.error(err);
   }
@@ -211,17 +202,13 @@ document.getElementById("submit-form").onsubmit = async function (e) {
 //
 //
 
-
 function getImageFiles(e) {
   itemImage = e.currentTarget.files[0];
   formData.append("img", itemImage);
   for (let value of formData.values()) {
     console.log(value);
+    console.log(formData.get(value));
   }
-
- 
-  console.log(itemImage);
-  console.log(imageArr);
 }
 
 document
