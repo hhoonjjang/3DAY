@@ -14,7 +14,7 @@
     onselectstart="return false"
     ondragstart="return false"
   >
-    <form id="submit-form" enctype="multipart/form-data">
+    <form action="uploadFiles" method="post" id="submit-form" enctype="multipart/form-data">
       <div>
         <div class="main-colum" id="">
           <div class="img-div main-colum-items">
@@ -28,7 +28,6 @@
                 type="file"
                 accept="image/*"
                 name="img"
-                multiple
               />
             </div>
           </div>
@@ -41,6 +40,7 @@
                 placeholder="상품 제목을 입력해주세요."
                 autocomplete="off"
                 spellcheck="false"
+                name="title-input"
               />
             </div>
             <div id="title-guide" class="guide display-none">
@@ -187,6 +187,7 @@
               <input
                 type="text"
                 id="price-input"
+                name="price-input"
                 autocomplete="off"
                 placeholder="숫자만 입력해주세요."
               /><span>원</span>
@@ -199,7 +200,7 @@
             <div class="main-colum-left">설명</div>
             <div class="main-colum-right">
               <textarea
-                name=""
+                name="subtitle-textarea"
                 id="subtitle-textarea"
                 cols="30"
                 rows="10"
