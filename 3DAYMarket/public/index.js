@@ -10,7 +10,8 @@ const reverseBgc = [...document.getElementsByClassName("bgc")];
 const loginDisplay = document.getElementById("loginDisplay");
 let date = new Date();
 const address = "http://localhost:8080/items/";
-const region = async function getItem() {
+
+async function getItem() {
   try {
     const item = (await axios.get("/api/item/")).data;
     console.log(item);
@@ -69,7 +70,7 @@ const region = async function getItem() {
   } catch (err) {
     console.error(err);
   }
-};
+}
 
 getItem();
 let setCookie = function (name, value, exp) {
