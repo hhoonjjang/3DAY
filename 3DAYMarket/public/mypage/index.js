@@ -80,6 +80,8 @@ let deleteCookie = function (name) {
 };
 
 const login = async function () {
+  console.log("asd");
+  console.log(cookieArray[cookieCIndex]);
   if (cookieArray[cookieCIndex]) {
     try {
       const result = await axios.post("/api/user/cookie", {
@@ -92,7 +94,6 @@ const login = async function () {
       console.log(result.data.name);
       const login = document.createElement("div");
       login.innerText = `${result.data.name}님 어서오세요!`;
-      document.getElementById("user-name").innerText = result.data.name;
       loginDisplay.style.display = "block";
       document.getElementById("loginDisplay").append(login);
       signInBtn.classList.add("off");
