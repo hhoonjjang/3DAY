@@ -73,7 +73,7 @@ span {
 
 #vs-chat-zone {
   list-style: none;
-  padding-left: 35px;
+  padding-left: 25px;
   overflow: hidden auto;
   height: 400px;
   padding-right: 20px;
@@ -195,6 +195,7 @@ h3 {
   border: none;
   outline: none;
   padding: 12px 12px 0;
+  resize: none;
 }
 
 #msg-zone {
