@@ -120,10 +120,7 @@ let itemCondition;
 let itemTuning;
 let itemDealing;
 let itemImage;
-
-
 const imageArr = [];
-let getValue1 = async function () {};
 
 function getValue() {
   const categoriesList = document.getElementsByName("categories");
@@ -171,32 +168,28 @@ document.getElementById("submit-form").onsubmit = async function (e) {
     alert("모든 입력을 완료해주세요");
     return;
   }
+  const itemTitle = titleInput.value;
+  const itemPrice = Number(priceInput.value.replace(/,/g, ""));
+  const itemSubtitle = subtitleTextarea.value;
+  formData.append("itemTitle", itemTitle);
+  formData.append("itemPrice", itemPrice);
+  formData.append("itemSubtitle", itemSubtitle);
+  formData.append("itemCategories", itemCategories);
+  formData.append("itemCondition", itemCondition);
+  formData.append("itemTuning", itemTuning);
+  formData.append("itemDealing", itemDealing);
 
   try {
-    const itemTitle = titleInput.value;
-    const itemPrice = Number(priceInput.value.replace(/,/g, ""));
-    const itemSubtitle = subtitleTextarea.value;
-    const uploadImgS = document.getElementById("img-uploader-label");
-    formData.append("itemTitle", itemTitle);
-    formData.append("itemPrice", itemPrice);
-    formData.append("itemSubtitle", itemSubtitle);
-    formData.append("itemCategories", itemCategories);
-    formData.append("itemCondition", itemCondition);
-    formData.append("itemTuning", itemTuning);
-    formData.append("itemDealing", itemDealing);
-
-    // const result = await axios.post("/api/item/add", {
-    //   itemImage: itemImage,
-    //   itemTitle: itemTitle,
-    //   itemPrice: itemPrice,
-    //   itemSubtitle: itemSubtitle,
-    //   itemCategories: itemCategories,
-    //   itemCondition: itemCondition,
-    //   itemTuning: itemTuning,
-    //   itemDealing: itemDealing,
-    // });
-    const img = await axios.post("/api/item/uploadFiles", formData);
-
+    const result = await axios.post("/api/item/add", {
+      // itemTitle: itemTitle,
+      // itemPrice: itemPrice,
+      // itemSubtitle: itemSubtitle,
+      // itemCategories: itemCategories,
+      // itemCondition: itemCondition,
+      // itemTuning: itemTuning,
+      // itemDealing: itemDealing,
+      // itemImage: ,
+    });
   } catch (err) {
     console.error(err);
   }
@@ -209,9 +202,7 @@ function getImageFiles(e) {
   formData.append("img", itemImage);
   for (let value of formData.values()) {
     console.log(value);
-    console.log(formData.get(value));
   }
-
 
   // if (!itemImage.type.match("image/")) {
   //   alert("이미지 파일만 업로드 가능합니다");
@@ -226,7 +217,6 @@ function getImageFiles(e) {
   // imageArr.push(itemImage.name);
   console.log(itemImage);
   console.log(imageArr);
-
 }
 
 document

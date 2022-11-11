@@ -12,10 +12,75 @@
     onselectstart="return false"
     ondragstart="return false"
   >
+    <div class="top-container bgc">
+      <a class="home-box" href="/">
+        <div class="reverse">
+          <img src="../image/logo-front.png" alt="" />
+          <img src="../image/logo-back.png" alt="" id="invert" />
+        </div>
+        <div class="satan">3DAYMarket</div>
+      </a>
+      <div class="category-box">
+        <a id="new-trade" href="./newtrade">신품거래</a>
+        <a id="user-trade" href="./usedtrade">중고거래</a>
+      </div>
+
+      <div class="user-box">
+        <div id="searchBox">
+          <input
+            text="text"
+            id="search"
+            placeholder="물품이나 동네를 검색해보세요"
+          />
+        </div>
+        <div id="loginDisplay"></div>
+        <!-- <button id ="sign-in">로그인</button> -->
+        <a id="sign-in" href="./login">로그인</a>
+        <!-- <button id ="sign-up">회원가입</button> -->
+        <button id="sign-out">로그아웃</button>
+        <a id="chatting" href="./chatting">채팅하기</a>
+        <a id="item-upload" href="./upload">물품등록</a>
+        <a id="user-info" href="./mypage">마이페이지</a>
+      </div>
+      <div class="reverse" id="reverse">
+        <img src="../image/logo-front1.png" alt="" />
+        <img src="../image/logo-back1.png" alt="" />
+      </div>
+    </div>
     <div>
       <div class="main-colum">
         <div class="info-div">
           <div class="info-div-rel">
+            <ul class="info-div-slide">
+              <li class="info-div-slide-item">
+                <img id="img1" />
+              </li>
+              <li class="info-div-slide-item">
+                <img id="img2" />
+              </li>
+              <li class="info-div-slide-item">
+                <img id="img3" />
+              </li>
+              <li class="info-div-slide-item">
+                <img id="img4" />
+              </li>
+              <div class="arrow">
+                <img
+                  class="left"
+                  src="../image/left.png"
+                  onclick="moveLeft()"
+                />
+                <img
+                  class="right"
+                  src="../image/right.png"
+                  onclick="moveRight()"
+                />
+              </div>
+            </ul>
+            <!-- <input type="radio" name="item-slide" id="item-slide01" checked />
+            <input type="radio" name="item-slide" id="item-slide02" />
+            <input type="radio" name="item-slide" id="item-slide03" />
+            <input type="radio" name="item-slide" id="item-slide04" />
             <ul class="info-div-slide">
               <li class="info-div-slide-item">
                 <img src="../image/1.png" alt="" />
@@ -31,10 +96,6 @@
               </li>
             </ul>
             <div class="item-slide-div">
-              <input type="radio" name="item-slide" id="item-slide01" checked />
-              <input type="radio" name="item-slide" id="item-slide02" />
-              <input type="radio" name="item-slide" id="item-slide03" />
-              <input type="radio" name="item-slide" id="item-slide04" />
               <div class="item-slide-div-label">
                 <div class="control1">
                   <label for="item-slide04" class="left"></label
@@ -53,7 +114,7 @@
                   ><label for="item-slide01" class="right"></label>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
           <div class="info-div-info">
             <div class="info-div-info-head">
@@ -107,7 +168,7 @@
         <div class="read-more-div">
           <span>상세정보</span>
           <div class="read-more-div-inner">
-            <div class="read-more-div-inner-text">내용</div>
+            <div id="subtitle-text"></div>
           </div>
           <div class="read-more-div-banner">
             <input type="radio" name="slide" id="slide01" checked />
@@ -181,6 +242,35 @@
         </div>
       </div>
     </div>
+    <div class="footer-container">
+      <div class="reverse">
+        <img src="../image/logo-front.png" alt="" />
+        <img src="../image/logo-back.png" alt="" id="invert" />
+      </div>
+      <div class="satan">3DAYMarket</div>
+    </div>
+    <div id="spantext">
+      <span>대표 정재훈 ㅣ 사업자번호 022-11-16</span>
+    </div>
+    <div id="spantext">
+      <span>주소 서울특별시 강동구 651 올림픽로 4층</span>
+    </div>
+    <div id="spantext">
+      <span>전화 02-479-4050 ㅣ 고객문의 hhoonjjang@google.com</span>
+    </div>
+
+    <section>
+      <a href="">제휴 문의</a>
+      <a href="">광고 문의</a>
+      <a href="">PR 문의</a>
+      <a href="">IR 문의</a>
+    </section>
+    <section>
+      <a href="">이용약관</a>
+      <a href="">개인정보처리방침</a>
+      <a href="">위치기반서비스 이용약관</a>
+      <a href="">이용자보호 비전과 계획</a>
+    </section>
     <script src="index.js"></script>
   </body>
 </html>
