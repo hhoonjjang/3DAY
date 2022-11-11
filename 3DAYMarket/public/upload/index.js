@@ -1,3 +1,20 @@
+// 코드 리펙토링 해야함, 한번에 하려면 꼬일수 있으니 미리 해놓자
+
+// 빈 입력값 예외처리 -> 알럿 말고 온포커스로 변경
+
+// oninput 컨트롤 + 백스페이스 지울때, 컨트롤 + C 로 입력할때 등 예외처리 구현 필요
+// 가이드 버티컬 얼라인 미들(처럼 보이게) 구현 필요
+// 가격 한글병행표시기능 추가
+// 프라이스인풋 투로케일스트링 했을때 1조?? 넘어가면 이상하게 표시됨, 예외처리해서 막던가, 제대로 표시되게 조치해야함
+// 공백 예외처리 필요
+
+// 백엔드 관련
+// 카테고리 설정을 해주세요 (빈 내용 예외처리)
+// 라우터이름 upload
+// 등록하기 >>>> 서버전송
+// [이미지 등록시 페이지에 보이기, 최소한에 표시라도]
+
+//
 let isTitleTrue;
 let isPriceTrue;
 let isSubtitleTrue;
@@ -188,11 +205,8 @@ let itemCondition;
 let itemTuning;
 let itemDealing;
 let itemImage;
-
 let itemLocal;
-
 const imageArr = [];
-let getValue1 = async function () {};
 
 function getValue() {
   const categoriesList = document.getElementsByName("categories");
@@ -264,6 +278,7 @@ document.getElementById("submit-form").onsubmit = async function (e) {
     return;
   }
 
+
   try {
     const itemTitle = titleInput.value;
     const itemPrice = Number(priceInput.value.replace(/,/g, ""));
@@ -294,6 +309,7 @@ document.getElementById("submit-form").onsubmit = async function (e) {
     }
   } catch (err) {
     console.error(err);
+
   }
 
   // try {
@@ -313,14 +329,78 @@ document.getElementById("submit-form").onsubmit = async function (e) {
 };
 //
 //
+// 1개의 이미지올림 >> 어펜드추가, 배열추가, 프리뷰하나추가
+// 1개의 이미지삭제 >> 어펜드리셋, 배열내 아이템 1개 삭제, 배열forEach해서 모든 배열의값을 어펜드, 프리뷰하나삭제
+function createElement(e, file) {
+  const div = document.createElement("div");
+  const img = document.createElement("img");
+  div.classList.add("img-block");
+  img.setAttribute("src", e.target.result);
+  img.setAttribute("data-file", file.name);
+  div.appendChild(img);
+  div.onclick = () => {
+    deleteImageFiles(file.name);
+    div.classList.add("display-none");
+  };
 
+  return div;
+}
+
+let stopper = false;
 function getImageFiles(e) {
+  for (let i = 0; i < imageArr.length; i++) {
+    if (imageArr[i].name == e.currentTarget.files[0].name) {
+      stopper = true;
+    }
+  }
+  if (!e.currentTarget.files[0].type.match("image/")) {
+    alert("이미지 파일만 업로드 가능합니다");
+    e.target.value = "";
+    return;
+  } else if (imageArr.length > 3) {
+    alert("4개 까지만 업로드가 가능합니다");
+    e.target.value = "";
+    return;
+  } else if (stopper) {
+    alert("중복된 파일은 업로드가 불가능합니다");
+    e.target.value = "";
+    stopper = false;
+    return;
+  }
   itemImage = e.currentTarget.files[0];
   formData.append("img", itemImage);
-  for (let value of formData.values()) {
-    console.log(value);
-    console.log(formData.get(value));
+  imageArr.push(itemImage);
+  // for (let value of formData.values()) {
+  //   console.log(value);
+  // }
+
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    const preview = createElement(e, itemImage);
+    document.getElementById("img-box").appendChild(preview);
+  };
+  reader.readAsDataURL(itemImage);
+  // console.log(imageArr);
+  e.target.value = "";
+}
+
+function deleteImageFiles(e) {
+  formData.delete("img");
+  for (let i = 0; i < imageArr.length; i++) {
+    if (imageArr[i].name == e) {
+      imageArr.splice(imageArr[i], 1);
+      imageArr.forEach((elem) => {
+        formData.append("img", elem);
+      });
+      // for (let value of formData.values()) {
+      //   console.log(value);
+      // }
+    }
   }
+  // for (let value of formData.values()) {
+  //   console.log(value);
+  // }
+  // console.log(imageArr);
 }
 
 document
