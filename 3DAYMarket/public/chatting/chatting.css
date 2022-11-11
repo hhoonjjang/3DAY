@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 35px 1px 35px 1px;
+  padding: 10px 1px 35px 1px;
 }
 
 #vs-info {
@@ -203,11 +203,14 @@ h3 {
   padding: 5px;
 }
 
-button {
+.buttonColorWhite {
   border: none;
   border-radius: 5px;
   color: white;
   background-color: #5ed5f3;
+}
+#msg-input {
+  height: 120px;
 }
 
 #msg-submit {

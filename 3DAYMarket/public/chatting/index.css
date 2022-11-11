@@ -397,11 +397,11 @@ body.start .user-box a {
   display: block;
 }
 
-#chatting {
+#chattinging {
   display: none;
 }
 
-#chatting.on {
+#chattinging.on {
   display: block;
 }
 

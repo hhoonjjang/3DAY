@@ -212,15 +212,33 @@ const createOneChat = function (data) {
 };
 
 const deletedouble = function () {
-  const vsNameList = document.getElementsByClassName("vs-name");
-  const vsChat = document.getElementsByClassName("one-chat");
-  console.log("test딜리트");
+  let vsNameList = document.getElementsByClassName("vs-name");
+  let nameNum = vsNameList.length;
+  let vsChat = document.getElementsByClassName("one-chat");
+  let chatNum = vsChat.length;
 
-  for (let i = vsNameList.length - 1; i > 0; i--) {
-    for (let j = 0; j < vsNameList.length - 1; j++) {
+  console.log(vsNameList[2].innerText);
+  const tempNum = [];
+  for (let i = nameNum - 1; i >= 0; i--) {
+    for (let j = i - 1; j >= 0; j--) {
       if (vsNameList[i].innerText == vsNameList[j].innerText) {
         // vsChat[j].remove();
+        tempNum.push(j);
+        // console.log("asd");
       }
     }
+  }
+  tempNum.sort();
+  console.log(tempNum);
+  let count = 0;
+  for (let m = 0, n = 1; m < tempNum.length; m++, n++) {
+    let tempN = tempNum[m];
+
+    if (count != 0) {
+      tempN = tempN - 1 * m;
+    } else {
+      count++;
+    }
+    vsChat[tempN].remove();
   }
 };
