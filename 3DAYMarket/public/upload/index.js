@@ -179,20 +179,19 @@ document.getElementById("submit-form").onsubmit = async function (e) {
     return;
   }
 
-
   try {
     const itemTitle = titleInput.value;
     const itemPrice = Number(priceInput.value.replace(/,/g, ""));
     const itemSubtitle = subtitleTextarea.value;
     const uploadImgS = document.getElementById("img-uploader-label");
     formData.append("itemTitle", itemTitle);
+    formData.append("itemLocal", itemLocal);
     formData.append("itemPrice", itemPrice);
     formData.append("itemSubtitle", itemSubtitle);
     formData.append("itemCategories", itemCategories);
     formData.append("itemCondition", itemCondition);
     formData.append("itemTuning", itemTuning);
     formData.append("itemDealing", itemDealing);
-
     // const result = await axios.post("/api/item/add", {
     //   itemImage: itemImage,
     //   itemTitle: itemTitle,
@@ -204,9 +203,12 @@ document.getElementById("submit-form").onsubmit = async function (e) {
     //   itemDealing: itemDealing,
     // });
     const img = await axios.post("/api/item/uploadFiles", formData);
+    if (img) {
+      alert("성공적으로 상품이 등록되었습니다.");
+      location.href = "http://localhost:8080/";
+    }
   } catch (err) {
     console.error(err);
-
   }
 
   // try {

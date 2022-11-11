@@ -107,6 +107,7 @@ router.post(
       itemDealing,
       itemPrice,
       itemSubtitle,
+      itemLocal,
     } = req.body;
     const tempUser = await User.findOne({
       where: {
@@ -123,6 +124,7 @@ router.post(
       itemDealing: itemDealing,
       itemPrice: itemPrice,
       itemSubtitle: itemSubtitle,
+      itemLocal: itemLocal,
     });
     // await Item.findOne({ where: { id: req.body.id } });
     tempUser.addItem(tempItem);
@@ -180,6 +182,14 @@ router.get("/selectkind", async (req, res) => {
 router.get("/selectlocal", async (req, res) => {
   const local = req.query.local;
   console.log(local);
+  const tempItem = await Item.findAll({
+    where: {
+      itemLocal: local,
+    },
+    order: [["id", "DESC"]],
+    include: { model: User },
+  });
+  res.send({ tempItem });
 });
 
 router.get("/selecttrade", async (req, res) => {

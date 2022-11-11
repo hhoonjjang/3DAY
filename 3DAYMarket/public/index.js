@@ -311,6 +311,55 @@ async function itemCategoryLocal() {
   const item = (
     await axios.get("/api/item/selectlocal?local=" + selectLocalValue)
   ).data.tempItem;
+  divItemBoard.innerHTML = "";
+  item.forEach((item) => {
+    const articleItem = document.createElement("article");
+    const aItem = document.createElement("a");
+    const divItemTop = document.createElement("div");
+    const divItemImg = document.createElement("div");
+    const imgItem = document.createElement("img");
+    const divItemMiddle = document.createElement("div");
+    const divItemTitle = document.createElement("div");
+    const divItemPrice = document.createElement("div");
+    const divItemLocal = document.createElement("div");
+    const divItemBottom = document.createElement("div");
+    const divItemFocus = document.createElement("div");
+    const divItemBorderdot = document.createElement("div");
+    const divItemCountingView = document.createElement("div");
+    articleItem.classList.add("item");
+    aItem.classList.add("item-link");
+    aItem.href = `${address}${item.id}`;
+    divItemTop.classList.add("item-top");
+    divItemImg.classList.add("item-img");
+    imgItem.src = `../uploadedItems/${item?.imgArr?.split("-*,")[0]}`;
+    divItemMiddle.classList.add("item-middle");
+    divItemTitle.classList.add("item-title");
+    divItemTitle.innerText = item.itemTitle;
+    divItemPrice.classList.add("item-price");
+    divItemPrice.innerText = item.itemPrice;
+    divItemLocal.classList.add("item-local");
+    divItemLocal.innerText = item.User.userLocal;
+    divItemBottom.classList.add("item-bottom");
+    divItemFocus.classList.add("item-focus");
+    divItemFocus.innerText = `관심 ${10}`;
+    divItemBorderdot.classList.add("border-dot");
+    divItemBorderdot.innerText = "！";
+    divItemCountingView.classList.add("item-countingview");
+    divItemCountingView.innerText = `채팅 ${78}`;
+    divItemBoard.appendChild(articleItem);
+    articleItem.appendChild(aItem);
+    aItem.appendChild(divItemTop);
+    aItem.appendChild(divItemMiddle);
+    aItem.appendChild(divItemBottom);
+    divItemTop.appendChild(divItemImg);
+    divItemImg.appendChild(imgItem);
+    divItemMiddle.appendChild(divItemTitle);
+    divItemMiddle.appendChild(divItemPrice);
+    divItemMiddle.appendChild(divItemLocal);
+    divItemBottom.appendChild(divItemFocus);
+    divItemBottom.appendChild(divItemBorderdot);
+    divItemBottom.appendChild(divItemCountingView);
+  });
 }
 
 async function itemCategoryTrade() {
