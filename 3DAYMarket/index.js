@@ -9,7 +9,7 @@ const morgan = require("morgan");
 const { sequelize } = require("./models/index.js");
 const routes = require("./routes/index.js");
 const socket = require("./socket.js");
-
+const fs = require("fs");
 const db = require("./models/index.js");
 
 dotenv.config();
@@ -38,7 +38,12 @@ app.use(
     name: "seed",
   })
 );
-
+app.get("/serverImg", async (req, res) => {
+  const tempItem = await Item.findAll({
+    order: [["id", "DESC"]],
+    include: { model: User },
+  });
+});
 app.use("/api", routes);
 
 sequelize
