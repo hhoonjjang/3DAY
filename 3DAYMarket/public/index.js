@@ -10,7 +10,7 @@ const reverseBgc = [...document.getElementsByClassName("bgc")];
 const loginDisplay = document.getElementById("loginDisplay");
 const divItemBoard = document.getElementById("item-board-display");
 let date = new Date();
-const address = "http://localhost:8080/items/";
+const address = "http://localhost:8080/items?name=";
 
 async function getItem() {
   try {

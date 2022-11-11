@@ -205,4 +205,17 @@ router.get("/selecttrade", async (req, res) => {
   res.send({ tempItem });
 });
 
+router.get("/detail", async (req, res) => {
+  const itemIndex = req.query.itemIndex;
+  console.log("detail");
+  console.log(itemIndex);
+  const tempItem = await Item.findOne({
+    where: {
+      id: itemIndex,
+    },
+  });
+  res.send({ tempItem });
+  // const tempItem = await Item.findOne;
+});
+
 module.exports = router;
