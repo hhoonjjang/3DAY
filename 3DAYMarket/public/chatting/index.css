@@ -5,6 +5,10 @@
 html {
   font-family: "maple-bold";
 }
+a {
+  text-decoration: none;
+  color: black;
+}
 
 #main-box {
   max-width: 1200px;
