@@ -104,6 +104,8 @@ let itemTuning;
 let itemDealing;
 let itemImage;
 
+let itemLocal;
+
 const imageArr = [];
 let getValue1 = async function () {};
 
@@ -132,6 +134,28 @@ function getValue() {
       itemDealing = elem.id;
     }
   });
+  const localList = document.getElementsByName("local");
+  localList.forEach((elem) => {
+    if (elem.checked) {
+      if (elem.id == "local-seoul") itemLocal = "서울특별시";
+      else if (elem.id == "local-busan") itemLocal = "부산광역시";
+      else if (elem.id == "local-daegu") itemLocal = "대구광역시";
+      else if (elem.id == "local-incheon") itemLocal = "인천광역시";
+      else if (elem.id == "local-gwangju") itemLocal = "광주광역시";
+      else if (elem.id == "local-daejeon") itemLocal = "대전광역시";
+      else if (elem.id == "local-ulssan") itemLocal = "울산광역시";
+      else if (elem.id == "local-sejong") itemLocal = "세종특별자치시";
+      else if (elem.id == "local-gyungki") itemLocal = "경기도";
+      else if (elem.id == "local-gangwon") itemLocal = "강원도";
+      else if (elem.id == "local-chungbuk") itemLocal = "충청북도";
+      else if (elem.id == "local-chungnam") itemLocal = "충청남도";
+      else if (elem.id == "local-jeonbuk") itemLocal = "전라북도";
+      else if (elem.id == "local-jeonnam") itemLocal = "전라남도";
+      else if (elem.id == "local-gyungbuk") itemLocal = "경상북도";
+      else if (elem.id == "local-gyungnam") itemLocal = "경상남도";
+      else if (elem.id == "local-jeju") itemLocal = "제주특별자치도";
+    }
+  });
 }
 //
 
@@ -148,11 +172,13 @@ document.getElementById("submit-form").onsubmit = async function (e) {
     !isTitleTrue ||
     !isPriceTrue ||
     !isSubtitleTrue ||
+    !itemLocal ||
     !itemImage
   ) {
     alert("모든 입력을 완료해주세요");
     return;
   }
+
 
   try {
     const itemTitle = titleInput.value;
@@ -180,7 +206,23 @@ document.getElementById("submit-form").onsubmit = async function (e) {
     const img = await axios.post("/api/item/uploadFiles", formData);
   } catch (err) {
     console.error(err);
+
   }
+
+  // try {
+  //   const result = await axios.post("/api/item/add", {
+  //     itemTitle: itemTitle,
+  //     itemPrice: itemPrice,
+  //     itemSubtitle: itemSubtitle,
+  //     itemCategories: itemCategories,
+  //     itemCondition: itemCondition,
+  //     itemTuning: itemTuning,
+  //     itemDealing: itemDealing,
+  //     itemImage: ,
+  //   });
+  // } catch (err) {
+  //   console.error(err);
+  // }
 };
 //
 //

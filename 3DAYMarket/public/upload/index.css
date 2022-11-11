@@ -107,6 +107,20 @@ input[type="text"] {
   flex-wrap: wrap;
 }
 
+.main-colum-items.local {
+  flex-wrap: nowrap;
+}
+
+.main-colum-right-inner div {
+  display: flex;
+}
+
+.local-div.main-colum-items.local .main-colum-right-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
 .main-colum-left {
   width: 150px;
   font-weight: bold;
@@ -161,6 +175,11 @@ textarea:focus,
   margin-left: 100px;
 }
 
+.local-div label {
+  margin-left: 80px;
+}
+
+.local-div label:first-child,
 .categories-div label:first-child,
 .condition-div label:first-child,
 .tuning-div label:first-child,
