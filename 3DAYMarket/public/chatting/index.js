@@ -16,7 +16,54 @@
 //     console.log(result);
 //   });
 // });
+
 socketFunc();
+
+const loginDisplay = document.getElementById("loginDisplay");
+
+const login = async function () {
+  if (cookieArray[cookieCIndex]) {
+    try {
+      const result = await axios.post("/api/user/cookie", {
+        cookie: cookieArray[cookieCIndex],
+      });
+      signOutBtn.classList.add("on");
+      chattingBtn.classList.add("on");
+      itemUpload.classList.add("on");
+      userInfo.classList.add("on");
+      console.log(result.data.name);
+      const login = document.createElement("div");
+      login.innerText = `${result.data.name}님 어서오세요!`;
+      loginDisplay.style.display = "block";
+      document.getElementById("loginDisplay").append(login);
+      signInBtn.classList.add("off");
+      signUpBtn.classList.add("off");
+    } catch (error) {
+      // console.error(error)
+    }
+  }
+};
+login();
+
+const signOutBtn = document.getElementById("sign-out");
+
+signOutBtn.onclick = async function () {
+  try {
+    const result = await axios.post("/api/user/logout");
+
+    loginDisplay.removeChild(loginDisplay.firstChild);
+    signOutBtn.classList.remove("on");
+    chattingBtn.classList.remove("on");
+    itemUpload.classList.remove("on");
+    userInfo.classList.remove("on");
+    loginDisplay.style.display = "none";
+
+    signInBtn.classList.remove("off");
+    // signUpBtn.classList.remove("off");
+  } catch (err) {
+    console.error(err);
+  }
+};
 let getCookie = function (name) {
   let value = document.cookie.match("(^|;) ?" + name + "=([^;]*)(;|$)");
   console.log(value);
