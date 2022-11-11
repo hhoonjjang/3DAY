@@ -97,20 +97,13 @@ const login = async function () {
       document.getElementById("loginDisplay").append(login);
       signInBtn.classList.add("off");
       signUpBtn.classList.add("off");
+      console.log("123");
     } catch (error) {
       // console.error(error)
     }
   }
 };
 login();
-
-const useruserInfo = async () => {
-  const userInfo = await axios.post("/api/user/mypage", {
-    id: userId.value,
-  });
-  console.log(userInfo);
-};
-useruserInfo();
 
 gear.onclick = () => {
   console.log("기어 클릭이 됨");
