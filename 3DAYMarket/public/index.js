@@ -10,7 +10,7 @@ const reverseBgc = [...document.getElementsByClassName("bgc")];
 const loginDisplay = document.getElementById("loginDisplay");
 let date = new Date();
 const address = "http://localhost:8080/items/";
-async function getItem() {
+const region = async function getItem() {
   try {
     const item = (await axios.get("/api/item/")).data;
     console.log(item);
@@ -36,7 +36,7 @@ async function getItem() {
       aItem.href = `${address}${item.id}`;
       divItemTop.classList.add("item-top");
       divItemImg.classList.add("item-img");
-      imgItem.src = `/api/item/`;
+      imgItem.src = `../uploadedItems/${item.imgArr.split("-*,")[0]}`;
       divItemMiddle.classList.add("item-middle");
       divItemTitle.classList.add("item-title");
       divItemTitle.innerText = item.itemTitle;
@@ -69,7 +69,7 @@ async function getItem() {
   } catch (err) {
     console.error(err);
   }
-}
+};
 
 getItem();
 let setCookie = function (name, value, exp) {

@@ -141,21 +141,22 @@ router.get("/", async (req, res) => {
     order: [["id", "DESC"]],
     include: { model: User },
   });
-  tempItem.forEach((item) => {
-    console.log(item.dataValues.imgArr.split("-*,")[0].split(".")[1]);
-    const filename = `./uploadedItems/${
-      item.dataValues.imgArr.split("-*,")[0]
-    }`;
-    fs.readFile(filename, (err, data) => {
-      res.writeHead(200, {
-        "Context-Type": `image/${
-          item.dataValues.imgArr.split("-*,")[0].split(".")[1]
-        };charset=UTF-8`,
-      });
-      res.write(data);
-      res.end;
-    });
-  });
+  // tempItem.forEach((item) => {
+  //   console.log(item.dataValues.imgArr.split("-*,")[0].split(".")[1]);
+  //   const filename = `./uploadedItems/${
+  //     item.dataValues.imgArr.split("-*,")[0]
+  //   }`;
+  //   fs.readFile(filename, (err, data) => {
+  //     res.writeHead(200, {
+  //       "Context-Type": `image/${
+  //         item.dataValues.imgArr.split("-*,")[0]
+  //       }.split(".")[1];
+  //       charset=UTF-8`,
+  //     });
+
+  //     res.write(data);
+  //     res.end;
+  //   });
 
   // console.log(tempItem.imgArr.split("-*,")[0]);
   res.send(tempItem);
