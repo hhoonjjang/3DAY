@@ -78,44 +78,15 @@ function moveRight() {
 }
 
 //
-
-{
-  /* <input type="radio" name="item-slide" id="item-slide01" checked />
-<input type="radio" name="item-slide" id="item-slide02" />
-<input type="radio" name="item-slide" id="item-slide03" />
-<input type="radio" name="item-slide" id="item-slide04" />
-<ul class="info-div-slide">
-  <li class="info-div-slide-item">
-    <img src="../image/1.png" alt="" />
-  </li>
-  <li class="info-div-slide-item">
-    <img src="../image/2.jpg" alt="" />
-  </li>
-  <li class="info-div-slide-item">
-    <img src="../image/3.jpg" alt="" />
-  </li>
-  <li class="info-div-slide-item">
-    <img src="../image/4.jpg" alt="" />
-  </li>
-</ul>
-<div class="item-slide-div">
-  <div class="item-slide-div-label">
-    <div class="control1">
-      <label for="item-slide04" class="left"></label
-      ><label for="item-slide02" class="right"></label>
-    </div>
-    <div class="control2">
-      <label for="item-slide01" class="left"></label
-      ><label for="item-slide03" class="right"></label>
-    </div>
-    <div class="control3">
-      <label for="item-slide02" class="left"></label
-      ><label for="item-slide04" class="right"></label>
-    </div>
-    <div class="control4">
-      <label for="item-slide03" class="left"></label
-      ><label for="item-slide01" class="right"></label>
-    </div>
-  </div>
-</div> */
+const itemIndex = window.location.href.split("?")[1].split("=")[1];
+async function getDetailItem() {
+  console.log(itemIndex);
+  try {
+    const item = (await axios.get("/api/item/detail?itemIndex=" + itemIndex))
+      .data.tempIt;
+    console.log(item);
+  } catch (err) {
+    console.error(err);
+  }
 }
+getDetailItem();
