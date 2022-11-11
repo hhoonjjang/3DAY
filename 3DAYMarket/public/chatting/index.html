@@ -88,19 +88,20 @@
 
           <!-- <div><button id="invert-btn">뒷세계</button></div> -->
         </div>
-        <div id="chatting" data-include-path="chatting.html">
-          <img src="./chatimg/chatting.svg" alt="" id="none-vs" />
-          <span>채팅할 상대를 선택해주세요</span>
-
-          <!-- <div id="chat-box">
+        <div id="chatting">
+          <div id="none-chat">
+            <img src="./chatimg/chatting.svg" alt="" id="none-vs" />
+            <span>채팅할 상대를 선택해주세요</span>
+          </div>
+          <div id="chat-box">
             <div class="box-shadow-yellow bs" style="height: 100%">
               <div id="info">
                 <div id="vs-info">
                   <div class="margin-right">
-                    <img src="./chatimg/f4.png" alt="" class="vs-img" />
+                    <img src="./chatimg/default.png" alt="" class="vs-img" />
                   </div>
                   <div id="partner-id">partner-id/</div>
-                  <div>partner-점수</div>
+                  <div id="partenr-tempture">partner-점수</div>
                 </div>
                 <div id="chat-menu">
                   <img src="./chatimg/menu.svg" alt="" />
@@ -109,14 +110,14 @@
               <div id="chat-item">
                 <div id="item-info">
                   <div class="margin-right">
-                    <img src="./chatimg/f4.png" alt="" class="item-img" />
+                    <img src="./chatimg/default.png" alt="" class="item-img" />
                   </div>
                   <div class="cbox">
-                    <span>물품제목</span>
-                    <h4>물품금액</h4>
+                    <span id="item-title">물품제목</span>
+                    <h4 id="item-price">물품금액</h4>
                   </div>
                 </div>
-                <div>거래상태</div>
+                <div id="trade-status">거래상태</div>
               </div>
               <div>
                 <ul id="vs-chat-zone" class="box-shadow-blue bs">
@@ -136,7 +137,8 @@
               </div>
             </div>
             <div>
-              <form id="msg-zone" onsubmit="submitBtn()">
+              <form id="msg-zone" name="msg-zone">
+                <!-- onsubmit="submitBtn(event)" -->
                 <div id="msg-input">
                   <textarea
                     name="msg"
@@ -144,9 +146,10 @@
                     cols="30"
                     rows="10"
                     placeholder="메시지를 입력해주십시오"
-                    onkeydown="submitText(event)"
                     autofocus
                   ></textarea>
+
+                  <!--   onkeydown="submitText(event)" -->
                 </div>
                 <div id="emoticon-submit">
                   <div id="emoticon-container">
@@ -168,26 +171,21 @@
                   <div class="fbox">
                     <div>글자수</div>
                     <div>
-                      <button
-                        id="msg-submit"
-                        type="button"
-                        onclick="submitBtn()"
-                      >
-                        전송
-                      </button>
+                      <button id="msg-submit">전송</button>
                     </div>
                   </div>
                 </div>
               </form>
             </div>
-          </div> -->
+          </div>
         </div>
       </div>
     </div>
     <div id="temp">
       PC알림을 허용하고, 알림창에서 새 메시지를 빠르게 확인해보세용
     </div>
-    <script src="index.js"></script>
     <script src="chatting.js"></script>
+
+    <script src="index.js"></script>
   </body>
 </html>

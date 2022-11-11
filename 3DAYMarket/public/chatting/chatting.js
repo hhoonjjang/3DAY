@@ -42,7 +42,7 @@ async function socketFunc() {
   const asd = document.forms["msg-zone"];
   console.log(asd);
   const chatElem = document.getElementById("vs-chat-zone");
-
+  chatElem.innerHTML = "";
   document.forms["msg-zone"].onsubmit = function (e) {
     const text = document.forms["msg-zone"]["msg"].value;
     if (text == "") {
@@ -82,22 +82,32 @@ async function socketFunc() {
 
   socket.on("list", (data) => {
     //완
-    console.log(data.list);
+    // console.log(data.list);
     data.list.forEach((item) => {
-      console.log(item.text);
-      console.log(item.time);
-      console.log(item.userId);
-      console.log(document.getElementById("user-name").innerText);
+      // console.log(item.text);
+      // console.log(item.time);
+      // console.log(item.userId);
+      // console.log(item.partnerId);
+      // console.log(document.getElementById("user-name").innerText);
       if (item.userId == document.getElementById("user-name").innerText) {
+        console.log("hi");
+        createOneChat(item);
+      }
+
+      // console.log(item.partnerId);
+      // console.log(document.getElementById("partner-id").innerText);
+      if (item.partnerId == document.getElementById("partner-id").innerText) {
         submitBtn(item.text, item.time);
       }
     });
+    deletedouble();
   });
 }
 
 function submitBtn(serverText, serverTime) {
   const chatZone = document.getElementById("vs-chat-zone");
   const addLi = document.createElement("li");
+
   addLi.classList.add("my-chat");
   const addSpan = document.createElement("span");
 
@@ -141,3 +151,76 @@ function submitText(event) {
     document.forms["msg-zone"]["msg"].value = "";
   }
 }
+
+const createOneChat = function (data) {
+  const tempBox = document.createElement("div");
+  tempBox.classList.add("one-chat");
+  const tempdiv1 = document.createElement("div");
+  const tempdiv2 = document.createElement("div");
+  const tempdiv3 = document.createElement("div");
+  tempdiv3.innerText = "사진로그";
+  const tempdiv4 = document.createElement("div");
+  const tempdiv5 = document.createElement("div");
+
+  const tempImgUser = document.createElement("img");
+  tempImgUser.classList.add("vs-img");
+  tempImgUser.src = "./chatimg/default.png";
+  tempdiv1.append(tempImgUser);
+  tempBox.append(tempdiv1);
+  const tempVsInfo = document.createElement("div");
+  tempVsInfo.classList.add("vs-info");
+
+  const tempspanName = document.createElement("span");
+  tempspanName.classList.add("vs-name");
+  tempspanName.innerText = data.partnerId;
+  const tempspanData1 = document.createElement("span");
+  tempspanData1.classList.add("vs-data");
+  tempspanData1.innerText = "local";
+
+  const tempspanData2 = document.createElement("span");
+  tempspanData2.classList.add("vs-data");
+  tempspanData2.innerText = ".";
+
+  const tempspanData3 = document.createElement("span");
+  tempspanData3.classList.add("vs-data");
+  tempspanData3.innerText = "log-day";
+
+  const tempLastLog = document.createElement("div");
+  tempLastLog.classList.add("vs-chatlog");
+  tempLastLog.innerText = data.text;
+
+  const tempImgLog = document.createElement("img");
+  tempImgLog.classList.add("vs-log-img");
+
+  const chatVsList = document.getElementById("chat-vs");
+  tempdiv2.classList.add("fbox-between");
+  tempdiv4.append(tempspanName);
+  tempdiv5.append(tempspanData1);
+  tempdiv5.append(tempspanData2);
+  tempdiv5.append(tempspanData3);
+  tempdiv2.append(tempdiv4);
+  tempdiv2.append(tempdiv5);
+
+  tempVsInfo.append(tempdiv2);
+  tempVsInfo.append(tempLastLog);
+  tempdiv3.append(tempImgLog);
+  tempBox.append(tempVsInfo);
+
+  tempBox.append(tempdiv3);
+
+  chatVsList.append(tempBox);
+};
+
+const deletedouble = function () {
+  const vsNameList = document.getElementsByClassName("vs-name");
+  const vsChat = document.getElementsByClassName("one-chat");
+  console.log("test딜리트");
+
+  for (let i = vsNameList.length - 1; i > 0; i--) {
+    for (let j = 0; j < vsNameList.length - 1; j++) {
+      if (vsNameList[i].innerText == vsNameList[j].innerText) {
+        // vsChat[j].remove();
+      }
+    }
+  }
+};

@@ -2,11 +2,6 @@
   box-sizing: border-box;
 }
 
-div {
-  /* border: 1px solid black;
-  border-radius: 10px; */
-}
-
 html {
   font-family: "maple-bold";
 }
@@ -195,6 +190,13 @@ body.on {
   cursor: pointer;
   background-color: rgb(238, 238, 238);
 }
+#partner-id {
+  margin-right: 15px;
+}
+
+#partenr-tempture {
+  letter-spacing: -1px;
+}
 
 #chatting {
   display: flex;
@@ -203,6 +205,10 @@ body.on {
   justify-content: center;
   flex-direction: column;
   /* background-color: white; */
+}
+#none-chat {
+  display: flex;
+  flex-direction: column;
 }
 
 #chattingblack {

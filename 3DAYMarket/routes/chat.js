@@ -10,9 +10,15 @@ router.post("/", async (req, res) => {
 
 router.post("/sendinfo", async (req, res) => {
   try {
-    const tempName = req.query.name;
-    console.log(tempName);
-    res.send({ name: tempName });
+    console.log(req.body.tempTure);
+    console.log(req.body.me);
+    console.log(req.body.partner);
+
+    res.send({
+      name: req.body.me,
+      patner: req.body.partner,
+      tempTure: req.body.tempTure,
+    });
   } catch (err) {
     console.log(err);
   }

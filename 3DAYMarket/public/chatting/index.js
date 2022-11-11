@@ -1,3 +1,22 @@
+// const mysql = require(".././mysql2");
+// const con = mysql.createConnection({
+//   username: "root",
+//   password: "1234",
+//   database: "3daymarket",
+//   host: "127.0.0.1",
+//   dialect: "mysql",
+// });
+
+// con.connect(function (err) {
+//   if (err) throw err;
+//   const sql = "SELECT *partner_id FROM chat";
+
+//   con.query(sql, function (err, result, fields) {
+//     if (err) throw err;
+//     console.log(result);
+//   });
+// });
+socketFunc();
 let getCookie = function (name) {
   let value = document.cookie.match("(^|;) ?" + name + "=([^;]*)(;|$)");
   console.log(value);
@@ -15,7 +34,7 @@ let cookieServer = async function () {
         cookie: cookieArray[cookieCIndex],
       });
 
-      console.log(result.data.name);
+      // console.log(result.data.name);
 
       document.getElementById("user-name").innerText = result.data.name;
     } catch (error) {
@@ -49,101 +68,40 @@ const tempData = [
   },
 ];
 
-const createOneChat = function (data) {
-  const tempBox = document.createElement("div");
-  tempBox.classList.add("one-chat");
-  const tempdiv1 = document.createElement("div");
-  const tempdiv2 = document.createElement("div");
-  const tempdiv3 = document.createElement("div");
-  tempdiv3.innerText = "사진로그";
-  const tempdiv4 = document.createElement("div");
-  const tempdiv5 = document.createElement("div");
-
-  const tempImgUser = document.createElement("img");
-  tempImgUser.classList.add("vs-img");
-  tempImgUser.src = "./chatimg/default.png";
-  tempdiv1.append(tempImgUser);
-  tempBox.append(tempdiv1);
-  const tempVsInfo = document.createElement("div");
-  tempVsInfo.classList.add("vs-info");
-
-  const tempspanName = document.createElement("span");
-  tempspanName.classList.add("vs-name");
-  tempspanName.innerText = data.name;
-  const tempspanData1 = document.createElement("span");
-  tempspanData1.classList.add("vs-data");
-  tempspanData1.innerText = "local";
-
-  const tempspanData2 = document.createElement("span");
-  tempspanData2.classList.add("vs-data");
-  tempspanData2.innerText = ".";
-
-  const tempspanData3 = document.createElement("span");
-  tempspanData3.classList.add("vs-data");
-  tempspanData3.innerText = "log-day";
-
-  const tempLastLog = document.createElement("div");
-  tempLastLog.classList.add("vs-chatlog");
-  tempLastLog.innerText = data.text;
-
-  const tempImgLog = document.createElement("img");
-  tempImgLog.classList.add("vs-log-img");
-
-  const chatVsList = document.getElementById("chat-vs");
-  tempdiv2.classList.add("fbox-between");
-  tempdiv4.append(tempspanName);
-  tempdiv5.append(tempspanData1);
-  tempdiv5.append(tempspanData2);
-  tempdiv5.append(tempspanData3);
-  tempdiv2.append(tempdiv4);
-  tempdiv2.append(tempdiv5);
-
-  tempVsInfo.append(tempdiv2);
-  tempVsInfo.append(tempLastLog);
-  tempdiv3.append(tempImgLog);
-  tempBox.append(tempVsInfo);
-
-  tempBox.append(tempdiv3);
-
-  chatVsList.append(tempBox);
-};
-
-tempData.forEach((data) => {
-  createOneChat(data);
-});
+// tempData.forEach((data) => {
+//   createOneChat(data);
+// });
 function activeOnChat() {
   const chatList = document.getElementsByClassName("one-chat");
   const nameList = document.getElementsByClassName("vs-name");
   // await const sendInfo = axios("/api/chat/vsinfo",{
   //   name: addScope,
   // });
-  console.log("hi인포느ㅐㄴㅁ어ㅑㄴㅁ어");
+
   for (let i = 0; i < chatList.length; i++) {
     chatList[i].onclick = async function () {
       const partnerName = nameList[i].innerText;
+      const data = await axios.post("/api/chat/sendinfo", {
+        me: document.getElementById("user-name").innerText,
+        partner: partnerName,
+        tempTure: parseInt(Math.random() * 100 + 1),
+      });
+      document.getElementById("partner-id").innerText = data.data.patner;
+      document.getElementById("partenr-tempture").innerText =
+        data.data.tempTure + "˚C";
 
-      importPage("chatting");
-      //내용추가 및 수정
-
+      document.getElementById("item-title").innerText = "데이터받아와야함";
+      document.getElementById("item-price").innerText = "데이터받아와야함";
+      document.getElementById("trade-status").innerText = "데이터받아와야함";
       setTimeout(() => {
         socketFunc();
-      }, 1000);
-      const data = await axios.post(
-        "/api/chat/sendinfo" + `?name=${partnerName}`
-      );
+        document.getElementById("chat-box").style.display = "flex";
+        document.getElementById("none-chat").style.display = "none";
+      }, 10);
     };
   }
 }
 activeOnChat();
-async function fetchHtmlAsText(url) {
-  return await (await fetch(url)).text();
-}
-async function importPage(target) {
-  document.querySelector("#" + target).innerHTML = await fetchHtmlAsText(
-    target + ".html"
-  );
-  console.log(document.querySelector("#" + target).innerHTML);
-}
 
 let changeImg = function (len) {
   for (let i = 0; i < len.length; i++) {
