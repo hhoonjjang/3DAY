@@ -1,20 +1,3 @@
-// 코드 리펙토링 해야함, 한번에 하려면 꼬일수 있으니 미리 해놓자
-
-// 빈 입력값 예외처리 -> 알럿 말고 온포커스로 변경
-
-// oninput 컨트롤 + 백스페이스 지울때, 컨트롤 + C 로 입력할때 등 예외처리 구현 필요
-// 가이드 버티컬 얼라인 미들(처럼 보이게) 구현 필요
-// 가격 한글병행표시기능 추가
-// 프라이스인풋 투로케일스트링 했을때 1조?? 넘어가면 이상하게 표시됨, 예외처리해서 막던가, 제대로 표시되게 조치해야함
-// 공백 예외처리 필요
-
-// 백엔드 관련
-// 카테고리 설정을 해주세요 (빈 내용 예외처리)
-// 라우터이름 upload
-// 등록하기 >>>> 서버전송
-// [이미지 등록시 페이지에 보이기, 최소한에 표시라도]
-
-//
 let isTitleTrue;
 let isPriceTrue;
 let isSubtitleTrue;
@@ -120,8 +103,11 @@ let itemCondition;
 let itemTuning;
 let itemDealing;
 let itemImage;
+
 let itemLocal;
+
 const imageArr = [];
+let getValue1 = async function () {};
 
 function getValue() {
   const categoriesList = document.getElementsByName("categories");
@@ -192,19 +178,35 @@ document.getElementById("submit-form").onsubmit = async function (e) {
     alert("모든 입력을 완료해주세요");
     return;
   }
-  const itemTitle = titleInput.value;
-  const itemPrice = Number(priceInput.value.replace(/,/g, ""));
-  const itemSubtitle = subtitleTextarea.value;
-  formData.append("itemTitle", itemTitle);
-  formData.append("itemPrice", itemPrice);
-  formData.append("itemSubtitle", itemSubtitle);
-  formData.append("itemCategories", itemCategories);
-  formData.append("itemCondition", itemCondition);
-  formData.append("itemTuning", itemTuning);
-  formData.append("itemDealing", itemDealing);
-  formData.append("itemLocal", itemLocal);
-  for (let value of formData.values()) {
-    console.log(value);
+
+
+  try {
+    const itemTitle = titleInput.value;
+    const itemPrice = Number(priceInput.value.replace(/,/g, ""));
+    const itemSubtitle = subtitleTextarea.value;
+    const uploadImgS = document.getElementById("img-uploader-label");
+    formData.append("itemTitle", itemTitle);
+    formData.append("itemPrice", itemPrice);
+    formData.append("itemSubtitle", itemSubtitle);
+    formData.append("itemCategories", itemCategories);
+    formData.append("itemCondition", itemCondition);
+    formData.append("itemTuning", itemTuning);
+    formData.append("itemDealing", itemDealing);
+
+    // const result = await axios.post("/api/item/add", {
+    //   itemImage: itemImage,
+    //   itemTitle: itemTitle,
+    //   itemPrice: itemPrice,
+    //   itemSubtitle: itemSubtitle,
+    //   itemCategories: itemCategories,
+    //   itemCondition: itemCondition,
+    //   itemTuning: itemTuning,
+    //   itemDealing: itemDealing,
+    // });
+    const img = await axios.post("/api/item/uploadFiles", formData);
+  } catch (err) {
+    console.error(err);
+
   }
 
   // try {
@@ -230,21 +232,8 @@ function getImageFiles(e) {
   formData.append("img", itemImage);
   for (let value of formData.values()) {
     console.log(value);
+    console.log(formData.get(value));
   }
-
-  // if (!itemImage.type.match("image/")) {
-  //   alert("이미지 파일만 업로드 가능합니다");
-  //   return;
-  // }
-  // const reader = new FileReader();
-  // reader.onload = (e) => {
-  //   const preview = createElement(e, itemImage);
-  //   document.getElementById("img-box").appendChild(preview);
-  // };
-  // reader.readAsDataURL(itemImage);
-  // imageArr.push(itemImage.name);
-  console.log(itemImage);
-  console.log(imageArr);
 }
 
 document

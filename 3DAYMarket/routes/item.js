@@ -141,24 +141,58 @@ router.get("/", async (req, res) => {
     order: [["id", "DESC"]],
     include: { model: User },
   });
-  tempItem.forEach((item) => {
-    console.log(item.dataValues.imgArr.split("-*,")[0].split(".")[1]);
-    const filename = `./uploadedItems/${
-      item.dataValues.imgArr.split("-*,")[0]
-    }`;
-    fs.readFile(filename, (err, data) => {
-      res.writeHead(200, {
-        "Context-Type": `image/${
-          item.dataValues.imgArr.split("-*,")[0].split(".")[1]
-        };charset=UTF-8`,
-      });
-      res.write(data);
-      res.end;
-    });
-  });
+
+  // tempItem.forEach((item) => {
+  //   console.log(item.dataValues.imgArr.split("-*,")[0].split(".")[1]);
+  //   const filename = `./uploadedItems/${
+  //     item.dataValues.imgArr.split("-*,")[0]
+  //   }`;
+  //   fs.readFile(filename, (err, data) => {
+  //     res.writeHead(200, {
+  //       "Context-Type": `image/${
+  //         item.dataValues.imgArr.split("-*,")[0]
+  //       }.split(".")[1];
+  //       charset=UTF-8`,
+  //     });
+
+  //     res.write(data);
+  //     res.end;
+  //   });
 
   // console.log(tempItem.imgArr.split("-*,")[0]);
   res.send(tempItem);
+});
+
+router.get("/selectkind", async (req, res) => {
+  const kind = req.query.kind;
+  console.log("셀렉트카인드");
+  // console.log(kind);
+  const tempItem = await Item.findAll({
+    where: {
+      itemCategories: kind,
+    },
+    order: [["id", "DESC"]],
+    include: { model: User },
+  });
+  res.send({ tempItem });
+});
+
+router.get("/selectlocal", async (req, res) => {
+  const local = req.query.local;
+  console.log(local);
+});
+
+router.get("/selecttrade", async (req, res) => {
+  const trade = req.query.trade;
+  console.log(trade);
+  const tempItem = await Item.findAll({
+    where: {
+      itemDealing: trade,
+    },
+    order: [["id", "DESC"]],
+    include: { model: User },
+  });
+  res.send({ tempItem });
 });
 
 module.exports = router;
