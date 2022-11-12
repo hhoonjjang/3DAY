@@ -21,14 +21,12 @@ let selectLocalValue;
 const selectTrade = document.getElementById("select-trade");
 let selectTradeValue;
 
-
 async function getItem() {
   try {
     const item = (await axios.get("/api/item/")).data;
     console.log(item);
     console.log(item[0]);
     item.forEach((item) => {
-
       const articleItem = document.createElement("article");
       const aItem = document.createElement("a");
       const divItemTop = document.createElement("div");
@@ -69,7 +67,6 @@ async function getItem() {
       divItemBorderdot.innerText = "！";
       divItemCountingView.classList.add("item-countingview");
       divItemCountingView.innerText = `채팅 ${78}`;
-
 
       divItemBoard.appendChild(articleItem);
       articleItem.appendChild(aItem);
@@ -210,7 +207,6 @@ signOutBtn.onclick = async function () {
     console.error(err);
   }
 };
-
 
 // let addItem = async function () {
 //   try {
@@ -463,7 +459,6 @@ async function itemCategoryKind() {
       });
     }
 
-
     return;
   }
   console.log(selectKind.options[selectKind.selectedIndex].value);
@@ -585,7 +580,6 @@ async function itemCategoryLocal() {
     divItemBottom.appendChild(divItemCountingView);
   });
 }
-
 
 async function itemCategoryTrade() {
   selectTradeValue = selectTrade.options[selectTrade.selectedIndex].value;
