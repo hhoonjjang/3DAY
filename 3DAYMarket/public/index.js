@@ -44,7 +44,7 @@ async function getItem() {
       divItemPrice.classList.add("item-price");
       divItemPrice.innerText = item.itemPrice;
       divItemLocal.classList.add("item-local");
-      divItemLocal.innerText = item.User.userLocal;
+      divItemLocal.innerText = item.itemLocal;
       divItemBottom.classList.add("item-bottom");
       divItemFocus.classList.add("item-focus");
       divItemFocus.innerText = `관심 ${10}`;
@@ -199,48 +199,45 @@ signOutBtn.onclick = async function () {
 //   }
 // };
 // addItem();
-// reverseBtn.ondblclick = function(){
-//    if(cookieR){
+// reverseBtn.ondblclick = function () {
+//   if (cookieR) {
 //     deleteCookie("reverse");
-//    }
-//    else{
-//     setCookie("reverse",123,1);
-//    }
-//     console.log(document.cookieReverse)
+//   } else {
+//     setCookie("reverse", 123, 1);
+//   }
+//   console.log(document.cookieReverse);
 
-//     document.body.classList.toggle("start");
-//     for(let i =0;i<reverseImg.length;i++){
-//         reverseImg[i].classList.toggle("start");
+//   document.body.classList.toggle("start");
+//   for (let i = 0; i < reverseImg.length; i++) {
+//     reverseImg[i].classList.toggle("start");
+//   }
+//   for (let i = 0; i < reverseBgc.length; i++) {
+//     reverseBgc[i].classList.toggle("start");
+//   }
+// };
+// const reverse = function () {
+//   if (cookieR) {
+//     document.body.classList.add("start");
+//     for (let i = 0; i < reverseImg.length; i++) {
+//       // console.log("reverseImg[i]")
+//       reverseImg[i].classList.add("start");
 //     }
-//     for(let i =0;i<reverseBgc.length;i++){
-//         reverseBgc[i].classList.toggle("start");
+//     for (let i = 0; i < reverseBgc.length; i++) {
+//       // console.log("reverseImg[i]")
+//       reverseBgc[i].classList.add("start");
 //     }
-
-// }
-// const reverse = function(){
-//     if(cookieR){
-//         document.body.classList.add("start");
-//     for(let i =0;i<reverseImg.length;i++){
-//         // console.log("reverseImg[i]")
-//         reverseImg[i].classList.add("start");
+//   } else {
+//     document.body.classList.remove("start");
+//     for (let i = 0; i < reverseImg.length; i++) {
+//       // console.log("reverseImg[i]")
+//       reverseImg[i].classList.remove("start");
 //     }
-//     for(let i =0;i<reverseBgc.length;i++){
-//         // console.log("reverseImg[i]")
-//         reverseBgc[i].classList.add("start");
+//     for (let i = 0; i < reverseBgc.length; i++) {
+//       // console.log("reverseImg[i]")
+//       reverseBgc[i].classList.remove("start");
 //     }
-//     }
-//     else{
-//         document.body.classList.remove("start");
-//         for(let i =0;i<reverseImg.length;i++){
-//             // console.log("reverseImg[i]")
-//             reverseImg[i].classList.remove("start");
-//         }
-//         for(let i =0;i<reverseBgc.length;i++){
-//             // console.log("reverseImg[i]")
-//             reverseBgc[i].classList.remove("start");
-//         }
-//     }
-// }
+//   }
+// };
 
 // reverse();
 
@@ -281,7 +278,7 @@ async function itemCategoryKind() {
     divItemPrice.classList.add("item-price");
     divItemPrice.innerText = item.itemPrice;
     divItemLocal.classList.add("item-local");
-    divItemLocal.innerText = item.User.userLocal;
+    divItemLocal.innerText = item.itemLocal;
     divItemBottom.classList.add("item-bottom");
     divItemFocus.classList.add("item-focus");
     divItemFocus.innerText = `관심 ${10}`;
@@ -338,7 +335,7 @@ async function itemCategoryLocal() {
     divItemPrice.classList.add("item-price");
     divItemPrice.innerText = item.itemPrice;
     divItemLocal.classList.add("item-local");
-    divItemLocal.innerText = item.User.userLocal;
+    divItemLocal.innerText = item.itemLocal;
     divItemBottom.classList.add("item-bottom");
     divItemFocus.classList.add("item-focus");
     divItemFocus.innerText = `관심 ${10}`;
@@ -396,7 +393,7 @@ async function itemCategoryTrade() {
     divItemPrice.classList.add("item-price");
     divItemPrice.innerText = item.itemPrice;
     divItemLocal.classList.add("item-local");
-    divItemLocal.innerText = item.User.userLocal;
+    divItemLocal.innerText = item.itemLocal;
     divItemBottom.classList.add("item-bottom");
     divItemFocus.classList.add("item-focus");
     divItemFocus.innerText = `관심 ${10}`;
