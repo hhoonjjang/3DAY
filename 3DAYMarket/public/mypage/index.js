@@ -25,7 +25,6 @@ const userid = document.getElementById("userid");
 const userName = document.getElementById("userName");
 const userlocal = document.getElementById("userlocal");
 
-
 const signInBtn = document.getElementById("sign-in");
 const signOutBtn = document.getElementById("sign-out");
 // const signUpBtn =document.getElementById("sign-up");
@@ -83,8 +82,8 @@ let cookieCIndex = cookieArray.findIndex((e) => e == `carrot=${CC}`);
 let deleteCookie = function (name) {
   document.cookie = name + "=; expires=Thu, 01 Jan 1999 00:00:10 GMT;";
 };
-
-const login = async function () {
+let userNameApi;
+const login1 = async function () {
   console.log("asd");
   console.log(cookieArray[cookieCIndex]);
   if (cookieArray[cookieCIndex]) {
@@ -96,27 +95,43 @@ const login = async function () {
       chattingBtn.classList.add("on");
       itemUpload.classList.add("on");
       userInfo.classList.add("on");
-      console.log(result.data.name);
+      userid.innerText = "유저아이디";
+      userlocal.innerText = "유저로컬";
+      userNameApi = result.data.name;
+      userName.innerText = userNameApi;
+      console.log(userNameApi);
+      const tempUser = await axios.post("/api/user/userdisplay", {
+        name: userNameApi,
+      });
+      console.log(tempUser);
+      userid.innerText = tempUser.data.userId;
+      userlocal.innerText = tempUser.data.userLocal;
+
       const login = document.createElement("div");
       login.innerText = `${result.data.name}님 어서오세요!`;
       loginDisplay.style.display = "block";
       document.getElementById("loginDisplay").append(login);
       signInBtn.classList.add("off");
       signUpBtn.classList.add("off");
-      console.log("123");
     } catch (error) {
       // console.error(error)
     }
   }
 };
-login();
+login1();
 
+// const userDisplay = async function () {
+//   console.log("hey");
+//   console.log(userNameApi);
+
+//   console.log(tempUser);
+//   // userid.innerText = "유저아이디";
+//   // userlocal.innerText = "유저로컬";
+//   // userName.innerText = "유저네임";
+// };
+// userDisplay();
 
 function start() {
-  userid.innerText = "";
-  userName.innerText = "";
-  userlocal.innerText = "";
-
   const elm = {
     menu: document.querySelector("#menu"),
     userUi: document.querySelector("#imgName"),
@@ -301,4 +316,3 @@ function start() {
   };
 }
 start();
-

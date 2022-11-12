@@ -104,7 +104,6 @@ html {
 #no1back {
   z-index: 2;
   opacity: 0.83;
-
 }
 #mainback {
   width: 100%;
@@ -118,7 +117,6 @@ html {
   -moz-transition: opacity 3s;
   -o-transition: opacity 3s;
   transition: opacity 3s;
-
 }
 #no1backimg {
   position: absolute;
@@ -136,7 +134,6 @@ html {
   -moz-transition: opacity 3s;
   -o-transition: opacity 3s;
   transition: opacity 3s;
-
 }
 #bgp {
   position: relative;
@@ -250,14 +247,12 @@ html {
   margin-left: 2px;
 }
 #imgName {
-
   margin-top: 20px;
   margin-left: 27%;
   width: 700px;
 }
 
 #menu {
-
   display: flex;
   background-color: #f4efe5;
   box-shadow: 3px 3px 3px #a5a094;
@@ -278,7 +273,6 @@ html {
   -moz-animation: 2s fadeInTitle ease;
   -o-animation: 2s fadeInTitle ease;
   animation: 2s fadeInTitle ease;
-
 }
 #imgName2 {
   display: flex;
@@ -294,20 +288,17 @@ html {
   border-radius: 10px;
   width: 100%;
 
-
   opacity: 0.8;
   background-color: rgba(255, 255, 255, 0.5);
   -webkit-animation: 2s fadeInTitle ease;
   -moz-animation: 2s fadeInTitle ease;
   -o-animation: 2s fadeInTitle ease;
   animation: 1s fadeInTitle ease;
-
 }
 #photo {
   position: relative;
   width: 90px;
   height: 90px;
-
 }
 #testuser {
   margin-top: 5px;
@@ -348,13 +339,11 @@ html {
 #arrow {
   width: 50px;
   height: 50px;
-
 }
 #arrow2 {
   margin: auto;
   width: 30px;
   height: 30px;
-
 }
 #pay {
   display: flex;
@@ -431,7 +420,6 @@ html {
   display: inline-block;
   position: relative;
   margin-left: 120px;
-
 }
 #payimg {
   display: flex;
@@ -471,7 +459,6 @@ html {
   animation: 1s fadeInTitle ease;
   width: 100%;
   opacity: 0.8;
-
 }
 #listItemall {
   display: flex;
@@ -488,7 +475,6 @@ html {
   margin-left: 5px;
   width: 160px;
   height: 20px;
-
 }
 #item1234 {
   display: flex;
@@ -559,8 +545,6 @@ html {
   margin-left: 195px;
 }
 
-
-
 #myPlace {
   display: flex;
   box-sizing: content-box;
@@ -580,7 +564,6 @@ html {
   -moz-animation: 1s fadeInTitle ease;
   -o-animation: 1s fadeInTitle ease;
   animation: 1s fadeInTitle ease;
-
 }
 #myPlaceno1 {
   display: block;
@@ -682,7 +665,6 @@ html {
   justify-content: center;
   width: 60px;
   height: 50px;
-
 }
 #master {
   display: flex;
@@ -692,7 +674,7 @@ html {
   border-radius: 10px;
 
   width: 100%;
-  position: fixed;
+
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -765,7 +747,157 @@ html {
   font-size: 12px;
   border-bottom: 1px solid lightslategray;
   opacity: 0.8;
+}
 
+.top-container {
+  width: 100%;
+  /* position: fixed; */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+  height: 100px;
+  background-color: rgb(245, 242, 250);
+  /* background-color: rgb(231, 231, 248); */
+
+  opacity: 0.97;
+  z-index: 999;
+  top: 0;
+}
+
+.top-container.start {
+  background-color: black;
+}
+
+.top-container div {
+  display: flex;
+}
+
+.home-box {
+  height: 100%;
+  margin-left: 100;
+  display: flex;
+  align-items: center;
+  /* cursor: pointer; */
+}
+
+body.start .home-box {
+  margin-left: 0;
+}
+
+body.start .home-box div {
+  font-size: 100px;
+  color: white;
+}
+.home-box div {
+  height: 100%;
+  align-items: center;
+}
+
+.category-box {
+  /* width: 45%; */
+  /* margin-left: 20; */
+  margin: 0 20px;
+  /* flex:3 */
+}
+.home-box div img:first-child {
+  height: 130%;
+}
+
+.home-box div img:last-child {
+  height: 90%;
+  /* display: none; */
+}
+
+.category-box a {
+  cursor: pointer;
+  /* margin-left: 100; */
+  width: 100px;
+}
+
+body.start .category-box a {
+  color: white;
+}
+
+.category-box a:hover {
+  color: gray;
+}
+
+.user-box {
+  margin: 0 20;
+  align-items: center;
+}
+
+.user-box button {
+  cursor: pointer;
+  padding: 10;
+  margin: 0 10;
+  width: 100px;
+  border-radius: 10px;
+  border: none;
+  background-color: #ffead8;
+  font-family: "maple-bold";
+  font-size: 14px;
+}
+
+body.start .user-box button {
+  background-color: black;
+  color: white;
+  font-family: "JSArirang-Regular";
+  font-size: 120%;
+}
+
+.user-box button:hover {
+  background-color: #ffd4d1;
+}
+
+.user-box a {
+  cursor: pointer;
+  padding: 10;
+  margin: 0 10;
+  width: 100px;
+  border-radius: 10px;
+  border: none;
+  background-color: #ffead8;
+  font-size: 14px;
+  font-family: "maple-bold";
+  text-align: center;
+}
+
+body.start .user-box a {
+  background-color: black;
+  color: white;
+  font-family: "JSArirang-Regular";
+  font-size: 120%;
+}
+
+.user-box a:hover {
+  background-color: #ffd4d1;
+}
+
+#sign-in.off,
+#sign-up.off {
+  display: none;
+}
+
+#sign-out,
+#item-upload,
+#user-info {
+  display: none;
+}
+
+#sign-out.on,
+#item-upload.on,
+#user-info.on {
+  display: block;
+}
+
+#chattinging {
+  display: none;
+}
+
+#chattinging.on {
+  display: block;
 }
 
 #loginDisplay {
@@ -818,6 +950,42 @@ html {
 a {
   text-decoration: none;
   color: black;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  margin-top: 100px;
+  margin-bottom: 150px;
+}
+
+.footer-container img {
+  width: 150px;
+}
+
+#spantext {
+  border-top: 1px var black;
+  text-align: center;
+}
+
+body.start .footer-container {
+  font-size: 200px;
+}
+
+body.start .footer-container #invert {
+  width: 500px;
+  display: none;
+}
+
+section {
+  padding: 20px;
+  text-align: center;
+}
+
+section a {
+  margin: 0 10px;
 }
 
 /* 메뉴바 끝 */
