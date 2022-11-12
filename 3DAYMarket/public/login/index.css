@@ -404,6 +404,7 @@ body {
   display: none;
 }
 
-.correct-form {
-  border: 4px solid rgba(155, 238, 155, 0.3);
+a {
+  text-decoration-line: none;
+  text-decoration: none;
 }
