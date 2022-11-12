@@ -21,10 +21,96 @@ const bizpu = document.getElementById("masterprofileimg1");
 const bizpu1 = document.getElementById("masterprofiletitle1");
 const bizad = document.getElementById("masterprofileimg2");
 const bizad1 = document.getElementById("masterprofiletitle2");
-// -----------------------------------------------------------------
 const userid = document.getElementById("userid");
 const userName = document.getElementById("userName");
 const userlocal = document.getElementById("userlocal");
+
+
+const signInBtn = document.getElementById("sign-in");
+const signOutBtn = document.getElementById("sign-out");
+// const signUpBtn =document.getElementById("sign-up");
+const chattingBtn = document.getElementById("chatting");
+const itemUpload = document.getElementById("item-upload");
+const userInfo = document.getElementById("user-info");
+const reverseBtn = document.getElementById("reverse");
+const reverseImg = [...document.getElementsByClassName("reverse")];
+const reverseBgc = [...document.getElementsByClassName("bgc")];
+const loginDisplay = document.getElementById("loginDisplay");
+let date = new Date();
+const address = "http://localhost:8080/items/";
+
+signOutBtn.onclick = async function () {
+  try {
+    const result = await axios.post("/api/user/logout");
+
+    loginDisplay.removeChild(loginDisplay.firstChild);
+    signOutBtn.classList.remove("on");
+    chattingBtn.classList.remove("on");
+    itemUpload.classList.remove("on");
+    userInfo.classList.remove("on");
+    loginDisplay.style.display = "none";
+
+    signInBtn.classList.remove("off");
+    // signUpBtn.classList.remove("off");
+    location.href = "http://localhost:8080/";
+  } catch (err) {
+    console.error(err);
+  }
+};
+let cookieReverse;
+
+let getCookie = function (name) {
+  let value = document.cookie.match("(^|;) ?" + name + "=([^;]*)(;|$)");
+  // console.log(value);
+  return value ? value[2] : null;
+};
+let setCookie = function (name, value, exp) {
+  let date = new Date();
+  date.setTime(date.getTime() + exp * 1000 * 60 * 60 * 9 + 1000 * 60);
+  document.cookie =
+    name + "=" + value + ";expires=" + date.toUTCString() + ";path=/";
+  console.log(document.cookie);
+  // console.log(cookie);
+};
+let cookieArray = document.cookie.split("; ");
+let CC = getCookie("carrot");
+let CR = getCookie("reverse");
+let cookieR = document.cookie.split("; ").includes("reverse=123");
+let cookieC = document.cookie.split("; ").includes(`carrot=${CC}`);
+
+let cookieCIndex = cookieArray.findIndex((e) => e == `carrot=${CC}`);
+
+let deleteCookie = function (name) {
+  document.cookie = name + "=; expires=Thu, 01 Jan 1999 00:00:10 GMT;";
+};
+
+const login = async function () {
+  console.log("asd");
+  console.log(cookieArray[cookieCIndex]);
+  if (cookieArray[cookieCIndex]) {
+    try {
+      const result = await axios.post("/api/user/cookie", {
+        cookie: cookieArray[cookieCIndex],
+      });
+      signOutBtn.classList.add("on");
+      chattingBtn.classList.add("on");
+      itemUpload.classList.add("on");
+      userInfo.classList.add("on");
+      console.log(result.data.name);
+      const login = document.createElement("div");
+      login.innerText = `${result.data.name}님 어서오세요!`;
+      loginDisplay.style.display = "block";
+      document.getElementById("loginDisplay").append(login);
+      signInBtn.classList.add("off");
+      signUpBtn.classList.add("off");
+      console.log("123");
+    } catch (error) {
+      // console.error(error)
+    }
+  }
+};
+login();
+
 
 function start() {
   userid.innerText = "";
@@ -215,3 +301,4 @@ function start() {
   };
 }
 start();
+

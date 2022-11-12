@@ -5,14 +5,29 @@ module.exports = (server) => {
   const io = socket(server);
 
   io.on("connection", (ws) => {
+    console.log("커넥완료");
     Chat.findAll().then((data) => {
       ws.emit("list", { list: data });
     });
 
     ws.on("chat", async (data) => {
       try {
-        await Chat.create({ userId: ws.userId, text: data.text });
-        io.emit("chat", { id: ws.userId, text: data.text });
+        await Chat.create({
+          userId: data.userId,
+          text: data.text,
+          partnerId: data.partnerId,
+          time: data.time,
+        });
+        console.log(data.userId);
+        console.log(data.text);
+        console.log(data.partnerId);
+
+        // io.emit("chat", {
+        //   id: ws.userId,
+        //   text: data.text,
+        //   parterId: ws.parterId,
+        //   time: ws.time,
+        // });
       } catch (error) {
         ws.emit("chat", { text: "관리자 DB 관리 안하냐?" });
         console.error(error);
@@ -20,5 +35,7 @@ module.exports = (server) => {
     });
   });
 
+
   io.of("c");
+
 };

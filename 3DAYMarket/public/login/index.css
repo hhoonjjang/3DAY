@@ -9,7 +9,7 @@ html {
   background-color: #ffd4b1;
 }
 
-.body {
+body {
   padding: 0;
   margin: 0;
   min-height: 100vh;
@@ -17,15 +17,10 @@ html {
   align-items: center;
   justify-content: center;
   perspective: 1000px;
-  background: #f3f3f3;
 }
 .form-container {
   position: absolute;
   margin: auto;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
   width: 453px;
   height: 583px;
   overflow: hidden;
@@ -85,6 +80,7 @@ html {
   transition: opacity 2s;
   background: #ffead8 url("../img/cleanpage.gif") center no-repeat;
   background-size: contain;
+  border-radius: 30px;
 }
 @keyframes fadeInTitle {
   0% {
@@ -389,3 +385,28 @@ html {
     top: 54px;
   }
 }
+
+
+#feedback {
+  position: absolute;
+  bottom: 13%;
+  font-size: 16px;
+  color: rgb(30, 30, 30);
+  font-weight: bold;
+}
+
+.feedback-xicon,
+.feedback-vicon {
+  margin-left: 10px;
+  width: 10px;
+}
+
+.display-none {
+  display: none;
+}
+
+a {
+  text-decoration-line: none;
+  text-decoration: none;
+}
+

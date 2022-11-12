@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 35px 1px 35px 1px;
+  padding: 10px 1px 35px 1px;
 }
 
 #vs-info {
@@ -59,7 +59,7 @@ span {
 
 #chat-box {
   width: 100%;
-  display: flex;
+  display: none;
   justify-content: space-between;
   flex-direction: column;
   margin: 0;
@@ -73,8 +73,10 @@ span {
 
 #vs-chat-zone {
   list-style: none;
-  padding-left: 10px;
+  padding-left: 25px;
   overflow: hidden auto;
+  height: 400px;
+  padding-right: 20px;
 }
 
 .my-chat {
@@ -157,11 +159,6 @@ span {
   margin-left: -1.25em;
 }
 
-li {
-  /* min-height: 5rem; */
-  /* align-items: center; */
-}
-
 h3 {
   /* margin-top: auto; */
   margin: 10px;
@@ -198,6 +195,7 @@ h3 {
   border: none;
   outline: none;
   padding: 12px 12px 0;
+  resize: none;
 }
 
 #msg-zone {
@@ -206,16 +204,20 @@ h3 {
   padding: 5px;
 }
 
-button {
+.buttonColorWhite {
   border: none;
   border-radius: 5px;
   color: white;
   background-color: #5ed5f3;
 }
+#msg-input {
+  height: 120px;
+}
 
 #msg-submit {
   width: 64px;
   height: 32px;
+  cursor: pointer;
 }
 
 textarea {
@@ -230,4 +232,28 @@ textarea {
 
 .msgBox {
   background-color: rgb(238, 254, 255);
+}
+::-webkit-scrollbar {
+  opacity: 1;
+  width: 7px;
+  height: 7px;
+  appearance: auto;
+  margin-left: 5px;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-track-piece {
+  background-color: transparent;
 }

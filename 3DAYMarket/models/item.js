@@ -37,6 +37,10 @@ module.exports = class Item extends Sequelize.Model {
           type: Sequelize.STRING(256),
           allowNull: false,
         },
+        itemLocal: {
+          type: Sequelize.STRING(20),
+          //   allowNull: false,
+        },
       },
       {
         sequelize,

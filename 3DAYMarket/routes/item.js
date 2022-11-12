@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const router = require("express").Router();
 
 const multer = require("multer");
-
+const fs = require("fs");
 const { User, Item } = require("../models/index.js");
 
 let storage = multer.diskStorage({
@@ -22,7 +22,7 @@ router.use("/", (req, res, next) => {
   try {
     const tempUserInfo = jwt.verify(req.cookies.carrot, process.env.JWT_KEY);
     global.userName = tempUserInfo.name;
-    console.log("hi" + global.userName);
+    // console.log("hi" + global.userName);
     next();
   } catch (err) {
     console.error(err);
@@ -48,10 +48,10 @@ router.post("/add", async (req, res) => {
     //     itemSubtitle :itemSubtitle
     //   })
     //   console.log("hi"+req.body);
-    console.log("에드" + req.files);
+    // console.log("에드" + req.files);
     res.end();
   } catch (err) {
-    console.log(err);
+    // console.log(err);
   }
 });
 //
@@ -86,19 +86,19 @@ router.post(
   "/uploadFiles",
   uploadWithOriginalFilename.array("img"),
   async function (req, res) {
-    console.log("멀터");
-    console.log("멀터바디", req.body);
+    // console.log("멀터");
+    // console.log("멀터바디", req.body);
     // const {itemTitle,itemCategories,itemCondition,itemTuning,itemDealing,itemPrice,itemSubtitle} =req.body;
-    console.log(req.files);
-    console.log(req.files[0].filename);
+    // console.log(req.files);
+    // console.log(req.files[0].filename);
     const imgArr = [];
 
     req.files.forEach((item) => {
       imgArr.push(item.filename);
     });
-    console.log(global.userName);
+    // console.log(global.userName);
 
-    console.log(imgArr.join("-*,"));
+    // console.log(imgArr.join("-*,"));
     const {
       itemTitle,
       itemCategories,
@@ -107,13 +107,14 @@ router.post(
       itemDealing,
       itemPrice,
       itemSubtitle,
+      itemLocal,
     } = req.body;
     const tempUser = await User.findOne({
       where: {
         name: global.userName,
       },
     });
-    console.log(tempUser);
+    // console.log(tempUser);
     const tempItem = await Item.create({
       imgArr: imgArr.join("-*,"),
       itemTitle: itemTitle,
@@ -123,6 +124,7 @@ router.post(
       itemDealing: itemDealing,
       itemPrice: itemPrice,
       itemSubtitle: itemSubtitle,
+      itemLocal: itemLocal,
     });
     // await Item.findOne({ where: { id: req.body.id } });
     tempUser.addItem(tempItem);
@@ -141,10 +143,151 @@ router.get("/", async (req, res) => {
     order: [["id", "DESC"]],
     include: { model: User },
   });
-  console.log("get");
-  console.log(tempItem);
-  console.log("get");
+
+  // tempItem.forEach((item) => {
+  //   console.log(item.dataValues.imgArr.split("-*,")[0].split(".")[1]);
+  //   const filename = `./uploadedItems/${
+  //     item.dataValues.imgArr.split("-*,")[0]
+  //   }`;
+  //   fs.readFile(filename, (err, data) => {
+  //     res.writeHead(200, {
+  //       "Context-Type": `image/${
+  //         item.dataValues.imgArr.split("-*,")[0]
+  //       }.split(".")[1];
+  //       charset=UTF-8`,
+  //     });
+
+  //     res.write(data);
+  //     res.end;
+  //   });
+
+  // console.log(tempItem.imgArr.split("-*,")[0]);
   res.send(tempItem);
+});
+
+router.get("/selectkind", async (req, res) => {
+  const kind = req.query.kind;
+  console.log("셀렉트카인드");
+  // console.log(kind);
+  const tempItem = await Item.findAll({
+    where: {
+      itemCategories: kind,
+    },
+    order: [["id", "DESC"]],
+    include: { model: User },
+  });
+  res.send({ tempItem });
+});
+
+router.get("/selectlocal", async (req, res) => {
+  const local = req.query.local;
+  console.log(local);
+  const tempItem = await Item.findAll({
+    where: {
+      itemLocal: local,
+    },
+    order: [["id", "DESC"]],
+    include: { model: User },
+  });
+  res.send({ tempItem });
+});
+
+router.get("/selecttrade", async (req, res) => {
+  const trade = req.query.trade;
+  console.log(trade);
+  const tempItem = await Item.findAll({
+    where: {
+      itemDealing: trade,
+    },
+    order: [["id", "DESC"]],
+    include: { model: User },
+  });
+  res.send({ tempItem });
+});
+
+router.post("/selectall", async (req, res) => {
+  const kind = req.body.kind;
+  const local = req.body.local;
+  const trade = req.body.trade;
+  console.log("셀렉트올");
+  console.log(kind, local, trade);
+  console.log("셀렉트올");
+  const tempItem = await Item.findAll({
+    where: {
+      itemDealing: trade,
+      itemLocal: local,
+      itemCategories: kind,
+    },
+    order: [["id", "DESC"]],
+    include: { model: User },
+  });
+  console.log(tempItem);
+  res.send(tempItem);
+});
+
+router.post("/selectkindlocal", async (req, res) => {
+  const kind = req.body.kind;
+  const local = req.body.local;
+  console.log(kind);
+  console.log(local);
+  const tempItem = await Item.findAll({
+    where: {
+      itemLocal: local,
+      itemCategories: kind,
+    },
+    order: [["id", "DESC"]],
+    include: { model: User },
+  });
+  res.send(tempItem);
+});
+
+router.post("/selectkindtrade", async (req, res) => {
+  const kind = req.body.kind;
+  const trade = req.body.trade;
+  console.log(kind);
+  console.log(trade);
+
+  const tempItem = await Item.findAll({
+    where: {
+      itemDealing: trade,
+      itemCategories: kind,
+    },
+    order: [["id", "DESC"]],
+    include: { model: User },
+  });
+  console.log(tempItem);
+  res.send(tempItem);
+});
+
+router.post("/selectlocaltrade", async (req, res) => {
+  const local = req.body.local;
+  const trade = req.body.trade;
+  console.log(local);
+  console.log(trade);
+
+  const tempItem = await Item.findAll({
+    where: {
+      itemLocal: local,
+      itemDealing: trade,
+    },
+    order: [["id", "DESC"]],
+    include: { model: User },
+  });
+  console.log(tempItem);
+  res.send(tempItem);
+});
+
+router.get("/detail", async (req, res) => {
+  const itemIndex = req.query.itemIndex;
+  console.log("detail");
+  console.log(itemIndex);
+  const tempItem = await Item.findOne({
+    where: {
+      id: itemIndex,
+    },
+  });
+  res.send({ tempItem });
+  // const tempItem = await Item.findOne;
 });
 
 module.exports = router;

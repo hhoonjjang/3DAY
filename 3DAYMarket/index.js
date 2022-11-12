@@ -18,6 +18,8 @@ const app = express();
 app.set("port", process.env.PORT || 8080);
 app.set("view engine", "ejs");
 
+app.use("/uploadedItems", express.static("uploadedItems"));
+
 app.use((req, res, next) => {
   if (process.env.NODE_ENV === "production") morgan("combined")(req, res, next);
   else morgan("dev")(req, res, next);
@@ -39,6 +41,12 @@ app.use(
   })
 );
 
+app.get("/serverImg", async (req, res) => {
+  const tempItem = await Item.findAll({
+    order: [["id", "DESC"]],
+    include: { model: User },
+  });
+});
 app.use("/api", routes);
 
 sequelize
