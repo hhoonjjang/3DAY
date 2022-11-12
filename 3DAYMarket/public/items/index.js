@@ -30,9 +30,9 @@ let img3 = document.getElementById("img3");
 let img4 = document.getElementById("img4");
 
 let imgArr = [img1, img2, img3, img4];
-// const imgArr = [img1, img2, img3];n
-// const imgArr = [img1, img2];n
-// const imgArr = [img1];n
+// // const imgArr = [img1, img2, img3];n
+// // const imgArr = [img1, img2];n
+// // const imgArr = [img1];n
 
 imgArr[0].src = "../image/1.png";
 imgArr[1].src = "../image/2.jpg";
@@ -53,6 +53,7 @@ const reverseBtn = document.getElementById("reverse");
 const reverseImg = [...document.getElementsByClassName("reverse")];
 const reverseBgc = [...document.getElementsByClassName("bgc")];
 const loginDisplay = document.getElementById("loginDisplay");
+const tempUl = document.getElementById("info-div-slide");
 let date = new Date();
 const address = "http://localhost:8080/items/";
 
@@ -136,10 +137,26 @@ async function getDetailItem() {
     const imgArray = [];
     console.log(imgArray);
     console.log(item.imgArr.split("-*,").length);
+
+    // for (let i = 0; i < item.imgArr.split("-*,").length; i++) {
+    //   imgArr.push(`img${i}`);
+    //   const tempLi = document.createElement("li");
+    //   tempLi.classList.add = "info-div-slide-item";
+    //   const tempImg = document.createElement(`img`);
+    //   tempImg.id = `img${i}`;
+    //   console.log(tempUl);
+    //   console.log(tempLi);
+    //   console.log(tempImg);
+
+    //   tempUl.prepend(tempLi);
+    //   tempLi.append(tempImg);
+    //   console.log(tempUl);
+    // }
+    // console.log(tempUl);
+
     for (let i = 0; i < item.imgArr.split("-*,").length; i++) {
       imgArray.push(item.imgArr.split("-*,")[i]);
       imgArr[i].src = `../uploadedItems/${imgArray[i]}`;
-      console.log(imgArr[i].src);
     }
     console.log(imgArr);
     console.log(imgArray);
