@@ -242,6 +242,7 @@ function moveRight() {
   }
 }
 
-chatBtn.onclick = () => {
+chatBtn.onclick = async function () {
   location.href = "http://localhost:8080/chatting/";
+  console.log(sellerId);
 };
