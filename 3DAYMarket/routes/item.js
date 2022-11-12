@@ -228,7 +228,8 @@ router.post("/selectall", async (req, res) => {
 router.post("/selectkindlocal", async (req, res) => {
   const kind = req.body.kind;
   const local = req.body.local;
-
+  console.log(kind);
+  console.log(local);
   const tempItem = await Item.findAll({
     where: {
       itemLocal: local,
@@ -250,6 +251,24 @@ router.post("/selectkindtrade", async (req, res) => {
     where: {
       itemDealing: trade,
       itemCategories: kind,
+    },
+    order: [["id", "DESC"]],
+    include: { model: User },
+  });
+  console.log(tempItem);
+  res.send(tempItem);
+});
+
+router.post("/selectlocaltrade", async (req, res) => {
+  const local = req.body.local;
+  const trade = req.body.trade;
+  console.log(local);
+  console.log(trade);
+
+  const tempItem = await Item.findAll({
+    where: {
+      itemLocal: local,
+      itemDealing: trade,
     },
     order: [["id", "DESC"]],
     include: { model: User },
