@@ -24,12 +24,12 @@ document.getElementById("tuning").innerText = tuning;
 document.getElementById("dealing").innerText = dealing;
 document.getElementById("subtitle-text").innerText = subtitle;
 
-const img1 = document.getElementById("img1");
-const img2 = document.getElementById("img2");
-const img3 = document.getElementById("img3");
-const img4 = document.getElementById("img4");
+let img1 = document.getElementById("img1");
+let img2 = document.getElementById("img2");
+let img3 = document.getElementById("img3");
+let img4 = document.getElementById("img4");
 
-const imgArr = [img1, img2, img3, img4];
+let imgArr = [img1, img2, img3, img4];
 // const imgArr = [img1, img2, img3];n
 // const imgArr = [img1, img2];n
 // const imgArr = [img1];n
@@ -39,6 +39,85 @@ imgArr[1].src = "../image/2.jpg";
 imgArr[2].src = "../image/3.jpg";
 imgArr[3].src = "../image/4.jpg";
 
+//
+const itemIndex = window.location.href.split("?")[1].split("=")[1];
+async function getDetailItem() {
+  console.log(itemIndex);
+  try {
+    const item = (await axios.get("/api/item/detail?itemIndex=" + itemIndex))
+      .data.tempItem;
+    const imgArray = [];
+    console.log(imgArray);
+    console.log(item.imgArr.split("-*,").length);
+    for (let i = 0; i < item.imgArr.split("-*,").length; i++) {
+      imgArray.push(item.imgArr.split("-*,")[i]);
+      imgArr[i].src = `../uploadedItems/${imgArray[i]}`;
+      console.log(imgArr[i].src);
+    }
+    console.log(imgArr);
+    console.log(imgArray);
+    console.log(item);
+    title = item.itemTitle;
+    price = item.itemPrice;
+    area = item.itemLocal;
+    past = item.updatedAt.split("T")[0];
+    sellerId = item.seller_id;
+    console.log(item.seller_id);
+    categories = item.itemCategories;
+    condition = item.itemCondition;
+    tuning = item.itemTuning;
+    dealing = item.itemDealing;
+    subtitle = item.itemSubtitle;
+    document.getElementById("title-text").innerText = title;
+    document.getElementById("price-num").innerText = price.toLocaleString();
+    document.getElementById("area-value").innerText = area;
+    document.getElementById("heart-value").innerText = heart.toLocaleString();
+    document.getElementById("hits-value").innerText = hits.toLocaleString();
+    document.getElementById("past-value").innerText = past;
+    document.getElementById("seller-categories").innerText = categories;
+    document.getElementById("seller-id").innerText = sellerId;
+    document.getElementById("condition").innerText = condition;
+    document.getElementById("tuning").innerText = tuning;
+    document.getElementById("dealing").innerText = dealing;
+    document.getElementById("subtitle-text").innerText = subtitle;
+  } catch (err) {
+    console.error(err);
+  }
+}
+getDetailItem();
+
+// const divInfoDiv = document.createElement("div");
+// divInfoDiv.classList.add("info-div");
+// const divReadMore = document.createElement("div");
+// divReadMore.classList.add("read-more-div");
+// const divInfoDivRel = document.createElement("div");
+// divInfoDivRel.classList.add("info-div-rel");
+// const divInfoDivInfo = document.createElement("div");
+// divInfoDivInfo.classList.add("info-div-info");
+// const divReadMoreDivInner = document.createElement("div");
+// divReadMoreDivInner.classList.add("read-more-div-inner");
+// const divReadMoreDivBanner = document.createElement("div");
+// divReadMoreDivBanner.classList.add("read-more-div-banner");
+// const divReadMoreDivWarn = document.createElement("div");
+// divReadMoreDivWarn.classList.add("read-more-div-warn");
+// const ulInfoDivSlide = document.createElement("ul");
+// ulInfoDivSlide.classList.add("info-div-slide");
+// const liInfoDivSlideItem = document.createElement("li");
+// liInfoDivSlideItem.classList.add("info-div-slide-item");
+// console.log(divReadMore);
+// divMainColum.append(divInfoDiv);
+// divMainColum.append(divReadMore);
+// divInfoDiv.append(divInfoDivRel);
+// divInfoDivRel.append(ulInfoDivSlide);
+// ulInfoDivSlide.append(liInfoDivSlideItem);
+// ulInfoDivSlide.append(liInfoDivSlideItem);
+// ulInfoDivSlide.append(liInfoDivSlideItem);
+// ulInfoDivSlide.append(liInfoDivSlideItem);
+
+// divInfoDiv.append(divInfoDivInfo);
+// divReadMore.append(divReadMoreDivInner);
+// divReadMore.append(divReadMoreDivBanner);
+// divReadMore.append(divReadMoreDivWarn);
 function moveLeft() {
   if (imgArr.length == 2) {
     imgArr[0].classList.remove("display-none");
@@ -76,17 +155,3 @@ function moveRight() {
     } else imgArr[0].classList.add("display-none");
   }
 }
-
-//
-const itemIndex = window.location.href.split("?")[1].split("=")[1];
-async function getDetailItem() {
-  console.log(itemIndex);
-  try {
-    const item = (await axios.get("/api/item/detail?itemIndex=" + itemIndex))
-      .data.tempIt;
-    console.log(item);
-  } catch (err) {
-    console.error(err);
-  }
-}
-getDetailItem();
