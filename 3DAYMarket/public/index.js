@@ -263,210 +263,38 @@ signOutBtn.onclick = async function () {
 
 async function itemCategoryKind() {
   selectKindValue = selectKind.options[selectKind.selectedIndex].value;
-
-  if (selectTradeValue || selectLocalValue) {
-    divItemBoard.innerHTML = "";
-    if (!selectTradeValue) {
-      console.log("로컬과 카인드셀렉트일때");
-      const item = (
-        await axios.post("/api/item/selectkindlocal", {
-          kind: selectKindValue,
-          local: selectLocalValue,
-        })
-      ).data;
-      console.log(item);
-      //디스플레이
-      item.forEach((item) => {
-        const articleItem = document.createElement("article");
-        const aItem = document.createElement("a");
-        const divItemTop = document.createElement("div");
-        const divItemImg = document.createElement("div");
-        const imgItem = document.createElement("img");
-        const divItemMiddle = document.createElement("div");
-        const divItemTitle = document.createElement("div");
-        const divItemPrice = document.createElement("div");
-        const divItemLocal = document.createElement("div");
-        const divItemTrade = document.createElement("div");
-        const divItemBottom = document.createElement("div");
-        const divItemFocus = document.createElement("div");
-        const divItemBorderdot = document.createElement("div");
-        const divItemCountingView = document.createElement("div");
-        articleItem.classList.add("item");
-        aItem.classList.add("item-link");
-        aItem.href = `${address}${item.id}`;
-        divItemTop.classList.add("item-top");
-        divItemImg.classList.add("item-img");
-        imgItem.src = `../uploadedItems/${item.imgArr.split("-*,")[0]}`;
-        divItemMiddle.classList.add("item-middle");
-        divItemTitle.classList.add("item-title");
-        divItemTitle.innerText = item.itemTitle;
-        divItemPrice.classList.add("item-price");
-        divItemPrice.innerText = item.itemPrice;
-        divItemLocal.classList.add("item-local");
-        divItemLocal.innerText = item.itemLocal;
-        divItemTrade.classList.add("item-trade");
-        divItemTrade.innerText = item.itemDealing;
-        divItemBottom.classList.add("item-bottom");
-        divItemFocus.classList.add("item-focus");
-        divItemFocus.innerText = `관심 ${10}`;
-        divItemBorderdot.classList.add("border-dot");
-        divItemBorderdot.innerText = "！";
-        divItemCountingView.classList.add("item-countingview");
-        divItemCountingView.innerText = `채팅 ${78}`;
-        divItemBoard.appendChild(articleItem);
-        articleItem.appendChild(aItem);
-        aItem.appendChild(divItemTop);
-        aItem.appendChild(divItemMiddle);
-        aItem.appendChild(divItemBottom);
-        divItemTop.appendChild(divItemImg);
-        divItemImg.appendChild(imgItem);
-        divItemMiddle.appendChild(divItemTitle);
-        divItemMiddle.appendChild(divItemPrice);
-        divItemMiddle.appendChild(divItemLocal);
-        divItemMiddle.appendChild(divItemTrade);
-        divItemBottom.appendChild(divItemFocus);
-        divItemBottom.appendChild(divItemBorderdot);
-        divItemBottom.appendChild(divItemCountingView);
-      });
-    }
-    if (!selectLocalValue) {
-      console.log("트레이드와 카인드셀렉트일때");
-      const item = (
-        await axios.post("/api/item/selectkindtrade", {
-          kind: selectKindValue,
-          trade: selectTradeValue,
-        })
-      ).data;
-      console.log(item);
-      //디스플레이
-      item.forEach((item) => {
-        const articleItem = document.createElement("article");
-        const aItem = document.createElement("a");
-        const divItemTop = document.createElement("div");
-        const divItemImg = document.createElement("div");
-        const imgItem = document.createElement("img");
-        const divItemMiddle = document.createElement("div");
-        const divItemTitle = document.createElement("div");
-        const divItemPrice = document.createElement("div");
-        const divItemLocal = document.createElement("div");
-        const divItemTrade = document.createElement("div");
-        const divItemBottom = document.createElement("div");
-        const divItemFocus = document.createElement("div");
-        const divItemBorderdot = document.createElement("div");
-        const divItemCountingView = document.createElement("div");
-        articleItem.classList.add("item");
-        aItem.classList.add("item-link");
-        aItem.href = `${address}${item.id}`;
-        divItemTop.classList.add("item-top");
-        divItemImg.classList.add("item-img");
-        imgItem.src = `../uploadedItems/${item.imgArr.split("-*,")[0]}`;
-        divItemMiddle.classList.add("item-middle");
-        divItemTitle.classList.add("item-title");
-        divItemTitle.innerText = item.itemTitle;
-        divItemPrice.classList.add("item-price");
-        divItemPrice.innerText = item.itemPrice;
-        divItemLocal.classList.add("item-local");
-        divItemLocal.innerText = item.itemLocal;
-        divItemTrade.classList.add("item-trade");
-        divItemTrade.innerText = item.itemDealing;
-        divItemBottom.classList.add("item-bottom");
-        divItemFocus.classList.add("item-focus");
-        divItemFocus.innerText = `관심 ${10}`;
-        divItemBorderdot.classList.add("border-dot");
-        divItemBorderdot.innerText = "！";
-        divItemCountingView.classList.add("item-countingview");
-        divItemCountingView.innerText = `채팅 ${78}`;
-        divItemBoard.appendChild(articleItem);
-        articleItem.appendChild(aItem);
-        aItem.appendChild(divItemTop);
-        aItem.appendChild(divItemMiddle);
-        aItem.appendChild(divItemBottom);
-        divItemTop.appendChild(divItemImg);
-        divItemImg.appendChild(imgItem);
-        divItemMiddle.appendChild(divItemTitle);
-        divItemMiddle.appendChild(divItemPrice);
-        divItemMiddle.appendChild(divItemLocal);
-        divItemMiddle.appendChild(divItemTrade);
-        divItemBottom.appendChild(divItemFocus);
-        divItemBottom.appendChild(divItemBorderdot);
-        divItemBottom.appendChild(divItemCountingView);
-      });
-    }
-
-    if (selectTradeValue && selectLocalValue) {
-      console.log("하잇하잇");
-
-      const item = (
-        await axios.post("/api/item/selectall", {
-          kind: selectKindValue,
-          local: selectLocalValue,
-          trade: selectTradeValue,
-        })
-      ).data;
-      console.log(item);
-      //디스플레이
-      item.forEach((item) => {
-        const articleItem = document.createElement("article");
-        const aItem = document.createElement("a");
-        const divItemTop = document.createElement("div");
-        const divItemImg = document.createElement("div");
-        const imgItem = document.createElement("img");
-        const divItemMiddle = document.createElement("div");
-        const divItemTitle = document.createElement("div");
-        const divItemPrice = document.createElement("div");
-        const divItemLocal = document.createElement("div");
-        const divItemTrade = document.createElement("div");
-        const divItemBottom = document.createElement("div");
-        const divItemFocus = document.createElement("div");
-        const divItemBorderdot = document.createElement("div");
-        const divItemCountingView = document.createElement("div");
-        articleItem.classList.add("item");
-        aItem.classList.add("item-link");
-        aItem.href = `${address}${item.id}`;
-        divItemTop.classList.add("item-top");
-        divItemImg.classList.add("item-img");
-        imgItem.src = `../uploadedItems/${item.imgArr.split("-*,")[0]}`;
-        divItemMiddle.classList.add("item-middle");
-        divItemTitle.classList.add("item-title");
-        divItemTitle.innerText = item.itemTitle;
-        divItemPrice.classList.add("item-price");
-        divItemPrice.innerText = item.itemPrice;
-        divItemLocal.classList.add("item-local");
-        divItemLocal.innerText = item.itemLocal;
-        divItemTrade.classList.add("item-trade");
-        divItemTrade.innerText = item.itemDealing;
-        divItemBottom.classList.add("item-bottom");
-        divItemFocus.classList.add("item-focus");
-        divItemFocus.innerText = `관심 ${10}`;
-        divItemBorderdot.classList.add("border-dot");
-        divItemBorderdot.innerText = "！";
-        divItemCountingView.classList.add("item-countingview");
-        divItemCountingView.innerText = `채팅 ${78}`;
-        divItemBoard.appendChild(articleItem);
-        articleItem.appendChild(aItem);
-        aItem.appendChild(divItemTop);
-        aItem.appendChild(divItemMiddle);
-        aItem.appendChild(divItemBottom);
-        divItemTop.appendChild(divItemImg);
-        divItemImg.appendChild(imgItem);
-        divItemMiddle.appendChild(divItemTitle);
-        divItemMiddle.appendChild(divItemPrice);
-        divItemMiddle.appendChild(divItemLocal);
-        divItemMiddle.appendChild(divItemTrade);
-        divItemBottom.appendChild(divItemFocus);
-        divItemBottom.appendChild(divItemBorderdot);
-        divItemBottom.appendChild(divItemCountingView);
-      });
-    }
-
-    return;
-  }
-  console.log(selectKind.options[selectKind.selectedIndex].value);
-  console.log(selectKind.options[selectKind.selectedIndex].text);
-  const item = (await axios.get("/api/item/selectkind?kind=" + selectKindValue))
-    .data.tempItem;
-
+  let item;
   divItemBoard.innerHTML = "";
+  if (!selectTradeValue && !selectLocalValue) {
+    item = (await axios.get("/api/item/selectkind?kind=" + selectKindValue))
+      .data.tempItem;
+  }
+  if (selectTradeValue && !selectLocalValue) {
+    item = (
+      await axios.post("/api/item/selectkindtrade", {
+        kind: selectKindValue,
+        trade: selectTradeValue,
+      })
+    ).data;
+  }
+  if (!selectTradeValue && selectLocalValue) {
+    item = (
+      await axios.post("/api/item/selectkindlocal", {
+        kind: selectKindValue,
+        local: selectLocalValue,
+      })
+    ).data;
+  }
+  if (selectTradeValue && selectLocalValue) {
+    item = (
+      await axios.post("/api/item/selectall", {
+        kind: selectKindValue,
+        local: selectLocalValue,
+        trade: selectTradeValue,
+      })
+    ).data;
+  }
+
   item.forEach((item) => {
     const articleItem = document.createElement("article");
     const aItem = document.createElement("a");
@@ -522,12 +350,48 @@ async function itemCategoryKind() {
 }
 
 async function itemCategoryLocal() {
-  selectLocalValue = selectLocal.options[selectLocal.selectedIndex].value;
-  const item = (
-    await axios.get("/api/item/selectlocal?local=" + selectLocalValue)
-  ).data.tempItem;
   divItemBoard.innerHTML = "";
-  item.forEach((item) => {
+  let item;
+  selectLocalValue = selectLocal.options[selectLocal.selectedIndex].value;
+
+  if (!selectKindValue && !selectTradeValue) {
+    item = (await axios.get("/api/item/selectlocal?local=" + selectLocalValue))
+      .data.tempItem;
+    console.log("로컬만");
+  }
+  if (!selectKindValue && selectTradeValue) {
+    item = (
+      await axios.post("/api/item/selectlocaltrade", {
+        local: selectLocalValue,
+        trade: selectTradeValue,
+      })
+    ).data;
+
+    console.log("로컬과 트레이드");
+  }
+  if (!selectTradeValue && selectKindValue) {
+    console.log("로컬카인드");
+    console.log(selectLocalValue);
+    item = (
+      await axios.post("/api/item/selectkindlocal", {
+        kind: selectKindValue,
+        local: selectLocalValue,
+      })
+    ).data;
+    console.log("로컬과 카인드");
+  }
+  if (selectKindValue && selectTradeValue) {
+    item = (
+      await axios.post("/api/item/selectall", {
+        kind: selectKindValue,
+        local: selectLocalValue,
+        trade: selectTradeValue,
+      })
+    ).data;
+    console.log("셀렉트오올");
+  }
+  console.log(item);
+  item?.forEach((item) => {
     const articleItem = document.createElement("article");
     const aItem = document.createElement("a");
     const divItemTop = document.createElement("div");
@@ -583,11 +447,37 @@ async function itemCategoryLocal() {
 
 async function itemCategoryTrade() {
   selectTradeValue = selectTrade.options[selectTrade.selectedIndex].value;
-  console.log(selectTradeValue);
-  const item = (
-    await axios.get("api/item/selecttrade?trade=" + selectTradeValue)
-  ).data.tempItem;
   divItemBoard.innerHTML = "";
+  let item;
+  if (!selectKindValue && !selectLocalValue) {
+    item = (await axios.get("api/item/selecttrade?trade=" + selectTradeValue))
+      .data.tempItem;
+  }
+  if (!selectKindValue && selectLocalValue) {
+    item = (
+      await axios.post("/api/item/selectlocaltrade", {
+        local: selectLocalValue,
+        trade: selectTradeValue,
+      })
+    ).data;
+  }
+  if (selectKindValue && !selectLocalValue) {
+    const item = (
+      await axios.post("/api/item/selectkindtrade", {
+        kind: selectKindValue,
+        trade: selectTradeValue,
+      })
+    ).data;
+  }
+  if (selectKindValue && selectLocalValue) {
+    item = (
+      await axios.post("/api/item/selectall", {
+        kind: selectKindValue,
+        local: selectLocalValue,
+        trade: selectTradeValue,
+      })
+    ).data;
+  }
   console.log(item);
   item.forEach((item) => {
     const articleItem = document.createElement("article");
