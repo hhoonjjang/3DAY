@@ -18,91 +18,6 @@
 let isTitleTrue;
 let isPriceTrue;
 let isSubtitleTrue;
-
-const signInBtn = document.getElementById("sign-in");
-const signOutBtn = document.getElementById("sign-out");
-// const signUpBtn =document.getElementById("sign-up");
-const chattingBtn = document.getElementById("chatting");
-const itemUpload = document.getElementById("item-upload");
-const userInfo = document.getElementById("user-info");
-const reverseBtn = document.getElementById("reverse");
-const reverseImg = [...document.getElementsByClassName("reverse")];
-const reverseBgc = [...document.getElementsByClassName("bgc")];
-const loginDisplay = document.getElementById("loginDisplay");
-let date = new Date();
-const address = "http://localhost:8080/items/";
-
-signOutBtn.onclick = async function () {
-  try {
-    const result = await axios.post("/api/user/logout");
-
-    loginDisplay.removeChild(loginDisplay.firstChild);
-    signOutBtn.classList.remove("on");
-    chattingBtn.classList.remove("on");
-    itemUpload.classList.remove("on");
-    userInfo.classList.remove("on");
-    loginDisplay.style.display = "none";
-
-    signInBtn.classList.remove("off");
-    // signUpBtn.classList.remove("off");
-  } catch (err) {
-    console.error(err);
-  }
-};
-let cookieReverse;
-
-let getCookie = function (name) {
-  let value = document.cookie.match("(^|;) ?" + name + "=([^;]*)(;|$)");
-  // console.log(value);
-  return value ? value[2] : null;
-};
-let setCookie = function (name, value, exp) {
-  let date = new Date();
-  date.setTime(date.getTime() + exp * 1000 * 60 * 60 * 9 + 1000 * 60);
-  document.cookie =
-    name + "=" + value + ";expires=" + date.toUTCString() + ";path=/";
-  console.log(document.cookie);
-  // console.log(cookie);
-};
-let cookieArray = document.cookie.split("; ");
-let CC = getCookie("carrot");
-let CR = getCookie("reverse");
-let cookieR = document.cookie.split("; ").includes("reverse=123");
-let cookieC = document.cookie.split("; ").includes(`carrot=${CC}`);
-
-let cookieCIndex = cookieArray.findIndex((e) => e == `carrot=${CC}`);
-
-let deleteCookie = function (name) {
-  document.cookie = name + "=; expires=Thu, 01 Jan 1999 00:00:10 GMT;";
-};
-
-const login = async function () {
-  console.log("asd");
-  console.log(cookieArray[cookieCIndex]);
-  if (cookieArray[cookieCIndex]) {
-    try {
-      const result = await axios.post("/api/user/cookie", {
-        cookie: cookieArray[cookieCIndex],
-      });
-      signOutBtn.classList.add("on");
-      chattingBtn.classList.add("on");
-      itemUpload.classList.add("on");
-      userInfo.classList.add("on");
-      console.log(result.data.name);
-      const login = document.createElement("div");
-      login.innerText = `${result.data.name}님 어서오세요!`;
-      loginDisplay.style.display = "block";
-      document.getElementById("loginDisplay").append(login);
-      signInBtn.classList.add("off");
-      signUpBtn.classList.add("off");
-      console.log("123");
-    } catch (error) {
-      // console.error(error)
-    }
-  }
-};
-login();
-
 //
 //
 const titleInput = document.getElementById("title-input");
@@ -212,25 +127,40 @@ function getValue() {
   const categoriesList = document.getElementsByName("categories");
   categoriesList.forEach((elem) => {
     if (elem.checked) {
-      itemCategories = elem.id;
+      if (elem.id == "fassion") itemCategories = "의류, 패션";
+      else if (elem.id == "electric") itemCategories = "전자기기";
+      else if (elem.id == "vehicle") itemCategories = "차량";
+      else if (elem.id == "furniture") itemCategories = "가구";
+      else if (elem.id == "living") itemCategories = "생활";
+      else if (elem.id == "music") itemCategories = "음반, 악기";
+      else if (elem.id == "sports") itemCategories = "스포츠";
+      else if (elem.id == "beauty") itemCategories = "화장품";
+      else if (elem.id == "book") itemCategories = "도서";
+      else if (elem.id == "etc") itemCategories = "기타";
     }
   });
   const conditionList = document.getElementsByName("condition");
   conditionList.forEach((elem) => {
     if (elem.checked) {
-      itemCondition = elem.id;
+      if (elem.id == "used-item") itemCondition = "중고상품";
+      else if (elem.id == "new-item") itemCondition = "새상품";
     }
   });
   const tuningList = document.getElementsByName("tuning");
   tuningList.forEach((elem) => {
     if (elem.checked) {
-      itemTuning = elem.id;
+      if (elem.id == "non-tuning") itemTuning = "불가능";
+      else if (elem.id == "tuning") itemTuning = "가능";
     }
   });
   const dealingList = document.getElementsByName("dealing");
   dealingList.forEach((elem) => {
     if (elem.checked) {
-      itemDealing = elem.id;
+      // itemDealing = elem.id;
+      if (elem.id == "meet") itemDealing = "직거래";
+      else if (elem.id == "delivery") itemDealing = "택배거래";
+      else if (elem.id == "delivery-safe") itemDealing = "택배거래(안전결제)";
+      else if (elem.id == "anything") itemDealing = "무관";
     }
   });
   const localList = document.getElementsByName("local");
@@ -278,6 +208,7 @@ document.getElementById("submit-form").onsubmit = async function (e) {
     return;
   }
 
+
   try {
     const itemTitle = titleInput.value;
     const itemPrice = Number(priceInput.value.replace(/,/g, ""));
@@ -308,6 +239,7 @@ document.getElementById("submit-form").onsubmit = async function (e) {
     }
   } catch (err) {
     console.error(err);
+
   }
 
   // try {
