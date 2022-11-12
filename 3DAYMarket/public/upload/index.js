@@ -278,7 +278,6 @@ document.getElementById("submit-form").onsubmit = async function (e) {
     return;
   }
 
-
   try {
     const itemTitle = titleInput.value;
     const itemPrice = Number(priceInput.value.replace(/,/g, ""));
@@ -309,7 +308,6 @@ document.getElementById("submit-form").onsubmit = async function (e) {
     }
   } catch (err) {
     console.error(err);
-
   }
 
   // try {
