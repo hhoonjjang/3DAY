@@ -34,4 +34,8 @@ module.exports = (server) => {
       }
     });
   });
+
+
+  io.of("c");
+
 };

@@ -18,19 +18,134 @@
     onselectstart="return false"
     ondragstart="return false"
   >
-    <div id=""><img src="./img/back111.gif" id="bottomimg" /></div>
-    <img src="./img/left111.gif" id="leftimg" />
-    <img src="./img/right111.gif" id="rightimg" />
-    <img src="./img/top111.gif" id="topimg" />
-    <div id="bgp">
-      <div id="menu"></div>
-      <div id="imgName"></div>
-      <div id="pay"></div>
-      <div id="list"></div>
-      <div id="myActivity"></div>
-      <div id="myPlace"></div>
-      <div id="master"></div>
+
+
+    <div class="top-container bgc">
+      <a class="home-box" href="/">
+        <div class="reverse">
+          <img src="../imgs/logo-front.png" alt="" />
+          <img src="../imgs/logo-back.png" alt="" id="invert" />
+        </div>
+        <div class="satan">3DAYMarket</div>
+      </a>
+      <div class="category-box">
+        <a id="new-trade" href="./newtrade">신품거래</a>
+        <a id="user-trade" href="./usedtrade">중고거래</a>
+      </div>
+
+      <div class="user-box">
+        <div id="searchBox">
+          <input
+            text="text"
+            id="search"
+            placeholder="물품이나 동네를 검색해보세요"
+          />
+        </div>
+        <div id="loginDisplay"></div>
+        <!-- <button id ="sign-in">로그인</button> -->
+        <a id="sign-in" href="../login">로그인</a>
+        <!-- <button id ="sign-up">회원가입</button> -->
+        <button id="sign-out">로그아웃</button>
+        <a id="chatting" href="../chatting">채팅하기</a>
+        <a id="item-upload" href="../upload">물품등록</a>
+        <a id="user-info" href="../mypage">마이페이지</a>
+      </div>
+      <div class="reverse" id="reverse">
+        <img src="../imgs/logo-front1.png" alt="" />
+        <img src="../imgs/logo-back1.png" alt="" />
+      </div>
+
     </div>
+
+    <div id="no1back">
+      <img src="img/back1122.jpg" id="no1backimg" />
+      <div id="bgp">
+        <div id="menu">
+          <div id="menuTitle">마이 페이지</div>
+          <div id="menugear">
+            <button style="border: none; background: none" id="gearBtn">
+              <img src="img/gears.png" id="gear" />
+            </button>
+          </div>
+        </div>
+        <div id="imgName">
+          <div id="photo">
+            <button style="border: none; background: none" id="photoimgBtn">
+              <img src="img/testuser1.jpg" id="testuser" />
+            </button>
+          </div>
+          <div id="userinfo">
+            <div id="userid">userid</div>
+            <div id="username">userName</div>
+            <div id="userlocal">userlocal</div>
+          </div>
+          <div id="proflie">
+            <button style="border: none; background: none" id="nextBtn">
+              <img src="img/next.png" id="arrow" />
+            </button>
+          </div>
+        </div>
+        <div id="pay">
+          <div id="payimg"><img src="./img/DOGEicon.png" /></div>
+          <div id="paytitle">pay</div>
+          <div id="paybody">3DAYPAY로 결제해 보세요</div>
+        </div>
+        <div id="list">
+          <div id="listItemall">
+            <div id="itemtitle">나의 거래</div>
+            <div id="item1234">
+              <div id="item1"><img src="img/buylist.png" id="item1img" /></div>
+              <div id="item2"><img src="img/sellList.png" id="item2img" /></div>
+              <div id="item3"><img src="img/likeitem.png" id="item3img" /></div>
+              <div id="item4"><img src="img/listbook.png" id="item4img" /></div>
+            </div>
+          </div>
+          <div id="listItemtitle">
+            <div id="item1title">구매 내역</div>
+            <div id="item2title">판매 내역</div>
+            <div id="item3title">관심 목록</div>
+            <div id="item4title">가계부</div>
+          </div>
+        </div>
+        <div id="myPlace">
+          <div id="myPlacetitle">나의 상세페이지</div>
+          <div id="myPlaceno1">
+            <div id="myPlacelocal">
+              <img src="img/mylocalinit.png" id="myPlacelocalimg" />
+              <div id="myPlacelocaltitle">내 동네 설정</div>
+            </div>
+          </div>
+          <div id="myPlaceService">
+            <img src="./img/servicecenter.png" id="servicecenter" />
+            <div id="myPlacelocalservice">고객센터</div>
+          </div>
+          <div id="myPlacealim">
+            <img src="img/myplacealim.png" id="alim" />
+            <div id="myPlacealimtitle">알림 키워드 설정</div>
+          </div>
+          <div id="myPlacemail">
+            <img src="img/meil.png" id="meil" />
+            <div id="myPlaceemailtitle">친구 초대</div>
+          </div>
+        </div>
+        <div id="master">
+          <div id="mastertitle">나의 비지니스</div>
+          <div class="masterAdd">
+            <img src="img/masterprofile.png" id="masterprofileimg" />
+            <div id="masterprofiletitle">비지니스 프로필 설정</div>
+          </div>
+          <div class="masterAdd">
+            <img src="img/masteradd.png" id="masterprofileimg1" />
+            <div id="masterprofiletitle1">비지니스 홍보글</div>
+          </div>
+          <div class="masterAdd">
+            <img src="img/masteradd2.png" id="masterprofileimg2" />
+            <div id="masterprofiletitle2">비지니스 광고 설정</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="index.js"></script>
   </body>
 </html>

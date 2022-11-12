@@ -10,13 +10,17 @@ const { sequelize } = require("./models/index.js");
 const routes = require("./routes/index.js");
 const socket = require("./socket.js");
 const fs = require("fs");
-const db = require("./models/index.js");
+
 
 dotenv.config();
 
 const app = express();
 
 app.set("port", process.env.PORT || 8080);
+app.set("view engine", "ejs");
+
+
+app.use("/uploadedItems", express.static("uploadedItems"));
 
 app.use((req, res, next) => {
   if (process.env.NODE_ENV === "production") morgan("combined")(req, res, next);
@@ -38,6 +42,7 @@ app.use(
     name: "seed",
   })
 );
+
 app.get("/serverImg", async (req, res) => {
   const tempItem = await Item.findAll({
     order: [["id", "DESC"]],
@@ -56,7 +61,11 @@ sequelize
   });
 
 const server = app.listen(app.get("port"), () => {
-  console.log("server start");
+
+  let dir = "./uploadedItems";
+  if (!fs.existsSync(dir)) fs.mkdirSync(dir);
+  console.log("서버가 열려따");
+
 });
 
 socket(server);
