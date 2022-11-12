@@ -415,13 +415,25 @@ input[id="slide04"]:checked ~ .slidewrap .slidelist > li {
 /*  */
 /*  */
 /*  */
+body.start {
+  background-color: black;
+}
 
 body.start div {
   font-family: "JSArirang-Regular";
-  font-size: 120%;
+  font-size: 110%;
+  background-color: black;
+  color: white;
 }
+
+/* body.start .top-container.bgc.start div {
+  font-size: 120%;
+} */
+
 body.start .satan {
   font-family: "satan";
+  background-color: black;
+  color: white;
 }
 
 .top-container {
