@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="chatting.css" />
 
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <link rel="stylesheet" href="font/font.css" />
+
+    <link rel="stylesheet" href="index.css" />
+    <script src="/socket.io/socket.io.js"></script>
     <title>chatting</title>
   </head>
   <body
@@ -19,8 +25,8 @@
             <div class="margin-right">
               <img src="./chatimg/f4.png" alt="" class="vs-img" />
             </div>
-            <div>삼재에영</div>
-            <div>100.0˚C</div>
+            <div id="partner-id">partner-id/</div>
+            <div>partner-점수</div>
           </div>
           <div id="chat-menu"><img src="./chatimg/menu.svg" alt="" /></div>
         </div>
@@ -30,11 +36,11 @@
               <img src="./chatimg/f4.png" alt="" class="item-img" />
             </div>
             <div class="cbox">
-              <span>삼재에영 아이디어팝니다.</span>
-              <h4>333,333원</h4>
+              <span>물품제목</span>
+              <h4>물품금액</h4>
             </div>
           </div>
-          <div>거래완료</div>
+          <div>거래상태</div>
         </div>
         <div>
           <ul id="vs-chat-zone" class="box-shadow-blue bs">
@@ -54,7 +60,8 @@
         </div>
       </div>
       <div>
-        <form id="msg-zone">
+        <form id="msg-zone" name="msg-zone">
+          <!-- onsubmit="submitBtn(event)" -->
           <div id="msg-input">
             <textarea
               name="msg"
@@ -62,7 +69,10 @@
               cols="30"
               rows="10"
               placeholder="메시지를 입력해주십시오"
+              autofocus
             ></textarea>
+
+            <!--   onkeydown="submitText(event)" -->
           </div>
           <div id="emoticon-submit">
             <div id="emoticon-container">
@@ -83,12 +93,16 @@
             </div>
             <div class="fbox">
               <div>글자수</div>
-              <div><button id="msg-submit">전송</button></div>
+              <div>
+                <button id="msg-submit">전송</button>
+              </div>
             </div>
           </div>
         </form>
       </div>
     </div>
+    <script src="./chatting.js"></script>
+
     <script src="./index.js"></script>
   </body>
 </html>

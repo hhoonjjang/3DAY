@@ -205,8 +205,13 @@ let itemCondition;
 let itemTuning;
 let itemDealing;
 let itemImage;
+
+const imgArr = [];
+
+
 let itemLocal;
 const imageArr = [];
+
 
 function getValue() {
   const categoriesList = document.getElementsByName("categories");
@@ -273,7 +278,9 @@ function getValue() {
 }
 //
 
+
 let formData = new FormData();
+
 document.getElementById("submit-form").onsubmit = async function (e) {
   e.preventDefault();
   //
@@ -297,6 +304,7 @@ document.getElementById("submit-form").onsubmit = async function (e) {
     const itemTitle = titleInput.value;
     const itemPrice = Number(priceInput.value.replace(/,/g, ""));
     const itemSubtitle = subtitleTextarea.value;
+
     const uploadImgS = document.getElementById("img-uploader-label");
     formData.append("itemTitle", itemTitle);
     formData.append("itemLocal", itemLocal);
@@ -339,6 +347,7 @@ document.getElementById("submit-form").onsubmit = async function (e) {
   // } catch (err) {
   //   console.error(err);
   // }
+
 };
 //
 //

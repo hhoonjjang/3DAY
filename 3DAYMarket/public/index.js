@@ -8,6 +8,7 @@ const reverseBtn = document.getElementById("reverse");
 const reverseImg = [...document.getElementsByClassName("reverse")];
 const reverseBgc = [...document.getElementsByClassName("bgc")];
 const loginDisplay = document.getElementById("loginDisplay");
+
 const divItemBoard = document.getElementById("item-board-display");
 
 let date = new Date();
@@ -20,12 +21,14 @@ let selectLocalValue;
 const selectTrade = document.getElementById("select-trade");
 let selectTradeValue;
 
+
 async function getItem() {
   try {
     const item = (await axios.get("/api/item/")).data;
     console.log(item);
     console.log(item[0]);
     item.forEach((item) => {
+
       const articleItem = document.createElement("article");
       const aItem = document.createElement("a");
       const divItemTop = document.createElement("div");
@@ -35,7 +38,9 @@ async function getItem() {
       const divItemTitle = document.createElement("div");
       const divItemPrice = document.createElement("div");
       const divItemLocal = document.createElement("div");
+
       const divItemTrade = document.createElement("div");
+
       const divItemBottom = document.createElement("div");
       const divItemFocus = document.createElement("div");
       const divItemBorderdot = document.createElement("div");
@@ -52,9 +57,11 @@ async function getItem() {
       divItemPrice.classList.add("item-price");
       divItemPrice.innerText = item.itemPrice;
       divItemLocal.classList.add("item-local");
+
       divItemLocal.innerText = item.itemLocal;
       divItemTrade.classList.add("item-trade");
       divItemTrade.innerText = item.itemDealing;
+
       divItemBottom.classList.add("item-bottom");
       divItemFocus.classList.add("item-focus");
       divItemFocus.innerText = `관심 ${10}`;
@@ -62,6 +69,8 @@ async function getItem() {
       divItemBorderdot.innerText = "！";
       divItemCountingView.classList.add("item-countingview");
       divItemCountingView.innerText = `채팅 ${78}`;
+
+
       divItemBoard.appendChild(articleItem);
       articleItem.appendChild(aItem);
       aItem.appendChild(divItemTop);
@@ -72,7 +81,9 @@ async function getItem() {
       divItemMiddle.appendChild(divItemTitle);
       divItemMiddle.appendChild(divItemPrice);
       divItemMiddle.appendChild(divItemLocal);
+
       divItemMiddle.appendChild(divItemTrade);
+
       divItemBottom.appendChild(divItemFocus);
       divItemBottom.appendChild(divItemBorderdot);
       divItemBottom.appendChild(divItemCountingView);
@@ -199,6 +210,7 @@ signOutBtn.onclick = async function () {
     console.error(err);
   }
 };
+
 
 // let addItem = async function () {
 //   try {
@@ -451,6 +463,7 @@ async function itemCategoryKind() {
       });
     }
 
+
     return;
   }
   console.log(selectKind.options[selectKind.selectedIndex].value);
@@ -572,6 +585,7 @@ async function itemCategoryLocal() {
     divItemBottom.appendChild(divItemCountingView);
   });
 }
+
 
 async function itemCategoryTrade() {
   selectTradeValue = selectTrade.options[selectTrade.selectedIndex].value;

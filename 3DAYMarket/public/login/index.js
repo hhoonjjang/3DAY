@@ -203,8 +203,10 @@ function start() {
     location.href = goPage;
   };
 
+
   signUp.onclick = async function (e) {
     e.preventDefault();
+
     const checkUserName = checkusername.test(userName.value);
     const checkUserID = checkuserId.test(userId.value);
     const checkPassWord = checkpassword.test(userPassword.value);
@@ -236,6 +238,7 @@ function start() {
         console.log(checkCheckPassWord());
         alert = "회원가입에 성공하셨습니다.";
 
+
         const user = await axios.post("/api/user/regist", {
           id: userId.value,
           pw: userPassword.value,
@@ -251,6 +254,7 @@ function start() {
     }
     // console.log(document.getElementById("login--id").value);
   };
+
 
   signIn.onclick = async function (e) {
     e.preventDefault();

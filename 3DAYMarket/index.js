@@ -11,12 +11,14 @@ const routes = require("./routes/index.js");
 const socket = require("./socket.js");
 const fs = require("fs");
 
+
 dotenv.config();
 
 const app = express();
 
 app.set("port", process.env.PORT || 8080);
 app.set("view engine", "ejs");
+
 
 app.use("/uploadedItems", express.static("uploadedItems"));
 
@@ -59,9 +61,11 @@ sequelize
   });
 
 const server = app.listen(app.get("port"), () => {
+
   let dir = "./uploadedItems";
   if (!fs.existsSync(dir)) fs.mkdirSync(dir);
   console.log("서버가 열려따");
+
 });
 
 socket(server);
