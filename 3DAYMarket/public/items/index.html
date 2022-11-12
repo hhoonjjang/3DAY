@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     <link rel="stylesheet" href="index.css" />
   </head>
   <body
@@ -12,6 +14,7 @@
     onselectstart="return false"
     ondragstart="return false"
   >
+
     <div class="top-container bgc">
       <a class="home-box" href="/">
         <div class="reverse">
@@ -35,18 +38,19 @@
         </div>
         <div id="loginDisplay"></div>
         <!-- <button id ="sign-in">로그인</button> -->
-        <a id="sign-in" href="./login">로그인</a>
+        <a id="sign-in" href="../login">로그인</a>
         <!-- <button id ="sign-up">회원가입</button> -->
         <button id="sign-out">로그아웃</button>
-        <a id="chatting" href="./chatting">채팅하기</a>
-        <a id="item-upload" href="./upload">물품등록</a>
-        <a id="user-info" href="./mypage">마이페이지</a>
+        <a id="chatting" href="../chatting">채팅하기</a>
+        <a id="item-upload" href="../upload">물품등록</a>
+        <a id="user-info" href="../mypage">마이페이지</a>
       </div>
       <div class="reverse" id="reverse">
         <img src="../image/logo-front1.png" alt="" />
         <img src="../image/logo-back1.png" alt="" />
       </div>
     </div>
+
     <div>
       <div class="main-colum">
         <div class="info-div">
@@ -154,11 +158,11 @@
               </div>
             </div>
             <div class="info-div-info-foot">
-              <button class="wish-btn">
+              <button class="wish-btn" id="wish-btn">
                 <img src="../image/heartgray.svg" />
                 찜하기
               </button>
-              <button class="chat-btn">
+              <button class="chat-btn" id="chat-btn">
                 <img src="../image/3dtalk.png" />
                 채팅연결
               </button>

@@ -73,6 +73,12 @@ body {
   justify-content: space-between;
 }
 
+.arrow img {
+  background-color: rgba(200, 200, 200, 0.5);
+  border-radius: 30px;
+  /* border: 1px solid black; */
+}
+
 .info-div-rel input {
   display: inline-block;
   margin-left: 20px;
@@ -500,11 +506,13 @@ body.start .category-box a {
   padding: 10;
   margin: 0 10;
   width: 100px;
+  height: 36px;
   border-radius: 10px;
   border: none;
   background-color: #ffead8;
   font-family: "maple-bold";
   font-size: 14px;
+  color: black;
 }
 
 body.start .user-box button {

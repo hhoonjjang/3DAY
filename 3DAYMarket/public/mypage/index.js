@@ -48,6 +48,7 @@ signOutBtn.onclick = async function () {
 
     signInBtn.classList.remove("off");
     // signUpBtn.classList.remove("off");
+    location.href = "http://localhost:8080/";
   } catch (err) {
     console.error(err);
   }

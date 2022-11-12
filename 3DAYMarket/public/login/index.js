@@ -281,21 +281,13 @@ function start() {
     location.href = goPage;
   };
 
+
   signUp.onclick = async function () {
     registecheck();
     if (!isCorrect) {
       return;
     }
-    // const checkUserName = checkusername.test(userName.value);
-    // const checkUserID = checkuserId.test(userId.value);
-    // const checkPassWord = checkpassword.test(userPassword.value);
-    // const checkCheckPassWord = function () {
-    //   if (userPassword.value == userCheckpassword.value) {
-    //     return true;
-    //   } else {
-    //     return false;
-    //   }
-    // };
+
 
     try {
       if (
@@ -305,6 +297,7 @@ function start() {
         // checkCheckPassWord()) == true
         true
       ) {
+
         const user = await axios.post("/api/user/regist", {
           id: userId.value,
           pw: userPassword.value,
@@ -321,6 +314,7 @@ function start() {
     }
     // console.log(document.getElementById("login--id").value);
   };
+
 
   signIn.onclick = async function (e) {
     e.preventDefault();

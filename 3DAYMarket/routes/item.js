@@ -205,6 +205,59 @@ router.get("/selecttrade", async (req, res) => {
   res.send({ tempItem });
 });
 
+router.post("/selectall", async (req, res) => {
+  const kind = req.body.kind;
+  const local = req.body.local;
+  const trade = req.body.trade;
+  console.log("셀렉트올");
+  console.log(kind, local, trade);
+  console.log("셀렉트올");
+  const tempItem = await Item.findAll({
+    where: {
+      itemDealing: trade,
+      itemLocal: local,
+      itemCategories: kind,
+    },
+    order: [["id", "DESC"]],
+    include: { model: User },
+  });
+  console.log(tempItem);
+  res.send(tempItem);
+});
+
+router.post("/selectkindlocal", async (req, res) => {
+  const kind = req.body.kind;
+  const local = req.body.local;
+
+  const tempItem = await Item.findAll({
+    where: {
+      itemLocal: local,
+      itemCategories: kind,
+    },
+    order: [["id", "DESC"]],
+    include: { model: User },
+  });
+  res.send(tempItem);
+});
+
+router.post("/selectkindtrade", async (req, res) => {
+  const kind = req.body.kind;
+  const trade = req.body.trade;
+  console.log(kind);
+  console.log(trade);
+
+  const tempItem = await Item.findAll({
+    where: {
+      itemDealing: trade,
+      itemCategories: kind,
+    },
+    order: [["id", "DESC"]],
+    include: { model: User },
+  });
+  console.log(tempItem);
+  res.send(tempItem);
+});
+
 router.get("/detail", async (req, res) => {
   const itemIndex = req.query.itemIndex;
   console.log("detail");

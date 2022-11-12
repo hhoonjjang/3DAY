@@ -3,6 +3,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     <link rel="stylesheet" href="font/font.css" />
     <link rel="stylesheet" href="chatting.css" />
 
@@ -15,20 +17,42 @@
     onselectstart="return false"
     ondragstart="return false"
   >
-    <div id="menu">
-      <div id="menu-item">
-        <div><img src="./chatimg/logo_daangn.svg" alt="" /></div>
-        <div id="user-info">
-          <div>
-            <a href="./search.html"
-              ><img src="./chatimg/user1.jpg" alt="" class="user-img"
-            /></a>
-          </div>
-          <div>초롱둥이</div>
-          <div><img src="./chatimg/arrowDown.svg" alt="" /></div>
+    <div class="top-container bgc">
+      <a class="home-box" href="/">
+        <div class="reverse">
+          <img src="../imgs/logo-front.png" alt="" />
+          <img src="../imgs/logo-back.png" alt="" id="invert" />
         </div>
+        <div class="satan">3DAYMarket</div>
+      </a>
+      <div class="category-box">
+        <a id="new-trade" href="./newtrade">신품거래</a>
+        <a id="user-trade" href="./usedtrade">중고거래</a>
+      </div>
+
+      <div class="user-box">
+        <div id="searchBox">
+          <input
+            text="text"
+            id="search"
+            placeholder="물품이나 동네를 검색해보세요"
+          />
+        </div>
+        <div id="loginDisplay"></div>
+        <!-- <button id ="sign-in">로그인</button> -->
+        <a id="sign-in" href="../login">로그인</a>
+        <!-- <button id ="sign-up">회원가입</button> -->
+        <button id="sign-out">로그아웃</button>
+        <a id="chattinging" href="../chatting">채팅하기</a>
+        <a id="item-upload" href="../upload">물품등록</a>
+        <a id="user-info" href="../mypage">마이페이지</a>
+      </div>
+      <div class="reverse" id="reverse">
+        <img src="../imgs/logo-front1.png" alt="" />
+        <img src="../imgs/logo-back1.png" alt="" />
       </div>
     </div>
+
     <div id="main-box" class="box-shadow-yellow bs">
       <div id="main">
         <div id="userlist" class="box-shadow-yellow bs">
@@ -39,43 +63,119 @@
         </div>
         <div id="chat-list" class="box-shadow-yellow bs">
           <div id="user-name">초롱둥이</div>
+
           <div id="msg-check">
             <div class="vs-data">안 읽은 메시지만 보기</div>
             <div><img src="./chatimg/check.svg" alt="" /></div>
           </div>
-          <ul id="chat-vs">
-            <div class="one-chat">
-              <div>
-                <img src="./chatimg/default.png" alt="" class="vs-img" />
-              </div>
-              <div class="vs-info">
-                <div>
-                  <span class="vs-name">nickname</span>
-                  <span class="vs-data">local</span>
-                  <span class="vs-data">.</span>
-                  <span class="vs-data">log-day</span>
-                </div>
-                <div class="vs-chatlog">마지막 채팅로그</div>
-              </div>
-              <div class="vs-log-img">사진로그</div>
-            </div>
-          </ul>
+          <ul id="chat-vs"></ul>
           <div id="what">
             <div>자주묻는 질문</div>
             <div><img src="./chatimg/what.svg" alt="" /></div>
           </div>
 
-          <div><button id="invert-btn">뒷세계</button></div>
+          <!-- <div><button id="invert-btn">뒷세계</button></div> -->
         </div>
-        <div id="chatting" data-include-path="chatting.html">
-          <img src="./chatimg/chatting.svg" alt="" id="none-vs" />
-          <span>채팅할 상대를 선택해주세요</span>
+        <div id="chatting">
+          <div id="none-chat">
+            <img src="./chatimg/chatting.svg" alt="" id="none-vs" />
+            <span>채팅할 상대를 선택해주세요</span>
+          </div>
+          <div id="chat-box">
+            <div class="box-shadow-yellow bs" style="height: 100%">
+              <div id="info">
+                <div id="vs-info">
+                  <div class="margin-right">
+                    <img src="./chatimg/default.png" alt="" class="vs-img" />
+                  </div>
+                  <div id="partner-id">partner-id/</div>
+                  <div id="partenr-tempture">partner-점수</div>
+                </div>
+                <div id="chat-menu">
+                  <img src="./chatimg/menu.svg" alt="" />
+                </div>
+              </div>
+              <div id="chat-item">
+                <div id="item-info">
+                  <div class="margin-right">
+                    <img src="./chatimg/default.png" alt="" class="item-img" />
+                  </div>
+                  <div class="cbox">
+                    <span id="item-title">물품제목</span>
+                    <h4 id="item-price">물품금액</h4>
+                  </div>
+                </div>
+                <div id="trade-status">거래상태</div>
+              </div>
+              <div>
+                <ul id="vs-chat-zone" class="box-shadow-blue bs">
+                  <li class="my-chat">
+                    <span>오후 03:15</span>
+                    <div class="my-speech-bubble">
+                      <h3>안녕하세용~ 아이디어가 참 훌륭해보이네요</h3>
+                    </div>
+                  </li>
+                  <li class="vs-chat">
+                    <div class="vs-speech-bubble">
+                      <h3>호호호 별말씀을 이정도는 기본이죠</h3>
+                    </div>
+                    <span>오후 03:15</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div>
+              <form id="msg-zone" name="msg-zone">
+                <!-- onsubmit="submitBtn(event)" -->
+                <div id="msg-input">
+                  <textarea
+                    name="msg"
+                    id="msg"
+                    cols="30"
+                    rows="10"
+                    placeholder="메시지를 입력해주십시오"
+                    autofocus
+                  ></textarea>
+
+                  <!--   onkeydown="submitText(event)" -->
+                </div>
+                <div id="emoticon-submit">
+                  <div id="emoticon-container">
+                    <div>
+                      <img class="inimg" src="./chatimg/picture.svg" alt="" />
+                    </div>
+                    <div>
+                      <img
+                        class="inimg"
+                        src="./chatimg/memo.svg"
+                        alt=""
+                        class="cf-img"
+                      />
+                    </div>
+                    <div>
+                      <img class="inimg" src="./chatimg/emoticon.svg" alt="" />
+                    </div>
+                  </div>
+                  <div class="fbox">
+                    <div>글자수</div>
+                    <div>
+                      <button id="msg-submit" class="buttonColorWhite">
+                        전송
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </div>
     <div id="temp">
       PC알림을 허용하고, 알림창에서 새 메시지를 빠르게 확인해보세용
     </div>
+    <script src="chatting.js"></script>
+
     <script src="index.js"></script>
   </body>
 </html>

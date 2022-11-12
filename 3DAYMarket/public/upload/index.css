@@ -447,6 +447,7 @@ body.start .category-box a {
   background-color: #ffead8;
   font-family: "maple-bold";
   font-size: 14px;
+  height: 36px;
 }
 
 body.start .user-box button {
