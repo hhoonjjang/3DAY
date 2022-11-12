@@ -120,6 +120,70 @@ const login1 = async function () {
 };
 login1();
 
+// 리버스시작//
+
+// reverseBtn.ondblclick = function () {
+//   console.log("둥");
+//   if (cookieR) {
+//     console.log("쿠키가있을떄");
+//     deleteCookie("reverse");
+//     document.body.classList.remove("start");
+//     for (let i = 0; i < reverseImg.length; i++) {
+//       reverseImg[i].classList.remove("start");
+//     }
+//     for (let i = 0; i < reverseBgc.length; i++) {
+//       reverseBgc[i].classList.remove("start");
+//     }
+//     count = 0;
+//   } else {
+//     if (count == 4) {
+//       count = 0;
+//       setCookie("reverse", 123, 1);
+//       document.body.classList.add("start");
+//       for (let i = 0; i < reverseImg.length; i++) {
+//         reverseImg[i].classList.add("start");
+//       }
+//       for (let i = 0; i < reverseBgc.length; i++) {
+//         reverseBgc[i].classList.add("start");
+//       }
+//     } else {
+//       deleteCookie("reverse");
+//       console.log("카운트가4가아닐때");
+//       document.body.classList.remove("start");
+//       for (let i = 0; i < reverseImg.length; i++) {
+//         reverseImg[i].classList.remove("start");
+//       }
+//       for (let i = 0; i < reverseBgc.length; i++) {
+//         reverseBgc[i].classList.remove("start");
+//       }
+//       count = 0;
+//     }
+//   }
+// };
+const reverse = function () {
+  if (cookieR) {
+    document.body.classList.add("start");
+    for (let i = 0; i < reverseImg.length; i++) {
+      reverseImg[i].classList.add("start");
+    }
+    for (let i = 0; i < reverseBgc.length; i++) {
+      reverseBgc[i].classList.add("start");
+    }
+  } else {
+    document.body.classList.remove("start");
+    for (let i = 0; i < reverseImg.length; i++) {
+      reverseImg[i].classList.remove("start");
+    }
+    for (let i = 0; i < reverseBgc.length; i++) {
+      reverseBgc[i].classList.remove("start");
+    }
+  }
+};
+
+reverse();
+
+// 리버스끝//
+
 // const userDisplay = async function () {
 //   console.log("hey");
 //   console.log(userNameApi);

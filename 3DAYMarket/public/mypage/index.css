@@ -989,3 +989,23 @@ section a {
 }
 
 /* 메뉴바 끝 */
+
+/* 리버스 */
+body.start div {
+  font-family: "JSArirang-Regular";
+  font-size: 120%;
+}
+body.start {
+  background-color: black;
+  color: white;
+}
+body.start .satan {
+  font-family: "satan";
+  /* font-size: 200%; */
+}
+body.start .satan#paytitle {
+  font-size: 200%;
+}
+body.start .satan#paybody {
+  font-size: 110%;
+}
