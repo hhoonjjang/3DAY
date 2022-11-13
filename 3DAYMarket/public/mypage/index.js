@@ -1,3 +1,4 @@
+window.addEventListener("load", start);
 const gear = document.getElementById("gearBtn");
 const userimg = document.getElementById("photoimgBtn");
 const userinfo = document.getElementById("nextBtn");
@@ -210,10 +211,11 @@ function start() {
     editName: document.querySelector("#editName"),
   };
   const elm2 = {
-    menu3: document.querySelector("#menu"),
-    userUi3: document.querySelector("#imgName"),
-    myItemlist: document.querySelector(".item-board-display"),
+    menu3: document.querySelector("#menu3"),
+    userUi3: document.querySelector("#imgName3"),
+    bgp3: document.querySelector("#bgp3"),
   };
+
   const props = {
     top: "top:-100px",
     transition1: "transition: top 1s",
@@ -256,6 +258,29 @@ function start() {
     animarion4: "animation-delay:1.9s",
     animarion5: "animation-delay:2s",
   };
+  const props2 = {
+    display0: "display:none;",
+    display1: "display:block;",
+    top: "top:-500px",
+    transition1: "transition: top 1s;",
+    transition2: "transition: top 2s;",
+    opacity0: "opacity: 0;",
+    opacity1: "opacity: 1;",
+    trnsDelay0: "transition-delay: 0.3s;",
+    trnsDelay1: "transition-delay: 0.8s;",
+    trnsDelay2: "transition-delay: 1.2s;",
+    trnsDelay3: "transition-delay: 1.6s;",
+    trnsDelay4: "transition-delay: 1.8s;",
+    trnsDelay5: "transition-delay: 1.9s;",
+    trnsDelay6: "transition-delay: 2s",
+    zIndex0: "z-index: 0;",
+    animarion0: "animation-delay:1s;",
+    animarion1: "animation-delay:1.3s;",
+    animarion2: "animation-delay:1.5s;",
+    animarion3: "animation-delay:1.7s;",
+    animarion4: "animation-delay:1.9s;",
+    animarion5: "animation-delay:2s;",
+  };
   const elms = [
     elm.menu,
     elm.userUi,
@@ -265,17 +290,21 @@ function start() {
     elm.mybiz,
   ];
   const elms1 = [elm1.menu2, elm1.userUi2, elm1.editName];
+  const elms2 = [elm2.bgp3];
 
   function transition(elements, props) {
-    console.log(elements);
     for (let i = 0; i < elements.length; i++) {
       elements[i].setAttribute("style", `${props[i]}`);
     }
   }
   function transition1(elements1, props1) {
-    console.log(elements1);
     for (let i = 0; i < elements1.length; i++) {
       elements1[i].setAttribute("style", `${props1[i]}`);
+    }
+  }
+  function transition2(elements2, props2) {
+    for (let i = 0; i < elements2.length; i++) {
+      elements2[i].setAttribute("style", `${props2[i]}`);
     }
   }
 
@@ -333,10 +362,60 @@ function start() {
     console.log("buylist 클릭됨");
   };
   selllist.onclick = () => {
-    console.log("selllist 클릭됨");
+    const properties = [
+      `${props.opacity0} ${props.trnsDelay1}`,
+      `${props.opacity0} ${props.trnsDelay1} `,
+      `${props.opacity0} ${props.trnsDelay1} `,
+      `${props.opacity0} ${props.trnsDelay2} `,
+      `${props.opacity0} ${props.trnsDelay2} `,
+      `${props.opacity0} ${props.trnsDelay5} `,
+      `${props.opacity0} ${props.trnsDelay6} `,
+    ];
+    transition(elms, properties);
+
+    setTimeout(() => {
+      document.getElementById("bgp3").style.display = "block";
+      const properties2 = [
+        `${props2.display1} ${props2.opacity1} ${props2.top} `,
+        `${props2.opacity1} ${props2.top} `,
+      ];
+      transition2(elms2, properties2);
+    }, 1000);
   };
   selllist2.onclick = () => {
+    const properties = [
+      `${props.opacity0} ${props.trnsDelay1}`,
+      `${props.opacity0} ${props.trnsDelay1} `,
+      `${props.opacity0} ${props.trnsDelay1} `,
+      `${props.opacity0} ${props.trnsDelay2} `,
+      `${props.opacity0} ${props.trnsDelay2} `,
+      `${props.opacity0} ${props.trnsDelay5} `,
+      `${props.opacity0} ${props.trnsDelay6} `,
+    ];
+    transition(elms, properties);
+    setTimeout(() => {
+      document.getElementById("bgp3").style.display = "flex";
+      const properties2 = [
+        `${props2.display1} ${props2.opacity1} ${props2.top} `,
+        `${props2.opacity1} ${props2.top} `,
+      ];
+      transition2(elms2, properties2);
+    }, 1000);
+
     console.log("selllist 클릭됨");
+  };
+  arrow3.onclick = () => {
+    document.getElementById("bgp3").style.display = "none";
+    const properties = [
+      `${props.opacity1} ${props.trnsDelay1}`,
+      `${props.opacity1} ${props.trnsDelay1} `,
+      `${props.opacity1} ${props.trnsDelay1} `,
+      `${props.opacity1} ${props.trnsDelay2} `,
+      `${props.opacity1} ${props.trnsDelay2} `,
+      `${props.opacity1} ${props.trnsDelay5} `,
+      `${props.opacity1} ${props.trnsDelay6} `,
+    ];
+    transition(elms, properties);
   };
   likelist.onclick = () => {
     console.log("likelist 클릭됨");
@@ -384,4 +463,3 @@ function start() {
     console.log("비지니스 광고글 클릭됨");
   };
 }
-start();

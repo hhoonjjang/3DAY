@@ -172,10 +172,10 @@ html {
 }
 /* ------------------------ 내 물건 거래---------------------------- */
 #bgp3 {
-  display: block;
+  display: none;
   position: relative;
   z-index: 2;
-  display: flex;
+
   flex-direction: column;
   border: 1px solid black;
   border: none;
@@ -192,13 +192,52 @@ html {
   transition: opacity 2s;
 }
 .item-board-display {
-  width: 700px;
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-around;
+  box-sizing: content-box;
   align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  position: relative;
+  border: 1px solid black;
+  box-shadow: 3px 3px 3px #a5a094;
+  border-radius: 10px;
+  width: 700px;
   margin: auto;
-  text-align: center;
+  opacity: 0.8;
+  background-color: #f4efe5;
+}
+.item-board-display .item-top :nth-child(1) {
+  margin-top: 20px;
+}
+.item-board-display .item-top :nth-child(2) {
+  margin-top: 20px;
+}
+.item-board-display .item-top :nth-child(3) {
+  margin-top: 20px;
+}
+#itemBoardtitle {
+  display: flex;
+  background-color: #f4efe5;
+  box-shadow: 3px 3px 3px #a5a094;
+  box-sizing: content-box;
+  position: relative;
+  justify-content: space-between;
+
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 100%;
+  height: 40px;
+  opacity: 0.8;
+  -webkit-animation: 2s fadeInTitle ease;
+  -moz-animation: 2s fadeInTitle ease;
+  -o-animation: 2s fadeInTitle ease;
+  animation: 2s fadeInTitle ease;
+  -webkit-transition: opacity 2s;
+  -moz-transition: opacity 2s;
+  -o-transition: opacity 2s;
+  transition: opacity 2s;
+  font-size: 27px;
+  padding-left: 10px;
 }
 
 .item-middle .item-title:first-child {
@@ -243,6 +282,8 @@ html {
 }
 
 .item-title {
+  width: 200px;
+  margin-left: 28px;
   text-overflow: ellipsis;
   overflow: hidden;
   word-break: break-word;
@@ -250,7 +291,12 @@ html {
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
 }
-
+.item-price {
+  margin-left: 28px;
+}
+.item-local {
+  margin-left: 28px;
+}
 /* ------------------- 내물건 거래 끝--------------------- */
 #menu {
   display: flex;
@@ -275,6 +321,26 @@ html {
   transition: opacity 2s;
 }
 #menu2 {
+  display: flex;
+  background-color: #f4efe5;
+  box-shadow: 3px 3px 3px #a5a094;
+  box-sizing: content-box;
+  position: relative;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 100%;
+  height: 40px;
+  -webkit-animation: 1.5s fadeInTitle ease;
+  -moz-animation: 1.5s fadeInTitle ease;
+  -o-animation: 1.5s fadeInTitle ease;
+  animation: 1.5s fadeInTitle ease;
+  -webkit-transition: opacity 2s;
+  -moz-transition: opacity 2s;
+  -o-transition: opacity 2s;
+  transition: opacity 2s;
+}
+#menu3 {
   display: flex;
   background-color: #f4efe5;
   box-shadow: 3px 3px 3px #a5a094;
@@ -339,6 +405,10 @@ html {
   margin-bottom: 5px;
 }
 #backmp {
+  margin-top: 4;
+  margin-left: 2px;
+}
+#backmp2 {
   margin-top: 4;
   margin-left: 2px;
 }
@@ -453,6 +523,13 @@ html {
   margin: auto;
   width: 30px;
   height: 30px;
+  cursor: pointer;
+}
+#arrow3 {
+  margin: auto;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
 }
 #pay {
   display: flex;
@@ -573,6 +650,7 @@ html {
   display: flex;
   position: relative;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 #itemtitle {
   display: flex;
@@ -595,21 +673,25 @@ html {
   position: relative;
   margin-right: 50px;
   width: 50px;
+  cursor: pointer;
 }
 #item2 {
   position: relative;
   margin-right: 50px;
   width: 50px;
+  cursor: pointer;
 }
 #item3 {
   position: relative;
   margin-right: 50px;
   width: 50px;
+  cursor: pointer;
 }
 #item4 {
   position: relative;
   margin-right: 110px;
   width: 50px;
+  cursor: pointer;
 }
 #item1img {
   position: relative;
@@ -635,23 +717,28 @@ html {
   display: flex;
   margin-left: -38px;
   margin-right: 45px;
+  cursor: pointer;
 }
 #item2title {
   display: flex;
   margin-right: 40px;
+  cursor: pointer;
 }
 #item3title {
   display: flex;
+  margin-left: -20px;
   margin-right: 50px;
+  cursor: pointer;
 }
 #item4title {
   display: flex;
+  cursor: pointer;
 }
 #listItemtitle {
   display: flex;
   flex-wrap: wrap;
   /* justify-content: space-between; */
-  margin-left: 195px;
+  margin-left: 265px;
 }
 
 #myPlace {
@@ -786,7 +873,6 @@ html {
 
   display: flex;
   justify-content: space-around;
-  align-items: center;
   margin: 0 auto;
   height: 100px;
 
