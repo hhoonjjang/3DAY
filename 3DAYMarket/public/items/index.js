@@ -34,8 +34,6 @@ let imgArr = [];
 // // const imgArr = [img1, img2];n
 // // const imgArr = [img1];n
 
-
-
 //
 const itemIndex = window.location.href.split("?")[1].split("=")[1];
 const chatBtn = document.getElementById("chat-btn");
@@ -151,7 +149,6 @@ async function getDetailItem() {
     // console.log(tempUl);
 
     for (let i = 0; i < item.imgArr.split("-*,").length; i++) {
-
       // slideDiv
       const litag = document.createElement("li");
       const imgtag = document.createElement("img");

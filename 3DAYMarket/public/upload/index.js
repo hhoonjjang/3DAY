@@ -20,6 +20,7 @@ let isPriceTrue;
 let isSubtitleTrue;
 //
 //
+const itemBlack = document.getElementById("black-upload");
 const titleInput = document.getElementById("title-input");
 const titleGuide = document.getElementById("title-guide");
 titleInput.oninput = function () {
@@ -312,16 +313,11 @@ document.getElementById("submit-form").onsubmit = async function (e) {
     formData.append("itemCondition", itemCondition);
     formData.append("itemTuning", itemTuning);
     formData.append("itemDealing", itemDealing);
-    // const result = await axios.post("/api/item/add", {
-    //   itemImage: itemImage,
-    //   itemTitle: itemTitle,
-    //   itemPrice: itemPrice,
-    //   itemSubtitle: itemSubtitle,
-    //   itemCategories: itemCategories,
-    //   itemCondition: itemCondition,
-    //   itemTuning: itemTuning,
-    //   itemDealing: itemDealing,
-    // });
+    formData.append("itemBlack", itemBlack.checked);
+    // for (let value of formData.values()) {
+    //   console.log(value);
+    // }
+
     const img = await axios.post("/api/item/uploadFiles", formData);
     if (img) {
       alert("성공적으로 상품이 등록되었습니다.");
@@ -389,9 +385,6 @@ function getImageFiles(e) {
   itemImage = e.currentTarget.files[0];
   formData.append("img", itemImage);
   imageArr.push(itemImage);
-  // for (let value of formData.values()) {
-  //   console.log(value);
-  // }
 
   const reader = new FileReader();
   reader.onload = (e) => {
