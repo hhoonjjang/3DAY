@@ -1,10 +1,21 @@
-* {
-  margin: 0;
-  padding: 0;
+@font-face {
+  font-family: "maple-bold";
+  src: url("./font/Maplestory\ Bold.ttf");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "maple-light";
+  src: url("./font/Maplestory\ Light.ttf");
+  font-weight: normal;
 }
 html {
   font-family: "maple-bold";
   background: #ede5d4;
+}
+* {
+  margin: 0;
+  padding: 0;
 }
 
 @keyframes fadeInTitle {
@@ -123,9 +134,9 @@ html {
   float: right;
 
   top: 43%;
-  left: 56%;
+  left: 66%;
   width: 30%;
-  /* opacity: 0.63; */
+  opacity: 0.63;
   -webkit-animation: 1s RfadeInTitle ease;
   -moz-animation: 1s RfadeInTitle ease;
   -o-animation: 1s RfadeInTitle ease;
@@ -144,7 +155,7 @@ html {
   border: none;
   border-radius: 5%;
 
-  margin-top: 120px;
+  margin-top: 50px;
   margin-left: 27%;
   width: 700px;
   -webkit-animation: 3s fadeInTitle ease;
@@ -159,6 +170,71 @@ html {
 #bgp2 {
   display: none;
 }
+/* ------------------------ 내 물건 거래---------------------------- */
+#bgp3 {
+  display: block;
+}
+.item-board-display {
+  width: 700px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  margin: auto;
+  text-align: center;
+}
+
+.item-middle .item-title:first-child {
+  margin-top: 20px;
+}
+
+.item {
+  margin-bottom: 50px;
+  width: calc(100% / 3);
+}
+
+.item-board.bgc.start a {
+  color: white;
+}
+
+.item-link {
+  width: 100%;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.item-top {
+  width: 80%;
+  height: 80%;
+  margin: 0 auto;
+  pointer-events: fill;
+}
+
+.item-img {
+  height: 100%;
+}
+
+.item-top .item-img img {
+  width: 100%;
+}
+
+.item-bottom {
+  display: flex;
+  justify-content: center;
+  padding-top: 5px;
+  gap: 5px;
+}
+
+.item-title {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+/* ------------------- 내물건 거래 끝--------------------- */
 #menu {
   display: flex;
   background-color: #f4efe5;
@@ -205,6 +281,7 @@ html {
   display: flex;
   position: relative;
   margin-right: 10px;
+  cursor: pointer;
 }
 #menugear2 {
   display: flex;
@@ -214,10 +291,12 @@ html {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 #gear {
   width: 35px;
   height: 35px;
+  cursor: pointer;
 }
 #imgNameedit {
   margin-left: 22px;
@@ -247,9 +326,17 @@ html {
   margin-left: 2px;
 }
 #imgName {
-  margin-top: 20px;
-  margin-left: 27%;
-  width: 700px;
+  display: flex;
+  box-sizing: content-box;
+  flex-wrap: wrap;
+
+  align-items: center;
+  position: relative;
+  border: 1px solid black;
+  background-color: #f4efe5;
+  box-shadow: 3px 3px 3px #a5a094;
+  border-radius: 10px;
+  width: 100%;
 }
 
 #menu {
@@ -266,7 +353,7 @@ html {
   box-shadow: 3px 3px 3px #a5a094;
   border-radius: 10px;
   width: 100%;
-  height: 100px;
+
   opacity: 0.8;
   background-color: rgba(255, 255, 255, 0.5);
   -webkit-animation: 2s fadeInTitle ease;
@@ -310,7 +397,8 @@ html {
   display: flex;
   position: relative;
   flex-direction: column;
-  margin-left: -400px;
+  margin-left: 30px;
+  width: 300px;
 }
 
 #testuser2 {
@@ -322,23 +410,27 @@ html {
 
 #userid {
   margin: 5px;
+  width: 50px;
 }
 #username {
   margin: 5px;
+  width: 50px;
 }
 #userlocal {
   margin: 5px;
+  width: 50px;
 }
 #proflie {
   display: flex;
   width: 50px;
-
-  margin-left: 5px;
-  margin-right: 10px;
+  margin-left: 215px;
+  margin-right: 5px;
+  cursor: pointer;
 }
 #arrow {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
 }
 #arrow2 {
   margin: auto;
