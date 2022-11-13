@@ -1,17 +1,38 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+@font-face {
+  font-family: "maple-bold";
+  src: url("./font/Maplestory\ Bold.ttf");
+  font-weight: bold;
 }
+
+@font-face {
+  font-family: "maple-light";
+  src: url("./font/Maplestory\ Light.ttf");
+  font-weight: normal;
+}
+
 html {
   font-family: "maple-bold";
 }
-body.start div {
-  font-family: "JSArirang-Reular";
-  font-size: 120%;
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-body.start {
+
+body.start div {
+  font-family: "JSArirang-Regular";
   background-color: black;
+  font-size: 120%;
+  color: white;
 }
 body.start .satan {
   font-family: "satan";
@@ -19,17 +40,22 @@ body.start .satan {
 
 .top-container {
   width: 100%;
-  position: fixed;
+  /* position: fixed; */
   display: flex;
   justify-content: space-around;
   align-items: center;
   margin: 0 auto;
   height: 100px;
   background-color: rgb(245, 242, 250);
-  /* background-color: rgb(231, 231, 248); */
-
+  font-size: 16px;
   opacity: 0.97;
   z-index: 999;
+}
+
+.top-container,
+.footer-container,
+.footer-container ~ * {
+  font-weight: bold;
 }
 
 .top-container.start {
@@ -42,19 +68,14 @@ body.start .satan {
 
 .home-box {
   height: 100%;
-  margin-left: 100;
+  margin-left: 100px;
   display: flex;
   align-items: center;
-  /* cursor: pointer; */
 }
 
 body.start .home-box {
   margin-left: 0;
 }
-
-/* body.start .home-box #invert{
-  display: none;
-} */
 
 body.start .home-box div {
   font-size: 100px;
@@ -66,10 +87,7 @@ body.start .home-box div {
 }
 
 .category-box {
-  /* width: 45%; */
-  /* margin-left: 20; */
   margin: 0 20px;
-  /* flex:3 */
 }
 .home-box div img:first-child {
   height: 130%;
@@ -77,20 +95,10 @@ body.start .home-box div {
 
 .home-box div img:last-child {
   height: 90%;
-  /* display: none; */
 }
-
-/* .reverse.start div:first-child img{
-    display: none;
-}
-
-.reverse.start div:nth-child(2) img{
-    display: block;
-} */
 
 .category-box a {
   cursor: pointer;
-  /* margin-left: 100; */
   width: 100px;
 }
 
@@ -103,7 +111,7 @@ body.start .category-box a {
 }
 
 .user-box {
-  margin: 0 20;
+  margin: 0 20px;
   align-items: center;
 }
 
@@ -113,6 +121,7 @@ body.start .category-box a {
   margin: 0 10;
   width: 100px;
   border-radius: 10px;
+  height: 36px;
   border: none;
   background-color: #ffead8;
   font-family: "maple-bold";
@@ -132,8 +141,8 @@ body.start .user-box button {
 
 .user-box a {
   cursor: pointer;
-  padding: 10;
-  margin: 0 10;
+  padding: 10px;
+  margin: 0 10px;
   width: 100px;
   border-radius: 10px;
   border: none;
@@ -190,16 +199,12 @@ body.start .user-box a {
 
 #search {
   background-color: lightgray;
-  padding: 10;
+  padding: 10px;
   width: 250px;
   border: none;
   border-radius: 10px;
-  /* margin-left: 300px; */
+  font-family: arial;
 }
-
-/* .home-container {
-  background-color: lightyellow;
-} */
 
 .home-second {
   width: 100%;
@@ -214,16 +219,10 @@ body.start .user-box a {
 
 .home-second div div:first-child {
   font-size: 2.5rem;
-  /* margin-bottom: 10px; */
 }
-
-/* .home-second div:last-child {
-  background-color: red;
-} */
 
 .div-img {
   width: fit-content;
-  /* height: 100%; */
   border-radius: 15px;
   margin-right: 10rem;
 }
@@ -265,7 +264,7 @@ body.start .user-box a {
 .btnbox button {
   border: none;
   background-color: lightgray;
-  padding: 10;
+  padding: 10px;
   border-radius: 10px;
   margin: 0 5px;
   cursor: pointer;
@@ -286,21 +285,17 @@ body.start .user-box a {
 }
 
 .home-first div:first-child {
-  /* padding-left: 50px; */
-  /* background-color: red; */
   margin-right: 150px;
 }
 
 .home-first div div:first-child {
   font-size: 2.5rem;
-  /* margin-bottom: 10px; */
 }
 
 body.start .home-first div div:first-child {
   font-size: 250%;
   line-height: 50px;
   margin-bottom: 30px;
-  /* margin-bottom: 10px; */
 }
 
 .bgc.start {
@@ -329,7 +324,7 @@ body.start .home-first div div:first-child {
 
 .item-category-box {
   display: flex;
-  padding: 50;
+  padding: 50px;
   justify-content: flex-end;
 }
 
@@ -350,11 +345,15 @@ a {
 .item-board-display {
   width: 1400px;
   display: flex;
-  /* background-color: lightblue; */
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
   margin: auto;
+  text-align: center;
+}
+
+.item-middle .item-title:first-child {
+  margin-top: 20px;
 }
 
 .item {
@@ -368,22 +367,30 @@ a {
 
 .item-link {
   width: 100%;
+  pointer-events: none;
 }
 
 .item-top {
   width: 300px;
   height: 300px;
+  margin: 0 auto;
+  pointer-events: fill;
+}
+
+.item-img {
+  height: 100%;
 }
 
 .item-top .item-img img {
-  width: 80%;
+  width: 100%;
   height: 100%;
-
-  /* display: none; */
 }
 
 .item-bottom {
   display: flex;
+  justify-content: center;
+  padding-top: 5px;
+  gap: 5px;
 }
 
 .item-title {
@@ -423,22 +430,30 @@ body.start .footer-container #invert {
 }
 
 section {
-  padding: 20;
+  padding: 20px;
   text-align: center;
 }
 
 section a {
-  margin: 0 10;
+  margin: 0 10px;
 }
-body.start div {
-  font-family: "JSArirang-Regular";
-  font-size: 120%;
+
+.item-middle div[class*="item"] {
+  margin-bottom: 5px;
+}
+
+.item-middle div[class*="item"]:last-child {
+  margin-bottom: 0px;
+}
+
+#paging {
+  display: table;
+  margin: 0 auto;
 }
 body.start {
   background-color: black;
-  color: white;
 }
-body.start .satan {
-  font-family: "satan";
-  /* font-size: 200%; */
+body.start section {
+  background-color: black;
+  color: white;
 }

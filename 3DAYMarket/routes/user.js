@@ -52,6 +52,7 @@ router.post("/login", async (req, res) => {
           }
         )
       );
+      console.log(tempUser.id);
       res.send({
         name: tempUser.name,
       });
@@ -76,13 +77,26 @@ router.post("/cookie", async (req, res) => {
     name: tempUser.name,
   });
 });
-
+router.post("/userdisplay", async (req, res) => {
+  try {
+    const tempUser = await User.findOne({ where: { name: req.body.name } });
+    console.log();
+    res.send(tempUser);
+  } catch (err) {
+    console.log(err);
+  }
+});
 router.post("/logout", (req, res) => {
   res.clearCookie("carrot");
   res.end();
 });
 
 router.post("/mypage", async (req, res) => {
+  console.log("myPage");
+  tempName = req.body.name;
+  console.log(tempName);
+  console.log("myPage");
+
   try {
     const userInfo = await User.findOne({ where: { userId: req.body.id } });
     res.send(userInfo);

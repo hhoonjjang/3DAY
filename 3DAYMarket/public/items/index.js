@@ -34,10 +34,7 @@ let imgArr = [];
 // // const imgArr = [img1, img2];n
 // // const imgArr = [img1];n
 
-// imgArr[0].src = "../image/1.png";
-// imgArr[1].src = "../image/2.jpg";
-// imgArr[2].src = "../image/3.jpg";
-// imgArr[3].src = "../image/4.jpg";
+
 
 //
 const itemIndex = window.location.href.split("?")[1].split("=")[1];
@@ -134,7 +131,7 @@ async function getDetailItem() {
   try {
     const item = (await axios.get("/api/item/detail?itemIndex=" + itemIndex))
       .data.tempItem;
-    // console.log(imgArray);
+
     console.log(item.imgArr.split("-*,").length);
 
     // for (let i = 0; i < item.imgArr.split("-*,").length; i++) {
@@ -154,6 +151,7 @@ async function getDetailItem() {
     // console.log(tempUl);
 
     for (let i = 0; i < item.imgArr.split("-*,").length; i++) {
+
       // slideDiv
       const litag = document.createElement("li");
       const imgtag = document.createElement("img");
@@ -166,7 +164,7 @@ async function getDetailItem() {
       imgtag.src = imgArr[i].src = `../uploadedItems/${imgArr[i]}`;
     }
     console.log(imgArr);
-    // console.log(imgArray);
+
     console.log(item);
     title = item.itemTitle;
     price = item.itemPrice;
