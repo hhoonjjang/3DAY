@@ -135,6 +135,7 @@ async function getDetailItem() {
     const item = (await axios.get("/api/item/detail?itemIndex=" + itemIndex))
       .data.tempItem;
     const imgArray = [];
+    console.log(item);
     console.log(imgArray);
     console.log(item.imgArr.split("-*,").length);
 
@@ -158,8 +159,8 @@ async function getDetailItem() {
       imgArray.push(item.imgArr.split("-*,")[i]);
       imgArr[i].src = `../uploadedItems/${imgArray[i]}`;
     }
-    console.log(imgArr);
-    console.log(imgArray);
+    console.log(imgArr); //니가 선언한 어레이
+    console.log(imgArray); // 내가 넣은 어레이
     console.log(item);
     title = item.itemTitle;
     price = item.itemPrice;

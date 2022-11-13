@@ -165,6 +165,28 @@ router.get("/", async (req, res) => {
   res.send(tempItem);
 });
 
+router.post("/used", async (req, res) => {
+  const tempItem = await Item.findAll({
+    where: {
+      itemCondition: "중고상품",
+    },
+    order: [["id", "DESC"]],
+    include: { model: User },
+  });
+  res.send(tempItem);
+});
+
+router.post("/new", async (req, res) => {
+  const tempItem = await Item.findAll({
+    where: {
+      itemCondition: "새상품",
+    },
+    order: [["id", "DESC"]],
+    include: { model: User },
+  });
+  res.send(tempItem);
+});
+
 router.get("/selectkind", async (req, res) => {
   const kind = req.query.kind;
   console.log("셀렉트카인드");
