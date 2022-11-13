@@ -434,6 +434,10 @@ body.start div {
   font-family: "JSArirang-Regular";
   font-size: 120%;
 }
+
+body.start #loginDisplay div:first-child {
+  font-size: 110%;
+}
 body.start {
   background-color: black;
   color: white;
