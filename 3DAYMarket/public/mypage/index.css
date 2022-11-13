@@ -146,6 +146,25 @@ html {
   -o-transition: opacity 3s;
   transition: opacity 3s;
 }
+body.start #no1backimg img {
+  display: flex;
+  filter: invert (1);
+  position: absolute;
+  float: right;
+
+  top: 43%;
+  left: 66%;
+  width: 30%;
+  opacity: 0.63;
+  -webkit-animation: 1s RfadeInTitle ease;
+  -moz-animation: 1s RfadeInTitle ease;
+  -o-animation: 1s RfadeInTitle ease;
+  animation: 1s RfadeInTitle ease;
+  -webkit-transition: opacity 3s;
+  -moz-transition: opacity 3s;
+  -o-transition: opacity 3s;
+  transition: opacity 3s;
+}
 #bgp {
   position: relative;
   z-index: 2;
@@ -497,15 +516,15 @@ html {
 
 #userid {
   margin: 5px;
-  width: 50px;
+  width: 200px;
 }
 #username {
   margin: 5px;
-  width: 50px;
+  width: 200px;
 }
 #userlocal {
   margin: 5px;
-  width: 50px;
+  width: 200px;
 }
 #proflie {
   display: flex;
@@ -1039,7 +1058,7 @@ body.start .user-box button {
   background-color: black;
   color: white;
   font-family: "JSArirang-Regular";
-  font-size: 120%;
+  font-size: 110%;
 }
 
 .user-box button:hover {
@@ -1063,7 +1082,7 @@ body.start .user-box a {
   background-color: black;
   color: white;
   font-family: "JSArirang-Regular";
-  font-size: 120%;
+  font-size: 110%;
 }
 
 .user-box a:hover {
@@ -1188,19 +1207,89 @@ section a {
 /* 리버스 */
 body.start div {
   font-family: "JSArirang-Regular";
-  font-size: 120%;
+  font-size: 100%;
 }
+body.start .satan {
+  font-family: "satan";
+}
+
 body.start {
   background-color: black;
   color: white;
 }
-body.start .satan {
-  font-family: "satan";
-  /* font-size: 200%; */
-}
+
 body.start .satan#paytitle {
   font-size: 200%;
 }
 body.start .satan#paybody {
   font-size: 110%;
+}
+body.start #no1back {
+  filter: invert(1);
+  color: whitesmoke;
+}
+body.start #menuTitle {
+  filter: invert(1);
+}
+body.start #imgName {
+  background-color: black;
+  filter: invert(1);
+}
+body.start #photo,
+#proflie {
+  filter: invert(1);
+}
+body.start #userinfo {
+  filter: invert(1);
+}
+body.start #paytitle {
+  filter: invert(1);
+}
+body.start #paybody {
+  filter: invert(1);
+}
+body.start #itemtitle {
+  filter: invert(1);
+}
+body.start #item3title {
+  margin-left: 20px;
+}
+body.start #editTitle,
+#editlocal,
+#menuTitle2 {
+  filter: invert(1);
+}
+
+body.start #listItemtitle {
+  filter: invert(1);
+}
+body.start #myPlacetitle {
+  filter: invert(1);
+}
+body.start #myPlacelocaltitle,
+#myPlacelocalservice,
+#myPlacealimtitle,
+#myPlaceemailtitle {
+  filter: invert(1);
+}
+body.start #masterprofiletitle,
+#masterprofiletitle1,
+#masterprofiletitle2,
+#mastertitle {
+  filter: invert(1);
+}
+/* ------------------------------ */
+
+body.start #itemBoardtitle {
+  background-color: black;
+  filter: invert(1);
+}
+
+body.start #itemBoard a {
+  filter: invert(1);
+  font-size: 110%;
+}
+body.start .item-middle,
+.item-bottom {
+  filter: invert(1);
 }
