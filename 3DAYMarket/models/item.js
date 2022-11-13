@@ -60,4 +60,11 @@ module.exports = class Item extends Sequelize.Model {
       targetKey: "name",
     });
   }
+  // static associate(db) {
+  //   db.Item.hasMany(db.Chat, {
+  //     foreignKey: "partner_id",
+  //     sourceKey: "seller_id",
+  //     as: "Chat",
+  //   });
+  // }
 };

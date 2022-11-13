@@ -283,8 +283,17 @@ function moveRight() {
 }
 
 chatBtn.onclick = async function () {
-  location.href = "http://localhost:8080/chatting/";
-  console.log(sellerId);
+  const item = (await axios.get("/api/item/detail?itemIndex=" + itemIndex)).data
+    .tempItem;
+  console.log(item);
+  try {
+    const result = await axios.post("/api/chat/", item);
+    console.log(result);
+    location.href = "http://localhost:8080/chatting/";
+  } catch (err) {
+    console.error(err);
+  }
+  // console.log(result);
 };
 
 const reverse = function () {
