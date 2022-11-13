@@ -23,21 +23,21 @@ document.getElementById("condition").innerText = condition;
 document.getElementById("tuning").innerText = tuning;
 document.getElementById("dealing").innerText = dealing;
 document.getElementById("subtitle-text").innerText = subtitle;
+const slideDiv = document.getElementById("info-div-slide");
+// let img1 = document.getElementById("img1");
+// let img2 = document.getElementById("img2");
+// let img3 = document.getElementById("img3");
+// let img4 = document.getElementById("img4");
 
-let img1 = document.getElementById("img1");
-let img2 = document.getElementById("img2");
-let img3 = document.getElementById("img3");
-let img4 = document.getElementById("img4");
+let imgArr = [];
+// // const imgArr = [img1, img2, img3];n
+// // const imgArr = [img1, img2];n
+// // const imgArr = [img1];n
 
-let imgArr = [img1, img2, img3, img4];
-// const imgArr = [img1, img2, img3];n
-// const imgArr = [img1, img2];n
-// const imgArr = [img1];n
-
-imgArr[0].src = "../image/1.png";
-imgArr[1].src = "../image/2.jpg";
-imgArr[2].src = "../image/3.jpg";
-imgArr[3].src = "../image/4.jpg";
+// imgArr[0].src = "../image/1.png";
+// imgArr[1].src = "../image/2.jpg";
+// imgArr[2].src = "../image/3.jpg";
+// imgArr[3].src = "../image/4.jpg";
 
 //
 const itemIndex = window.location.href.split("?")[1].split("=")[1];
@@ -53,6 +53,7 @@ const reverseBtn = document.getElementById("reverse");
 const reverseImg = [...document.getElementsByClassName("reverse")];
 const reverseBgc = [...document.getElementsByClassName("bgc")];
 const loginDisplay = document.getElementById("loginDisplay");
+const tempUl = document.getElementById("info-div-slide");
 let date = new Date();
 const address = "http://localhost:8080/items/";
 
@@ -133,16 +134,39 @@ async function getDetailItem() {
   try {
     const item = (await axios.get("/api/item/detail?itemIndex=" + itemIndex))
       .data.tempItem;
-    const imgArray = [];
-    console.log(imgArray);
+    // console.log(imgArray);
     console.log(item.imgArr.split("-*,").length);
+
+    // for (let i = 0; i < item.imgArr.split("-*,").length; i++) {
+    //   imgArr.push(`img${i}`);
+    //   const tempLi = document.createElement("li");
+    //   tempLi.classList.add = "info-div-slide-item";
+    //   const tempImg = document.createElement(`img`);
+    //   tempImg.id = `img${i}`;
+    //   console.log(tempUl);
+    //   console.log(tempLi);
+    //   console.log(tempImg);
+
+    //   tempUl.prepend(tempLi);
+    //   tempLi.append(tempImg);
+    //   console.log(tempUl);
+    // }
+    // console.log(tempUl);
+
     for (let i = 0; i < item.imgArr.split("-*,").length; i++) {
-      imgArray.push(item.imgArr.split("-*,")[i]);
-      imgArr[i].src = `../uploadedItems/${imgArray[i]}`;
-      console.log(imgArr[i].src);
+      // slideDiv
+      const litag = document.createElement("li");
+      const imgtag = document.createElement("img");
+      imgtag.setAttribute("id", `img${i + 1}`);
+      litag.classList.add("info-div-slide-item");
+      litag.setAttribute("id", `imglist${i + 1}`);
+      slideDiv.append(litag);
+      litag.append(imgtag);
+      imgArr.push(item.imgArr.split("-*,")[i]);
+      imgtag.src = imgArr[i].src = `../uploadedItems/${imgArr[i]}`;
     }
     console.log(imgArr);
-    console.log(imgArray);
+    // console.log(imgArray);
     console.log(item);
     title = item.itemTitle;
     price = item.itemPrice;
@@ -207,39 +231,59 @@ getDetailItem();
 // divReadMore.append(divReadMoreDivWarn);
 function moveLeft() {
   if (imgArr.length == 2) {
-    imgArr[0].classList.remove("display-none");
+    img1.classList.remove("display-none");
+    imglist1.classList.remove("width-auto");
     return;
   }
   if (imgArr.length == 3) {
-    if (imgArr[1].classList.contains("display-none")) {
-      imgArr[1].classList.remove("display-none");
-    } else imgArr[0].classList.remove("display-none");
+    if (img2.classList.contains("display-none")) {
+      img2.classList.remove("display-none");
+      imglist2.classList.remove("width-auto");
+    } else {
+      img1.classList.remove("display-none");
+      imglist1.classList.remove("width-auto");
+    }
   }
   if (imgArr.length == 4) {
-    if (imgArr[2].classList.contains("display-none")) {
-      imgArr[2].classList.remove("display-none");
-    } else if (imgArr[1].classList.contains("display-none")) {
-      imgArr[1].classList.remove("display-none");
-    } else imgArr[0].classList.remove("display-none");
+    if (img3.classList.contains("display-none")) {
+      img3.classList.remove("display-none");
+      imglist3.classList.remove("width-auto");
+    } else if (img2.classList.contains("display-none")) {
+      img2.classList.remove("display-none");
+      imglist2.classList.remove("width-auto");
+    } else {
+      img1.classList.remove("display-none");
+      imglist1.classList.remove("width-auto");
+    }
   }
 }
 
 function moveRight() {
   if (imgArr.length == 2) {
-    imgArr[0].classList.add("display-none");
+    img1.classList.add("display-none");
+    imglist1.classList.add("width-auto");
     return;
   }
   if (imgArr.length == 3) {
-    if (imgArr[0].classList.contains("display-none")) {
-      imgArr[1].classList.add("display-none");
-    } else imgArr[0].classList.add("display-none");
+    if (img1.classList.contains("display-none")) {
+      img2.classList.add("display-none");
+      imglist2.classList.add("width-auto");
+    } else {
+      img1.classList.add("display-none");
+      imglist1.classList.add("width-auto");
+    }
   }
   if (imgArr.length == 4) {
-    if (imgArr[1].classList.contains("display-none")) {
-      imgArr[2].classList.add("display-none");
-    } else if (imgArr[0].classList.contains("display-none")) {
-      imgArr[1].classList.add("display-none");
-    } else imgArr[0].classList.add("display-none");
+    if (img2.classList.contains("display-none")) {
+      img3.classList.add("display-none");
+      imglist3.classList.add("width-auto");
+    } else if (img1.classList.contains("display-none")) {
+      img2.classList.add("display-none");
+      imglist2.classList.add("width-auto");
+    } else {
+      img1.classList.add("display-none");
+      imglist1.classList.add("width-auto");
+    }
   }
 }
 
@@ -247,3 +291,25 @@ chatBtn.onclick = async function () {
   location.href = "http://localhost:8080/chatting/";
   console.log(sellerId);
 };
+
+const reverse = function () {
+  if (cookieR) {
+    document.body.classList.add("start");
+    for (let i = 0; i < reverseImg.length; i++) {
+      reverseImg[i].classList.add("start");
+    }
+    for (let i = 0; i < reverseBgc.length; i++) {
+      reverseBgc[i].classList.add("start");
+    }
+  } else {
+    document.body.classList.remove("start");
+    for (let i = 0; i < reverseImg.length; i++) {
+      reverseImg[i].classList.remove("start");
+    }
+    for (let i = 0; i < reverseBgc.length; i++) {
+      reverseBgc[i].classList.remove("start");
+    }
+  }
+};
+
+reverse();
