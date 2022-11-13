@@ -209,6 +209,11 @@ function start() {
     userUi2: document.querySelector("#imgName2"),
     editName: document.querySelector("#editName"),
   };
+  const elm2 = {
+    menu3: document.querySelector("#menu"),
+    userUi3: document.querySelector("#imgName"),
+    myItemlist: document.querySelector(".item-board-display"),
+  };
   const props = {
     top: "top:-100px",
     transition1: "transition: top 1s",
