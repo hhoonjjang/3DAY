@@ -45,6 +45,7 @@ signOutBtn.onclick = async function () {
 
     signInBtn.classList.remove("off");
     // signUpBtn.classList.remove("off");
+    location.href = "http://localhost:8080/";
   } catch (err) {
     console.error(err);
   }
@@ -137,6 +138,9 @@ function activeOnChat() {
   for (let i = 0; i < chatList.length; i++) {
     chatList[i].onclick = async function () {
       const partnerName = nameList[i].innerText;
+      const sellItemInfo = await axios.post("/api/chat/").data;
+      console.log(sellItemInfo);
+
       const data = await axios.post("/api/chat/sendinfo", {
         me: document.getElementById("user-name").innerText,
         partner: partnerName,
@@ -224,5 +228,24 @@ const chatlist = document.getElementById("chat-list");
 //     reverseBgc[i].classList.toggle("start");
 //   }
 // };
+const reverse = function () {
+  if (cookieR) {
+    document.body.classList.add("start");
+    for (let i = 0; i < reverseImg.length; i++) {
+      reverseImg[i].classList.add("start");
+    }
+    for (let i = 0; i < reverseBgc.length; i++) {
+      reverseBgc[i].classList.add("start");
+    }
+  } else {
+    document.body.classList.remove("start");
+    for (let i = 0; i < reverseImg.length; i++) {
+      reverseImg[i].classList.remove("start");
+    }
+    for (let i = 0; i < reverseBgc.length; i++) {
+      reverseBgc[i].classList.remove("start");
+    }
+  }
+};
 
-
+reverse();

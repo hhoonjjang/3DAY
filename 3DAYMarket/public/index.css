@@ -6,14 +6,15 @@
 html {
   font-family: "maple-bold";
 }
-body.start div{
-    font-family: "JSArirang-Regular";
-    font-size: 120%;
-
+body.start div {
+  font-family: "JSArirang-Reular";
+  font-size: 120%;
 }
-body.start .satan{
-  font-family:"satan";
-
+body.start {
+  background-color: black;
+}
+body.start .satan {
+  font-family: "satan";
 }
 
 .top-container {
@@ -31,27 +32,23 @@ body.start .satan{
   z-index: 999;
 }
 
-.top-container.start{
-    background-color: black;
-    
+.top-container.start {
+  background-color: black;
 }
-
 
 .top-container div {
   display: flex;
 }
 
-
-.home-box{
-    height: 100%;
-    margin-left: 100;
-    display: flex;
-    align-items: center;
-   /* cursor: pointer; */
-   
+.home-box {
+  height: 100%;
+  margin-left: 100;
+  display: flex;
+  align-items: center;
+  /* cursor: pointer; */
 }
 
-body.start .home-box{
+body.start .home-box {
   margin-left: 0;
 }
 
@@ -59,29 +56,29 @@ body.start .home-box{
   display: none;
 } */
 
-body.start .home-box div{
-    font-size: 100px;
-    color: white;
+body.start .home-box div {
+  font-size: 100px;
+  color: white;
 }
-.home-box div{
-    height: 100%;
-    align-items: center;
+.home-box div {
+  height: 100%;
+  align-items: center;
 }
 
 .category-box {
   /* width: 45%; */
   /* margin-left: 20; */
-  margin:0 20px;
+  margin: 0 20px;
   /* flex:3 */
 }
-.home-box div img:first-child{
-    height: 130%;
-    }
+.home-box div img:first-child {
+  height: 130%;
+}
 
- .home-box div img:last-child{
-    height: 90%;
-    /* display: none; */
- }
+.home-box div img:last-child {
+  height: 90%;
+  /* display: none; */
+}
 
 /* .reverse.start div:first-child img{
     display: none;
@@ -90,8 +87,6 @@ body.start .home-box div{
 .reverse.start div:nth-child(2) img{
     display: block;
 } */
-
-
 
 .category-box a {
   cursor: pointer;
@@ -122,7 +117,6 @@ body.start .category-box a {
   background-color: #ffead8;
   font-family: "maple-bold";
   font-size: 14px;
-  
 }
 
 body.start .user-box button {
@@ -132,7 +126,7 @@ body.start .user-box button {
   font-size: 120%;
 }
 
-.user-box button:hover{
+.user-box button:hover {
   background-color: #ffd4d1;
 }
 
@@ -146,7 +140,7 @@ body.start .user-box button {
   background-color: #ffead8;
   font-size: 14px;
   font-family: "maple-bold";
-text-align: center;
+  text-align: center;
 }
 
 body.start .user-box a {
@@ -156,38 +150,41 @@ body.start .user-box a {
   font-size: 120%;
 }
 
-.user-box a:hover{
+.user-box a:hover {
   background-color: #ffd4d1;
 }
 
-#sign-in.off,#sign-up.off{
-    display: none;
+#sign-in.off,
+#sign-up.off {
+  display: none;
 }
 
-#sign-out,#item-upload,#user-info{
-    display: none;
+#sign-out,
+#item-upload,
+#user-info {
+  display: none;
 }
 
-#sign-out.on,#item-upload.on,#user-info.on {
-    display: block;
-    
-} 
-
-#chatting{
-    display: none;
+#sign-out.on,
+#item-upload.on,
+#user-info.on {
+  display: block;
 }
 
-#chatting.on{
-    display: block;
+#chatting {
+  display: none;
 }
 
+#chatting.on {
+  display: block;
+}
 
-#loginDisplay{
+#loginDisplay {
   width: 150px;
-    align-items: center;
-    display: none;
+  align-items: center;
+  display: none;
 }
-#loginDisplay div:first-child{
+#loginDisplay div:first-child {
   margin-left: 20px;
 }
 
@@ -231,22 +228,21 @@ body.start .user-box a {
   margin-right: 10rem;
 }
 
-.reverse img:first-child{
-    display: block;
+.reverse img:first-child {
+  display: block;
 }
 
-.reverse.start img:first-child{
-    display: none;
+.reverse.start img:first-child {
+  display: none;
 }
 
 .reverse img:last-child {
-    display: none;
+  display: none;
 }
 
 .reverse.start img:last-child {
-    display: block;
+  display: block;
 }
-
 
 .home-second div img {
   width: 400px;
@@ -289,7 +285,6 @@ body.start .user-box a {
   padding-top: 100px;
 }
 
-
 .home-first div:first-child {
   /* padding-left: 50px; */
   /* background-color: red; */
@@ -309,24 +304,22 @@ body.start .home-first div div:first-child {
 }
 
 .bgc.start {
-    background-color: black;
-    color: white;
-    
+  background-color: black;
+  color: white;
 }
 
-#invert{
-    filter: invert(100%);
+#invert {
+  filter: invert(100%);
 }
 
-#reverse img{
-    width: 120px;
+#reverse img {
+  width: 120px;
 }
 
-#reverse.start img{
+#reverse.start img {
   width: 80px;
   margin-right: 30px;
 }
-
 
 #item-board-title {
   font-size: 100px;
@@ -334,13 +327,11 @@ body.start .home-first div div:first-child {
   padding: 100px;
 }
 
-.item-category-box{
+.item-category-box {
   display: flex;
   padding: 50;
   justify-content: flex-end;
-
 }
-
 
 select {
   margin: 10px;
@@ -362,41 +353,40 @@ a {
   /* background-color: lightblue; */
   flex-wrap: wrap;
   justify-content: space-around;
-  align-items:center;
+  align-items: center;
   margin: auto;
 }
 
-.item{
+.item {
   margin-bottom: 50px;
-  width: calc(25% - 40px)
-
+  width: calc(25% - 40px);
 }
 
-.item-board.bgc.start a{
+.item-board.bgc.start a {
   color: white;
 }
 
-.item-link{
+.item-link {
   width: 100%;
 }
 
-.item-top{
+.item-top {
   width: 300px;
   height: 300px;
 }
 
-.item-top .item-img img{
+.item-top .item-img img {
   width: 80%;
   height: 100%;
 
   /* display: none; */
 }
 
-.item-bottom{
+.item-bottom {
   display: flex;
 }
 
-.item-title{
+.item-title {
   text-overflow: ellipsis;
   overflow: hidden;
   word-break: break-word;
@@ -404,7 +394,6 @@ a {
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
 }
-
 
 .footer-container {
   display: flex;
@@ -415,32 +404,45 @@ a {
   margin-bottom: 150px;
 }
 
-.footer-container img{
+.footer-container img {
   width: 150px;
 }
 
-#spantext{
+#spantext {
   border-top: 1px var black;
   text-align: center;
 }
 
-body.start .footer-container{
+body.start .footer-container {
   font-size: 200px;
 }
 
-body.start .footer-container #invert{
+body.start .footer-container #invert {
   width: 500px;
   display: none;
-  
 }
 
-section{
+section {
   padding: 20;
   text-align: center;
 }
 
-section a{
+section a {
   margin: 0 10;
 }
+body.start div {
+  font-family: "JSArirang-Regular";
+  font-size: 120%;
+}
 
-
+body.start #loginDisplay div:first-child {
+  font-size: 110%;
+}
+body.start {
+  background-color: black;
+  color: white;
+}
+body.start .satan {
+  font-family: "satan";
+  /* font-size: 200%; */
+}

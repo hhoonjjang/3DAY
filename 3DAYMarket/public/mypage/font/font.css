@@ -10,10 +10,16 @@
   font-weight: normal;
 }
 
-
 @font-face {
   font-family: "satan";
   src: url("./who\ asks\ satan.ttf") format("truetype");
   font-weight: normal;
 }
 
+@font-face {
+  font-family: "JSArirang-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/JSArirang-RegularA1.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}

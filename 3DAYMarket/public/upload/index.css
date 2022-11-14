@@ -744,3 +744,7 @@ section {
 section a {
   margin: 0 10px;
 }
+body.start {
+  background-color: black;
+  color: white;
+}
