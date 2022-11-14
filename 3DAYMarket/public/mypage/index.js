@@ -420,6 +420,7 @@ function start() {
 
   selllist2.onclick = async () => {
     console.log("selllist시작");
+    divItemBoard.innerText = "";
     try {
       if (!cookieR) {
         mode = 0;
