@@ -312,4 +312,17 @@ router.get("/detail", async (req, res) => {
   // const tempItem = await Item.findOne;
 });
 
+router.post("/mypageitem", async (req, res) => {
+  const name = jwt.verify(req.cookies.carrot, process.env.JWT_KEY).name;
+  console.log(name);
+  const tempItem = await Item.findAll({
+    where: {
+      seller_id: name,
+    },
+    order: [["id", "DESC"]],
+    include: { model: User },
+  });
+  res.send({ tempItem });
+});
+
 module.exports = router;

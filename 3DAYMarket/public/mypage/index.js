@@ -37,7 +37,8 @@ const reverseImg = [...document.getElementsByClassName("reverse")];
 const reverseBgc = [...document.getElementsByClassName("bgc")];
 const loginDisplay = document.getElementById("loginDisplay");
 let date = new Date();
-const address = "http://localhost:8080/items/";
+const address = "http://localhost:8080/items?name=";
+const divItemBoard = document.getElementById("itemBoard");
 
 signOutBtn.onclick = async function () {
   try {
@@ -416,24 +417,97 @@ function start() {
     //   transition2(elms2, properties2);
     // }, 300);
   };
-  selllist2.onclick = () => {
-    const properties = [
-      `${props.display0} ${props.trnsDelay1}`,
-      `${props.display0} ${props.trnsDelay1} `,
-      `${props.display0} ${props.trnsDelay1} `,
-      `${props.display0} ${props.trnsDelay2} `,
-      `${props.display0} ${props.trnsDelay2} `,
-      `${props.display0} ${props.trnsDelay5} `,
-      `${props.display0} ${props.trnsDelay6} `,
-    ];
-    transition(elms, properties);
-    setTimeout(() => {
-      document.getElementById("bgp3").style.display = "block";
-      const properties2 = [`${props2.display1} ${props2.opacity1}  `];
-      transition2(elms2, properties2);
-    }, 500);
 
-    console.log("selllist 클릭됨");
+  selllist2.onclick = async () => {
+    console.log("selllist시작");
+    try {
+      const item = (
+        await axios.post("/api/item/mypageitem", {
+          cookie: cookieArray[cookieCIndex],
+        })
+      ).data.tempItem;
+      console.log(item);
+      item.forEach((item) => {
+        const articleItem = document.createElement("article");
+        const aItem = document.createElement("a");
+        const divItemTop = document.createElement("div");
+        const divItemImg = document.createElement("div");
+        const imgItem = document.createElement("img");
+        const divItemMiddle = document.createElement("div");
+        const divItemTitle = document.createElement("div");
+        const divItemPrice = document.createElement("div");
+        const divItemLocal = document.createElement("div");
+
+        const divItemTrade = document.createElement("div");
+
+        const divItemBottom = document.createElement("div");
+        const divItemFocus = document.createElement("div");
+        const divItemBorderdot = document.createElement("div");
+        const divItemCountingView = document.createElement("div");
+        articleItem.classList.add("item");
+        aItem.classList.add("item-link");
+        aItem.href = `${address}${item.id}`;
+        divItemTop.classList.add("item-top");
+        divItemImg.classList.add("item-img");
+        imgItem.src = `../uploadedItems/${item.imgArr.split("-*,")[0]}`;
+        divItemMiddle.classList.add("item-middle");
+        divItemTitle.classList.add("item-title");
+        divItemTitle.innerText = item.itemTitle;
+        divItemPrice.classList.add("item-price");
+        divItemPrice.innerText = item.itemPrice;
+        divItemLocal.classList.add("item-local");
+
+        divItemLocal.innerText = item.itemLocal;
+        divItemTrade.classList.add("item-trade");
+        divItemTrade.innerText = item.itemDealing;
+
+
+        divItemBottom.classList.add("item-bottom");
+        divItemFocus.classList.add("item-focus");
+        divItemFocus.innerText = `관심 ${10}`;
+        divItemBorderdot.classList.add("border-dot");
+        divItemBorderdot.innerText = "！";
+        divItemCountingView.classList.add("item-countingview");
+        divItemCountingView.innerText = `채팅 ${78}`;
+        console.log(divItemBoard);
+        console.log(articleItem);
+        divItemBoard.appendChild(articleItem);
+        articleItem.appendChild(aItem);
+        aItem.appendChild(divItemTop);
+        aItem.appendChild(divItemMiddle);
+        aItem.appendChild(divItemBottom);
+        divItemTop.appendChild(divItemImg);
+        divItemImg.appendChild(imgItem);
+        divItemMiddle.appendChild(divItemTitle);
+        divItemMiddle.appendChild(divItemPrice);
+        divItemMiddle.appendChild(divItemLocal);
+
+        divItemMiddle.appendChild(divItemTrade);
+
+        divItemBottom.appendChild(divItemFocus);
+        divItemBottom.appendChild(divItemBorderdot);
+        divItemBottom.appendChild(divItemCountingView);
+      });
+      const properties = [
+        `${props.display0} ${props.trnsDelay1}`,
+        `${props.display0} ${props.trnsDelay1} `,
+        `${props.display0} ${props.trnsDelay1} `,
+        `${props.display0} ${props.trnsDelay2} `,
+        `${props.display0} ${props.trnsDelay2} `,
+        `${props.display0} ${props.trnsDelay5} `,
+        `${props.display0} ${props.trnsDelay6} `,
+      ];
+      transition(elms, properties);
+      setTimeout(() => {
+        document.getElementById("bgp3").style.display = "block";
+        const properties2 = [`${props2.display1} ${props2.opacity1}  `];
+        transition2(elms2, properties2);
+      }, 1000);
+
+      console.log("selllist 클릭됨");
+    } catch (err) {
+      console.error(err);
+    }
   };
   arrow3.onclick = () => {
     document.getElementById("bgp3").style.display = "none";
