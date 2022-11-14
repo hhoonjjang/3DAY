@@ -128,7 +128,9 @@ router.put("/update", async (req, res) => {
       },
     }
   );
-  const tempNewUser = User.findOne({ where: (id = tempUser.id) });
+  const tempNewUser = await User.findOne({ where: (id = tempUser.id) });
+  console.log("hi");
+  console.log(tempNewUser);
   console.log("hi");
   res.cookie(
     "carrot",
@@ -145,7 +147,9 @@ router.put("/update", async (req, res) => {
       }
     )
   );
+  console.log("hi");
   console.log(tempNewUser.id);
+  console.log("hi");
 
   res.send({
     name: tempNewUser.name,
