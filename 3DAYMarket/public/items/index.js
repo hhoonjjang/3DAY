@@ -10,7 +10,8 @@ let condition = "test_condition";
 let tuning = "test_tuning";
 let dealing = "test_dealing";
 let subtitle = "test_subtitle";
-
+let buyUser;
+let deleteBtn = document.getElementById("delete-btn");
 document.getElementById("title-text").innerText = title;
 document.getElementById("price-num").innerText = price.toLocaleString();
 document.getElementById("area-value").innerText = area;
@@ -110,6 +111,7 @@ const login = async function () {
       itemUpload.classList.add("on");
       userInfo.classList.add("on");
       console.log(result.data.name);
+      buyUser = result.data.name;
       const login = document.createElement("div");
       login.innerText = `${result.data.name}님 어서오세요!`;
       loginDisplay.style.display = "block";
@@ -129,9 +131,15 @@ async function getDetailItem() {
   try {
     const item = (await axios.get("/api/item/detail?itemIndex=" + itemIndex))
       .data.tempItem;
-
     console.log(item.imgArr.split("-*,").length);
-
+    console.log(buyUser);
+    console.log(item.seller_id);
+    console.log(deleteBtn);
+    if (buyUser == item.seller_id) {
+      deleteBtn.style.display = "block";
+    } else {
+      deleteBtn.style.display = "none";
+    }
     // for (let i = 0; i < item.imgArr.split("-*,").length; i++) {
     //   imgArr.push(`img${i}`);
     //   const tempLi = document.createElement("li");
@@ -192,38 +200,6 @@ async function getDetailItem() {
 }
 getDetailItem();
 
-// const divInfoDiv = document.createElement("div");
-// divInfoDiv.classList.add("info-div");
-// const divReadMore = document.createElement("div");
-// divReadMore.classList.add("read-more-div");
-// const divInfoDivRel = document.createElement("div");
-// divInfoDivRel.classList.add("info-div-rel");
-// const divInfoDivInfo = document.createElement("div");
-// divInfoDivInfo.classList.add("info-div-info");
-// const divReadMoreDivInner = document.createElement("div");
-// divReadMoreDivInner.classList.add("read-more-div-inner");
-// const divReadMoreDivBanner = document.createElement("div");
-// divReadMoreDivBanner.classList.add("read-more-div-banner");
-// const divReadMoreDivWarn = document.createElement("div");
-// divReadMoreDivWarn.classList.add("read-more-div-warn");
-// const ulInfoDivSlide = document.createElement("ul");
-// ulInfoDivSlide.classList.add("info-div-slide");
-// const liInfoDivSlideItem = document.createElement("li");
-// liInfoDivSlideItem.classList.add("info-div-slide-item");
-// console.log(divReadMore);
-// divMainColum.append(divInfoDiv);
-// divMainColum.append(divReadMore);
-// divInfoDiv.append(divInfoDivRel);
-// divInfoDivRel.append(ulInfoDivSlide);
-// ulInfoDivSlide.append(liInfoDivSlideItem);
-// ulInfoDivSlide.append(liInfoDivSlideItem);
-// ulInfoDivSlide.append(liInfoDivSlideItem);
-// ulInfoDivSlide.append(liInfoDivSlideItem);
-
-// divInfoDiv.append(divInfoDivInfo);
-// divReadMore.append(divReadMoreDivInner);
-// divReadMore.append(divReadMoreDivBanner);
-// divReadMore.append(divReadMoreDivWarn);
 function moveLeft() {
   if (imgArr.length == 2) {
     img1.classList.remove("display-none");
@@ -318,8 +294,27 @@ const reverse = function () {
 
 reverse();
 
-document.getElementById("search").onkeydown = (event) => {
-  if (window.event.keyCode == 13) {
-    location.href = "http://localhost:8080/search";
+async function deleteItem() {
+  // console.log(itemIndex);
+  // const item = (await axios.get("/api/item/detail?itemIndex=" + itemIndex)).data
+  //   .tempItem;
+  // console.log(item);
+  console.log(typeof itemIndex);
+
+  if (confirm("정말로 삭제하시겠습니까?")) {
+    try {
+      const result = await axios.delete(
+        "/api/item/delete?itemIndex=" + itemIndex
+      );
+      console.log(result);
+      alert(result.data);
+      location.href = "http://localhost:8080/";
+    } catch (err) {
+      console.log(err);
+    }
+
+    //
+  } else {
+    return;
   }
-};
+}
