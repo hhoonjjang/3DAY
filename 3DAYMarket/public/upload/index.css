@@ -811,4 +811,5 @@ body.start .img-div .main-colum-left {
 
 body.start .extra-div {
   color: rgb(200, 40, 40);
+  display: block !important;
 }
