@@ -342,6 +342,28 @@ router.get("/detail", async (req, res) => {
   // const tempItem = await Item.findOne;
 });
 
+router.delete("/delete", async (req, res) => {
+  console.log(req.query.id);
+  itemIndex = req.query.itemIndex;
+  console.log(itemIndex);
+  const tempItem = await Item.findOne({
+    where: {
+      id: itemIndex,
+    },
+  });
+  console.log(global.userName);
+  console.log(tempItem.seller_id);
+  if (global.userName === tempItem.seller_id) {
+    await Item.destroy({
+      where: {
+        id: itemIndex,
+      },
+    });
+  } else {
+    res.send("작성자가아닙니다.");
+  }
+  res.send("정상적으로 삭제했습니다.");
+});
 
 router.post("/mypageitem", async (req, res) => {
   const name = jwt.verify(req.cookies.carrot, process.env.JWT_KEY).name;
@@ -374,6 +396,5 @@ router.post("/filterItem", async (req, res) => {
 
   res.send(req.body.list);
 });
-
 
 module.exports = router;
