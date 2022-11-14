@@ -148,7 +148,6 @@ html {
 }
 body.start #no1backimg img {
   display: flex;
-  filter: invert (1);
   position: absolute;
   float: right;
 
@@ -448,12 +447,13 @@ body.start #no1backimg img {
   display: flex;
   box-sizing: content-box;
   flex-wrap: wrap;
-
+  opacity: 0.8;
   align-items: center;
   position: relative;
   border: 1px solid black;
   background-color: #f4efe5;
   box-shadow: 3px 3px 3px #a5a094;
+  background-color: rgba(255, 255, 255, 0.5);
   border-radius: 10px;
   width: 100%;
   -webkit-animation: 2.5s fadeInTitle ease;
@@ -1277,81 +1277,66 @@ body.start .satan#paybody {
   font-size: 110%;
 }
 body.start #no1back {
-  /* filter: invert(1); */
   color: whitesmoke;
 }
-body.start #menuTitle,
-#imgName,
-#menu {
-  background-color: black;
-  color: whitesmoke;
+body.start #no1backimg {
+  filter: invert(1);
 }
-body.start #gear,
-#photo,
-#arrow {
+body.start #gear {
+  filter: invert(1);
+}
+body.start #testuser {
   filter: invert(1);
 }
 body.start #imgName {
-  /* background-color: black;
-  filter: invert(1); */
+  opacity: 0.8;
+  color: whitesmoke;
 }
-body.start #photo,
-#proflie {
-  /* filter: invert(1); */
+body.start #arrow {
+  filter: invert(1);
 }
-body.start #userinfo {
-  /* filter: invert(1); */
+body.start #item1img {
+  filter: invert(1);
 }
-body.start #paytitle {
-  /* filter: invert(1); */
+body.start #item2img {
+  filter: invert(1);
 }
-body.start #paybody {
-  /* filter: invert(1); */
+body.start #item3img {
+  filter: invert(1);
 }
-body.start #itemtitle {
-  /* filter: invert(1); */
+body.start #item4img {
+  filter: invert(1);
+}
+body.start #myPlacelocalimg {
+  filter: invert(1);
+}
+body.start #servicecenter {
+  filter: invert(1);
+}
+body.start #alim {
+  filter: invert(1);
+}
+
+body.start #meil {
+  filter: invert(1);
+}
+body.start #masterprofileimg {
+  filter: invert(1);
+}
+body.start #masterprofileimg1 {
+  filter: invert(1);
+}
+body.start #masterprofileimg2 {
+  filter: invert(1);
+}
+body.start #nextBtn3 {
+  filter: invert(1);
 }
 body.start #item3title {
   margin-left: 20px;
 }
-body.start #editTitle,
-#editlocal,
-#menuTitle2 {
-  /* filter: invert(1); */
-}
-
-body.start #listItemtitle {
-  /* filter: invert(1); */
-}
-body.start #myPlacetitle {
-  /* filter: invert(1); */
-}
-body.start #myPlacelocaltitle,
-#myPlacelocalservice,
-#myPlacealimtitle,
-#myPlaceemailtitle {
-  /* filter: invert(1); */
-}
-body.start #masterprofiletitle,
-#masterprofiletitle1,
-#masterprofiletitle2,
-#mastertitle {
-  /* filter: invert(1); */
-}
-/* ------------------------------ */
-
-body.start #itemBoardtitle {
-  /* background-color: black; */
-  /* filter: invert(1); */
-}
-
 body.start #itemBoard a {
-  /* filter: invert(1); */
   font-size: 110%;
-}
-body.start .item-middle,
-.item-bottom {
-  /* filter: invert(1); */
 }
 
 .item-trade {
