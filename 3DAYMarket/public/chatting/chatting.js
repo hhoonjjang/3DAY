@@ -40,7 +40,7 @@ async function socketFunc(control) {
   // };
 
   const asd = document.forms["msg-zone"];
-  console.log(asd);
+  // console.log(asd);
   const chatElem = document.getElementById("vs-chat-zone");
   chatElem.innerHTML = "";
   document.forms["msg-zone"].onsubmit = function (e) {
@@ -80,14 +80,14 @@ async function socketFunc(control) {
     });
 
     const chatList = document.getElementsByClassName("vs-name");
-    console.log(chatList.length);
+    // console.log(chatList.length);
     const chatLogList = document.getElementsByClassName("vs-chatlog");
     for (let i = 0; i < chatList.length; i++) {
       if (
         document.getElementById("partner-id").innerText == chatList[i].innerText
       ) {
         chatLogList[i].innerText = document.forms["msg-zone"]["msg"].value;
-        console.log(chatLogList[i].innerText);
+        // console.log(chatLogList[i].innerText);
       }
     }
     //resize none
@@ -106,7 +106,7 @@ async function socketFunc(control) {
       // console.log(item.partnerId);
       // console.log(document.getElementById("user-name").innerText);
       if (item.userId == document.getElementById("user-name").innerText) {
-        console.log("hi");
+        // console.log("hi");
 
         if (!control) {
           createOneChat(item);
@@ -401,7 +401,7 @@ const deletedouble = function () {
     else return 0;
   });
 
-  console.log(tempNum);
+  // console.log(tempNum);
   let count = 0;
   for (let m = 0, n = 1; m < tempNum.length; m++, n++) {
     let tempN = tempNum[m];

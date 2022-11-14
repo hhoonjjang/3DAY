@@ -458,3 +458,9 @@ const reverse = function () {
 };
 
 reverse();
+
+document.getElementById("search").onkeydown = (event) => {
+  if (window.event.keyCode == 13) {
+    location.href = "http://localhost:8080/search";
+  }
+};

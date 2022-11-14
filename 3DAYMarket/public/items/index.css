@@ -598,15 +598,29 @@ body.start .user-box a {
   margin-left: 20px;
 }
 
+#searchBox {
+  background-color: white;
+  border-radius: 10px;
+}
+
+#searchBox:first-child {
+  padding: 5px;
+}
+
+#searchBox > img {
+  width: 25px;
+}
+
 #search {
-  background-color: lightgray;
-  padding: 10px;
+  background-color: white;
+  padding: 10;
   width: 250px;
   border: none;
   border-radius: 10px;
-  font-family: arial;
+  /* margin-left: 300px; */
+  font-family: "maple-light";
+  outline: none;
 }
-
 .home-second {
   width: 100%;
   height: 724px;

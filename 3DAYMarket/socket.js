@@ -1,5 +1,5 @@
 const socket = require("socket.io");
-const { Chat } = require("./models/index.js");
+const { Chat, Item } = require("./models/index.js");
 
 module.exports = (server) => {
   const io = socket(server);
@@ -9,6 +9,11 @@ module.exports = (server) => {
     Chat.findAll().then((data) => {
       ws.emit("list", { list: data });
     });
+
+    // Item.findAll().then((data) => {
+    //   ws.emit("item", { list: data });
+    //   console.log(list);
+    // });
 
     ws.on("chat", async (data) => {
       try {
@@ -35,7 +40,5 @@ module.exports = (server) => {
     });
   });
 
-
   io.of("c");
-
 };

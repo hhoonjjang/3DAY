@@ -62,7 +62,7 @@ let setCookie = function (name, value, exp) {
   date.setTime(date.getTime() + exp * 1000 * 60 * 60 * 9 + 1000 * 60);
   document.cookie =
     name + "=" + value + ";expires=" + date.toUTCString() + ";path=/";
-  console.log(document.cookie);
+  // console.log(document.cookie);
   // console.log(cookie);
 };
 let cookieArray = document.cookie.split("; ");
@@ -87,7 +87,7 @@ const login = async function () {
       chattingBtn.classList.add("on");
       itemUpload.classList.add("on");
       userInfo.classList.add("on");
-      console.log(result.data.name);
+      // console.log(result.data.name);
       const login = document.createElement("div");
       login.innerText = `${result.data.name}님 어서오세요!`;
       document.getElementById("user-name").innerText = result.data.name;
@@ -139,6 +139,9 @@ function activeOnChat() {
     chatList[i].onclick = async function () {
       const partnerName = nameList[i].innerText;
 
+      const sellItemInfo = await axios.post("/api/chat/").data;
+      console.log(sellItemInfo.text);
+
       const data = await axios.post("/api/chat/sendinfo", {
         me: document.getElementById("user-name").innerText,
         partner: partnerName,
@@ -148,9 +151,6 @@ function activeOnChat() {
       document.getElementById("partenr-tempture").innerText =
         data.data.tempTure + "˚C";
 
-      document.getElementById("item-title").innerText = "데이터받아와야함";
-      document.getElementById("item-price").innerText = "데이터받아와야함";
-      document.getElementById("trade-status").innerText = "데이터받아와야함";
       setTimeout(() => {
         socketFunc();
         document.getElementById("chat-box").style.display = "flex";
@@ -247,3 +247,9 @@ const reverse = function () {
 };
 
 reverse();
+
+document.getElementById("search").onkeydown = (event) => {
+  if (window.event.keyCode == 13) {
+    location.href = "http://localhost:8080/search";
+  }
+};

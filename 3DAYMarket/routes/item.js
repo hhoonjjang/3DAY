@@ -342,6 +342,7 @@ router.get("/detail", async (req, res) => {
   // const tempItem = await Item.findOne;
 });
 
+
 router.post("/mypageitem", async (req, res) => {
   const name = jwt.verify(req.cookies.carrot, process.env.JWT_KEY).name;
   const mode = req.body.mode;
@@ -351,10 +352,28 @@ router.post("/mypageitem", async (req, res) => {
       itemBlack: mode,
       seller_id: name,
     },
+
     order: [["id", "DESC"]],
     include: { model: User },
   });
   res.send({ tempItem });
 });
+
+router.post("/filterItem", async (req, res) => {
+  console.log(req.body.list);
+  // for (let i = 0; i < req.body.list.length; i++) {
+  //   const filterItemtitle = req.body.itemTitle;
+  //   tempItem = await Item.findAll({
+  //     where: {
+  //       itemTitle: filterItemtitle,
+  //     },
+  //     order: [["id", "DESC"]],
+  //     include: { model: User },
+  //   });
+  // }
+
+  res.send(req.body.list);
+});
+
 
 module.exports = router;
