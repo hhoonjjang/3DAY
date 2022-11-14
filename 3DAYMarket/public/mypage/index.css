@@ -1357,3 +1357,7 @@ body.start .item-middle,
 .item-trade {
   margin-left: 28px;
 }
+
+#editbtnimg {
+  cursor: pointer;
+}

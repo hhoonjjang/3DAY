@@ -36,6 +36,10 @@ const reverseBtn = document.getElementById("reverse");
 const reverseImg = [...document.getElementsByClassName("reverse")];
 const reverseBgc = [...document.getElementsByClassName("bgc")];
 const loginDisplay = document.getElementById("loginDisplay");
+const editInput = document.getElementById("editinput");
+const editInput2 = document.getElementById("editinput2");
+const editBtn = document.getElementById("editbtn2");
+
 let date = new Date();
 const address = "http://localhost:8080/items?name=";
 const divItemBoard = document.getElementById("itemBoard");
@@ -512,6 +516,9 @@ function start() {
 
       console.log("selllist 클릭됨");
     } catch (err) {
+      {
+        console.error(err);
+      }
       console.error(err);
     }
   };
@@ -574,3 +581,19 @@ function start() {
     console.log("비지니스 광고글 클릭됨");
   };
 }
+console.log(editBtn);
+editBtn.onclick = async function () {
+  console.log(editInput.value);
+  console.log(editInput2.value);
+  try {
+    const userName = await axios.put("/api/user/update", {
+      editInput: editInput.value,
+      editInput2: editInput2.value,
+      cookie: cookieArray[cookieCIndex],
+    });
+    console.log(userName);
+    window.location.reload();
+  } catch (err) {
+    console.error(err);
+  }
+};
