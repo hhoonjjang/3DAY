@@ -192,38 +192,6 @@ async function getDetailItem() {
 }
 getDetailItem();
 
-// const divInfoDiv = document.createElement("div");
-// divInfoDiv.classList.add("info-div");
-// const divReadMore = document.createElement("div");
-// divReadMore.classList.add("read-more-div");
-// const divInfoDivRel = document.createElement("div");
-// divInfoDivRel.classList.add("info-div-rel");
-// const divInfoDivInfo = document.createElement("div");
-// divInfoDivInfo.classList.add("info-div-info");
-// const divReadMoreDivInner = document.createElement("div");
-// divReadMoreDivInner.classList.add("read-more-div-inner");
-// const divReadMoreDivBanner = document.createElement("div");
-// divReadMoreDivBanner.classList.add("read-more-div-banner");
-// const divReadMoreDivWarn = document.createElement("div");
-// divReadMoreDivWarn.classList.add("read-more-div-warn");
-// const ulInfoDivSlide = document.createElement("ul");
-// ulInfoDivSlide.classList.add("info-div-slide");
-// const liInfoDivSlideItem = document.createElement("li");
-// liInfoDivSlideItem.classList.add("info-div-slide-item");
-// console.log(divReadMore);
-// divMainColum.append(divInfoDiv);
-// divMainColum.append(divReadMore);
-// divInfoDiv.append(divInfoDivRel);
-// divInfoDivRel.append(ulInfoDivSlide);
-// ulInfoDivSlide.append(liInfoDivSlideItem);
-// ulInfoDivSlide.append(liInfoDivSlideItem);
-// ulInfoDivSlide.append(liInfoDivSlideItem);
-// ulInfoDivSlide.append(liInfoDivSlideItem);
-
-// divInfoDiv.append(divInfoDivInfo);
-// divReadMore.append(divReadMoreDivInner);
-// divReadMore.append(divReadMoreDivBanner);
-// divReadMore.append(divReadMoreDivWarn);
 function moveLeft() {
   if (imgArr.length == 2) {
     img1.classList.remove("display-none");
@@ -318,8 +286,16 @@ const reverse = function () {
 
 reverse();
 
-document.getElementById("search").onkeydown = (event) => {
-  if (window.event.keyCode == 13) {
-    location.href = "http://localhost:8080/search";
+
+function deleteItem() {
+  if (confirm("정말로 삭제하시겠습니까?")) {
+    //
+    //
+    //
+    alert("정상적으로 삭제되었습니다");
+    //
+  } else {
+    return;
   }
-};
+}
+
