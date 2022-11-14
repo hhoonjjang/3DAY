@@ -517,8 +517,8 @@ body.start #no1backimg img {
 #testuser {
   margin-top: 5px;
   margin-left: 5px;
-  width: 90px;
-  height: 90px;
+  width: 80px;
+  height: 80px;
 }
 #userinfo {
   display: flex;
@@ -629,6 +629,7 @@ body.start #no1backimg img {
   margin-left: 20px;
   margin-left: 120px;
   margin-bottom: 10px;
+  margin-top: 30px;
 }
 #paybody {
   display: inline-block;
@@ -650,6 +651,20 @@ body.start #no1backimg img {
   display: inline-block;
   position: relative;
   margin-left: 120px;
+}
+#editbtn {
+  display: flex;
+  margin-left: 550px;
+  border: none;
+  background: none;
+}
+#editbtn2 {
+  border: none;
+  background: none;
+}
+#editbtnimg {
+  width: 40px;
+  height: 40px;
 }
 #payimg {
   display: flex;
