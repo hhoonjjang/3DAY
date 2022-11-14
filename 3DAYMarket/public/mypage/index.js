@@ -220,8 +220,8 @@ function start() {
     display0: "display:none;",
     display1: "display:block;",
     top: "top:-100px;",
-    transition1: "transition: top 1s",
-    transition2: "transition: top 2s",
+    transition1: "transition: 1s",
+    transition2: "transition: 2s",
     opacity0: "opacity: 0;",
     opacity1: "opacity: 1;",
     trnsDelay0: "transition-delay: 0.3s",
@@ -243,8 +243,8 @@ function start() {
     display0: "display:none;",
     display1: "display:block;",
     top: "top:-500px;",
-    transition1: "transition: top 1s;",
-    transition2: "transition: top 2s;",
+    transition1: "transition: 1s;",
+    transition2: "transition: 2s;",
     opacity0: "opacity: 0;",
     opacity1: "opacity: 1;",
     trnsDelay0: "transition-delay: 0.3s;",
@@ -314,9 +314,9 @@ function start() {
 
   gear.onclick = () => {
     const properties = [
-      `${props.opacity0} ${props.trnsDelay1}`,
+      `${props.opacity0} ${props.trnsDelay0}`,
       `${props.opacity0} ${props.trnsDelay1} `,
-      `${props.opacity0} ${props.trnsDelay1} `,
+      `${props.opacity0} ${props.trnsDelay3} `,
       `${props.opacity0} ${props.trnsDelay2} `,
       `${props.opacity0} ${props.trnsDelay2} `,
       `${props.opacity0} ${props.trnsDelay2} `,
@@ -327,25 +327,25 @@ function start() {
     setTimeout(() => {
       document.getElementById("bgp2").style.display = "block";
       const properties1 = [
-        `${props1.opacity1} ${props1.top} `,
-        `${props1.opacity1} ${props1.top}`,
-        `${props1.opacity1} ${props1.top}`,
+        `${props1.opacity1} ${props1.transition1} ${props1.top} ${props1.trnsDelay3}  ${props1.animarion1}`,
+        `${props1.opacity1} ${props1.transition1} ${props1.top} ${props1.trnsDelay5} ${props1.animarion2}`,
+        `${props1.opacity1} ${props1.transition1} ${props1.top} ${props1.trnsDelay6} ${props1.animarion3}`,
       ];
       transition1(elms1, properties1);
-    }, 3000);
+    }, 3050);
 
     console.log("기어 클릭이 됨");
   };
   arrow2.onclick = () => {
     document.getElementById("bgp2").style.display = "none";
     const properties = [
-      `${props.opacity1} ${props.trnsDelay1}`,
-      `${props.opacity1} ${props.trnsDelay1} `,
-      `${props.opacity1} ${props.trnsDelay1} `,
-      `${props.opacity1} ${props.trnsDelay2} `,
-      `${props.opacity1} ${props.trnsDelay2} `,
-      `${props.opacity1} ${props.trnsDelay5} `,
-      `${props.opacity1} ${props.trnsDelay6} `,
+      `${props.opacity1} ${props.trnsDelay1} ${props.trnsDelay0} `,
+      `${props.opacity1} ${props.trnsDelay1} ${props.trnsDelay0} `,
+      `${props.opacity1} ${props.trnsDelay1} ${props.trnsDelay0}`,
+      `${props.opacity1} ${props.trnsDelay2} ${props.trnsDelay0}`,
+      `${props.opacity1} ${props.trnsDelay2} ${props.trnsDelay0}`,
+      `${props.opacity1} ${props.trnsDelay5} ${props.trnsDelay0}`,
+      `${props.opacity1} ${props.trnsDelay6} ${props.trnsDelay0}`,
     ];
     transition(elms, properties);
   };
@@ -376,14 +376,45 @@ function start() {
       `${props.display0} ${props.trnsDelay6} `,
     ];
     transition(elms, properties);
-
     setTimeout(() => {
       document.getElementById("bgp3").style.display = "block";
-      const properties2 = [
-        `${props2.display1} ${props2.opacity1} ${props2.top} `,
-      ];
+      const properties2 = [`${props2.display1} ${props2.opacity1}  `];
       transition2(elms2, properties2);
-    }, 1000);
+    }, 500);
+
+    console.log("selllist 클릭됨");
+
+    arrow3.onclick = () => {
+      document.getElementById("bgp3").style.display = "none";
+      const properties = [
+        `${props.opacity1} ${props.trnsDelay1}`,
+        `${props.opacity1} ${props.trnsDelay1} `,
+        `${props.opacity1} ${props.trnsDelay1} `,
+        `${props.opacity1} ${props.trnsDelay2} `,
+        `${props.opacity1} ${props.trnsDelay2} `,
+        `${props.opacity1} ${props.trnsDelay5} `,
+        `${props.opacity1} ${props.trnsDelay6} `,
+      ];
+      transition(elms, properties);
+    };
+    // const properties = [
+    //   `${props.display0} ${props.trnsDelay1}`,
+    //   `${props.display0} ${props.trnsDelay1} `,
+    //   `${props.display0} ${props.trnsDelay1} `,
+    //   `${props.display0} ${props.trnsDelay2} `,
+    //   `${props.display0} ${props.trnsDelay2} `,
+    //   `${props.display0} ${props.trnsDelay5} `,
+    //   `${props.display0} ${props.trnsDelay6} `,
+    // ];
+    // transition(elms, properties);
+
+    // setTimeout(() => {
+    //   document.getElementById("bgp3").style.display = "block";
+    //   const properties2 = [
+    //     `${props2.display1} ${props2.opacity1} ${props2.top} `,
+    //   ];
+    //   transition2(elms2, properties2);
+    // }, 300);
   };
   selllist2.onclick = () => {
     const properties = [
@@ -400,7 +431,7 @@ function start() {
       document.getElementById("bgp3").style.display = "block";
       const properties2 = [`${props2.display1} ${props2.opacity1}  `];
       transition2(elms2, properties2);
-    }, 1000);
+    }, 500);
 
     console.log("selllist 클릭됨");
   };
