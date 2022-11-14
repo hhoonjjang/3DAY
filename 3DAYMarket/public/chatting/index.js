@@ -226,6 +226,13 @@ const chatlist = document.getElementById("chat-list");
 //     reverseBgc[i].classList.toggle("start");
 //   }
 // };
+
+if (cookieR) {
+  document.getElementById("chat-list").style.borderRight = "5px solid #051e1e";
+  document.getElementById("chat-list").style.borderLeft = "5px solid #051e1e";
+  // document.getElementById("main-box").classList.toggle = "start";
+}
+
 const reverse = function () {
   if (cookieR) {
     document.body.classList.add("start");

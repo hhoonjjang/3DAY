@@ -24,7 +24,6 @@ const selectTrade = document.getElementById("select-trade");
 let selectTradeValue;
 let mode = 1;
 
-
 let setCookie = function (name, value, exp) {
   let date = new Date();
   date.setTime(date.getTime() + exp * 1000 * 60 * 60 * 9 + 1000 * 60);
@@ -592,40 +591,40 @@ searchItem.onsubmit = async function (event) {
   //
   //   return console.log(filterItemList);
   // }
-  const itemList = (
-    await axios.post("/api/item/searchItem", {
-      // value: searchItem.value,
-    })
-  ).data.tempItem;
+  // const itemList = (
+  //   await axios.post("/api/item/searchItem", {
+  //     // value: searchItem.value,
+  //   })
+  // ).data.tempItem;
   // console.log(itemList);
   // console.log(searchItem.value);
   // console.log(item[1].itemTitle);
 
-  const searchItemValue = searchItem.search.value.toLowerCase();
+  // const searchItemValue = searchItem.search.value.toLowerCase();
 
-  for (let i = 0; i < itemList.length; i++) {
-    if (searchItem.search.value) {
-      let item = itemList[i].itemTitle;
-      // console.log(item.length);
-      for (let j = 0; j < item.length; j++) {
-        console.log(item.length);
+  // for (let i = 0; i < itemList.length; i++) {
+  //   if (searchItem.search.value) {
+  //     let item = itemList[i].itemTitle;
+  //     // console.log(item.length);
+  //     for (let j = 0; j < item.length; j++) {
+  //       console.log(item.length);
 
-        if (item.toLowerCase().indexOf(searchItemValue) != -1) {
-          console.log(item[j].toLowerCase());
+  //       if (item.toLowerCase().indexOf(searchItemValue) != -1) {
+  //         console.log(item[j].toLowerCase());
 
-          // if (filterItemList[j] == filterItemList[j + 1]) {
-          //   filterItemList.pop();
-          // }
-          if (filterItemList[j] == itemList[i]) {
-            continue;
-          } else {
-            filterItemList.push(itemList[i]);
-            break;
-          }
-        }
-      }
-    }
-  }
+  //         // if (filterItemList[j] == filterItemList[j + 1]) {
+  //         //   filterItemList.pop();
+  //         // }
+  //         if (filterItemList[j] == itemList[i]) {
+  //           continue;
+  //         } else {
+  //           filterItemList.push(itemList[i]);
+  //           break;
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
   // if (filterItemList != undefined) {
   //   console.log(filterItemList);
   // }
