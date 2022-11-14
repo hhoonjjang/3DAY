@@ -1277,31 +1277,39 @@ body.start .satan#paybody {
   font-size: 110%;
 }
 body.start #no1back {
-  filter: invert(1);
+  /* filter: invert(1); */
   color: whitesmoke;
 }
-body.start #menuTitle {
+body.start #menuTitle,
+#imgName,
+#menu {
+  background-color: black;
+  color: whitesmoke;
+}
+body.start #gear,
+#photo,
+#arrow {
   filter: invert(1);
 }
 body.start #imgName {
-  background-color: black;
-  filter: invert(1);
+  /* background-color: black;
+  filter: invert(1); */
 }
 body.start #photo,
 #proflie {
   /* filter: invert(1); */
 }
 body.start #userinfo {
-  filter: invert(1);
+  /* filter: invert(1); */
 }
 body.start #paytitle {
-  filter: invert(1);
+  /* filter: invert(1); */
 }
 body.start #paybody {
-  filter: invert(1);
+  /* filter: invert(1); */
 }
 body.start #itemtitle {
-  filter: invert(1);
+  /* filter: invert(1); */
 }
 body.start #item3title {
   margin-left: 20px;
@@ -1313,10 +1321,10 @@ body.start #editTitle,
 }
 
 body.start #listItemtitle {
-  filter: invert(1);
+  /* filter: invert(1); */
 }
 body.start #myPlacetitle {
-  filter: invert(1);
+  /* filter: invert(1); */
 }
 body.start #myPlacelocaltitle,
 #myPlacelocalservice,
@@ -1333,12 +1341,12 @@ body.start #masterprofiletitle,
 /* ------------------------------ */
 
 body.start #itemBoardtitle {
-  background-color: black;
-  filter: invert(1);
+  /* background-color: black; */
+  /* filter: invert(1); */
 }
 
 body.start #itemBoard a {
-  filter: invert(1);
+  /* filter: invert(1); */
   font-size: 110%;
 }
 body.start .item-middle,

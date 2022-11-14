@@ -573,8 +573,4 @@ function start() {
   bizad1.onclick = () => {
     console.log("비지니스 광고글 클릭됨");
   };
-  function toggleimg() {
-    document.getElementById("menugear2").src = "./img";
-  }
-  toggleimg();
 }
