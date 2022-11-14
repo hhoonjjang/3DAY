@@ -217,7 +217,9 @@ function start() {
   };
 
   const props = {
-    top: "top:-100px",
+    display0: "display:none;",
+    display1: "display:block;",
+    top: "top:-100px;",
     transition1: "transition: top 1s",
     transition2: "transition: top 2s",
     opacity0: "opacity: 0;",
@@ -238,25 +240,27 @@ function start() {
     animarion5: "animation-delay:2s",
   };
   const props1 = {
-    top: "top:-500px",
-    transition1: "transition: top 1s",
-    transition2: "transition: top 2s",
+    display0: "display:none;",
+    display1: "display:block;",
+    top: "top:-500px;",
+    transition1: "transition: top 1s;",
+    transition2: "transition: top 2s;",
     opacity0: "opacity: 0;",
     opacity1: "opacity: 1;",
-    trnsDelay0: "transition-delay: 0.3s",
-    trnsDelay1: "transition-delay: 0.8s",
-    trnsDelay2: "transition-delay: 1.2s",
-    trnsDelay3: "transition-delay: 1.6s",
-    trnsDelay4: "transition-delay: 1.8s",
-    trnsDelay5: "transition-delay: 1.9s",
-    trnsDelay6: "transition-delay: 2s",
+    trnsDelay0: "transition-delay: 0.3s;",
+    trnsDelay1: "transition-delay: 0.8s;",
+    trnsDelay2: "transition-delay: 1.2s;",
+    trnsDelay3: "transition-delay: 1.6s;",
+    trnsDelay4: "transition-delay: 1.8s;",
+    trnsDelay5: "transition-delay: 1.9s;",
+    trnsDelay6: "transition-delay: 2s;",
     zIndex0: "z-index: 0;",
-    animarion0: "animation-delay:1s",
-    animarion1: "animation-delay:1.3s",
-    animarion2: "animation-delay:1.5s",
-    animarion3: "animation-delay:1.7s",
-    animarion4: "animation-delay:1.9s",
-    animarion5: "animation-delay:2s",
+    animarion0: "animation-delay:1s;",
+    animarion1: "animation-delay:1.3s;",
+    animarion2: "animation-delay:1.5s;",
+    animarion3: "animation-delay:1.7s;",
+    animarion4: "animation-delay:1.9;s",
+    animarion5: "animation-delay:2s;",
   };
   const props2 = {
     display0: "display:none;",
@@ -315,8 +319,8 @@ function start() {
       `${props.opacity0} ${props.trnsDelay1} `,
       `${props.opacity0} ${props.trnsDelay2} `,
       `${props.opacity0} ${props.trnsDelay2} `,
-      `${props.opacity0} ${props.trnsDelay5} `,
-      `${props.opacity0} ${props.trnsDelay6} `,
+      `${props.opacity0} ${props.trnsDelay2} `,
+      `${props.opacity0} ${props.trnsDelay2} `,
     ];
     transition(elms, properties);
 
@@ -363,13 +367,13 @@ function start() {
   };
   selllist.onclick = () => {
     const properties = [
-      `${props.opacity0} ${props.trnsDelay1}`,
-      `${props.opacity0} ${props.trnsDelay1} `,
-      `${props.opacity0} ${props.trnsDelay1} `,
-      `${props.opacity0} ${props.trnsDelay2} `,
-      `${props.opacity0} ${props.trnsDelay2} `,
-      `${props.opacity0} ${props.trnsDelay5} `,
-      `${props.opacity0} ${props.trnsDelay6} `,
+      `${props.display0} ${props.trnsDelay1}`,
+      `${props.display0} ${props.trnsDelay1} `,
+      `${props.display0} ${props.trnsDelay1} `,
+      `${props.display0} ${props.trnsDelay2} `,
+      `${props.display0} ${props.trnsDelay2} `,
+      `${props.display0} ${props.trnsDelay5} `,
+      `${props.display0} ${props.trnsDelay6} `,
     ];
     transition(elms, properties);
 
@@ -377,28 +381,24 @@ function start() {
       document.getElementById("bgp3").style.display = "block";
       const properties2 = [
         `${props2.display1} ${props2.opacity1} ${props2.top} `,
-        `${props2.opacity1} ${props2.top} `,
       ];
       transition2(elms2, properties2);
     }, 1000);
   };
   selllist2.onclick = () => {
     const properties = [
-      `${props.opacity0} ${props.trnsDelay1}`,
-      `${props.opacity0} ${props.trnsDelay1} `,
-      `${props.opacity0} ${props.trnsDelay1} `,
-      `${props.opacity0} ${props.trnsDelay2} `,
-      `${props.opacity0} ${props.trnsDelay2} `,
-      `${props.opacity0} ${props.trnsDelay5} `,
-      `${props.opacity0} ${props.trnsDelay6} `,
+      `${props.display0} ${props.trnsDelay1}`,
+      `${props.display0} ${props.trnsDelay1} `,
+      `${props.display0} ${props.trnsDelay1} `,
+      `${props.display0} ${props.trnsDelay2} `,
+      `${props.display0} ${props.trnsDelay2} `,
+      `${props.display0} ${props.trnsDelay5} `,
+      `${props.display0} ${props.trnsDelay6} `,
     ];
     transition(elms, properties);
     setTimeout(() => {
-      document.getElementById("bgp3").style.display = "flex";
-      const properties2 = [
-        `${props2.display1} ${props2.opacity1} ${props2.top} `,
-        `${props2.opacity1} ${props2.top} `,
-      ];
+      document.getElementById("bgp3").style.display = "block";
+      const properties2 = [`${props2.display1} ${props2.opacity1}  `];
       transition2(elms2, properties2);
     }, 1000);
 
