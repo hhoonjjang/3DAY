@@ -13,6 +13,7 @@ const divItemBoard = document.getElementById("item-board-display");
 
 let date = new Date();
 const address = "http://localhost:8080/items?name=";
+const searchAddress = "http://localhost:8080/search/?result=";
 
 const selectKind = document.getElementById("select-kind");
 let selectKindValue;
@@ -27,6 +28,7 @@ async function getItem() {
     console.log(item);
     console.log(item[0]);
     item.forEach((item) => {
+      console.log(item.id);
       const articleItem = document.createElement("article");
       const aItem = document.createElement("a");
       const divItemTop = document.createElement("div");
@@ -46,6 +48,7 @@ async function getItem() {
       articleItem.classList.add("item");
       aItem.classList.add("item-link");
       aItem.href = `${address}${item.id}`;
+
       divItemTop.classList.add("item-top");
       divItemImg.classList.add("item-img");
       imgItem.src = `../uploadedItems/${item.imgArr.split("-*,")[0]}`;
@@ -506,3 +509,75 @@ async function itemCategoryTrade() {
     divItemBottom.appendChild(divItemCountingView);
   });
 }
+// searchItem = document.getElementById("search");
+// searchItem.onkeydown = async function (event) {
+//   if (window.event.keyCode == 13) {
+//     console.log(searchItem.value);
+//     const item = (
+//       await axios.post("/api/item/searchItem", {
+//         itemTitle: searchItem.value,
+//       })
+//     ).data.tempItem;
+//     console.log(item);
+//     location.href = "http://localhost:8080/search";
+//   }
+// };
+
+let filterItemList = [];
+const searchItem = document.forms["search-form"];
+// console.log(searchItem);
+searchItem.onsubmit = async function (event) {
+  event.preventDefault();
+
+  if (filterItemList) {
+    for (let i = 0; i < filterItemList.length; i++) {
+      filterItemList.pop();
+    }
+  }
+  // console.log(window.event.keyCode);
+  // if (window.event.keyCode == 8) {
+  //
+  //   return console.log(filterItemList);
+  // }
+  const itemList = (
+    await axios.post("/api/item/searchItem", {
+      // value: searchItem.value,
+    })
+  ).data.tempItem;
+  // console.log(itemList);
+  // console.log(searchItem.value);
+  // console.log(item[1].itemTitle);
+
+  const searchItemValue = searchItem.search.value.toLowerCase();
+
+  console.log(searchItem.search.value);
+  for (let i = 0; i < itemList.length; i++) {
+    if (searchItemValue.search) {
+      let item = itemList[i].itemTitle;
+      // console.log(item.length);
+      for (let j = 0; j < item.length; j++) {
+        if (item[j].toLowerCase().indexOf(searchItemValue) != -1) {
+          if (filterItemList[j] == filterItemList[j + 1]) {
+            filterItemList.pop();
+          }
+          filterItemList.push(itemList[i]);
+        }
+      }
+    }
+  }
+  // if (filterItemList != undefined) {
+  //   console.log(filterItemList);
+  // }
+
+  const filterItemListSend = await axios.post("/api/item/filterItem", {
+    list: filterItemList,
+  });
+
+  console.log(filterItemListSend.data);
+  location.href = searchAddress + searchItem.search.value;
+  // window.history.back();
+
+  // if (window.event.keyCode == 13){
+
+  // }
+};

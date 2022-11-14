@@ -312,4 +312,45 @@ router.get("/detail", async (req, res) => {
   // const tempItem = await Item.findOne;
 });
 
+router.get("/search", async (req, res) => {
+  const itemIndex = req.query.itemIndex;
+  console.log("detail");
+  console.log(itemIndex);
+  const tempItem = await Item.findOne({
+    where: {
+      id: itemIndex,
+    },
+  });
+  res.send({ tempItem });
+  // const tempItem = await Item.findOne;
+});
+
+router.post("/searchItem", async (req, res) => {
+  const searchItemTitle = req.body.itemTitle;
+  const tempItem = await Item.findAll({
+    // where: {
+    //   itemTitle: searchItemTitle,
+    // },
+    order: [["id", "DESC"]],
+    include: { model: User },
+  });
+  res.send({ tempItem });
+});
+
+router.post("/filterItem", async (req, res) => {
+  console.log(req.body.list);
+  // for (let i = 0; i < req.body.list.length; i++) {
+  //   const filterItemtitle = req.body.itemTitle;
+  //   tempItem = await Item.findAll({
+  //     where: {
+  //       itemTitle: filterItemtitle,
+  //     },
+  //     order: [["id", "DESC"]],
+  //     include: { model: User },
+  //   });
+  // }
+
+  res.send(req.body.list);
+});
+
 module.exports = router;
