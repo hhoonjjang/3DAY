@@ -127,6 +127,7 @@ const reverseBtn = document.getElementById("reverse");
 const reverseImg = [...document.getElementsByClassName("reverse")];
 const reverseBgc = [...document.getElementsByClassName("bgc")];
 const loginDisplay = document.getElementById("loginDisplay");
+let cookieR;
 let date = new Date();
 const address = "http://localhost:8080/items/";
 
@@ -166,7 +167,7 @@ let setCookie = function (name, value, exp) {
 let cookieArray = document.cookie.split("; ");
 let CC = getCookie("carrot");
 let CR = getCookie("reverse");
-let cookieR = document.cookie.split("; ").includes("reverse=123");
+cookieR = document.cookie.split("; ").includes("reverse=123");
 let cookieC = document.cookie.split("; ").includes(`carrot=${CC}`);
 
 let cookieCIndex = cookieArray.findIndex((e) => e == `carrot=${CC}`);
@@ -303,7 +304,7 @@ document.getElementById("submit-form").onsubmit = async function (e) {
     const itemTitle = titleInput.value;
     const itemPrice = Number(priceInput.value.replace(/,/g, ""));
     const itemSubtitle = subtitleTextarea.value;
-    let itemStatus = "null";
+    // let itemStatus = "null";
     const uploadImgS = document.getElementById("img-uploader-label");
     formData.append("itemTitle", itemTitle);
     formData.append("itemLocal", itemLocal);
@@ -314,7 +315,7 @@ document.getElementById("submit-form").onsubmit = async function (e) {
     formData.append("itemTuning", itemTuning);
     formData.append("itemDealing", itemDealing);
     formData.append("itemBlack", itemBlack.checked);
-    formData.append("itemStatus", itemStatus);
+    // formData.append("itemStatus", itemStatus);
     // for (let value of formData.values()) {
     //   console.log(value);
     // }

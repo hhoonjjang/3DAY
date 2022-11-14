@@ -138,8 +138,6 @@ function activeOnChat() {
   for (let i = 0; i < chatList.length; i++) {
     chatList[i].onclick = async function () {
       const partnerName = nameList[i].innerText;
-      const sellItemInfo = await axios.post("/api/chat/").data;
-      console.log(sellItemInfo);
 
       const data = await axios.post("/api/chat/sendinfo", {
         me: document.getElementById("user-name").innerText,
