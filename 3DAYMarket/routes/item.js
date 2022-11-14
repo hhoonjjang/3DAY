@@ -342,7 +342,6 @@ router.get("/detail", async (req, res) => {
   // const tempItem = await Item.findOne;
 });
 
-
 router.post("/mypageitem", async (req, res) => {
   const name = jwt.verify(req.cookies.carrot, process.env.JWT_KEY).name;
   const mode = req.body.mode;
@@ -353,6 +352,18 @@ router.post("/mypageitem", async (req, res) => {
       seller_id: name,
     },
 
+    order: [["id", "DESC"]],
+    include: { model: User },
+  });
+  res.send({ tempItem });
+});
+
+router.post("/searchItem", async (req, res) => {
+  const searchItemTitle = req.body.itemTitle;
+  const tempItem = await Item.findAll({
+    // where: {
+    //   itemTitle: searchItemTitle,
+    // },
     order: [["id", "DESC"]],
     include: { model: User },
   });
@@ -375,5 +386,6 @@ router.post("/filterItem", async (req, res) => {
   res.send(req.body.list);
 });
 
+router.post("/");
 
 module.exports = router;

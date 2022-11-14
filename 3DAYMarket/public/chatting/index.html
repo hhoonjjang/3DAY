@@ -17,7 +17,6 @@
 
     <script src="/socket.io/socket.io.js"></script>
     <title>3DAYMarket</title>
-
   </head>
   <body
     oncontextmenu="return false"
@@ -90,7 +89,7 @@
             <span>채팅할 상대를 선택해주세요</span>
           </div>
           <div id="chat-box">
-            <div class="box-shadow-yellow bs" style="height: 100%">
+            <div class="box-shadow-yellow bs" id="msgBoxHeight">
               <div id="info">
                 <div id="vs-info">
                   <div class="margin-right">
@@ -165,7 +164,7 @@
                     </div>
                   </div>
                   <div class="fbox">
-                    <div>글자수</div>
+                    <div id="msg-num">글자수</div>
                     <div>
                       <button id="msg-submit" class="buttonColorWhite">
                         전송

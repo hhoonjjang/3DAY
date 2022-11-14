@@ -24,9 +24,13 @@
 // form.addEventListener("submit", submitFunc);
 
 // document.getElementById("partner-id").innerText = partnerName;
-
+const cookieR2 = document.cookie.split("; ").includes("reverse=123");
+console.log(cookieR2);
 async function socketFunc(control) {
   const socket = io();
+  document.getElementById("msg-num").innerText = "0/50";
+  document.getElementById("msg-num").style.color = "black";
+
   // const text = document.forms["msg-zone"]["msg"].value;
   // // setInterval(() => {
 
@@ -191,6 +195,16 @@ function submitBtn(serverText, serverTime) {
   addLi.append(addDiv);
   chatZone.append(addLi);
 
+  if (cookieR2) {
+    const msgList = document.getElementsByClassName("my-speech-bubble");
+    console.log(msgList);
+    for (let i = 0; i < msgList.length; i++) {
+      msgList[i].classList.add("start");
+    }
+    document.getElementById("msgBoxHeight").style.height = "75%";
+    document.getElementById("vs-chat-zone").style.height = "350px";
+  }
+
   chatZone.scrollTop = chatZone.scrollHeight;
 
   // try {
@@ -229,6 +243,14 @@ function submitBtnVs(serverText, serverTime) {
 
   chatZone.append(addLi);
 
+  if (cookieR2) {
+    const msgList = document.getElementsByClassName("vs-speech-bubble");
+    console.log(msgList);
+    for (let i = 0; i < msgList.length; i++) {
+      msgList[i].classList.add("start");
+    }
+  }
+
   chatZone.scrollTop = chatZone.scrollHeight;
 
   // try {
@@ -262,8 +284,7 @@ const createOneChat = function (data) {
   tempBox.classList.add("one-chat");
   const tempdiv1 = document.createElement("div");
   const tempdiv2 = document.createElement("div");
-  const tempdiv3 = document.createElement("div");
-  tempdiv3.innerText = "사진로그";
+
   const tempdiv4 = document.createElement("div");
   const tempdiv5 = document.createElement("div");
 
@@ -308,10 +329,8 @@ const createOneChat = function (data) {
 
   tempVsInfo.append(tempdiv2);
   tempVsInfo.append(tempLastLog);
-  tempdiv3.append(tempImgLog);
-  tempBox.append(tempVsInfo);
 
-  tempBox.append(tempdiv3);
+  tempBox.append(tempVsInfo);
 
   chatVsList.append(tempBox);
 };
@@ -322,7 +341,7 @@ const createOneChatVs = function (data) {
   const tempdiv1 = document.createElement("div");
   const tempdiv2 = document.createElement("div");
   const tempdiv3 = document.createElement("div");
-  tempdiv3.innerText = "사진로그";
+  // tempdiv3.innerText = "사진로그";
   const tempdiv4 = document.createElement("div");
   const tempdiv5 = document.createElement("div");
 
@@ -412,5 +431,46 @@ const deletedouble = function () {
       count++;
     }
     vsChat[tempN].remove();
+  }
+};
+
+document.forms["msg-zone"].onkeyup = (event) => {
+  event.preventDefault();
+  const text = document.forms["msg-zone"]["msg"].value;
+  if (text.length <= 50) {
+    document.getElementById("msg-num").innerText =
+      // document.getElementById(msg).value;
+      `${text.length}/50`;
+  } else {
+    return alert("50자 이내로 입력하시오");
+  }
+  console.log(event.keyCode);
+
+  if (window.event.keyCode == 13) {
+    const now = new Date();
+    let hour = parseInt(now.getHours());
+    let ampm;
+    if (hour >= 12) {
+      hour = hour - 12;
+      ampm = "오후";
+    } else {
+      ampm = "오전";
+      if (hour < 10) {
+        hour = "0" + hour;
+      }
+    }
+    let min = parseInt(now.getMinutes());
+    if (min < 10) {
+      min = "0" + min;
+    }
+    const time = `${ampm} ${hour}:${min}`;
+
+    if (time) {
+      submitBtn(text, time);
+    }
+
+    event.returnValue = false;
+
+    document.forms["msg-zone"]["msg"].value = "";
   }
 };

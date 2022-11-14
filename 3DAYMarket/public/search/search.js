@@ -108,14 +108,20 @@ window.onload = async function (event) {
   //
   //   return console.log(filterItemList);
   // }
+  // const itemList = (
+  //   await axios.post("/api/item/searchItem", {
+  //     // value: searchItem.value,
+  //   })
+  // ).data.tempItem;
+  // console.log(itemList);
+  // console.log(searchItem.value);
+  // console.log(item[1].itemTitle);
+
   const itemList = (
     await axios.post("/api/item/searchItem", {
       // value: searchItem.value,
     })
   ).data.tempItem;
-  // console.log(itemList);
-  // console.log(searchItem.value);
-  // console.log(item[1].itemTitle);
 
   const searchItemValue = detailName.toLowerCase();
 

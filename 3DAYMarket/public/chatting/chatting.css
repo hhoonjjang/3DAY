@@ -103,6 +103,22 @@ span {
   color: black;
 }
 
+.my-speech-bubble.start::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 47%;
+  width: 29px;
+  height: 0;
+  border: 20px solid transparent;
+  border-left-color: rgb(238, 254, 255);
+  border-right: 0;
+  border-top: 0;
+  margin-top: -0.625em;
+  margin-right: -1.25em;
+  align-items: center;
+}
+
 .my-speech-bubble.yellow {
   position: relative;
   background: rgb(254, 240, 214);
@@ -159,6 +175,21 @@ span {
   margin-left: -1.25em;
 }
 
+.vs-speech-bubble.start:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 49%;
+  width: 29px;
+  height: 0;
+  border: 20px solid transparent;
+  border-right-color: rgb(238, 254, 255);
+  border-left: 0;
+  border-top: 0;
+  margin-top: -0.625em;
+  margin-left: -1.25em;
+}
+
 h3 {
   /* margin-top: auto; */
   margin: 10px;
@@ -197,9 +228,12 @@ h3 {
   padding: 12px 12px 0;
   resize: none;
 }
+#msgBoxHeight {
+  height: 100%;
+}
 
 #msg-zone {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   border-radius: 15px;
   padding: 5px;
 }

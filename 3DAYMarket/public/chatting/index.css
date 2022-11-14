@@ -154,7 +154,7 @@ body.on {
 }
 .fbox-between {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 .vs-data {
   font-size: 0.9rem;
@@ -163,6 +163,7 @@ body.on {
 }
 .vs-chatlog {
   padding-left: 15px;
+  width: 1200px;
 }
 #user-name {
   font-size: 1.1rem;
@@ -184,7 +185,7 @@ body.on {
   display: flex;
   /* justify-content: center; */
   /* margin-left: 10px; */
-  justify-content: space-between;
+  /* justify-content: space-between; */
   padding: 10px 25px 10px 25px;
   align-items: center;
   transition-duration: 1s;
@@ -238,15 +239,22 @@ body.on {
   background-color: rgb(240, 240, 240);
   height: 30px;
 }
-
+body.start .box-shadow-yellow {
+  filter: drop-shadow(5px 5px 10px #207e8c);
+}
 .box-shadow-yellow {
   filter: drop-shadow(5px 5px 10px #f98f68);
   /* background-color: rgb(254, 240, 214); */
 }
 
 .box-shadow-yellow.start {
-  filter: drop-shadow(5px 5px 10px #8abbff);
+  filter: drop-shadow(5px 5px 10px #36a7fe);
   /* background-color: initial; */
+}
+
+.box-shadow-yellow.bs.start {
+  filter: drop-shadow(5px 5px 10px #207e8c);
+  background-color: initial;
 }
 
 .box-shadow-blue {
@@ -470,7 +478,7 @@ body.start .user-box a {
 
 body.start div {
   font-family: "JSArirang-Regular";
-  font-size: 120%;
+  font-size: 110%;
 }
 body.start {
   background-color: black;
