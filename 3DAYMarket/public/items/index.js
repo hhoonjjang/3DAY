@@ -10,7 +10,8 @@ let condition = "test_condition";
 let tuning = "test_tuning";
 let dealing = "test_dealing";
 let subtitle = "test_subtitle";
-
+let buyUser;
+let deleteBtn = document.getElementById("delete-btn");
 document.getElementById("title-text").innerText = title;
 document.getElementById("price-num").innerText = price.toLocaleString();
 document.getElementById("area-value").innerText = area;
@@ -110,6 +111,7 @@ const login = async function () {
       itemUpload.classList.add("on");
       userInfo.classList.add("on");
       console.log(result.data.name);
+      buyUser = result.data.name;
       const login = document.createElement("div");
       login.innerText = `${result.data.name}님 어서오세요!`;
       loginDisplay.style.display = "block";
@@ -129,9 +131,15 @@ async function getDetailItem() {
   try {
     const item = (await axios.get("/api/item/detail?itemIndex=" + itemIndex))
       .data.tempItem;
-
     console.log(item.imgArr.split("-*,").length);
-
+    console.log(buyUser);
+    console.log(item.seller_id);
+    console.log(deleteBtn);
+    if (buyUser == item.seller_id) {
+      deleteBtn.style.display = "block";
+    } else {
+      deleteBtn.style.display = "none";
+    }
     // for (let i = 0; i < item.imgArr.split("-*,").length; i++) {
     //   imgArr.push(`img${i}`);
     //   const tempLi = document.createElement("li");
@@ -286,16 +294,27 @@ const reverse = function () {
 
 reverse();
 
+async function deleteItem() {
+  // console.log(itemIndex);
+  // const item = (await axios.get("/api/item/detail?itemIndex=" + itemIndex)).data
+  //   .tempItem;
+  // console.log(item);
+  console.log(typeof itemIndex);
 
-function deleteItem() {
   if (confirm("정말로 삭제하시겠습니까?")) {
-    //
-    //
-    //
-    alert("정상적으로 삭제되었습니다");
+    try {
+      const result = await axios.delete(
+        "/api/item/delete?itemIndex=" + itemIndex
+      );
+      console.log(result);
+      alert(result.data);
+      location.href = "http://localhost:8080/";
+    } catch (err) {
+      console.log(err);
+    }
+
     //
   } else {
     return;
   }
 }
-
