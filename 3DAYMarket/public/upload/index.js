@@ -303,7 +303,7 @@ document.getElementById("submit-form").onsubmit = async function (e) {
     const itemTitle = titleInput.value;
     const itemPrice = Number(priceInput.value.replace(/,/g, ""));
     const itemSubtitle = subtitleTextarea.value;
-
+    let itemStatus = "null";
     const uploadImgS = document.getElementById("img-uploader-label");
     formData.append("itemTitle", itemTitle);
     formData.append("itemLocal", itemLocal);
@@ -314,6 +314,7 @@ document.getElementById("submit-form").onsubmit = async function (e) {
     formData.append("itemTuning", itemTuning);
     formData.append("itemDealing", itemDealing);
     formData.append("itemBlack", itemBlack.checked);
+    formData.append("itemStatus", itemStatus);
     // for (let value of formData.values()) {
     //   console.log(value);
     // }

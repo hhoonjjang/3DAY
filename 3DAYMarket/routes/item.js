@@ -108,6 +108,7 @@ router.post(
       itemPrice,
       itemSubtitle,
       itemLocal,
+      itemStatus,
     } = req.body;
     const tempUser = await User.findOne({
       where: {
@@ -125,6 +126,7 @@ router.post(
       itemPrice: itemPrice,
       itemSubtitle: itemSubtitle,
       itemLocal: itemLocal,
+      itemStatus,
     });
     // await Item.findOne({ where: { id: req.body.id } });
     tempUser.addItem(tempItem);
