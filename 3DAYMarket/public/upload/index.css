@@ -354,7 +354,6 @@ textarea:focus,
 
 body.start div {
   font-family: "JSArirang-Regular";
-  font-size: 120%;
 }
 body.start .satan {
   font-family: "satan";
@@ -439,15 +438,14 @@ body.start .category-box a {
 
 .user-box button {
   cursor: pointer;
-  padding: 10;
-  margin: 0 10;
+  padding: 10px;
+  margin: 0 10px;
   width: 100px;
   border-radius: 10px;
   border: none;
   background-color: #ffead8;
   font-family: "maple-bold";
   font-size: 14px;
-  height: 36px;
 }
 
 body.start .user-box button {
@@ -759,7 +757,74 @@ section {
 section a {
   margin: 0 10px;
 }
+
 body.start {
   background-color: black;
   color: white;
+  font-size: 16px;
+}
+
+body.start .top-container {
+  font-weight: normal;
+  font-size: 120%;
+}
+
+body.start .category-box,
+body.start .user-box,
+body.start #loginDisplay,
+body.start #loginDisplay div {
+  font-size: 120%;
+}
+
+body.start #img-uploader-label {
+  width: 120px;
+}
+
+body.start #submit-form {
+  font-size: 22px;
+  font-weight: normal;
+  letter-spacing: 2px;
+}
+
+body.start input[type="text"],
+body.start textarea {
+  background-color: lightgrey;
+}
+
+body.start .confirm-div {
+  background-color: rgb(107, 107, 107);
+}
+
+body.start #jelly-label {
+  background-color: rgb(46, 46, 46);
+}
+
+body.start #img-uploader-label,
+body.start .confirm-btn {
+  background-color: rgb(200, 40, 40);
+}
+
+body.start .footer-container {
+  font-size: 240px;
+  font-weight: normal;
+}
+
+body.start .footer-container ~ *,
+body.start .footer-container ~ * span,
+body.start section a {
+  font-weight: normal;
+  font-size: 120%;
+}
+
+body.start .main-colum {
+  width: 1200px;
+}
+
+body.start .img-div .main-colum-left {
+  max-height: 237px;
+}
+
+body.start .extra-div {
+  color: rgb(200, 40, 40);
+  display: block !important;
 }

@@ -107,4 +107,54 @@ router.post("/mypage", async (req, res) => {
   }
 });
 
+router.put("/update", async (req, res) => {
+  const tempName = req.body.editInput;
+  const tempLocal = req.body.editInput2;
+  const data = req.body;
+  console.log(req.body);
+  console.log(tempName);
+  console.log(tempLocal);
+  const tempUser = jwt.verify(data.cookie.split("=")[1], process.env.JWT_KEY);
+  console.log(tempUser);
+
+  await User.update(
+    {
+      name: tempName,
+      userLocal: tempLocal,
+    },
+    {
+      where: {
+        Id: tempUser.id,
+      },
+    }
+  );
+  const tempNewUser = await User.findOne({ where: (id = tempUser.id) });
+  console.log("hi");
+  console.log(tempNewUser);
+  console.log("hi");
+  res.cookie(
+    "carrot",
+    jwt.sign(
+      {
+        id: tempNewUser.id,
+        name: tempNewUser.name,
+      },
+      process.env.JWT_KEY,
+      {
+        algorithm: "HS256",
+        // expiresIn:"30m",ss
+        issuer: "jjh",
+      }
+    )
+  );
+  console.log("hi");
+  console.log(tempNewUser.id);
+  console.log("hi");
+
+  res.send({
+    name: tempNewUser.name,
+  });
+  return;
+});
+
 module.exports = router;

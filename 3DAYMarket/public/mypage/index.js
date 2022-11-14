@@ -36,9 +36,14 @@ const reverseBtn = document.getElementById("reverse");
 const reverseImg = [...document.getElementsByClassName("reverse")];
 const reverseBgc = [...document.getElementsByClassName("bgc")];
 const loginDisplay = document.getElementById("loginDisplay");
-let date = new Date();
-const address = "http://localhost:8080/items/";
+const editInput = document.getElementById("editinput");
+const editInput2 = document.getElementById("editinput2");
+const editBtn = document.getElementById("editbtn2");
 
+let date = new Date();
+const address = "http://localhost:8080/items?name=";
+const divItemBoard = document.getElementById("itemBoard");
+let cookieR;
 signOutBtn.onclick = async function () {
   try {
     const result = await axios.post("/api/user/logout");
@@ -75,7 +80,7 @@ let setCookie = function (name, value, exp) {
 let cookieArray = document.cookie.split("; ");
 let CC = getCookie("carrot");
 let CR = getCookie("reverse");
-let cookieR = document.cookie.split("; ").includes("reverse=123");
+cookieR = document.cookie.split("; ").includes("reverse=123");
 let cookieC = document.cookie.split("; ").includes(`carrot=${CC}`);
 
 let cookieCIndex = cookieArray.findIndex((e) => e == `carrot=${CC}`);
@@ -220,8 +225,8 @@ function start() {
     display0: "display:none;",
     display1: "display:block;",
     top: "top:-100px;",
-    transition1: "transition: top 1s",
-    transition2: "transition: top 2s",
+    transition1: "transition: 1s",
+    transition2: "transition: 2s",
     opacity0: "opacity: 0;",
     opacity1: "opacity: 1;",
     trnsDelay0: "transition-delay: 0.3s",
@@ -243,8 +248,8 @@ function start() {
     display0: "display:none;",
     display1: "display:block;",
     top: "top:-500px;",
-    transition1: "transition: top 1s;",
-    transition2: "transition: top 2s;",
+    transition1: "transition: 1s;",
+    transition2: "transition: 2s;",
     opacity0: "opacity: 0;",
     opacity1: "opacity: 1;",
     trnsDelay0: "transition-delay: 0.3s;",
@@ -314,9 +319,9 @@ function start() {
 
   gear.onclick = () => {
     const properties = [
-      `${props.opacity0} ${props.trnsDelay1}`,
+      `${props.opacity0} ${props.trnsDelay0}`,
       `${props.opacity0} ${props.trnsDelay1} `,
-      `${props.opacity0} ${props.trnsDelay1} `,
+      `${props.opacity0} ${props.trnsDelay3} `,
       `${props.opacity0} ${props.trnsDelay2} `,
       `${props.opacity0} ${props.trnsDelay2} `,
       `${props.opacity0} ${props.trnsDelay2} `,
@@ -327,25 +332,25 @@ function start() {
     setTimeout(() => {
       document.getElementById("bgp2").style.display = "block";
       const properties1 = [
-        `${props1.opacity1} ${props1.top} `,
-        `${props1.opacity1} ${props1.top}`,
-        `${props1.opacity1} ${props1.top}`,
+        `${props1.opacity1} ${props1.transition1} ${props1.top} ${props1.trnsDelay3}  ${props1.animarion1}`,
+        `${props1.opacity1} ${props1.transition1} ${props1.top} ${props1.trnsDelay5} ${props1.animarion2}`,
+        `${props1.opacity1} ${props1.transition1} ${props1.top} ${props1.trnsDelay6} ${props1.animarion3}`,
       ];
       transition1(elms1, properties1);
-    }, 3000);
+    }, 3050);
 
     console.log("기어 클릭이 됨");
   };
   arrow2.onclick = () => {
     document.getElementById("bgp2").style.display = "none";
     const properties = [
-      `${props.opacity1} ${props.trnsDelay1}`,
-      `${props.opacity1} ${props.trnsDelay1} `,
-      `${props.opacity1} ${props.trnsDelay1} `,
-      `${props.opacity1} ${props.trnsDelay2} `,
-      `${props.opacity1} ${props.trnsDelay2} `,
-      `${props.opacity1} ${props.trnsDelay5} `,
-      `${props.opacity1} ${props.trnsDelay6} `,
+      `${props.opacity1} ${props.trnsDelay1} ${props.trnsDelay0} `,
+      `${props.opacity1} ${props.trnsDelay1} ${props.trnsDelay0} `,
+      `${props.opacity1} ${props.trnsDelay1} ${props.trnsDelay0}`,
+      `${props.opacity1} ${props.trnsDelay2} ${props.trnsDelay0}`,
+      `${props.opacity1} ${props.trnsDelay2} ${props.trnsDelay0}`,
+      `${props.opacity1} ${props.trnsDelay5} ${props.trnsDelay0}`,
+      `${props.opacity1} ${props.trnsDelay6} ${props.trnsDelay0}`,
     ];
     transition(elms, properties);
   };
@@ -376,33 +381,146 @@ function start() {
       `${props.display0} ${props.trnsDelay6} `,
     ];
     transition(elms, properties);
-
-    setTimeout(() => {
-      document.getElementById("bgp3").style.display = "block";
-      const properties2 = [
-        `${props2.display1} ${props2.opacity1} ${props2.top} `,
-      ];
-      transition2(elms2, properties2);
-    }, 1000);
-  };
-  selllist2.onclick = () => {
-    const properties = [
-      `${props.display0} ${props.trnsDelay1}`,
-      `${props.display0} ${props.trnsDelay1} `,
-      `${props.display0} ${props.trnsDelay1} `,
-      `${props.display0} ${props.trnsDelay2} `,
-      `${props.display0} ${props.trnsDelay2} `,
-      `${props.display0} ${props.trnsDelay5} `,
-      `${props.display0} ${props.trnsDelay6} `,
-    ];
-    transition(elms, properties);
     setTimeout(() => {
       document.getElementById("bgp3").style.display = "block";
       const properties2 = [`${props2.display1} ${props2.opacity1}  `];
       transition2(elms2, properties2);
-    }, 1000);
+    }, 500);
 
     console.log("selllist 클릭됨");
+
+    arrow3.onclick = () => {
+      document.getElementById("bgp3").style.display = "none";
+      const properties = [
+        `${props.opacity1} ${props.trnsDelay1}`,
+        `${props.opacity1} ${props.trnsDelay1} `,
+        `${props.opacity1} ${props.trnsDelay1} `,
+        `${props.opacity1} ${props.trnsDelay2} `,
+        `${props.opacity1} ${props.trnsDelay2} `,
+        `${props.opacity1} ${props.trnsDelay5} `,
+        `${props.opacity1} ${props.trnsDelay6} `,
+      ];
+      transition(elms, properties);
+    };
+    // const properties = [
+    //   `${props.display0} ${props.trnsDelay1}`,
+    //   `${props.display0} ${props.trnsDelay1} `,
+    //   `${props.display0} ${props.trnsDelay1} `,
+    //   `${props.display0} ${props.trnsDelay2} `,
+    //   `${props.display0} ${props.trnsDelay2} `,
+    //   `${props.display0} ${props.trnsDelay5} `,
+    //   `${props.display0} ${props.trnsDelay6} `,
+    // ];
+    // transition(elms, properties);
+
+    // setTimeout(() => {
+    //   document.getElementById("bgp3").style.display = "block";
+    //   const properties2 = [
+    //     `${props2.display1} ${props2.opacity1} ${props2.top} `,
+    //   ];
+    //   transition2(elms2, properties2);
+    // }, 300);
+  };
+
+  selllist2.onclick = async () => {
+    console.log("selllist시작");
+    divItemBoard.innerText = "";
+    try {
+      if (!cookieR) {
+        mode = 0;
+      } else {
+        mode = 1;
+      }
+      const item = (
+        await axios.post("/api/item/mypageitem", {
+          cookie: cookieArray[cookieCIndex],
+          mode: mode,
+        })
+      ).data.tempItem;
+      console.log(item);
+      item.forEach((item) => {
+        const articleItem = document.createElement("article");
+        const aItem = document.createElement("a");
+        const divItemTop = document.createElement("div");
+        const divItemImg = document.createElement("div");
+        const imgItem = document.createElement("img");
+        const divItemMiddle = document.createElement("div");
+        const divItemTitle = document.createElement("div");
+        const divItemPrice = document.createElement("div");
+        const divItemLocal = document.createElement("div");
+
+        const divItemTrade = document.createElement("div");
+
+        const divItemBottom = document.createElement("div");
+        const divItemFocus = document.createElement("div");
+        const divItemBorderdot = document.createElement("div");
+        const divItemCountingView = document.createElement("div");
+        articleItem.classList.add("item");
+        aItem.classList.add("item-link");
+        aItem.href = `${address}${item.id}`;
+        divItemTop.classList.add("item-top");
+        divItemImg.classList.add("item-img");
+        imgItem.src = `../uploadedItems/${item.imgArr.split("-*,")[0]}`;
+        divItemMiddle.classList.add("item-middle");
+        divItemTitle.classList.add("item-title");
+        divItemTitle.innerText = item.itemTitle;
+        divItemPrice.classList.add("item-price");
+        divItemPrice.innerText = item.itemPrice;
+        divItemLocal.classList.add("item-local");
+
+        divItemLocal.innerText = item.itemLocal;
+        divItemTrade.classList.add("item-trade");
+        divItemTrade.innerText = item.itemDealing;
+
+        divItemBottom.classList.add("item-bottom");
+        divItemFocus.classList.add("item-focus");
+        divItemFocus.innerText = `관심 ${10}`;
+        divItemBorderdot.classList.add("border-dot");
+        divItemBorderdot.innerText = "！";
+        divItemCountingView.classList.add("item-countingview");
+        divItemCountingView.innerText = `채팅 ${78}`;
+        console.log(divItemBoard);
+        console.log(articleItem);
+        divItemBoard.appendChild(articleItem);
+        articleItem.appendChild(aItem);
+        aItem.appendChild(divItemTop);
+        aItem.appendChild(divItemMiddle);
+        aItem.appendChild(divItemBottom);
+        divItemTop.appendChild(divItemImg);
+        divItemImg.appendChild(imgItem);
+        divItemMiddle.appendChild(divItemTitle);
+        divItemMiddle.appendChild(divItemPrice);
+        divItemMiddle.appendChild(divItemLocal);
+
+        divItemMiddle.appendChild(divItemTrade);
+
+        divItemBottom.appendChild(divItemFocus);
+        divItemBottom.appendChild(divItemBorderdot);
+        divItemBottom.appendChild(divItemCountingView);
+      });
+      const properties = [
+        `${props.display0} ${props.trnsDelay1}`,
+        `${props.display0} ${props.trnsDelay1} `,
+        `${props.display0} ${props.trnsDelay1} `,
+        `${props.display0} ${props.trnsDelay2} `,
+        `${props.display0} ${props.trnsDelay2} `,
+        `${props.display0} ${props.trnsDelay5} `,
+        `${props.display0} ${props.trnsDelay6} `,
+      ];
+      transition(elms, properties);
+      setTimeout(() => {
+        document.getElementById("bgp3").style.display = "block";
+        const properties2 = [`${props2.display1} ${props2.opacity1}  `];
+        transition2(elms2, properties2);
+      }, 1000);
+
+      console.log("selllist 클릭됨");
+    } catch (err) {
+      {
+        console.error(err);
+      }
+      console.error(err);
+    }
   };
   arrow3.onclick = () => {
     document.getElementById("bgp3").style.display = "none";
@@ -462,4 +580,24 @@ function start() {
   bizad1.onclick = () => {
     console.log("비지니스 광고글 클릭됨");
   };
+  function toggleimg() {
+    document.getElementById("menugear2").src = "./img";
+  }
+  toggleimg();
 }
+console.log(editBtn);
+editBtn.onclick = async function () {
+  console.log(editInput.value);
+  console.log(editInput2.value);
+  try {
+    const userName = await axios.put("/api/user/update", {
+      editInput: editInput.value,
+      editInput2: editInput2.value,
+      cookie: cookieArray[cookieCIndex],
+    });
+    console.log(userName);
+    window.location.reload();
+  } catch (err) {
+    console.error(err);
+  }
+};

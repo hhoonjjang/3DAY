@@ -41,6 +41,10 @@ module.exports = class Item extends Sequelize.Model {
           type: Sequelize.STRING(20),
           //   allowNull: false,
         },
+        itemBlack: {
+          type: Sequelize.BOOLEAN,
+          // allowNull: false,
+        },
       },
       {
         sequelize,

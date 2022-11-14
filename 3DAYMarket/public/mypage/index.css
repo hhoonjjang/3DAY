@@ -188,6 +188,14 @@ body.start #no1backimg img {
 }
 #bgp2 {
   display: none;
+  -webkit-animation: 2s fadeInTitle ease;
+  -moz-animation: 2s fadeInTitle ease;
+  -o-animation: 2s fadeInTitle ease;
+  animation: 2s fadeInTitle ease;
+  -webkit-transition: opacity 2s;
+  -moz-transition: opacity 2s;
+  -o-transition: opacity 2s;
+  transition: opacity 2s;
 }
 /* ------------------------ 내 물건 거래---------------------------- */
 #bgp3 {
@@ -201,10 +209,10 @@ body.start #no1backimg img {
   border-radius: 5%;
 
   width: 700px;
-  -webkit-animation: 3s fadeInTitle ease;
-  -moz-animation: 3s fadeInTitle ease;
-  -o-animation: 3s fadeInTitle ease;
-  animation: 2s fadeInTitle ease;
+  -webkit-animation: 1.6s fadeInTitle ease;
+  -moz-animation: 1.6s fadeInTitle ease;
+  -o-animation: 1.6s fadeInTitle ease;
+  animation: 1.6s fadeInTitle ease;
   -webkit-transition: opacity 2s;
   -moz-transition: opacity 2s;
   -o-transition: opacity 2s;
@@ -227,12 +235,17 @@ body.start #no1backimg img {
   background-color: #f4efe5;
 }
 .item-board-display .item-top :nth-child(1) {
+  height: 124px;
   margin-top: 20px;
 }
 .item-board-display .item-top :nth-child(2) {
+  height: 124px;
+
   margin-top: 20px;
 }
 .item-board-display .item-top :nth-child(3) {
+  height: 124px;
+
   margin-top: 20px;
 }
 #itemBoardtitle {
@@ -242,7 +255,7 @@ body.start #no1backimg img {
   box-sizing: content-box;
   position: relative;
   justify-content: space-between;
-
+  align-items: center;
   background-color: rgba(255, 255, 255, 0.5);
   width: 100%;
   height: 40px;
@@ -350,10 +363,10 @@ body.start #no1backimg img {
   background-color: rgba(255, 255, 255, 0.5);
   width: 100%;
   height: 40px;
-  -webkit-animation: 1.5s fadeInTitle ease;
-  -moz-animation: 1.5s fadeInTitle ease;
-  -o-animation: 1.5s fadeInTitle ease;
-  animation: 1.5s fadeInTitle ease;
+  -webkit-animation: 3s fadeInTitle ease;
+  -moz-animation: 3s fadeInTitle ease;
+  -o-animation: 3s fadeInTitle ease;
+  animation: 3s fadeInTitle ease;
   -webkit-transition: opacity 2s;
   -moz-transition: opacity 2s;
   -o-transition: opacity 2s;
@@ -368,12 +381,13 @@ body.start #no1backimg img {
   border: 1px solid black;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.5);
+  align-items: center;
   width: 100%;
   height: 40px;
-  -webkit-animation: 1.5s fadeInTitle ease;
-  -moz-animation: 1.5s fadeInTitle ease;
-  -o-animation: 1.5s fadeInTitle ease;
-  animation: 1.5s fadeInTitle ease;
+  -webkit-animation: 2s fadeInTitle ease;
+  -moz-animation: 2s fadeInTitle ease;
+  -o-animation: 2s fadeInTitle ease;
+  animation: 2s fadeInTitle ease;
   -webkit-transition: opacity 2s;
   -moz-transition: opacity 2s;
   -o-transition: opacity 2s;
@@ -428,7 +442,6 @@ body.start #no1backimg img {
   margin-left: 2px;
 }
 #backmp2 {
-  margin-top: 4;
   margin-left: 2px;
 }
 #imgName {
@@ -443,6 +456,14 @@ body.start #no1backimg img {
   box-shadow: 3px 3px 3px #a5a094;
   border-radius: 10px;
   width: 100%;
+  -webkit-animation: 2.5s fadeInTitle ease;
+  -moz-animation: 2.5s fadeInTitle ease;
+  -o-animation: 2.5s fadeInTitle ease;
+  animation: 2.5s fadeInTitle ease;
+  -webkit-transition: opacity 2.5s;
+  -moz-transition: opacity 2.5s;
+  -o-transition: opacity 2.5s;
+  transition: opacity 2.5s;
 }
 
 #menu {
@@ -486,7 +507,7 @@ body.start #no1backimg img {
   -webkit-animation: 2s fadeInTitle ease;
   -moz-animation: 2s fadeInTitle ease;
   -o-animation: 2s fadeInTitle ease;
-  animation: 1s fadeInTitle ease;
+  animation: 2s fadeInTitle ease;
 }
 #photo {
   position: relative;
@@ -496,8 +517,8 @@ body.start #no1backimg img {
 #testuser {
   margin-top: 5px;
   margin-left: 5px;
-  width: 90px;
-  height: 90px;
+  width: 80px;
+  height: 80px;
 }
 #userinfo {
   display: flex;
@@ -563,10 +584,14 @@ body.start #no1backimg img {
   align-items: center;
   background-color: rgba(255, 255, 255, 0.5);
 
-  -webkit-animation: 1s fadeInTitle ease;
-  -moz-animation: 1s fadeInTitle ease;
-  -o-animation: 1s fadeInTitle ease;
-  animation: 1s fadeInTitle ease;
+  -webkit-animation: 3s fadeInTitle ease;
+  -moz-animation: 3s fadeInTitle ease;
+  -o-animation: 3s fadeInTitle ease;
+  animation: 3s fadeInTitle ease;
+  -webkit-transition: opacity 3s;
+  -moz-transition: opacity 3s;
+  -o-transition: opacity 3s;
+  transition: opacity 3s;
 }
 #editName {
   display: flex;
@@ -604,6 +629,7 @@ body.start #no1backimg img {
   margin-left: 20px;
   margin-left: 120px;
   margin-bottom: 10px;
+  margin-top: 30px;
 }
 #paybody {
   display: inline-block;
@@ -625,6 +651,20 @@ body.start #no1backimg img {
   display: inline-block;
   position: relative;
   margin-left: 120px;
+}
+#editbtn {
+  display: flex;
+  margin-left: 550px;
+  border: none;
+  background: none;
+}
+#editbtn2 {
+  border: none;
+  background: none;
+}
+#editbtnimg {
+  width: 40px;
+  height: 40px;
 }
 #payimg {
   display: flex;
@@ -658,10 +698,14 @@ body.start #no1backimg img {
   box-shadow: 3px 3px 3px #a5a094;
   background-color: rgba(255, 255, 255, 0.5);
 
-  -webkit-animation: 1s fadeInTitle ease;
-  -moz-animation: 1s fadeInTitle ease;
-  -o-animation: 1s fadeInTitle ease;
-  animation: 1s fadeInTitle ease;
+  -webkit-animation: 3.5s fadeInTitle ease;
+  -moz-animation: 3.5s fadeInTitle ease;
+  -o-animation: 3.5s fadeInTitle ease;
+  animation: 3.5s fadeInTitle ease;
+  -webkit-transition: opacity 3.5s;
+  -moz-transition: opacity 3.5s;
+  -o-transition: opacity 3.5s;
+  transition: opacity 3.5s;
   width: 100%;
   opacity: 0.8;
 }
@@ -775,10 +819,14 @@ body.start #no1backimg img {
   background-color: #f4efe5;
   box-shadow: 3px 3px 3px #a5a094;
   background-color: rgba(255, 255, 255, 0.5);
-  -webkit-animation: 1s fadeInTitle ease;
-  -moz-animation: 1s fadeInTitle ease;
-  -o-animation: 1s fadeInTitle ease;
-  animation: 1s fadeInTitle ease;
+  -webkit-animation: 3.7s fadeInTitle ease;
+  -moz-animation: 3.7s fadeInTitle ease;
+  -o-animation: 3.7s fadeInTitle ease;
+  animation: 3.7s fadeInTitle ease;
+  -webkit-transition: opacity 3.7s;
+  -moz-transition: opacity 3.7s;
+  -o-transition: opacity 3.7s;
+  transition: opacity 3.7s;
 }
 #myPlaceno1 {
   display: block;
@@ -898,10 +946,14 @@ body.start #no1backimg img {
   background-color: #f4efe5;
   box-shadow: 3px 3px 3px #a5a094;
   background-color: rgba(255, 255, 255, 0.5);
-  -webkit-animation: 1s fadeInTitle ease;
-  -moz-animation: 1s fadeInTitle ease;
-  -o-animation: 1s fadeInTitle ease;
-  animation: 1s fadeInTitle ease;
+  -webkit-animation: 4s fadeInTitle ease;
+  -moz-animation: 4s fadeInTitle ease;
+  -o-animation: 4s fadeInTitle ease;
+  animation: 4s fadeInTitle ease;
+  -webkit-transition: opacity 4s;
+  -moz-transition: opacity 4s;
+  -o-transition: opacity 4s;
+  transition: opacity 4s;
   opacity: 0.8;
 }
 
@@ -1252,7 +1304,7 @@ body.start #imgName {
 }
 body.start #photo,
 #proflie {
-  filter: invert(1);
+  /* filter: invert(1); */
 }
 body.start #userinfo {
   filter: invert(1);
@@ -1272,7 +1324,7 @@ body.start #item3title {
 body.start #editTitle,
 #editlocal,
 #menuTitle2 {
-  filter: invert(1);
+  /* filter: invert(1); */
 }
 
 body.start #listItemtitle {
@@ -1285,13 +1337,13 @@ body.start #myPlacelocaltitle,
 #myPlacelocalservice,
 #myPlacealimtitle,
 #myPlaceemailtitle {
-  filter: invert(1);
+  /* filter: invert(1); */
 }
 body.start #masterprofiletitle,
 #masterprofiletitle1,
 #masterprofiletitle2,
 #mastertitle {
-  filter: invert(1);
+  /* filter: invert(1); */
 }
 /* ------------------------------ */
 
@@ -1306,5 +1358,13 @@ body.start #itemBoard a {
 }
 body.start .item-middle,
 .item-bottom {
-  filter: invert(1);
+  /* filter: invert(1); */
+}
+
+.item-trade {
+  margin-left: 28px;
+}
+
+#editbtnimg {
+  cursor: pointer;
 }

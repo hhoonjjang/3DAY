@@ -108,6 +108,7 @@ router.post(
       itemPrice,
       itemSubtitle,
       itemLocal,
+      itemBlack,
     } = req.body;
     const tempUser = await User.findOne({
       where: {
@@ -125,6 +126,7 @@ router.post(
       itemPrice: itemPrice,
       itemSubtitle: itemSubtitle,
       itemLocal: itemLocal,
+      itemBlack: itemBlack,
     });
     // await Item.findOne({ where: { id: req.body.id } });
     tempUser.addItem(tempItem);
@@ -139,7 +141,12 @@ router.post(
 );
 
 router.get("/", async (req, res) => {
+  mode = req.query.mode;
+  console.log(mode);
   const tempItem = await Item.findAll({
+    where: {
+      itemBlack: mode,
+    },
     order: [["id", "DESC"]],
     include: { model: User },
   });
@@ -166,8 +173,13 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/used", async (req, res) => {
+  const mode = req.body.mode;
+  console.log("유즈드");
+  console.log(mode);
+  console.log("유즈드");
   const tempItem = await Item.findAll({
     where: {
+      itemBlack: mode,
       itemCondition: "중고상품",
     },
     order: [["id", "DESC"]],
@@ -177,8 +189,11 @@ router.post("/used", async (req, res) => {
 });
 
 router.post("/new", async (req, res) => {
+  const mode = req.body.mode;
+  console.log(mode);
   const tempItem = await Item.findAll({
     where: {
+      itemBlack: mode,
       itemCondition: "새상품",
     },
     order: [["id", "DESC"]],
@@ -189,11 +204,13 @@ router.post("/new", async (req, res) => {
 
 router.get("/selectkind", async (req, res) => {
   const kind = req.query.kind;
+  const mode = req.query.mode;
   console.log("셀렉트카인드");
   // console.log(kind);
   const tempItem = await Item.findAll({
     where: {
       itemCategories: kind,
+      itemBlack: mode,
     },
     order: [["id", "DESC"]],
     include: { model: User },
@@ -203,10 +220,13 @@ router.get("/selectkind", async (req, res) => {
 
 router.get("/selectlocal", async (req, res) => {
   const local = req.query.local;
+  const mode = req.query.mode;
+
   console.log(local);
   const tempItem = await Item.findAll({
     where: {
       itemLocal: local,
+      itemBlack: mode,
     },
     order: [["id", "DESC"]],
     include: { model: User },
@@ -216,10 +236,12 @@ router.get("/selectlocal", async (req, res) => {
 
 router.get("/selecttrade", async (req, res) => {
   const trade = req.query.trade;
+  const mode = req.query.mode;
   console.log(trade);
   const tempItem = await Item.findAll({
     where: {
       itemDealing: trade,
+      itemBlack: mode,
     },
     order: [["id", "DESC"]],
     include: { model: User },
@@ -231,6 +253,7 @@ router.post("/selectall", async (req, res) => {
   const kind = req.body.kind;
   const local = req.body.local;
   const trade = req.body.trade;
+  const mode = req.body.mode;
   console.log("셀렉트올");
   console.log(kind, local, trade);
   console.log("셀렉트올");
@@ -238,6 +261,7 @@ router.post("/selectall", async (req, res) => {
     where: {
       itemDealing: trade,
       itemLocal: local,
+      itemBlack: mode,
       itemCategories: kind,
     },
     order: [["id", "DESC"]],
@@ -249,12 +273,14 @@ router.post("/selectall", async (req, res) => {
 
 router.post("/selectkindlocal", async (req, res) => {
   const kind = req.body.kind;
+  const mode = req.body.mode;
   const local = req.body.local;
   console.log(kind);
   console.log(local);
   const tempItem = await Item.findAll({
     where: {
       itemLocal: local,
+      itemBlack: mode,
       itemCategories: kind,
     },
     order: [["id", "DESC"]],
@@ -265,6 +291,7 @@ router.post("/selectkindlocal", async (req, res) => {
 
 router.post("/selectkindtrade", async (req, res) => {
   const kind = req.body.kind;
+  const mode = req.body.mode;
   const trade = req.body.trade;
   console.log(kind);
   console.log(trade);
@@ -272,6 +299,7 @@ router.post("/selectkindtrade", async (req, res) => {
   const tempItem = await Item.findAll({
     where: {
       itemDealing: trade,
+      itemBlack: mode,
       itemCategories: kind,
     },
     order: [["id", "DESC"]],
@@ -284,6 +312,7 @@ router.post("/selectkindtrade", async (req, res) => {
 router.post("/selectlocaltrade", async (req, res) => {
   const local = req.body.local;
   const trade = req.body.trade;
+  const mode = req.body.mode;
   console.log(local);
   console.log(trade);
 
@@ -291,6 +320,7 @@ router.post("/selectlocaltrade", async (req, res) => {
     where: {
       itemLocal: local,
       itemDealing: trade,
+      itemBlack: mode,
     },
     order: [["id", "DESC"]],
     include: { model: User },
@@ -312,25 +342,17 @@ router.get("/detail", async (req, res) => {
   // const tempItem = await Item.findOne;
 });
 
-router.get("/search", async (req, res) => {
-  const itemIndex = req.query.itemIndex;
-  console.log("detail");
-  console.log(itemIndex);
-  const tempItem = await Item.findOne({
-    where: {
-      id: itemIndex,
-    },
-  });
-  res.send({ tempItem });
-  // const tempItem = await Item.findOne;
-});
 
-router.post("/searchItem", async (req, res) => {
-  const searchItemTitle = req.body.itemTitle;
+router.post("/mypageitem", async (req, res) => {
+  const name = jwt.verify(req.cookies.carrot, process.env.JWT_KEY).name;
+  const mode = req.body.mode;
+  console.log(name);
   const tempItem = await Item.findAll({
-    // where: {
-    //   itemTitle: searchItemTitle,
-    // },
+    where: {
+      itemBlack: mode,
+      seller_id: name,
+    },
+
     order: [["id", "DESC"]],
     include: { model: User },
   });
@@ -352,5 +374,6 @@ router.post("/filterItem", async (req, res) => {
 
   res.send(req.body.list);
 });
+
 
 module.exports = router;

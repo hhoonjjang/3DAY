@@ -186,7 +186,7 @@ input[id="item-slide04"]:checked ~ .info-div-slide > li {
   margin-left: 10px;
 }
 
-button {
+.info-div-info-foot button {
   width: 200px;
   height: 70px;
   padding: 5px;
@@ -316,6 +316,7 @@ button:hover {
   margin-top: 30px;
   margin-bottom: 30px;
   text-align: center;
+  letter-spacing: 0px;
 }
 
 .read-more-div-banner input[id*="slide"] {
@@ -323,8 +324,8 @@ button:hover {
 }
 
 .read-more-div-banner input[id*="slide"] {
-  /* display: none; */
-  display: inline-block;
+  display: none;
+  /* display: inline-block;
   position: relative;
   bottom: -245px;
   cursor: pointer;
@@ -335,13 +336,13 @@ button:hover {
   appearance: none;
   background-color: rgb(238, 111, 45);
   border-radius: 10px;
-  transition: all 0.5s;
+  transition: all 0.5s; */
 }
 
 .read-more-div-banner input[id*="slide"]:checked {
-  width: 40px;
+  /* width: 40px;
   height: 10px;
-  border-radius: 5px;
+  border-radius: 5px; */
 }
 
 .slidewrap {
@@ -423,7 +424,6 @@ body.start {
 
 body.start div {
   font-family: "JSArirang-Regular";
-  font-size: 110%;
   background-color: black;
   color: white;
 }
@@ -517,16 +517,16 @@ body.start .category-box a {
 
 .user-box button {
   cursor: pointer;
-  padding: 10;
-  margin: 0 10;
+  padding: 10px;
+  margin: 0 10px;
   width: 100px;
-  height: 36px;
   border-radius: 10px;
   border: none;
   background-color: #ffead8;
   font-family: "maple-bold";
   font-size: 14px;
   color: black;
+  font-weight: normal;
 }
 
 body.start .user-box button {
@@ -840,4 +840,83 @@ section a {
 
 .width-auto {
   width: auto !important;
+}
+
+body.start {
+  background-color: black;
+  color: white;
+  font-size: 16px;
+}
+
+body.start .top-container {
+  font-weight: normal;
+  font-size: 120%;
+}
+
+body.start .category-box,
+body.start .user-box,
+body.start #loginDisplay,
+body.start #loginDisplay div {
+  font-size: 120%;
+}
+
+body.start #img-uploader-label {
+  width: 120px;
+}
+
+body.start .main-colum {
+  font-size: 18px;
+  font-weight: normal;
+  letter-spacing: 2px;
+}
+
+body.start input[type="text"],
+body.start textarea {
+  background-color: lightgrey;
+}
+
+body.start .confirm-div {
+  background-color: rgb(107, 107, 107);
+}
+
+body.start #jelly-label {
+  background-color: rgb(46, 46, 46);
+}
+
+body.start #img-uploader-label,
+body.start .confirm-btn {
+  background-color: rgb(200, 40, 40);
+}
+
+body.start .footer-container {
+  font-size: 240px;
+  font-weight: normal;
+}
+
+body.start .footer-container ~ *,
+body.start .footer-container ~ * span,
+body.start section a {
+  font-weight: normal;
+  font-size: 120%;
+}
+
+body.start .main-colum {
+  width: 1200px;
+}
+
+body.start .img-div .main-colum-left {
+  max-height: 237px;
+}
+
+body.start .extra-div {
+  color: rgb(200, 40, 40);
+}
+
+body.start .info-div {
+  border-top: 2px solid rgb(107, 107, 107);
+  border-bottom: 2px solid rgb(107, 107, 107);
+}
+
+body.start .read-more-div {
+  border-bottom: 2px solid rgb(107, 107, 107);
 }
