@@ -1237,7 +1237,7 @@ body.start #imgName {
 }
 body.start #photo,
 #proflie {
-  filter: invert(1);
+  /* filter: invert(1); */
 }
 body.start #userinfo {
   filter: invert(1);
@@ -1257,7 +1257,7 @@ body.start #item3title {
 body.start #editTitle,
 #editlocal,
 #menuTitle2 {
-  filter: invert(1);
+  /* filter: invert(1); */
 }
 
 body.start #listItemtitle {
@@ -1270,13 +1270,13 @@ body.start #myPlacelocaltitle,
 #myPlacelocalservice,
 #myPlacealimtitle,
 #myPlaceemailtitle {
-  filter: invert(1);
+  /* filter: invert(1); */
 }
 body.start #masterprofiletitle,
 #masterprofiletitle1,
 #masterprofiletitle2,
 #mastertitle {
-  filter: invert(1);
+  /* filter: invert(1); */
 }
 /* ------------------------------ */
 
@@ -1291,5 +1291,5 @@ body.start #itemBoard a {
 }
 body.start .item-middle,
 .item-bottom {
-  filter: invert(1);
+  /* filter: invert(1); */
 }
