@@ -272,21 +272,6 @@ document.getElementById("submit-form").onsubmit = async function (e) {
   e.preventDefault();
   //
   getValue();
-  // if (
-  //   !itemCategories ||
-  //   !itemCondition ||
-  //   !itemTuning ||
-  //   !itemDealing ||
-  //   !isTitleTrue ||
-  //   !isPriceTrue ||
-  //   !isSubtitleTrue ||
-  //   !itemLocal ||
-  //   !itemImage
-  // ) {
-  //   alert("모든 입력을 완료해주세요");
-  //   return;
-  // }
-
   if (!imageArr.length) {
     alert("이미지 입력이 안되었습니다");
     return;
@@ -343,21 +328,6 @@ document.getElementById("submit-form").onsubmit = async function (e) {
   } catch (err) {
     console.error(err);
   }
-
-  // try {
-  //   const result = await axios.post("/api/item/add", {
-  //     itemTitle: itemTitle,
-  //     itemPrice: itemPrice,
-  //     itemSubtitle: itemSubtitle,
-  //     itemCategories: itemCategories,
-  //     itemCondition: itemCondition,
-  //     itemTuning: itemTuning,
-  //     itemDealing: itemDealing,
-  //     itemImage: ,
-  //   });
-  // } catch (err) {
-  //   console.error(err);
-  // }
 };
 //
 //
