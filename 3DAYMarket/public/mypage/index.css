@@ -227,12 +227,17 @@ body.start #no1backimg img {
   background-color: #f4efe5;
 }
 .item-board-display .item-top :nth-child(1) {
+  height: 124px;
   margin-top: 20px;
 }
 .item-board-display .item-top :nth-child(2) {
+  height: 124px;
+
   margin-top: 20px;
 }
 .item-board-display .item-top :nth-child(3) {
+  height: 124px;
+
   margin-top: 20px;
 }
 #itemBoardtitle {
@@ -1292,4 +1297,8 @@ body.start #itemBoard a {
 body.start .item-middle,
 .item-bottom {
   /* filter: invert(1); */
+}
+
+.item-trade {
+  margin-left: 28px;
 }
