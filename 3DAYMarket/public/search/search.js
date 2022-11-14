@@ -8,8 +8,10 @@ const reverseBtn = document.getElementById("reverse");
 const reverseImg = [...document.getElementsByClassName("reverse")];
 const reverseBgc = [...document.getElementsByClassName("bgc")];
 const loginDisplay = document.getElementById("loginDisplay");
+const divItemBoard = document.getElementsByClassName("result-sub")[0];
+divItemBoard.innerHTML = "";
 let date = new Date();
-const address = "http://localhost:8080/items/";
+const address = "http://localhost:8080/items?name=";
 const searchAddress = "http://localhost:8080/search/?result=";
 
 signOutBtn.onclick = async function () {
@@ -123,17 +125,37 @@ window.onload = async function (event) {
       let item = itemList[i].itemTitle;
       // console.log(item.length);
       for (let j = 0; j < item.length; j++) {
-        if (item[j].toLowerCase().indexOf(searchItemValue) != -1) {
-          if (filterItemList[j] == filterItemList[j + 1]) {
-            filterItemList.pop();
+        if (item.toLowerCase().indexOf(searchItemValue) != -1) {
+          // if (filterItemList[j] == filterItemList[j + 1]) {
+          //   filterItemList.pop();
+          // }
+          // filterItemList.push(itemList[i]);
+
+          if (filterItemList[j] == itemList[i]) {
+            continue;
+          } else {
+            filterItemList.push(itemList[i]);
+            break;
           }
-          filterItemList.push(itemList[i]);
         }
       }
     }
   }
-  if (filterItemList != undefined) {
+  if (filterItemList.length != 0) {
     console.log(filterItemList);
+    console.log(filterItemList[0].itemPrice);
+
+    for (let k = 0; k < filterItemList.length; k++) {
+      createItem(
+        filterItemList[k].itemTitle,
+        filterItemList[k].itemLocal,
+        filterItemList[k].itemPrice,
+        filterItemList.length,
+        filterItemList[k].id,
+        filterItemList[k].imgArr,
+        filterItemList[k].itemDealing
+      );
+    }
   }
 
   // location.href = `${searchAddress}${searchItem.search.value}`;
@@ -142,7 +164,6 @@ window.onload = async function (event) {
   // if (window.event.keyCode == 13){
 
   // }
-  createItem(title, local, price);
 };
 
 // console.log();
@@ -159,4 +180,74 @@ window.onload = async function (event) {
 //   }
 // }
 
-const createItem = function (title, local, price) {};
+const createItem = function (title, local, price, num, id, imgArr, dealing) {
+  const articleItem = document.createElement("article");
+  const aItem = document.createElement("a");
+  const divItemTop = document.createElement("div");
+  const divItemImg = document.createElement("div");
+  const imgItem = document.createElement("img");
+  const divItemMiddle = document.createElement("div");
+  const divItemTitle = document.createElement("div");
+  const divItemPrice = document.createElement("div");
+  const divItemLocal = document.createElement("div");
+
+  const divItemTrade = document.createElement("div");
+
+  const divItemBottom = document.createElement("div");
+  const divItemFocus = document.createElement("div");
+  const divItemBorderdot = document.createElement("div");
+  const divItemCountingView = document.createElement("div");
+
+  articleItem.classList.add("item");
+  aItem.classList.add("item-link");
+  aItem.href = `${address}${id}`;
+
+  divItemTop.classList.add("item-top");
+  divItemImg.classList.add("item-img");
+  imgItem.src = `../uploadedItems/${imgArr.split("-*,")[0]}`;
+  // imgItem.src = `../uploadedItems/${imgArr}`;
+
+  divItemMiddle.classList.add("item-middle");
+  divItemTitle.classList.add("item-title");
+  divItemTitle.innerText = title;
+  const divItemTitleH4 = document.createElement("h4");
+  divItemTitleH4.innerText = price;
+  const divItemPriceSpan = document.createElement("span");
+
+  divItemPriceSpan.classList.add("price");
+  divItemTitleH4.innerText = price;
+
+  divItemPrice.classList.add("item-price");
+  divItemLocal.classList.add("item-local");
+
+  divItemLocal.innerText = local;
+  divItemTrade.classList.add("item-trade");
+  divItemTrade.innerText = dealing;
+
+  divItemBottom.classList.add("item-bottom");
+  divItemFocus.classList.add("item-focus");
+  divItemFocus.innerText = `관심 ${10}`;
+  divItemBorderdot.classList.add("border-dot");
+  divItemBorderdot.innerText = "！";
+  divItemCountingView.classList.add("item-countingview");
+  divItemCountingView.innerText = `채팅 ${78}`;
+
+  divItemBoard.appendChild(articleItem);
+  articleItem.appendChild(aItem);
+  aItem.appendChild(divItemTop);
+  aItem.appendChild(divItemMiddle);
+  aItem.appendChild(divItemBottom);
+  divItemTop.appendChild(divItemImg);
+  divItemImg.appendChild(imgItem);
+  divItemTitle.appendChild(divItemTitleH4);
+  divItemMiddle.appendChild(divItemTitle);
+  divItemPrice.appendChild(divItemPriceSpan);
+  divItemMiddle.appendChild(divItemPrice);
+  divItemMiddle.appendChild(divItemLocal);
+
+  divItemMiddle.appendChild(divItemTrade);
+
+  divItemBottom.appendChild(divItemFocus);
+  divItemBottom.appendChild(divItemBorderdot);
+  divItemBottom.appendChild(divItemCountingView);
+};

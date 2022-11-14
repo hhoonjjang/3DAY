@@ -550,17 +550,25 @@ searchItem.onsubmit = async function (event) {
 
   const searchItemValue = searchItem.search.value.toLowerCase();
 
-  console.log(searchItem.search.value);
   for (let i = 0; i < itemList.length; i++) {
-    if (searchItemValue.search) {
+    if (searchItem.search.value) {
       let item = itemList[i].itemTitle;
       // console.log(item.length);
       for (let j = 0; j < item.length; j++) {
-        if (item[j].toLowerCase().indexOf(searchItemValue) != -1) {
-          if (filterItemList[j] == filterItemList[j + 1]) {
-            filterItemList.pop();
+        console.log(item.length);
+
+        if (item.toLowerCase().indexOf(searchItemValue) != -1) {
+          console.log(item[j].toLowerCase());
+
+          // if (filterItemList[j] == filterItemList[j + 1]) {
+          //   filterItemList.pop();
+          // }
+          if (filterItemList[j] == itemList[i]) {
+            continue;
+          } else {
+            filterItemList.push(itemList[i]);
+            break;
           }
-          filterItemList.push(itemList[i]);
         }
       }
     }
@@ -568,12 +576,12 @@ searchItem.onsubmit = async function (event) {
   // if (filterItemList != undefined) {
   //   console.log(filterItemList);
   // }
-
+  console.log(filterItemList);
   const filterItemListSend = await axios.post("/api/item/filterItem", {
     list: filterItemList,
   });
 
-  console.log(filterItemListSend.data);
+  // console.log(filterItemListSend.data);
   location.href = searchAddress + searchItem.search.value;
   // window.history.back();
 
