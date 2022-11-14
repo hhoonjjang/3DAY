@@ -186,7 +186,7 @@ input[id="item-slide04"]:checked ~ .info-div-slide > li {
   margin-left: 10px;
 }
 
-button {
+.info-div-info-foot button {
   width: 200px;
   height: 70px;
   padding: 5px;
