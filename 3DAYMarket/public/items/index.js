@@ -286,6 +286,7 @@ const reverse = function () {
 
 reverse();
 
+
 function deleteItem() {
   if (confirm("정말로 삭제하시겠습니까?")) {
     //
@@ -297,3 +298,4 @@ function deleteItem() {
     return;
   }
 }
+

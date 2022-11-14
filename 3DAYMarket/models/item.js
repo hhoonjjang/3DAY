@@ -41,6 +41,10 @@ module.exports = class Item extends Sequelize.Model {
           type: Sequelize.STRING(20),
           //   allowNull: false,
         },
+        itemBlack: {
+          type: Sequelize.BOOLEAN,
+          // allowNull: false,
+        },
       },
       {
         sequelize,
@@ -60,4 +64,11 @@ module.exports = class Item extends Sequelize.Model {
       targetKey: "name",
     });
   }
+  // static associate(db) {
+  //   db.Item.hasMany(db.Chat, {
+  //     foreignKey: "partner_id",
+  //     sourceKey: "seller_id",
+  //     as: "Chat",
+  //   });
+  // }
 };

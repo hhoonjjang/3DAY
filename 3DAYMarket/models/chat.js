@@ -29,4 +29,10 @@ module.exports = class Chat extends Sequelize.Model {
       }
     );
   }
+  // static associate(db) {
+  //   db.Chat.belongsTo(db.Item, {
+  //     foreignKey: "partner_id",
+  //     targetKey: "seller_id",
+  //   });
+  // }
 };
