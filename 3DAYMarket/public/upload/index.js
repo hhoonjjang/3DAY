@@ -9,10 +9,6 @@
 // 공백 예외처리 필요
 
 // 백엔드 관련
-// 카테고리 설정을 해주세요 (빈 내용 예외처리)
-// 라우터이름 upload
-// 등록하기 >>>> 서버전송
-// [이미지 등록시 페이지에 보이기, 최소한에 표시라도]
 
 //
 let isTitleTrue;
@@ -23,6 +19,7 @@ let isSubtitleTrue;
 const itemBlack = document.getElementById("black-upload");
 const titleInput = document.getElementById("title-input");
 const titleGuide = document.getElementById("title-guide");
+titleInput.value = "";
 titleInput.oninput = function () {
   isTitleTrue = false;
   if (titleInput.value.length < 1) {
@@ -76,12 +73,11 @@ priceInput.oninput = () => {
 };
 priceInput.onblur = () => {
   if (priceInput.value == "") return;
-  if (priceInput.value % 1 || isNaN(priceInput.value)) {
+  else if (priceInput.value % 1 || isNaN(priceInput.value)) {
     priceInput.value = "";
     priceGuide.classList.add("display-none");
     priceInput.classList.remove("red-border");
-  }
-  if (priceInput.value != "")
+  } else if (priceInput.value != "")
     priceInput.value = Number(priceInput.value).toLocaleString();
 };
 //
@@ -160,7 +156,7 @@ let setCookie = function (name, value, exp) {
   date.setTime(date.getTime() + exp * 1000 * 60 * 60 * 9 + 1000 * 60);
   document.cookie =
     name + "=" + value + ";expires=" + date.toUTCString() + ";path=/";
-  console.log(document.cookie);
+  // console.log(document.cookie);
   // console.log(cookie);
 };
 let cookieArray = document.cookie.split("; ");
@@ -176,8 +172,6 @@ let deleteCookie = function (name) {
 };
 
 const login = async function () {
-  console.log("asd");
-  console.log(cookieArray[cookieCIndex]);
   if (cookieArray[cookieCIndex]) {
     try {
       const result = await axios.post("/api/user/cookie", {
@@ -187,16 +181,14 @@ const login = async function () {
       chattingBtn.classList.add("on");
       itemUpload.classList.add("on");
       userInfo.classList.add("on");
-      console.log(result.data.name);
       const login = document.createElement("div");
       login.innerText = `${result.data.name}님 어서오세요!`;
       loginDisplay.style.display = "block";
       document.getElementById("loginDisplay").append(login);
       signInBtn.classList.add("off");
       signUpBtn.classList.add("off");
-      console.log("123");
     } catch (error) {
-      // console.error(error)
+      // console.error(error);
     }
   }
 };
@@ -207,11 +199,7 @@ let itemCondition;
 let itemTuning;
 let itemDealing;
 let itemImage;
-
-const imgArr = [];
-
 let itemLocal;
-const imageArr = [];
 
 function getValue() {
   const categoriesList = document.getElementsByName("categories");
@@ -284,18 +272,47 @@ document.getElementById("submit-form").onsubmit = async function (e) {
   e.preventDefault();
   //
   getValue();
-  if (
-    !itemCategories ||
-    !itemCondition ||
-    !itemTuning ||
-    !itemDealing ||
-    !isTitleTrue ||
-    !isPriceTrue ||
-    !isSubtitleTrue ||
-    !itemLocal ||
-    !itemImage
-  ) {
-    alert("모든 입력을 완료해주세요");
+  // if (
+  //   !itemCategories ||
+  //   !itemCondition ||
+  //   !itemTuning ||
+  //   !itemDealing ||
+  //   !isTitleTrue ||
+  //   !isPriceTrue ||
+  //   !isSubtitleTrue ||
+  //   !itemLocal ||
+  //   !itemImage
+  // ) {
+  //   alert("모든 입력을 완료해주세요");
+  //   return;
+  // }
+
+  if (!imageArr.length) {
+    alert("이미지 입력이 안되었습니다");
+    return;
+  } else if (!isTitleTrue) {
+    alert("제목 입력이 올바르지 않습니다");
+    return;
+  } else if (!itemLocal) {
+    alert("지역 입력이 안되었습니다");
+    return;
+  } else if (!itemCategories) {
+    alert("카테고리 입력이 안되었습니다");
+    return;
+  } else if (!itemCondition) {
+    alert("상태 입력이 안되었습니다");
+    return;
+  } else if (!itemTuning) {
+    alert("가격절충 입력이 안되었습니다");
+    return;
+  } else if (!itemDealing) {
+    alert("거래방법 입력이 안되었습니다");
+    return;
+  } else if (!isPriceTrue) {
+    alert("가격 입력이 올바르지 않습니다");
+    return;
+  } else if (!isSubtitleTrue) {
+    alert("설명 입력이 올바르지 않습니다");
     return;
   }
 
@@ -346,6 +363,7 @@ document.getElementById("submit-form").onsubmit = async function (e) {
 //
 // 1개의 이미지올림 >> 어펜드추가, 배열추가, 프리뷰하나추가
 // 1개의 이미지삭제 >> 어펜드리셋, 배열내 아이템 1개 삭제, 배열forEach해서 모든 배열의값을 어펜드, 프리뷰하나삭제
+
 function createElement(e, file) {
   const div = document.createElement("div");
   const img = document.createElement("img");
@@ -354,13 +372,14 @@ function createElement(e, file) {
   img.setAttribute("data-file", file.name);
   div.appendChild(img);
   div.onclick = () => {
-    deleteImageFiles(file.name);
     div.classList.add("display-none");
+    deleteImageFiles(file.name);
   };
 
   return div;
 }
 
+const imageArr = [];
 let stopper = false;
 function getImageFiles(e) {
   for (let i = 0; i < imageArr.length; i++) {
@@ -400,13 +419,10 @@ function deleteImageFiles(e) {
   formData.delete("img");
   for (let i = 0; i < imageArr.length; i++) {
     if (imageArr[i].name == e) {
-      imageArr.splice(imageArr[i], 1);
+      imageArr.splice(i, 1);
       imageArr.forEach((elem) => {
         formData.append("img", elem);
       });
-      // for (let value of formData.values()) {
-      //   console.log(value);
-      // }
     }
   }
   // for (let value of formData.values()) {
