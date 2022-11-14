@@ -22,79 +22,7 @@ let selectLocalValue;
 const selectTrade = document.getElementById("select-trade");
 let selectTradeValue;
 let mode = 1;
-async function getItem() {
-  try {
-    if (!cookieR) {
-      mode = 0;
-      const item = (await axios.get("/api/item/?mode=" + mode)).data;
-      console.log(item);
-      console.log(item[0]);
-      item.forEach((item) => {
-        const articleItem = document.createElement("article");
-        const aItem = document.createElement("a");
-        const divItemTop = document.createElement("div");
-        const divItemImg = document.createElement("div");
-        const imgItem = document.createElement("img");
-        const divItemMiddle = document.createElement("div");
-        const divItemTitle = document.createElement("div");
-        const divItemPrice = document.createElement("div");
-        const divItemLocal = document.createElement("div");
 
-        const divItemTrade = document.createElement("div");
-
-        const divItemBottom = document.createElement("div");
-        const divItemFocus = document.createElement("div");
-        const divItemBorderdot = document.createElement("div");
-        const divItemCountingView = document.createElement("div");
-        articleItem.classList.add("item");
-        aItem.classList.add("item-link");
-        aItem.href = `${address}${item.id}`;
-        divItemTop.classList.add("item-top");
-        divItemImg.classList.add("item-img");
-        imgItem.src = `../uploadedItems/${item.imgArr.split("-*,")[0]}`;
-        divItemMiddle.classList.add("item-middle");
-        divItemTitle.classList.add("item-title");
-        divItemTitle.innerText = item.itemTitle;
-        divItemPrice.classList.add("item-price");
-        divItemPrice.innerText = item.itemPrice;
-        divItemLocal.classList.add("item-local");
-
-        divItemLocal.innerText = item.itemLocal;
-        divItemTrade.classList.add("item-trade");
-        divItemTrade.innerText = item.itemDealing;
-
-        divItemBottom.classList.add("item-bottom");
-        divItemFocus.classList.add("item-focus");
-        divItemFocus.innerText = `관심 ${10}`;
-        divItemBorderdot.classList.add("border-dot");
-        divItemBorderdot.innerText = "！";
-        divItemCountingView.classList.add("item-countingview");
-        divItemCountingView.innerText = `채팅 ${78}`;
-
-        divItemBoard.appendChild(articleItem);
-        articleItem.appendChild(aItem);
-        aItem.appendChild(divItemTop);
-        aItem.appendChild(divItemMiddle);
-        aItem.appendChild(divItemBottom);
-        divItemTop.appendChild(divItemImg);
-        divItemImg.appendChild(imgItem);
-        divItemMiddle.appendChild(divItemTitle);
-        divItemMiddle.appendChild(divItemPrice);
-        divItemMiddle.appendChild(divItemLocal);
-
-        divItemMiddle.appendChild(divItemTrade);
-
-        divItemBottom.appendChild(divItemFocus);
-        divItemBottom.appendChild(divItemBorderdot);
-        divItemBottom.appendChild(divItemCountingView);
-      });
-    }
-  } catch (err) {
-    console.error(err);
-  }
-}
-
-getItem();
 let setCookie = function (name, value, exp) {
   let date = new Date();
   date.setTime(date.getTime() + exp * 1000 * 60 * 60 * 9 + 1000 * 60);
@@ -191,6 +119,7 @@ reverseBtn.ondblclick = function () {
       reverseBgc[i].classList.remove("start");
     }
     count = 0;
+    window.location.reload();
   } else {
     if (count == 4) {
       count = 0;
@@ -202,6 +131,7 @@ reverseBtn.ondblclick = function () {
       for (let i = 0; i < reverseBgc.length; i++) {
         reverseBgc[i].classList.add("start");
       }
+      window.location.reload();
     } else {
       deleteCookie("reverse");
       console.log("카운트가4가아닐때");
@@ -239,50 +169,129 @@ const reverse = function () {
 reverse();
 
 // 리버스끝//
+
+async function getItem() {
+  try {
+    if (!cookieR) {
+      mode = 0;
+    } else {
+      mode = 1;
+    }
+    const item = (await axios.get("/api/item/?mode=" + mode)).data;
+    console.log(item);
+    console.log(item[0]);
+    item.forEach((item) => {
+      const articleItem = document.createElement("article");
+      const aItem = document.createElement("a");
+      const divItemTop = document.createElement("div");
+      const divItemImg = document.createElement("div");
+      const imgItem = document.createElement("img");
+      const divItemMiddle = document.createElement("div");
+      const divItemTitle = document.createElement("div");
+      const divItemPrice = document.createElement("div");
+      const divItemLocal = document.createElement("div");
+
+      const divItemTrade = document.createElement("div");
+
+      const divItemBottom = document.createElement("div");
+      const divItemFocus = document.createElement("div");
+      const divItemBorderdot = document.createElement("div");
+      const divItemCountingView = document.createElement("div");
+      articleItem.classList.add("item");
+      aItem.classList.add("item-link");
+      aItem.href = `${address}${item.id}`;
+      divItemTop.classList.add("item-top");
+      divItemImg.classList.add("item-img");
+      imgItem.src = `../uploadedItems/${item.imgArr.split("-*,")[0]}`;
+      divItemMiddle.classList.add("item-middle");
+      divItemTitle.classList.add("item-title");
+      divItemTitle.innerText = item.itemTitle;
+      divItemPrice.classList.add("item-price");
+      divItemPrice.innerText = item.itemPrice;
+      divItemLocal.classList.add("item-local");
+
+      divItemLocal.innerText = item.itemLocal;
+      divItemTrade.classList.add("item-trade");
+      divItemTrade.innerText = item.itemDealing;
+
+      divItemBottom.classList.add("item-bottom");
+      divItemFocus.classList.add("item-focus");
+      divItemFocus.innerText = `관심 ${10}`;
+      divItemBorderdot.classList.add("border-dot");
+      divItemBorderdot.innerText = "！";
+      divItemCountingView.classList.add("item-countingview");
+      divItemCountingView.innerText = `채팅 ${78}`;
+
+      divItemBoard.appendChild(articleItem);
+      articleItem.appendChild(aItem);
+      aItem.appendChild(divItemTop);
+      aItem.appendChild(divItemMiddle);
+      aItem.appendChild(divItemBottom);
+      divItemTop.appendChild(divItemImg);
+      divItemImg.appendChild(imgItem);
+      divItemMiddle.appendChild(divItemTitle);
+      divItemMiddle.appendChild(divItemPrice);
+      divItemMiddle.appendChild(divItemLocal);
+
+      divItemMiddle.appendChild(divItemTrade);
+
+      divItemBottom.appendChild(divItemFocus);
+      divItemBottom.appendChild(divItemBorderdot);
+      divItemBottom.appendChild(divItemCountingView);
+    });
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+getItem();
+
 async function itemCategoryKind() {
   selectKindValue = selectKind.options[selectKind.selectedIndex].value;
   let item;
   divItemBoard.innerHTML = "";
   if (!cookieR) {
     mode = 0;
-    if (!selectTradeValue && !selectLocalValue) {
-      item = (
-        await axios.get("/api/item/selectkind", {
-          params: {
-            kind: selectKindValue,
-            mode: mode,
-          },
-        })
-      ).data.tempItem;
-    }
-    if (selectTradeValue && !selectLocalValue) {
-      item = (
-        await axios.post("/api/item/selectkindtrade", {
+  } else {
+    mode = 1;
+  }
+  if (!selectTradeValue && !selectLocalValue) {
+    item = (
+      await axios.get("/api/item/selectkind", {
+        params: {
           kind: selectKindValue,
-          trade: selectTradeValue,
           mode: mode,
-        })
-      ).data;
-    }
-    if (!selectTradeValue && selectLocalValue) {
-      item = (
-        await axios.post("/api/item/selectkindlocal", {
-          mode: mode,
-          kind: selectKindValue,
-          local: selectLocalValue,
-        })
-      ).data;
-    }
-    if (selectTradeValue && selectLocalValue) {
-      item = (
-        await axios.post("/api/item/selectall", {
-          kind: selectKindValue,
-          local: selectLocalValue,
-          mode: mode,
-          trade: selectTradeValue,
-        })
-      ).data;
-    }
+        },
+      })
+    ).data.tempItem;
+  }
+  if (selectTradeValue && !selectLocalValue) {
+    item = (
+      await axios.post("/api/item/selectkindtrade", {
+        kind: selectKindValue,
+        trade: selectTradeValue,
+        mode: mode,
+      })
+    ).data;
+  }
+  if (!selectTradeValue && selectLocalValue) {
+    item = (
+      await axios.post("/api/item/selectkindlocal", {
+        mode: mode,
+        kind: selectKindValue,
+        local: selectLocalValue,
+      })
+    ).data;
+  }
+  if (selectTradeValue && selectLocalValue) {
+    item = (
+      await axios.post("/api/item/selectall", {
+        kind: selectKindValue,
+        local: selectLocalValue,
+        mode: mode,
+        trade: selectTradeValue,
+      })
+    ).data;
   }
   item.forEach((item) => {
     const articleItem = document.createElement("article");
@@ -344,53 +353,55 @@ async function itemCategoryLocal() {
   selectLocalValue = selectLocal.options[selectLocal.selectedIndex].value;
   if (!cookieR) {
     mode = 0;
-
-    if (!selectKindValue && !selectTradeValue) {
-      item = (
-        await axios.get("/api/item/selectlocal", {
-          params: {
-            local: selectLocalValue,
-            mode: mode,
-          },
-        })
-      ).data.tempItem;
-      console.log("로컬만");
-    }
-    if (!selectKindValue && selectTradeValue) {
-      item = (
-        await axios.post("/api/item/selectlocaltrade", {
-          local: selectLocalValue,
-          trade: selectTradeValue,
-          mode: mode,
-        })
-      ).data;
-
-      console.log("로컬과 트레이드");
-    }
-    if (!selectTradeValue && selectKindValue) {
-      console.log("로컬카인드");
-      console.log(selectLocalValue);
-      item = (
-        await axios.post("/api/item/selectkindlocal", {
-          kind: selectKindValue,
-          mode: mode,
-          local: selectLocalValue,
-        })
-      ).data;
-      console.log("로컬과 카인드");
-    }
-    if (selectKindValue && selectTradeValue) {
-      item = (
-        await axios.post("/api/item/selectall", {
-          kind: selectKindValue,
-          local: selectLocalValue,
-          trade: selectTradeValue,
-          mode: mode,
-        })
-      ).data;
-      console.log("셀렉트오올");
-    }
+  } else {
+    mode = 1;
   }
+  if (!selectKindValue && !selectTradeValue) {
+    item = (
+      await axios.get("/api/item/selectlocal", {
+        params: {
+          local: selectLocalValue,
+          mode: mode,
+        },
+      })
+    ).data.tempItem;
+    console.log("로컬만");
+  }
+  if (!selectKindValue && selectTradeValue) {
+    item = (
+      await axios.post("/api/item/selectlocaltrade", {
+        local: selectLocalValue,
+        trade: selectTradeValue,
+        mode: mode,
+      })
+    ).data;
+
+    console.log("로컬과 트레이드");
+  }
+  if (!selectTradeValue && selectKindValue) {
+    console.log("로컬카인드");
+    console.log(selectLocalValue);
+    item = (
+      await axios.post("/api/item/selectkindlocal", {
+        kind: selectKindValue,
+        mode: mode,
+        local: selectLocalValue,
+      })
+    ).data;
+    console.log("로컬과 카인드");
+  }
+  if (selectKindValue && selectTradeValue) {
+    item = (
+      await axios.post("/api/item/selectall", {
+        kind: selectKindValue,
+        local: selectLocalValue,
+        trade: selectTradeValue,
+        mode: mode,
+      })
+    ).data;
+    console.log("셀렉트오올");
+  }
+
   console.log(item);
   item?.forEach((item) => {
     const articleItem = document.createElement("article");
@@ -452,45 +463,49 @@ async function itemCategoryTrade() {
   let item;
   if (!cookieR) {
     mode = 0;
-    if (!selectKindValue && !selectLocalValue) {
-      item = (
-        await axios.get("api/item/selecttrade", {
-          params: {
-            trade: selectTradeValue,
-            mode: mode,
-          },
-        })
-      ).data.tempItem;
-    }
-    if (!selectKindValue && selectLocalValue) {
-      item = (
-        await axios.post("/api/item/selectlocaltrade", {
-          local: selectLocalValue,
-          trade: selectTradeValue,
-          mode: mode,
-        })
-      ).data;
-    }
-    if (selectKindValue && !selectLocalValue) {
-      const item = (
-        await axios.post("/api/item/selectkindtrade", {
-          kind: selectKindValue,
-          trade: selectTradeValue,
-          mode: mode,
-        })
-      ).data;
-    }
-    if (selectKindValue && selectLocalValue) {
-      item = (
-        await axios.post("/api/item/selectall", {
-          kind: selectKindValue,
-          local: selectLocalValue,
-          trade: selectTradeValue,
-          mode: mode,
-        })
-      ).data;
-    }
+  } else {
+    mode = 1;
   }
+  console.log(mode);
+  if (!selectKindValue && !selectLocalValue) {
+    item = (
+      await axios.get("api/item/selecttrade", {
+        params: {
+          trade: selectTradeValue,
+          mode: mode,
+        },
+      })
+    ).data.tempItem;
+  }
+  if (!selectKindValue && selectLocalValue) {
+    item = (
+      await axios.post("/api/item/selectlocaltrade", {
+        local: selectLocalValue,
+        trade: selectTradeValue,
+        mode: mode,
+      })
+    ).data;
+  }
+  if (selectKindValue && !selectLocalValue) {
+    const item = (
+      await axios.post("/api/item/selectkindtrade", {
+        kind: selectKindValue,
+        trade: selectTradeValue,
+        mode: mode,
+      })
+    ).data;
+  }
+  if (selectKindValue && selectLocalValue) {
+    item = (
+      await axios.post("/api/item/selectall", {
+        kind: selectKindValue,
+        local: selectLocalValue,
+        trade: selectTradeValue,
+        mode: mode,
+      })
+    ).data;
+  }
+
   console.log(item);
   item.forEach((item) => {
     const articleItem = document.createElement("article");
