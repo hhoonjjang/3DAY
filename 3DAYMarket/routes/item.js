@@ -174,6 +174,9 @@ router.get("/", async (req, res) => {
 
 router.post("/used", async (req, res) => {
   const mode = req.body.mode;
+  console.log("유즈드");
+  console.log(mode);
+  console.log("유즈드");
   const tempItem = await Item.findAll({
     where: {
       itemBlack: mode,
@@ -341,9 +344,11 @@ router.get("/detail", async (req, res) => {
 
 router.post("/mypageitem", async (req, res) => {
   const name = jwt.verify(req.cookies.carrot, process.env.JWT_KEY).name;
+  const mode = req.body.mode;
   console.log(name);
   const tempItem = await Item.findAll({
     where: {
+      itemBlack: mode,
       seller_id: name,
     },
     order: [["id", "DESC"]],

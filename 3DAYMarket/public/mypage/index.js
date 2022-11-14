@@ -39,7 +39,7 @@ const loginDisplay = document.getElementById("loginDisplay");
 let date = new Date();
 const address = "http://localhost:8080/items?name=";
 const divItemBoard = document.getElementById("itemBoard");
-
+let cookieR;
 signOutBtn.onclick = async function () {
   try {
     const result = await axios.post("/api/user/logout");
@@ -76,7 +76,7 @@ let setCookie = function (name, value, exp) {
 let cookieArray = document.cookie.split("; ");
 let CC = getCookie("carrot");
 let CR = getCookie("reverse");
-let cookieR = document.cookie.split("; ").includes("reverse=123");
+cookieR = document.cookie.split("; ").includes("reverse=123");
 let cookieC = document.cookie.split("; ").includes(`carrot=${CC}`);
 
 let cookieCIndex = cookieArray.findIndex((e) => e == `carrot=${CC}`);
@@ -421,9 +421,15 @@ function start() {
   selllist2.onclick = async () => {
     console.log("selllist시작");
     try {
+      if (!cookieR) {
+        mode = 0;
+      } else {
+        mode = 1;
+      }
       const item = (
         await axios.post("/api/item/mypageitem", {
           cookie: cookieArray[cookieCIndex],
+          mode: mode,
         })
       ).data.tempItem;
       console.log(item);
@@ -460,7 +466,6 @@ function start() {
         divItemLocal.innerText = item.itemLocal;
         divItemTrade.classList.add("item-trade");
         divItemTrade.innerText = item.itemDealing;
-
 
         divItemBottom.classList.add("item-bottom");
         divItemFocus.classList.add("item-focus");
