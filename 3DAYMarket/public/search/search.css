@@ -410,3 +410,47 @@ section a {
 }
 
 /* 메뉴바 끝 */
+body.start .satan {
+  font-family: "satan";
+  /* font-size: 200%; */
+}
+
+body.start div {
+  font-family: "JSArirang-Regular";
+  font-size: 112%;
+}
+
+body.start {
+  background-color: black;
+  color: white;
+}
+body.start .result-item {
+  background-color: black;
+  color: white;
+}
+
+body.start .item-middle {
+  color: white;
+}
+
+body.start .item-bottom {
+  color: white;
+}
+
+body.start * {
+  font-family: "JSArirang-Regular";
+}
+
+body.start h4 {
+  font-size: 102%;
+}
+
+body.start .result-item {
+  border-radius: 15px;
+  filter: drop-shadow(5px 5px 15px rgb(5, 30, 30));
+}
+
+body.start .container {
+  border-radius: 15px;
+  filter: drop-shadow(5px 5px 15px rgb(5, 30, 30));
+}

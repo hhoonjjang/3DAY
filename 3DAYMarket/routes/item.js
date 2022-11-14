@@ -342,7 +342,6 @@ router.get("/detail", async (req, res) => {
   // const tempItem = await Item.findOne;
 });
 
-
 router.delete("/delete", async (req, res) => {
   console.log(req.query.id);
   itemIndex = req.query.itemIndex;
@@ -366,7 +365,6 @@ router.delete("/delete", async (req, res) => {
   res.send("정상적으로 삭제했습니다.");
 });
 
-
 router.post("/mypageitem", async (req, res) => {
   const name = jwt.verify(req.cookies.carrot, process.env.JWT_KEY).name;
   const mode = req.body.mode;
@@ -385,10 +383,11 @@ router.post("/mypageitem", async (req, res) => {
 
 router.post("/searchItem", async (req, res) => {
   const searchItemTitle = req.body.itemTitle;
+  const mode = req.body.mode;
   const tempItem = await Item.findAll({
-    // where: {
-    //   itemTitle: searchItemTitle,
-    // },
+    where: {
+      itemBlack: mode,
+    },
     order: [["id", "DESC"]],
     include: { model: User },
   });
@@ -410,6 +409,5 @@ router.post("/filterItem", async (req, res) => {
 
   res.send(req.body.list);
 });
-
 
 module.exports = router;

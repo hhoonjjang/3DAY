@@ -13,7 +13,7 @@ divItemBoard.innerHTML = "";
 let date = new Date();
 const address = "http://localhost:8080/items?name=";
 const searchAddress = "http://localhost:8080/search/?result=";
-
+let mode;
 signOutBtn.onclick = async function () {
   try {
     const result = await axios.post("/api/user/logout");
@@ -116,10 +116,14 @@ window.onload = async function (event) {
   // console.log(itemList);
   // console.log(searchItem.value);
   // console.log(item[1].itemTitle);
-
+  if (!cookieR) {
+    mode = 0;
+  } else {
+    mode = 1;
+  }
   const itemList = (
     await axios.post("/api/item/searchItem", {
-      // value: searchItem.value,
+      mode: mode,
     })
   ).data.tempItem;
 
@@ -257,3 +261,25 @@ const createItem = function (title, local, price, num, id, imgArr, dealing) {
   divItemBottom.appendChild(divItemBorderdot);
   divItemBottom.appendChild(divItemCountingView);
 };
+
+const reverse = function () {
+  if (cookieR) {
+    document.body.classList.add("start");
+    for (let i = 0; i < reverseImg.length; i++) {
+      reverseImg[i].classList.add("start");
+    }
+    for (let i = 0; i < reverseBgc.length; i++) {
+      reverseBgc[i].classList.add("start");
+    }
+  } else {
+    document.body.classList.remove("start");
+    for (let i = 0; i < reverseImg.length; i++) {
+      reverseImg[i].classList.remove("start");
+    }
+    for (let i = 0; i < reverseBgc.length; i++) {
+      reverseBgc[i].classList.remove("start");
+    }
+  }
+};
+
+reverse();
