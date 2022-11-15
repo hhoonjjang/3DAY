@@ -5,7 +5,6 @@ const router = require("express").Router();
 const { User, Item } = require("../models/index.js");
 
 router.post("/regist", async (req, res) => {
-  console.log(req.body);
   try {
     const tempUser = await User.findOne({ where: { userId: req.body.id } });
     if (tempUser) {
@@ -47,12 +46,10 @@ router.post("/login", async (req, res) => {
           process.env.JWT_KEY,
           {
             algorithm: "HS256",
-            // expiresIn:"30m",ss
             issuer: "jjh",
           }
         )
       );
-      console.log(tempUser.id);
       res.send({
         name: tempUser.name,
       });
@@ -61,17 +58,14 @@ router.post("/login", async (req, res) => {
     res.status(500);
     res.send({ message: "비밀번호가 틀렸습니다." });
   } catch (error) {
-    console.log("hi");
+    console.error(error);
     res.status(500);
     res.send(error);
   }
 });
 
 router.post("/cookie", async (req, res) => {
-  console.log("hi" + req.cookies.carrot);
   const data = req.body;
-  // jwt.verify(cookie.split("=")[1],process.env.JWT_KEY)
-  console.log(jwt.verify(data.cookie.split("=")[1], process.env.JWT_KEY));
   const tempUser = jwt.verify(data.cookie.split("=")[1], process.env.JWT_KEY);
   res.send({
     name: tempUser.name,
@@ -80,10 +74,9 @@ router.post("/cookie", async (req, res) => {
 router.post("/userdisplay", async (req, res) => {
   try {
     const tempUser = await User.findOne({ where: { name: req.body.name } });
-    console.log();
     res.send(tempUser);
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 });
 router.post("/logout", (req, res) => {
@@ -92,16 +85,13 @@ router.post("/logout", (req, res) => {
 });
 
 router.post("/mypage", async (req, res) => {
-  console.log("myPage");
   tempName = req.body.name;
-  console.log(tempName);
-  console.log("myPage");
 
   try {
     const userInfo = await User.findOne({ where: { userId: req.body.id } });
     res.send(userInfo);
   } catch (err) {
-    console.log(error);
+    console.error(error);
     res.status(500);
     res.send(error);
   }
@@ -111,12 +101,7 @@ router.put("/update", async (req, res) => {
   const tempName = req.body.editInput;
   const tempLocal = req.body.editInput2;
   const data = req.body;
-  console.log(req.body);
-  console.log(tempName);
-  console.log(tempLocal);
   const tempUser = jwt.verify(data.cookie.split("=")[1], process.env.JWT_KEY);
-  console.log(tempUser);
-
   await User.update(
     {
       name: tempName,
@@ -139,9 +124,6 @@ router.put("/update", async (req, res) => {
     }
   );
   const tempNewUser = await User.findOne({ where: (id = tempUser.id) });
-  console.log("hi");
-  console.log(tempNewUser);
-  console.log("hi");
   res.cookie(
     "carrot",
     jwt.sign(
@@ -152,15 +134,10 @@ router.put("/update", async (req, res) => {
       process.env.JWT_KEY,
       {
         algorithm: "HS256",
-        // expiresIn:"30m",ss
         issuer: "jjh",
       }
     )
   );
-  console.log("hi");
-  console.log(tempNewUser.id);
-  console.log("hi");
-
   res.send({
     name: tempNewUser.name,
   });

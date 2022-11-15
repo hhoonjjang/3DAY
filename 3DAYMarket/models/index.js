@@ -9,7 +9,6 @@ const env = process.env.NODE_ENV || "development";
 const config = require(__dirname + "/../config/config.json")[env];
 const db = { User, Item, Chat };
 
-
 let sequelize = new Sequelize(
   config.database,
   config.username,
