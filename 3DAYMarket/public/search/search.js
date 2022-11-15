@@ -1,6 +1,5 @@
 const signInBtn = document.getElementById("sign-in");
 const signOutBtn = document.getElementById("sign-out");
-// const signUpBtn =document.getElementById("sign-up");
 const chattingBtn = document.getElementById("chatting");
 const itemUpload = document.getElementById("item-upload");
 const userInfo = document.getElementById("user-info");
@@ -17,16 +16,14 @@ let mode;
 signOutBtn.onclick = async function () {
   try {
     const result = await axios.post("/api/user/logout");
-
     loginDisplay.removeChild(loginDisplay.firstChild);
     signOutBtn.classList.remove("on");
     chattingBtn.classList.remove("on");
     itemUpload.classList.remove("on");
     userInfo.classList.remove("on");
     loginDisplay.style.display = "none";
-
     signInBtn.classList.remove("off");
-    // signUpBtn.classList.remove("off");
+    location.href = "http://localhost:8080";
   } catch (err) {
     console.error(err);
   }
@@ -35,7 +32,6 @@ let cookieReverse;
 
 let getCookie = function (name) {
   let value = document.cookie.match("(^|;) ?" + name + "=([^;]*)(;|$)");
-  // console.log(value);
   return value ? value[2] : null;
 };
 let setCookie = function (name, value, exp) {
@@ -43,8 +39,6 @@ let setCookie = function (name, value, exp) {
   date.setTime(date.getTime() + exp * 1000 * 60 * 60 * 9 + 1000 * 60);
   document.cookie =
     name + "=" + value + ";expires=" + date.toUTCString() + ";path=/";
-  console.log(document.cookie);
-  // console.log(cookie);
 };
 let cookieArray = document.cookie.split("; ");
 let CC = getCookie("carrot");
@@ -59,8 +53,6 @@ let deleteCookie = function (name) {
 };
 
 const login = async function () {
-  console.log("asd");
-  console.log(cookieArray[cookieCIndex]);
   if (cookieArray[cookieCIndex]) {
     try {
       const result = await axios.post("/api/user/cookie", {
@@ -70,16 +62,13 @@ const login = async function () {
       chattingBtn.classList.add("on");
       itemUpload.classList.add("on");
       userInfo.classList.add("on");
-      console.log(result.data.name);
       const login = document.createElement("div");
       login.innerText = `${result.data.name}님 어서오세요!`;
       loginDisplay.style.display = "block";
       document.getElementById("loginDisplay").append(login);
       signInBtn.classList.add("off");
-      signUpBtn.classList.add("off");
-      console.log("123");
     } catch (error) {
-      // console.error(error)
+      console.error(error);
     }
   }
 };
@@ -87,35 +76,15 @@ login();
 
 const searchDetail = new URL(location.href).searchParams;
 const detailName = searchDetail.get("result");
-console.log(detailName);
 
 let filterItemList = [];
 
-// console.log(searchItem);
 window.onload = async function (event) {
-  // event.preventDefault();
-  // if (searchItem.search.value == "") {
-  //   return;
-  // }
-
   if (filterItemList) {
     for (let i = 0; i < filterItemList.length; i++) {
       filterItemList.pop();
     }
   }
-  // console.log(window.event.keyCode);
-  // if (window.event.keyCode == 8) {
-  //
-  //   return console.log(filterItemList);
-  // }
-  // const itemList = (
-  //   await axios.post("/api/item/searchItem", {
-  //     // value: searchItem.value,
-  //   })
-  // ).data.tempItem;
-  // console.log(itemList);
-  // console.log(searchItem.value);
-  // console.log(item[1].itemTitle);
   if (!cookieR) {
     mode = 0;
   } else {
@@ -129,18 +98,11 @@ window.onload = async function (event) {
 
   const searchItemValue = detailName.toLowerCase();
 
-  // console.log(searchItem.search.value);
   for (let i = 0; i < itemList.length; i++) {
     if (searchItemValue.search) {
       let item = itemList[i].itemTitle;
-      // console.log(item.length);
       for (let j = 0; j < item.length; j++) {
         if (item.toLowerCase().indexOf(searchItemValue) != -1) {
-          // if (filterItemList[j] == filterItemList[j + 1]) {
-          //   filterItemList.pop();
-          // }
-          // filterItemList.push(itemList[i]);
-
           if (filterItemList[j] == itemList[i]) {
             continue;
           } else {
@@ -152,9 +114,6 @@ window.onload = async function (event) {
     }
   }
   if (filterItemList.length != 0) {
-    console.log(filterItemList);
-    console.log(filterItemList[0].itemPrice);
-
     for (let k = 0; k < filterItemList.length; k++) {
       createItem(
         filterItemList[k].itemTitle,
@@ -167,28 +126,7 @@ window.onload = async function (event) {
       );
     }
   }
-
-  // location.href = `${searchAddress}${searchItem.search.value}`;
-  // window.history.back();
-
-  // if (window.event.keyCode == 13){
-
-  // }
 };
-
-// console.log();
-// const testCheck = async function () {
-//   const check = await axios.post("/filterItem", {});
-//   console.log(check);
-// };
-// testCheck();
-
-// async function getSearchResult(){
-//   const itemIndex = window.location.href
-//   try{
-//     const resultItem = (await axios.get("/api/item/search?result="+))
-//   }
-// }
 
 const createItem = function (title, local, price, num, id, imgArr, dealing) {
   const articleItem = document.createElement("article");
@@ -215,7 +153,6 @@ const createItem = function (title, local, price, num, id, imgArr, dealing) {
   divItemTop.classList.add("item-top");
   divItemImg.classList.add("item-img");
   imgItem.src = `../uploadedItems/${imgArr.split("-*,")[0]}`;
-  // imgItem.src = `../uploadedItems/${imgArr}`;
 
   divItemMiddle.classList.add("item-middle");
   divItemTitle.classList.add("item-title");

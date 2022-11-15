@@ -41,7 +41,6 @@ body {
   width: 22px;
   height: 22px;
   cursor: pointer;
-  /* z-index: 3; */
 }
 .form-container__arrow {
   position: absolute;
@@ -386,7 +385,6 @@ body {
   }
 }
 
-
 #feedback {
   position: absolute;
   bottom: 13%;
@@ -409,4 +407,3 @@ a {
   text-decoration-line: none;
   text-decoration: none;
 }
-

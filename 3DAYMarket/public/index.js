@@ -1,6 +1,5 @@
 const signInBtn = document.getElementById("sign-in");
 const signOutBtn = document.getElementById("sign-out");
-// const signUpBtn =document.getElementById("sign-up");
 const chattingBtn = document.getElementById("chatting");
 const itemUpload = document.getElementById("item-upload");
 const userInfo = document.getElementById("user-info");
@@ -11,7 +10,6 @@ const loginDisplay = document.getElementById("loginDisplay");
 const invertStart = document.getElementById("invert-start");
 const divItemBoard = document.getElementById("item-board-display");
 let cookieR;
-
 let date = new Date();
 const address = "http://localhost:8080/items?name=";
 const searchAddress = "http://localhost:8080/search/?result=";
@@ -29,17 +27,12 @@ let setCookie = function (name, value, exp) {
   date.setTime(date.getTime() + exp * 1000 * 60 * 60 * 9 + 1000 * 60);
   document.cookie =
     name + "=" + value + ";expires=" + date.toUTCString() + ";path=/";
-  console.log(document.cookie);
-  // console.log(cookie);
 };
 
 let cookieReverse;
 
-console.log(document.cookie);
-
 let getCookie = function (name) {
   let value = document.cookie.match("(^|;) ?" + name + "=([^;]*)(;|$)");
-  console.log(value);
   return value ? value[2] : null;
 };
 
@@ -49,17 +42,12 @@ let CR = getCookie("reverse");
 let CC = getCookie("carrot");
 cookieR = document.cookie.split("; ").includes("reverse=123");
 let cookieC = document.cookie.split("; ").includes(`carrot=${CC}`);
-console.log(cookieC);
 let cookieCIndex = cookieArray.findIndex((e) => e == `carrot=${CC}`);
-console.log(cookieArray[cookieCIndex]);
-console.log(cookieR);
-
 let deleteCookie = function (name) {
   document.cookie = name + "=; expires=Thu, 01 Jan 1999 00:00:10 GMT;";
 };
 
 const login = async function () {
-  console.log(cookieArray[cookieCIndex]);
   if (cookieArray[cookieCIndex]) {
     try {
       const result = await axios.post("/api/user/cookie", {
@@ -69,13 +57,11 @@ const login = async function () {
       chattingBtn.classList.add("on");
       itemUpload.classList.add("on");
       userInfo.classList.add("on");
-      console.log(result.data.name);
       const login = document.createElement("div");
       login.innerText = `${result.data.name}님 어서오세요!`;
       loginDisplay.style.display = "block";
       document.getElementById("loginDisplay").append(login);
       signInBtn.classList.add("off");
-      signUpBtn.classList.add("off");
     } catch (error) {
       console.error(error);
     }
@@ -86,22 +72,18 @@ login();
 signOutBtn.onclick = async function () {
   try {
     const result = await axios.post("/api/user/logout");
-
     loginDisplay.removeChild(loginDisplay.firstChild);
     signOutBtn.classList.remove("on");
     chattingBtn.classList.remove("on");
     itemUpload.classList.remove("on");
     userInfo.classList.remove("on");
     loginDisplay.style.display = "none";
-
     signInBtn.classList.remove("off");
-    // signUpBtn.classList.remove("off");
   } catch (err) {
     console.error(err);
   }
 };
 
-// 리버스시작//
 let count = 0;
 invertStart.ondblclick = function () {
   count++;
@@ -109,9 +91,7 @@ invertStart.ondblclick = function () {
 };
 
 reverseBtn.ondblclick = function () {
-  console.log("둥");
   if (cookieR) {
-    console.log("쿠키가있을떄");
     deleteCookie("reverse");
     document.body.classList.remove("start");
     for (let i = 0; i < reverseImg.length; i++) {
@@ -136,7 +116,6 @@ reverseBtn.ondblclick = function () {
       window.location.reload();
     } else {
       deleteCookie("reverse");
-      console.log("카운트가4가아닐때");
       document.body.classList.remove("start");
       for (let i = 0; i < reverseImg.length; i++) {
         reverseImg[i].classList.remove("start");
@@ -170,8 +149,6 @@ const reverse = function () {
 
 reverse();
 
-// 리버스끝//
-
 async function getItem() {
   try {
     if (!cookieR) {
@@ -180,8 +157,6 @@ async function getItem() {
       mode = 1;
     }
     const item = (await axios.get("/api/item/?mode=" + mode)).data;
-    console.log(item);
-    console.log(item[0]);
     item.forEach((item) => {
       const articleItem = document.createElement("article");
       const aItem = document.createElement("a");
@@ -192,9 +167,7 @@ async function getItem() {
       const divItemTitle = document.createElement("div");
       const divItemPrice = document.createElement("div");
       const divItemLocal = document.createElement("div");
-
       const divItemTrade = document.createElement("div");
-
       const divItemBottom = document.createElement("div");
       const divItemFocus = document.createElement("div");
       const divItemBorderdot = document.createElement("div");
@@ -211,11 +184,9 @@ async function getItem() {
       divItemPrice.classList.add("item-price");
       divItemPrice.innerText = item.itemPrice;
       divItemLocal.classList.add("item-local");
-
       divItemLocal.innerText = item.itemLocal;
       divItemTrade.classList.add("item-trade");
       divItemTrade.innerText = item.itemDealing;
-
       divItemBottom.classList.add("item-bottom");
       divItemFocus.classList.add("item-focus");
       divItemFocus.innerText = `관심 ${10}`;
@@ -223,7 +194,6 @@ async function getItem() {
       divItemBorderdot.innerText = "！";
       divItemCountingView.classList.add("item-countingview");
       divItemCountingView.innerText = `채팅 ${78}`;
-
       divItemBoard.appendChild(articleItem);
       articleItem.appendChild(aItem);
       aItem.appendChild(divItemTop);
@@ -234,9 +204,7 @@ async function getItem() {
       divItemMiddle.appendChild(divItemTitle);
       divItemMiddle.appendChild(divItemPrice);
       divItemMiddle.appendChild(divItemLocal);
-
       divItemMiddle.appendChild(divItemTrade);
-
       divItemBottom.appendChild(divItemFocus);
       divItemBottom.appendChild(divItemBorderdot);
       divItemBottom.appendChild(divItemCountingView);
@@ -245,9 +213,7 @@ async function getItem() {
     console.error(err);
   }
 }
-
 getItem();
-
 async function itemCategoryKind() {
   selectKindValue = selectKind.options[selectKind.selectedIndex].value;
   let item;
@@ -367,7 +333,6 @@ async function itemCategoryLocal() {
         },
       })
     ).data.tempItem;
-    console.log("로컬만");
   }
   if (!selectKindValue && selectTradeValue) {
     item = (
@@ -377,12 +342,8 @@ async function itemCategoryLocal() {
         mode: mode,
       })
     ).data;
-
-    console.log("로컬과 트레이드");
   }
   if (!selectTradeValue && selectKindValue) {
-    console.log("로컬카인드");
-    console.log(selectLocalValue);
     item = (
       await axios.post("/api/item/selectkindlocal", {
         kind: selectKindValue,
@@ -390,7 +351,6 @@ async function itemCategoryLocal() {
         local: selectLocalValue,
       })
     ).data;
-    console.log("로컬과 카인드");
   }
   if (selectKindValue && selectTradeValue) {
     item = (
@@ -401,10 +361,8 @@ async function itemCategoryLocal() {
         mode: mode,
       })
     ).data;
-    console.log("셀렉트오올");
   }
 
-  console.log(item);
   item?.forEach((item) => {
     const articleItem = document.createElement("article");
     const aItem = document.createElement("a");
@@ -468,7 +426,6 @@ async function itemCategoryTrade() {
   } else {
     mode = 1;
   }
-  console.log(mode);
   if (!selectKindValue && !selectLocalValue) {
     item = (
       await axios.get("api/item/selecttrade", {
@@ -508,7 +465,6 @@ async function itemCategoryTrade() {
     ).data;
   }
 
-  console.log(item);
   item.forEach((item) => {
     const articleItem = document.createElement("article");
     const aItem = document.createElement("a");
@@ -562,22 +518,6 @@ async function itemCategoryTrade() {
     divItemBottom.appendChild(divItemCountingView);
   });
 }
-// searchItem = document.getElementById("search");
-// searchItem.onkeydown = async function (event) {
-//   if (window.event.keyCode == 13) {
-//     console.log(searchItem.value);
-//     const item = (
-//       await axios.post("/api/item/searchItem", {
-//         itemTitle: searchItem.value,
-//       })
-//     ).data.tempItem;
-//     console.log(item);
-//     location.href = "http://localhost:8080/search";
-//   }
-// };
-
-// const address = "http://localhost:8080/items?name=";
-// const searchAddress = "http://localhost:8080/search/?result=";
 let filterItemList = [];
 const searchItem = document.forms["search-form"];
 searchItem.onsubmit = async function (event) {
@@ -588,7 +528,6 @@ searchItem.onsubmit = async function (event) {
       filterItemList.pop();
     }
   }
-  console.log(filterItemList);
   const filterItemListSend = await axios.post("/api/item/filterItem", {
     list: filterItemList,
   });

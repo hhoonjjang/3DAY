@@ -13,7 +13,6 @@ a {
 #main-box {
   max-width: 1200px;
   margin: auto;
-  /* background-color: lightgray; */
   margin-top: 125px;
   background-color: rgb(254, 240, 214);
   border-radius: 15px;
@@ -23,7 +22,6 @@ a {
 body {
   margin: 0;
   background-color: rgb(238, 254, 255);
-  /* background-color: rgb(254, 240, 214); */
 }
 
 body.on {
@@ -90,7 +88,6 @@ body.on {
 }
 
 #userlist {
-  /* background: gray; */
   padding: 20px 10px;
 }
 
@@ -139,18 +136,15 @@ body.on {
 }
 
 #chat-list {
-  /* background-color: white; */
   min-width: 350px;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
   border-right: 5px solid white;
   border-left: 5px solid white;
 }
 
 .vs-name {
   font-weight: bold;
-  /* margin-right: 15px; */
 }
 .fbox-between {
   display: flex;
@@ -178,14 +172,10 @@ body.on {
 }
 .vs-info {
   width: 158px;
-  /* text-align: center; */
 }
 
 .one-chat {
   display: flex;
-  /* justify-content: center; */
-  /* margin-left: 10px; */
-  /* justify-content: space-between; */
   padding: 10px 25px 10px 25px;
   align-items: center;
   transition-duration: 1s;
@@ -210,7 +200,6 @@ body.on {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  /* background-color: white; */
 }
 #none-chat {
   display: flex;
@@ -223,7 +212,6 @@ body.on {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  /* background-color: white; */
 }
 
 #chattingblack > img {
@@ -244,12 +232,10 @@ body.start .box-shadow-yellow {
 }
 .box-shadow-yellow {
   filter: drop-shadow(5px 5px 10px #f98f68);
-  /* background-color: rgb(254, 240, 214); */
 }
 
 .box-shadow-yellow.start {
   filter: drop-shadow(5px 5px 10px #36a7fe);
-  /* background-color: initial; */
 }
 
 .box-shadow-yellow.bs.start {
@@ -270,8 +256,6 @@ body.start .box-shadow-yellow {
   margin: 0 auto;
   height: 100px;
   background-color: rgb(245, 242, 250);
-  /* background-color: rgb(231, 231, 248); */
-
   opacity: 0.97;
   z-index: 999;
   top: 0;
@@ -290,7 +274,6 @@ body.start .box-shadow-yellow {
   margin-left: 100;
   display: flex;
   align-items: center;
-  /* cursor: pointer; */
 }
 
 body.start .home-box {
@@ -307,10 +290,7 @@ body.start .home-box div {
 }
 
 .category-box {
-  /* width: 45%; */
-  /* margin-left: 20; */
   margin: 0 20px;
-  /* flex:3 */
 }
 .home-box div img:first-child {
   height: 130%;
@@ -318,12 +298,10 @@ body.start .home-box div {
 
 .home-box div img:last-child {
   height: 90%;
-  /* display: none; */
 }
 
 .category-box a {
   cursor: pointer;
-  /* margin-left: 100; */
   width: 100px;
 }
 
@@ -440,7 +418,6 @@ body.start .user-box a {
   width: 250px;
   border: none;
   border-radius: 10px;
-  /* margin-left: 300px; */
   font-family: "maple-light";
   outline: none;
 }
@@ -477,8 +454,6 @@ form {
   margin-right: 30px;
 }
 
-/* 메뉴바 끝 */
-
 body.start div {
   font-family: "JSArirang-Regular";
   font-size: 110%;
@@ -489,7 +464,6 @@ body.start {
 }
 body.start .satan {
   font-family: "satan";
-  /* font-size: 200%; */
 }
 body.start .satan#paytitle {
   font-size: 200%;

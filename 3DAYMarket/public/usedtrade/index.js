@@ -8,23 +8,19 @@ const reverseImg = [...document.getElementsByClassName("reverse")];
 const reverseBgc = [...document.getElementsByClassName("bgc")];
 const loginDisplay = document.getElementById("loginDisplay");
 const divItemBoard = document.getElementById("item-board-display");
-
 const tempUl = document.getElementById("info-div-slide");
 let date = new Date();
 const address = "http://localhost:8080/items?name=";
 let cookieR;
-
 signOutBtn.onclick = async function () {
   try {
     const result = await axios.post("/api/user/logout");
-
     loginDisplay.removeChild(loginDisplay.firstChild);
     signOutBtn.classList.remove("on");
     chattingBtn.classList.remove("on");
     itemUpload.classList.remove("on");
     userInfo.classList.remove("on");
     loginDisplay.style.display = "none";
-
     signInBtn.classList.remove("off");
     location.href = "http://localhost:8080/";
   } catch (err) {
@@ -32,10 +28,8 @@ signOutBtn.onclick = async function () {
   }
 };
 let cookieReverse;
-
 let getCookie = function (name) {
   let value = document.cookie.match("(^|;) ?" + name + "=([^;]*)(;|$)");
-  // console.log(value);
   return value ? value[2] : null;
 };
 let setCookie = function (name, value, exp) {
@@ -43,24 +37,18 @@ let setCookie = function (name, value, exp) {
   date.setTime(date.getTime() + exp * 1000 * 60 * 60 * 9 + 1000 * 60);
   document.cookie =
     name + "=" + value + ";expires=" + date.toUTCString() + ";path=/";
-  console.log(document.cookie);
-  // console.log(cookie);
 };
 let cookieArray = document.cookie.split("; ");
 let CC = getCookie("carrot");
 let CR = getCookie("reverse");
 cookieR = document.cookie.split("; ").includes("reverse=123");
 let cookieC = document.cookie.split("; ").includes(`carrot=${CC}`);
-
 let cookieCIndex = cookieArray.findIndex((e) => e == `carrot=${CC}`);
-
 let deleteCookie = function (name) {
   document.cookie = name + "=; expires=Thu, 01 Jan 1999 00:00:10 GMT;";
 };
 
 const login = async function () {
-  console.log("asd");
-  console.log(cookieArray[cookieCIndex]);
   if (cookieArray[cookieCIndex]) {
     try {
       const result = await axios.post("/api/user/cookie", {
@@ -70,13 +58,11 @@ const login = async function () {
       chattingBtn.classList.add("on");
       itemUpload.classList.add("on");
       userInfo.classList.add("on");
-      console.log(result.data.name);
       const login = document.createElement("div");
       login.innerText = `${result.data.name}님 어서오세요!`;
       loginDisplay.style.display = "block";
       document.getElementById("loginDisplay").append(login);
       signInBtn.classList.add("off");
-      console.log("123");
     } catch (error) {
       console.error(error);
     }
@@ -112,10 +98,7 @@ async function getItem() {
     } else if (cookieR) {
       mode = 1;
     }
-    console.log(mode);
     const item = (await axios.post("/api/item/used", { mode: mode })).data;
-    console.log(item);
-    console.log(item[0]);
     item.forEach((item) => {
       const articleItem = document.createElement("article");
       const aItem = document.createElement("a");
@@ -126,9 +109,7 @@ async function getItem() {
       const divItemTitle = document.createElement("div");
       const divItemPrice = document.createElement("div");
       const divItemLocal = document.createElement("div");
-
       const divItemTrade = document.createElement("div");
-
       const divItemBottom = document.createElement("div");
       const divItemFocus = document.createElement("div");
       const divItemBorderdot = document.createElement("div");
@@ -145,11 +126,9 @@ async function getItem() {
       divItemPrice.classList.add("item-price");
       divItemPrice.innerText = item.itemPrice;
       divItemLocal.classList.add("item-local");
-
       divItemLocal.innerText = item.itemLocal;
       divItemTrade.classList.add("item-trade");
       divItemTrade.innerText = item.itemDealing;
-
       divItemBottom.classList.add("item-bottom");
       divItemFocus.classList.add("item-focus");
       divItemFocus.innerText = `관심 ${10}`;
@@ -157,7 +136,6 @@ async function getItem() {
       divItemBorderdot.innerText = "！";
       divItemCountingView.classList.add("item-countingview");
       divItemCountingView.innerText = `채팅 ${78}`;
-
       divItemBoard.appendChild(articleItem);
       articleItem.appendChild(aItem);
       aItem.appendChild(divItemTop);
@@ -168,9 +146,7 @@ async function getItem() {
       divItemMiddle.appendChild(divItemTitle);
       divItemMiddle.appendChild(divItemPrice);
       divItemMiddle.appendChild(divItemLocal);
-
       divItemMiddle.appendChild(divItemTrade);
-
       divItemBottom.appendChild(divItemFocus);
       divItemBottom.appendChild(divItemBorderdot);
       divItemBottom.appendChild(divItemCountingView);
@@ -186,13 +162,11 @@ let filterItemList = [];
 const searchItem = document.forms["search-form"];
 searchItem.onsubmit = async function (event) {
   event.preventDefault();
-
   if (filterItemList) {
     for (let i = 0; i < filterItemList.length; i++) {
       filterItemList.pop();
     }
   }
-  console.log(filterItemList);
   const filterItemListSend = await axios.post("/api/item/filterItem", {
     list: filterItemList,
   });

@@ -43,9 +43,7 @@
           </form>
         </div>
         <div id="loginDisplay"></div>
-        <!-- <button id ="sign-in">로그인</button> -->
         <a id="sign-in" href="./login">로그인</a>
-        <!-- <button id ="sign-up">회원가입</button> -->
         <button id="sign-out">로그아웃</button>
         <a id="chatting" href="./chatting">채팅하기</a>
         <a id="item-upload" href="./upload">물품등록</a>
@@ -125,12 +123,11 @@
         </div>
       </div>
     </div>
-
-    <!-- <input type="text" id="user-name" placeholder="이름">  -->
-    <!-- <input type="text" id="user-name" placeholder="지역">  -->
-
     <div class="item-board bgc" id="item-board">
-      <div id="item-board-title">중고거래 인기매물</div>
+      <div id="item-board-title" class="satan">
+        3DAYMarket's <span>매물</span>
+      </div>
+
       <div class="item-category-box">
         <div class="item-category-kind">
           <select id="select-kind" onchange="itemCategoryKind()">
@@ -179,161 +176,7 @@
           </select>
         </div>
       </div>
-      <div class="item-board-display" id="item-board-display">
-        <article class="item">
-          <a class="item-link" href="./items/1">
-            <div class="item-top">
-              <div class="item-img">
-                <img src="../uploadedItems/item-img1.jpeg" alt="" />
-              </div>
-            </div>
-            <div class="item-middle">
-              <div class="item-title">아이폰12미니 128기가 s급 급</div>
-              <div class="item-price">120,000원</div>
-              <div class="item-local">경기도 평택시 세교동</div>
-            </div>
-            <div class="item-bottom">
-              <div class="item-focus">관심 32</div>
-              <div class="border-dot">&middot</div>
-              <div class="item-countingview">채팅 78</div>
-            </div>
-          </a>
-        </article>
-        <article class="item">
-          <a class="item-link" href="./items/1">
-            <div class="item-top">
-              <div class="item-img">
-                <img src="./imgs/item-img1.jpeg" alt="" />
-              </div>
-            </div>
-            <div class="item-middle">
-              <div class="item-title">아이폰12미니 128기가 s급 급</div>
-              <div class="item-price">120,000원</div>
-              <div class="item-local">경기도 평택시 세교동</div>
-              <div class="item-trade">직거래</div>
-            </div>
-            <div class="item-bottom">
-              <div class="item-focus">관심 32</div>
-              <div class="border-dot">&middot</div>
-              <div class="item-countingview">채팅 78</div>
-            </div>
-          </a>
-        </article>
-        <article class="item">
-          <a class="item-link" href="./items/1">
-            <div class="item-top">
-              <div class="item-img">
-                <img src="./imgs/item-img1.jpeg" alt="" />
-              </div>
-            </div>
-            <div class="item-middle">
-              <div class="item-title">아이폰12미니 128기가 s급 급</div>
-              <div class="item-price">120,000원</div>
-              <div class="item-local">경기도 평택시 세교동</div>
-            </div>
-            <div class="item-bottom">
-              <div class="item-focus">관심 32</div>
-              <div class="border-dot">&middot</div>
-              <div class="item-countingview">채팅 78</div>
-            </div>
-          </a>
-        </article>
-        <article class="item">
-          <a class="item-link" href="./items/1">
-            <div class="item-top">
-              <div class="item-img">
-                <img src="./imgs/item-img1.jpeg" alt="" />
-              </div>
-            </div>
-            <div class="item-middle">
-              <div class="item-title">아이폰12미니 128기가 s급 급</div>
-              <div class="item-price">120,000원</div>
-              <div class="item-local">경기도 평택시 세교동</div>
-            </div>
-            <div class="item-bottom">
-              <div class="item-focus">관심 32</div>
-              <div class="border-dot">&middot</div>
-              <div class="item-countingview">채팅 78</div>
-            </div>
-          </a>
-        </article>
-        <article class="item">
-          <a class="item-link" href="./items/1">
-            <div class="item-top">
-              <div class="item-img">
-                <img src="./imgs/item-img1.jpeg" alt="" />
-              </div>
-            </div>
-            <div class="item-middle">
-              <div class="item-title">아이폰12미니 128기가 s급 급</div>
-              <div class="item-price">120,000원</div>
-              <div class="item-local">경기도 평택시 세교동</div>
-            </div>
-            <div class="item-bottom">
-              <div class="item-focus">관심 32</div>
-              <div class="border-dot">&middot</div>
-              <div class="item-countingview">채팅 78</div>
-            </div>
-          </a>
-        </article>
-        <article class="item">
-          <a class="item-link" href="./items/1">
-            <div class="item-top">
-              <div class="item-img">
-                <img src="./imgs/item-img1.jpeg" alt="" />
-              </div>
-            </div>
-            <div class="item-middle">
-              <div class="item-title">아이폰12미니 128기가 s급 급</div>
-              <div class="item-price">120,000원</div>
-              <div class="item-local">경기도 평택시 세교동</div>
-            </div>
-            <div class="item-bottom">
-              <div class="item-focus">관심 32</div>
-              <div class="border-dot">&middot</div>
-              <div class="item-countingview">채팅 78</div>
-            </div>
-          </a>
-        </article>
-        <article class="item">
-          <a class="item-link" href="./items/1">
-            <div class="item-top">
-              <div class="item-img">
-                <img src="./imgs/item-img1.jpeg" alt="" />
-              </div>
-            </div>
-            <div class="item-middle">
-              <div class="item-title">아이폰12미니 128기가 s급 급</div>
-              <div class="item-price">120,000원</div>
-              <div class="item-local">경기도 평택시 세교동</div>
-            </div>
-            <div class="item-bottom">
-              <div class="item-focus">관심 32</div>
-              <div class="border-dot" id="middot">&middot</div>
-              <div class="item-countingview">채팅 78</div>
-            </div>
-          </a>
-        </article>
-        <article class="item">
-          <a class="item-link" href="./items/1">
-            <div class="item-top">
-              <div class="item-img">
-                <img src="./imgs/item-img1.jpeg" alt="" />
-              </div>
-            </div>
-            <div class="item-middle">
-              <div class="item-title">아이폰12미니 128기가 s급 급</div>
-              <div class="item-price">120,000원</div>
-              <div class="item-local">경기도 평택시 세교동</div>
-            </div>
-            <div class="item-bottom">
-              <div class="item-focus">관심 32</div>
-              <div class="border-dot">&middot</div>
-              <div class="item-countingview">채팅 78</div>
-            </div>
-          </a>
-        </article>
-      </div>
+      <div class="item-board-display" id="item-board-display"></div>
     </div>
     <div class="bgc">
       <div class="footer-container">

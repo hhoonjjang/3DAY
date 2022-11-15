@@ -222,7 +222,6 @@ textarea:focus,
   border: 1px solid rgb(220, 219, 228);
   padding: 20px;
   width: 100%;
-  /* background-color: white; */
   background-color: rgb(255, 240, 229);
   text-align: right;
 }
@@ -346,12 +345,6 @@ textarea:focus,
   color: rgb(155, 153, 169);
 }
 
-/*  */
-/*  */
-/*  */
-/*  */
-/*  */
-
 body.start div {
   font-family: "JSArirang-Regular";
 }
@@ -361,7 +354,6 @@ body.start .satan {
 
 .top-container {
   width: 100%;
-  /* position: fixed; */
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -536,7 +528,6 @@ body.start .user-box a {
   width: 250px;
   border: none;
   border-radius: 10px;
-  /* margin-left: 300px; */
   font-family: "maple-light";
   outline: none;
 }

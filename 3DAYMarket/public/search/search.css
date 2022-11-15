@@ -3,13 +3,9 @@
   font-family: "maple-bold";
 }
 img {
-  /* margin: auto; */
   display: block;
 }
 
-div {
-  /* border: 1px solid black; */
-}
 body {
   background-color: rgb(238, 254, 255);
 }
@@ -80,13 +76,6 @@ h4 {
   border-radius: 15px;
 }
 
-/* .item-top .item-img {
-  height: 160px;
-
-  border-radius: 15px;
-  overflow: hidden;
-} */
-
 .item-top {
   width: 300px;
   height: 300px;
@@ -94,16 +83,13 @@ h4 {
 
 .item-top .item-img img {
   width: 80%;
-
   height: 100%;
-  /* overflow: hidden; */
 }
 .item {
   width: 230px;
   margin-bottom: 35px;
 }
 .item > a > div {
-  /* margin-top: 5px; */
   overflow: hidden;
 }
 
@@ -114,7 +100,6 @@ h4 {
 
 .item-bottom {
   display: flex;
-  /* justify-content: space-between; */
 }
 
 .fbox {
@@ -164,8 +149,6 @@ hr {
   margin: 0 auto;
   height: 100px;
   background-color: rgb(245, 242, 250);
-  /* background-color: rgb(231, 231, 248); */
-
   opacity: 0.97;
   z-index: 999;
   top: 0;
@@ -184,7 +167,6 @@ hr {
   margin-left: 100;
   display: flex;
   align-items: center;
-  /* cursor: pointer; */
 }
 
 body.start .home-box {
@@ -201,10 +183,7 @@ body.start .home-box div {
 }
 
 .category-box {
-  /* width: 45%; */
-  /* margin-left: 20; */
   margin: 0 20px;
-  /* flex:3 */
 }
 .home-box div img:first-child {
   height: 130%;
@@ -212,12 +191,10 @@ body.start .home-box div {
 
 .home-box div img:last-child {
   height: 90%;
-  /* display: none; */
 }
 
 .category-box a {
   cursor: pointer;
-  /* margin-left: 100; */
   width: 100px;
 }
 
@@ -334,7 +311,6 @@ body.start .user-box a {
   width: 250px;
   border: none;
   border-radius: 10px;
-  /* margin-left: 300px; */
   font-family: "maple-light";
   outline: none;
 }
@@ -409,10 +385,8 @@ section a {
   margin: 0 10px;
 }
 
-/* 메뉴바 끝 */
 body.start .satan {
   font-family: "satan";
-  /* font-size: 200%; */
 }
 
 body.start div {

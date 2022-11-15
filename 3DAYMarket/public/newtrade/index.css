@@ -13,15 +13,7 @@
 html {
   font-family: "maple-bold";
 }
-/*  */
-/*  */
-/*  */
-/*  */
-/*  */
-/*  */
-/*  */
-/*  */
-/*  */
+
 * {
   margin: 0;
   padding: 0;
@@ -40,7 +32,6 @@ body.start .satan {
 
 .top-container {
   width: 100%;
-  /* position: fixed; */
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -477,7 +468,6 @@ body.start section {
   width: 250px;
   border: none;
   border-radius: 10px;
-  /* margin-left: 300px; */
   font-family: "maple-light";
   outline: none;
 }

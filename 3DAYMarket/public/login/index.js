@@ -8,7 +8,6 @@ const userCheckpassword = document.getElementById("signup-checkpassword");
 const userLocal = document.getElementById("signup-local");
 const signUp = document.getElementById("sign-up");
 const signIn = document.getElementById("sign-in");
-
 const feedback = document.getElementById("feedback");
 const feedbackMsg = document.getElementById("feedback-msg");
 const idX = document.getElementById("id-x");
@@ -21,7 +20,6 @@ const pwcX = document.getElementById("pwc-x");
 const pwcV = document.getElementById("pwc-v");
 const localX = document.getElementById("local-x");
 const localV = document.getElementById("local-v");
-
 let userLocalData;
 userLocal.onchange = () => {
   if (userLocal.value == "local-none") userLocalData = undefined;
@@ -49,7 +47,6 @@ userLocal.onchange = () => {
     localX.classList.add("display-none");
     localV.classList.remove("display-none");
   }
-  console.log(userLocalData);
 };
 
 userId.onfocus = () => {
@@ -115,14 +112,8 @@ userCheckpassword.oninput = () => {
   }
 };
 
-//  이름 : 2~5 길이의 한글
 const checkusername = /^[가-힣]{2,5}$/;
-//  아이디 : 영문자로 시작하고, 5~10 길이의 영문자와 숫자의 조합 (숫자 필수)
 const checkuserId = /^(?=.*[0-9]+)[a-zA-Z][a-zA-Z0-9]{4,9}$/;
-// const checkUserID = checkuserId.test(userId.value);
-// 비밀번호 : 소문자, 숫자, 특수문자 조합의 8~20자
-// const checkpassword = /(?=.*[0-9])(?=.*[a-z])(?=.*\W)(?=\S+$).{8,20}/;
-// 비밀번호 : 소문자, 숫자, 특수문자 조합의 8자 이상
 const checkpassword =
   /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
 
@@ -133,7 +124,6 @@ function registecheck() {
     userId.focus();
     isCorrect = false;
   } else if (!checkuserId.test(userId.value)) {
-    // alert("영문자로 시작하고, 5~10 길이의 영문자와 숫자의 조합");
     alert("아이디가 올바르게 입력되지 않았습니다.");
     isCorrect = false;
   } else if (!userName.value) {
@@ -151,10 +141,7 @@ function registecheck() {
     alert("비밀번호확인이 입력되지 않았습니다.");
     userCheckpassword.focus();
     isCorrect = false;
-  } else if (
-    // !check(userPassword, checkpassword, "소문자, 숫자, 특수문자 조합의 8~20자")
-    !checkpassword.test(userPassword.value)
-  ) {
+  } else if (!checkpassword.test(userPassword.value)) {
     alert("비밀번호가 올바르게 입력되지 않았습니다.");
     userPassword.focus();
     isCorrect = false;
@@ -174,9 +161,6 @@ function registecheck() {
 
 function start() {
   let goPage = "http://localhost:8080";
-  // console.log(location.href);
-  // console.log(state);
-
   const elm = {
     arrow: document.querySelector(".form-container__arrow"),
     overlay: document.querySelector(".overlay"),
@@ -229,17 +213,7 @@ function start() {
       props.opacity0,
       `${props.opacity1} ${props.trnsDelay} ${props.zIndex}`,
     ];
-    // const userId = document.getElementById["login-username"].value;
-    // const userPassword = document.getElementById["login-password"].value;
-    // try {
-    //   await axios.get("/api/regist/", {
-    //     name: userId,
-    //   });
-    // } catch (error) {
-    //   console.error(error.response.data.message);
-    // }
 
-    // console.log(userId, "asdasdasd");
     transition(elms, properties);
   };
 
@@ -271,16 +245,12 @@ function start() {
 
     transition(elms, properties);
   };
-  // console.log(elm.registerForm.getElementsByTagName("form")[0]);
   elm.registerForm.getElementsByTagName("form")[0].onsubmit = (e) => {
     e.preventDefault();
-    // console.log(e.target["login--id"]);
-    // console.log(e.target["signup-username"]);
   };
   document.getElementById("backBtn1").onclick = function () {
     location.href = goPage;
   };
-
 
   signUp.onclick = async function () {
     registecheck();
@@ -288,16 +258,8 @@ function start() {
       return;
     }
 
-
     try {
-      if (
-        // checkUserName &&
-        // checkUserID &&
-        // checkPassWord &&
-        // checkCheckPassWord()) == true
-        true
-      ) {
-
+      if (true) {
         const user = await axios.post("/api/user/regist", {
           id: userId.value,
           pw: userPassword.value,
@@ -306,15 +268,11 @@ function start() {
         });
         alert("회원가입에 성공하셨습니다.");
       }
-      // console.log("데이터보낸다잉");
       window.location.reload();
     } catch (err) {
-      // alert(err.response.data.message);
       console.error(err.response.data.message);
     }
-    // console.log(document.getElementById("login--id").value);
   };
-
 
   signIn.onclick = async function (e) {
     e.preventDefault();

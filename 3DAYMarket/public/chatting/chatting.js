@@ -1,50 +1,9 @@
-// document.forms["msg-zone"].onsubmit = function (e) {
-//   e.preventDefault();
-//   const text = document.getElementById("msg").innerHTML;
-//   const time = new Date().toLocaleTimeString;
-//   console.log(text);
-//   console.log(time);
-// };
-
-// document.getElementById("msg-sumbit").onclick = function (e) {
-//   e.preventDefault();
-// };
-
-// function submitFunc(e) {
-//   e.preventDefault();
-//   value = "";
-//   console.log("test");
-// }
-
-// document.getElementById("msg-zone").onsubmit = function (e) {
-//   e.preventDefault();
-//   console.log("asd");
-// };
-// const form = document.getElementById("msg-zone");
-// form.addEventListener("submit", submitFunc);
-
-// document.getElementById("partner-id").innerText = partnerName;
 const cookieR2 = document.cookie.split("; ").includes("reverse=123");
-console.log(cookieR2);
 async function socketFunc(control) {
   const socket = io();
   document.getElementById("msg-num").innerText = "0/50";
   document.getElementById("msg-num").style.color = "black";
-
-  // const text = document.forms["msg-zone"]["msg"].value;
-  // // setInterval(() => {
-
-  //   if (textBtnElem) {
-  //     clearInterval();
-  //   }
-  // }, 500);
-  // const msg = document.getElementById("msg");
-  // msg.onkeydown = (event) => {
-  //   submitText(event);
-  // };
-
   const asd = document.forms["msg-zone"];
-  // console.log(asd);
   const chatElem = document.getElementById("vs-chat-zone");
   chatElem.innerHTML = "";
   document.forms["msg-zone"].onsubmit = function (e) {
@@ -54,7 +13,6 @@ async function socketFunc(control) {
       return false;
     }
     e.preventDefault();
-
     const now = new Date();
     let hour = parseInt(now.getHours());
     let ampm;
@@ -84,34 +42,22 @@ async function socketFunc(control) {
     });
 
     const chatList = document.getElementsByClassName("vs-name");
-    // console.log(chatList.length);
     const chatLogList = document.getElementsByClassName("vs-chatlog");
     for (let i = 0; i < chatList.length; i++) {
       if (
         document.getElementById("partner-id").innerText == chatList[i].innerText
       ) {
         chatLogList[i].innerText = document.forms["msg-zone"]["msg"].value;
-        // console.log(chatLogList[i].innerText);
       }
     }
-    //resize none
 
     document.forms["msg-zone"]["msg"].value = "";
     document.forms["msg-zone"]["msg"].focus;
   };
 
   socket.on("list", (data) => {
-    //완
-    // console.log(data.list);
     data.list.forEach((item) => {
-      // console.log(item.text);
-      // console.log(item.time);
-      // console.log(item.userId);
-      // console.log(item.partnerId);
-      // console.log(document.getElementById("user-name").innerText);
       if (item.userId == document.getElementById("user-name").innerText) {
-        // console.log("hi");
-
         if (!control) {
           createOneChat(item);
         }
@@ -122,9 +68,6 @@ async function socketFunc(control) {
           createOneChatVs(item);
         }
       }
-
-      // console.log(item.partnerId);
-      // console.log(document.getElementById("partner-id").innerText);
       if (control) {
         if (
           item.partnerId == document.getElementById("partner-id").innerText &&
@@ -163,11 +106,9 @@ async function socketFunc(control) {
           document.getElementById("item-price").innerText = "데이터받아와야함";
           document.getElementById("trade-status").innerText =
             "데이터받아와야함";
-          // setTimeout(() => {
           socketFunc("control");
           document.getElementById("chat-box").style.display = "flex";
           document.getElementById("none-chat").style.display = "none";
-          // }, 10);
         };
       }
     }
@@ -197,7 +138,6 @@ function submitBtn(serverText, serverTime) {
 
   if (cookieR2) {
     const msgList = document.getElementsByClassName("my-speech-bubble");
-    console.log(msgList);
     for (let i = 0; i < msgList.length; i++) {
       msgList[i].classList.add("start");
     }
@@ -206,20 +146,6 @@ function submitBtn(serverText, serverTime) {
   }
 
   chatZone.scrollTop = chatZone.scrollHeight;
-
-  // try {
-  //   const chatToServer = await axios.post("/api/chat", {
-  //     userId: document.getElementById("user-name").innerText,
-  //     text: text,
-  //     parterId: document.getElementById("partner-id").innerText,
-  //     time: time,
-  //   });
-  // } catch (err) {
-  //   console.log(err);
-  // }
-
-  // document.forms["msg-zone"]["msg"].value = "";
-  // document.forms["msg-zone"]["msg"].focus;
 }
 
 function submitBtnVs(serverText, serverTime) {
@@ -245,7 +171,6 @@ function submitBtnVs(serverText, serverTime) {
 
   if (cookieR2) {
     const msgList = document.getElementsByClassName("vs-speech-bubble");
-    console.log(msgList);
     for (let i = 0; i < msgList.length; i++) {
       msgList[i].classList.add("start");
     }
@@ -253,28 +178,13 @@ function submitBtnVs(serverText, serverTime) {
 
   chatZone.scrollTop = chatZone.scrollHeight;
 
-  // try {
-  //   const chatToServer = await axios.post("/api/chat", {
-  //     userId: document.getElementById("user-name").innerText,
-  //     text: text,
-  //     parterId: document.getElementById("partner-id").innerText,
-  //     time: time,
-  //   });
-  // } catch (err) {
-  //   console.log(err);
-  // }
-
   document.forms["msg-zone"]["msg"].value = "";
   document.forms["msg-zone"]["msg"].focus;
 }
 
 function submitText(event) {
   if (window.event.keyCode == 13) {
-    // submitBtn();
-
     event.returnValue = false;
-    //textarea 에서 줄바꿈 방지
-
     document.forms["msg-zone"]["msg"].value = "";
   }
 }
@@ -341,7 +251,6 @@ const createOneChatVs = function (data) {
   const tempdiv1 = document.createElement("div");
   const tempdiv2 = document.createElement("div");
   const tempdiv3 = document.createElement("div");
-  // tempdiv3.innerText = "사진로그";
   const tempdiv4 = document.createElement("div");
   const tempdiv5 = document.createElement("div");
 
@@ -399,16 +308,11 @@ const deletedouble = function () {
   let nameNum = vsNameList.length;
   let vsChat = document.getElementsByClassName("one-chat");
   let chatNum = vsChat.length;
-
-  // console.log(vsNameList[2].innerText);
   let tempNum = [];
-
   for (let i = nameNum - 1; i >= 0; i--) {
     for (let j = i - 1; j >= 0; j--) {
       if (vsNameList[i].innerText == vsNameList[j].innerText) {
-        // vsChat[j].remove();
         tempNum.push(j);
-        // console.log("asd");
       }
     }
   }
@@ -420,7 +324,6 @@ const deletedouble = function () {
     else return 0;
   });
 
-  // console.log(tempNum);
   let count = 0;
   for (let m = 0, n = 1; m < tempNum.length; m++, n++) {
     let tempN = tempNum[m];
@@ -438,13 +341,10 @@ document.forms["msg-zone"].onkeyup = (event) => {
   event.preventDefault();
   const text = document.forms["msg-zone"]["msg"].value;
   if (text.length <= 50) {
-    document.getElementById("msg-num").innerText =
-      // document.getElementById(msg).value;
-      `${text.length}/50`;
+    document.getElementById("msg-num").innerText = `${text.length}/50`;
   } else {
     return alert("50자 이내로 입력하시오");
   }
-  console.log(event.keyCode);
 
   if (window.event.keyCode == 13) {
     const now = new Date();
@@ -468,9 +368,7 @@ document.forms["msg-zone"].onkeyup = (event) => {
     if (time) {
       submitBtn(text, time);
     }
-
     event.returnValue = false;
-
     document.forms["msg-zone"]["msg"].value = "";
   }
 };
