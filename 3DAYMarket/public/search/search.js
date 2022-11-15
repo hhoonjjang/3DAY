@@ -220,3 +220,10 @@ const reverse = function () {
 };
 
 reverse();
+
+const searchItem = document.forms["search-form"];
+searchItem.onsubmit = async function (event) {
+  event.preventDefault();
+
+  location.href = searchAddress + searchItem.search.value;
+};
