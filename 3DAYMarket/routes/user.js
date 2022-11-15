@@ -10,7 +10,7 @@ router.post("/regist", async (req, res) => {
     const tempUser = await User.findOne({ where: { userId: req.body.id } });
     if (tempUser) {
       res.status(500);
-      res.send({ message: "아이디가 존재합니다" });
+      res.send({ message: "중복된 아이디가 존재합니다" });
       return;
     }
 
