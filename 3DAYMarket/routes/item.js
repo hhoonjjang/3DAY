@@ -18,15 +18,21 @@ let upload = multer({ dest: "uploadedItems/" });
 let uploadWithOriginalFilename = multer({ storage: storage });
 
 router.use("/", (req, res, next) => {
-  global.userName = "";
-  try {
-    const tempUserInfo = jwt.verify(req.cookies.carrot, process.env.JWT_KEY);
-    global.userName = tempUserInfo.name;
-    // console.log("hi" + global.userName);
-    next();
-  } catch (err) {
-    console.error(err);
+  if (req.headers.cookie) {
+    global.userName = "";
+    console.log("hihihi");
+    console.log(req.headers.cookie);
+    console.log("hihihi");
+
+    try {
+      const tempUserInfo = jwt.verify(req.cookies.carrot, process.env.JWT_KEY);
+      global.userName = tempUserInfo.name;
+      // console.log("hi" + global.userName);
+    } catch (err) {
+      console.error(err);
+    }
   }
+  next();
 });
 
 router.post("/add", async (req, res) => {

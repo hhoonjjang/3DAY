@@ -59,6 +59,7 @@ let deleteCookie = function (name) {
 };
 
 const login = async function () {
+  console.log(cookieArray[cookieCIndex]);
   if (cookieArray[cookieCIndex]) {
     try {
       const result = await axios.post("/api/user/cookie", {
@@ -76,7 +77,7 @@ const login = async function () {
       signInBtn.classList.add("off");
       signUpBtn.classList.add("off");
     } catch (error) {
-      // console.error(error)
+      console.error(error);
     }
   }
 };
