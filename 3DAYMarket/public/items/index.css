@@ -932,3 +932,7 @@ body.start .read-more-div {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+body.start #delete-btn {
+  filter: invert(1);
+}
