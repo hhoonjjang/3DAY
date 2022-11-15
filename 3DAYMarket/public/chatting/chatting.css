@@ -285,3 +285,12 @@ textarea {
 ::-webkit-scrollbar-track-piece {
   background-color: transparent;
 }
+
+body.start #msg {
+  background: none;
+  color: white;
+}
+
+body.start #msg-num {
+  color: white;
+}

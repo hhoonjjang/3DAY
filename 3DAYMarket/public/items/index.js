@@ -110,8 +110,10 @@ async function getDetailItem() {
       .data.tempItem;
     if (buyUser == item.seller_id) {
       deleteBtn.style.display = "block";
+      chatBtn.style.display = "none";
     } else {
       deleteBtn.style.display = "none";
+      chatBtn.style.display = "block";
     }
     for (let i = 0; i < item.imgArr.split("-*,").length; i++) {
       const litag = document.createElement("li");

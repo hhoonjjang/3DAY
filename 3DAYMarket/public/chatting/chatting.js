@@ -2,7 +2,9 @@ const cookieR2 = document.cookie.split("; ").includes("reverse=123");
 async function socketFunc(control) {
   const socket = io();
   document.getElementById("msg-num").innerText = "0/50";
-  document.getElementById("msg-num").style.color = "black";
+  if (!cookieR2) {
+    document.getElementById("msg-num").style.color = "black";
+  }
   const asd = document.forms["msg-zone"];
   const chatElem = document.getElementById("vs-chat-zone");
   chatElem.innerHTML = "";
