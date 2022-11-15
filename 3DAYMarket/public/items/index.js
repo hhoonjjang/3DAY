@@ -318,3 +318,22 @@ async function deleteItem() {
     return;
   }
 }
+
+const searchAddress = "http://localhost:8080/search/?result=";
+let filterItemList = [];
+const searchItem = document.forms["search-form"];
+searchItem.onsubmit = async function (event) {
+  event.preventDefault();
+
+  if (filterItemList) {
+    for (let i = 0; i < filterItemList.length; i++) {
+      filterItemList.pop();
+    }
+  }
+  console.log(filterItemList);
+  const filterItemListSend = await axios.post("/api/item/filterItem", {
+    list: filterItemList,
+  });
+
+  location.href = searchAddress + searchItem.search.value;
+};
