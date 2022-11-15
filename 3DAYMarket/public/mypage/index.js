@@ -42,6 +42,7 @@ const editBtn = document.getElementById("editbtn2");
 
 let date = new Date();
 const address = "http://localhost:8080/items?name=";
+const searchAddress = "http://localhost:8080/search/?result=";
 const divItemBoard = document.getElementById("itemBoard");
 let cookieR;
 signOutBtn.onclick = async function () {
@@ -596,4 +597,22 @@ editBtn.onclick = async function () {
   } catch (err) {
     console.error(err);
   }
+};
+
+let filterItemList = [];
+const searchItem = document.forms["search-form"];
+searchItem.onsubmit = async function (event) {
+  event.preventDefault();
+
+  if (filterItemList) {
+    for (let i = 0; i < filterItemList.length; i++) {
+      filterItemList.pop();
+    }
+  }
+  console.log(filterItemList);
+  const filterItemListSend = await axios.post("/api/item/filterItem", {
+    list: filterItemList,
+  });
+
+  location.href = searchAddress + searchItem.search.value;
 };

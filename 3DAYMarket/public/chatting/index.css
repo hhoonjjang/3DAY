@@ -444,6 +444,9 @@ body.start .user-box a {
   font-family: "maple-light";
   outline: none;
 }
+form {
+  margin: 0;
+}
 
 .reverse img:first-child {
   display: block;
