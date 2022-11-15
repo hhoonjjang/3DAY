@@ -2,7 +2,7 @@ const Cryptojs = require("crypto-js");
 const jwt = require("jsonwebtoken");
 const router = require("express").Router();
 
-const { User } = require("../models/index.js");
+const { User, Item } = require("../models/index.js");
 
 router.post("/regist", async (req, res) => {
   console.log(req.body);
@@ -125,6 +125,16 @@ router.put("/update", async (req, res) => {
     {
       where: {
         Id: tempUser.id,
+      },
+    }
+  );
+  await Item.update(
+    {
+      seller_id: tempName,
+    },
+    {
+      where: {
+        seller_id: tempName,
       },
     }
   );

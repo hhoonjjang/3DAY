@@ -27,6 +27,7 @@ router.use("/", (req, res, next) => {
     try {
       const tempUserInfo = jwt.verify(req.cookies.carrot, process.env.JWT_KEY);
       global.userName = tempUserInfo.name;
+
       // console.log("hi" + global.userName);
     } catch (err) {
       console.error(err);
